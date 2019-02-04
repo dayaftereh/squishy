@@ -1,5 +1,18 @@
-<div class="p-grid">
-    <div class="p-col-12">
-
+<div class="p-grid p-justify-end">
+    <div class="p-col-1">
+        <div class="ui-inputgroup">
+            <p-dropdown [options]="taskTypes" [(ngModel)]="taskType"></p-dropdown>
+            <button pButton type="button" icon="pi pi-plus" (click)="addTask()" class="ui-button-success"></button>
+        </div>
+    </div>
+</div>
+<div class="p-grid p-justify-center" *ngFor="let task of (tasks()|async)">
+    <div class="p-col-10">
+        <app-task-panel [task]="task"></app-task-panel>
+    </div>
+</div>
+<div class="p-grid p-justify-end">
+    <div class="p-col-1">
+        <button pButton type="button" icon="pi pi-caret-right" (click)="execute()"></button>
     </div>
 </div>

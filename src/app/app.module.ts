@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule } from 'ngx-markdown';
 import { AppRouterModule } from './app-router.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { ViewsModule } from './views/views.module';
         // angular
         BrowserModule,
         HttpClientModule,
+        BrowserAnimationsModule,
         // markdown
         MarkdownModule.forRoot({ loader: HttpClient }),
         // i18n

@@ -23,6 +23,15 @@ export class TabsService {
         }));
     }
 
+    tap(id: string): Observable<Tab | undefined> {
+        return this.subject.pipe(map((tabs: Tabs) => {
+            if (tabs.hasOwnProperty(id)) {
+                return tabs[id];
+            }
+            return undefined;
+        }));
+    }
+
     close(id: string): void {
         const tabs: Tabs = this.subject.getValue();
         if (!tabs.hasOwnProperty(id)) {
@@ -33,10 +42,32 @@ export class TabsService {
     }
 
     newTab(): void {
-        const tabs: Tabs = this.subject.getValue();
+        const tab: Tab = this.createTab();
+        this.update(tab, true);
+    }
+
+    private createTab(name?: string): Tab {
+        if (!name) {
+            // todo i18n
+            name = 'Noname';
+        }
         const id: string = uuid.v4();
-        tabs[id] = { id, name: 'Noname' } as Tab;
-        this.subject.next(tabs);
+
+        const tab: Tab = {
+            id,
+            name,
+            tasks: {}
+        } as Tab;
+
+        return tab;
+    }
+
+    update(tab: Tab, emitEvent?: boolean): void {
+        const tabs: Tabs = this.subject.getValue();
+        tabs[tab.id] = tab;
+        if (emitEvent) {
+            this.subject.next(tabs);
+        }
     }
 
 }

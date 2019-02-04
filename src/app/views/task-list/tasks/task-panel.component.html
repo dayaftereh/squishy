@@ -1,0 +1,12 @@
+<p-panel [toggleable]="true">
+    <p-header>
+        {{task?.name}}
+        <button pButton type="button" icon="pi pi-trash" (click)="removeTask()" class="ui-button-danger"></button>
+    </p-header>
+    <div class="p-grid">
+        <div class="p-col-12" [ngSwitch]="task?.type">
+            <app-load-task [task]="task" *ngSwitchCase="TaskType.LOAD"></app-load-task>
+            <app-script-task [task]="task" *ngSwitchCase="TaskType.SCRIPT"></app-script-task>
+        </div>
+    </div>
+</p-panel>
