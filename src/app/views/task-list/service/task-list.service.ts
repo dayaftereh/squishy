@@ -1,26 +1,31 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { Task } from 'src/app/services/task/task';
 import { TaskExecution } from '../../../services/execution/task-execution';
 import { Tab } from '../../../services/tabs/tab';
 import { TabRouteResolverService } from '../../../services/tabs/tab-route-resolver.service';
+import { LoadTaskData } from '../../../services/task/load/load-task-data';
+import { TasksData } from '../../../services/task/tasks-data';
 import { TasksService } from '../../../services/task/tasks.service';
 
 @Injectable()
 export class TaskListService {
 
-    subject: BehaviorSubject<Tab | undefined>;
+    tab: BehaviorSubject<Tab | undefined>;
 
-    executionData: TaskExecution
+    data: BehaviorSubject<TasksData | undefined>;
 
     constructor(private readonly tasksService: TasksService,
                 private readonly tabRouteResolverService: TabRouteResolverService) {
-        this.subject = new BehaviorSubject<Tab | undefined>(undefined);
-        this.tabRouteResolverService.tab().subscribe(this.subject);
+        this.tab = new BehaviorSubject<Tab | undefined>(undefined);
+        this.data = new BehaviorSubject<TasksData | undefined>(undefined);
+
+        this.tabRouteResolverService.tab().subscribe(this.tab);
     }
 
     tasks(): Observable<Task[]> {
-        return this.tasksService.tasks(this.subject);
+        return this.tasksService.tasks(this.tab);
     }
 
     update(emitEvent?: boolean): void {
@@ -55,13 +60,38 @@ export class TaskListService {
         });
     }
 
+    updateTaskData(id: string, taskData: LoadTaskData): void {
+        this.computeIfPresent(() => {
+            let data: TasksData | undefined = this.data.getValue();
+            if (!data) {
+                data = {};
+            }
+            data[id] = taskData;
+            this.data.next(data);
+        });
+    }
+
     private computeIfPresent(fn: (tab: Tab) => void): void {
-        const tab: Tab | undefined = this.subject.getValue();
+        const tab: Tab | undefined = this.tab.getValue();
         if (!tab || !fn) {
             return;
         }
 
         fn(tab);
+    }
+
+    async createExecution(): Promise<TaskExecution> {
+        let data: TasksData | undefined = this.data.getValue();
+        if (!data) {
+            data = {};
+        }
+
+        const tasks: Task[] = await this.tasksService.tasks(this.tab).pipe(first()).toPromise();
+
+        return {
+            data,
+            tasks
+        } as TaskExecution;
     }
 
 }

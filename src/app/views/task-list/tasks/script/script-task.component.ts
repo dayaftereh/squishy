@@ -43,7 +43,7 @@ export class ScriptTaskComponent implements OnInit, OnDestroy {
         if (!this.task) {
             return;
         }
-        console.log("update")
+
         this.task.script = this.getValue('script') || '';
         this.taskListService.update(true);
     }

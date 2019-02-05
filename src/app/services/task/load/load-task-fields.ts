@@ -1,0 +1,1 @@
+export type LoadTaskFields = { [key: number]: string }

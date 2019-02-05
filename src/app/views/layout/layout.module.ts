@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { ExecutorModule } from '../executor/executor.module';
 import { TabsModule } from '../tabs/tabs.module';
 import { LayoutComponent } from './layout.component';
 
@@ -10,7 +11,8 @@ import { LayoutComponent } from './layout.component';
         RouterModule,
         BrowserModule,
         // custom
-        TabsModule
+        TabsModule,
+        ExecutorModule
     ],
     declarations: [
         LayoutComponent

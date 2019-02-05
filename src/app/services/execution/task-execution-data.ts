@@ -1,1 +1,0 @@
-export type TaskExecutionData = { [key: string]: any }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ExecutorModule } from './executor/executor.module';
 import { LayoutModule } from './layout/layout.module';
 import { TabsModule } from './tabs/tabs.module';
 import { TaskListModule } from './task-list/task-list.module';
@@ -8,12 +9,14 @@ import { TaskListModule } from './task-list/task-list.module';
         // custom
         TabsModule,
         LayoutModule,
-        TaskListModule
+        TaskListModule,
+        ExecutorModule
     ],
     exports: [
         TabsModule,
         LayoutModule,
-        TaskListModule
+        TaskListModule,
+        ExecutorModule
     ]
 })
 export class ViewsModule {

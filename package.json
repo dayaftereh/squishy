@@ -4,8 +4,11 @@
   "scripts": {
     "ng": "ng",
     "test": "ng test",
-    "start": "ng serve --proxy-config ./proxy.conf.json",
-    "build": "ng build --aot --prod && gulp distZip"
+    "start": "concurrently --kill-others \"npm run serve:worker\" \"ng serve\"",
+    "serve": "ng serve --proxy-config ./proxy.conf.json",
+    "serve:worker": "ng run squishy:serve-worker",
+    "build": "npm run build:worker && ng build --aot --prod && gulp distZip",
+    "build:worker": "ng run squishy:build-worker"
   },
   "private": true,
   "repository": {
@@ -38,6 +41,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.0",
+    "@angular-builders/custom-webpack": "^7.3.0",
     "@angular/cli": "^7.3.0",
     "@angular/compiler-cli": "^7.2.3",
     "@angular/language-service": "^7.2.3",
@@ -49,11 +53,13 @@
     "codelyzer": "^4.5.0",
     "jasmine-core": "^3.3.0",
     "jasmine-spec-reporter": "^4.2.1",
+    "replace-in-file-webpack-plugin": "^1.0.6",
     "karma": "^4.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "^2.0.4",
     "karma-jasmine": "^2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "concurrently": "^4.1.0",
     "protractor": "^5.4.2",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",

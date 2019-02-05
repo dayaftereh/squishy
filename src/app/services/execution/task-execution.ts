@@ -1,7 +1,7 @@
 import { Task } from '../task/task';
-import { TaskExecutionData } from './task-execution-data';
+import { TasksData } from '../task/tasks-data';
 
 export interface TaskExecution {
     tasks: Task[]
-    data: TaskExecutionData
+    data: TasksData
 }
