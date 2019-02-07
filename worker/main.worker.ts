@@ -1,5 +1,5 @@
-import { ExecutionWorker } from './execution-worker/execution-worker';
-import { TasksExecutor } from './tasks/tasks-executor';
+import { ExecutionWorker } from '../src/worker/execution-worker/execution-worker';
+import { TasksExecutor } from '../src/worker/tasks/tasks-executor';
 
 const worker: ExecutionWorker = new ExecutionWorker(self);
 const executor: TasksExecutor = new TasksExecutor(worker);

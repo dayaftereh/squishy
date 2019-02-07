@@ -51,7 +51,17 @@ export class LoadTaskComponent implements OnInit, OnDestroy {
             return;
         }
         const id: string = this.task.id;
-        const files: File[] = event.files;
+
+        const fileList: FileList = event.files;
+        const files: File[] = [];
+        for (let i: number = 0; i < fileList.length; i++) {
+            const file: File | null = fileList.item(i);
+            if (file) {
+                files.push(file);
+            }
+
+        }
+
         this.taskListService.updateTaskData(id, {
             files
         } as LoadTaskData);

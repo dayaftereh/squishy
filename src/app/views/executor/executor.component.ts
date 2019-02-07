@@ -29,7 +29,7 @@ export class ExecutorComponent implements OnInit, OnDestroy {
     }
 
     private execute(taskExecution: TaskExecution): void {
-        this.running = true;
+        this.running = false;
         this.status = this.taskExecutorService.execute(taskExecution);
         this.status.subscribe({
             complete: () => {

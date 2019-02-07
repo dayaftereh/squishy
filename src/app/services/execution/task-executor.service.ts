@@ -10,9 +10,9 @@ import { TaskStatus } from './task-status';
 @Injectable()
 export class TaskExecutorService {
 
-    private static readonly WORKER_PATH = 'assets/workers/main.js';
+    private static readonly WORKER_PATH = 'worker.js';
 
-    private worker: Worker | undefined;
+    private worker: any;
     private readonly subject: Subject<TaskStatusMessage>;
 
     constructor() {
@@ -25,11 +25,7 @@ export class TaskExecutorService {
             return;
         }
 
-
-        this.worker = new Worker(TaskExecutorService.WORKER_PATH, {
-            name: 'squishy-worker'
-        });
-
+        this.worker = new Worker('../../../worker/main.worker', { type: 'module' });
         this.worker.onmessage = (event: MessageEvent) => {
             const taskMessage: TaskStatusMessage = event.data as TaskStatusMessage;
             if (this.subject) {
@@ -42,6 +38,8 @@ export class TaskExecutorService {
         if (!this.worker) {
             throw new Error(`worker not initialized`);
         }
+
+        console.log('Send-Message', this.worker);
 
         this.worker.postMessage({
             execution: taskExecution,
