@@ -2,7 +2,7 @@ const WorkerPlugin = require('worker-plugin');
 
 module.exports = {
     output: {
-        globalObject: 'this'
+        globalObject: 'self'
     },
     module: {
         rules: []

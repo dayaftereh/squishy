@@ -17,6 +17,8 @@ export class WorkerProxy {
         this.worker = new Worker('../main.worker', { type: 'module' });
         this.dispatcher = new WorkerProxyDispatcher(this.worker);
         this.publisher = new WorkerProxyPublisher(this.worker, this.dispatcher);
+
+        this.dispatcher.start();
     }
 
     async readlines(files: File[], first?: number): Promise<string[][]> {

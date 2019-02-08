@@ -20,6 +20,8 @@ export class WorkerProxyDispatcher {
         this.worker = worker;
         this.error = new Subject<Error>();
         this.status = new Subject<WorkerStatusMessage>();
+        this.readLines = new Subject<WorkerResponseLinesMessage>();
+        this.taskExecution = new Subject<WorkerStatusTaskExecutionMessage>();
     }
 
     start(): void {
