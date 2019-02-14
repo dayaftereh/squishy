@@ -30,13 +30,10 @@ export class ExecutorComponent implements OnInit, OnDestroy {
 
     private execute(taskExecution: TaskExecution): void {
         this.running = false;
-        this.status = this.taskExecutorService.execute(taskExecution);
-        this.status.subscribe({
-            complete: () => {
-                this.running = false;
-            }, error: e => {
-                console.error(e);
-            }
+        this.taskExecutorService.execute(taskExecution).then(() => {
+            this.running = false;
+        }, (e) => {
+            console.error(e);
         });
     }
 

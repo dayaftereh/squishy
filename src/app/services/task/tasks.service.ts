@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as uuid from 'uuid';
 import { Tab } from '../tabs/tab';
-import { Task } from './task';
-import { TaskType } from './task-type';
+import { Task } from '../../../core/exectuion/task/task';
+import { TaskType } from '../../../core/exectuion/task/task-type';
 
 @Injectable()
 export class TasksService {

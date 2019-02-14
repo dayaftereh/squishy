@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ScriptTask } from '../../../../services/task/script/script-task';
+import { ScriptTask } from '../../../../../core/exectuion/task/script/script-task';
 import { TaskListService } from '../../service/task-list.service';
 
 @Component({

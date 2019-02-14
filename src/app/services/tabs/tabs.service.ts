@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as uuid from 'uuid';
+import { OutputTask } from '../../../core/exectuion/task/output/output-task';
+import { TaskType } from '../../../core/exectuion/task/task-type';
 import { Tab } from './tab';
 import { Tabs } from './tabs';
 
@@ -56,7 +58,13 @@ export class TabsService {
         const tab: Tab = {
             id,
             name,
-            tasks: {}
+            tasks: {},
+            output: {
+                type: TaskType.OUTPUT,
+                id: uuid.v4(),
+                filename: 'output.csv',
+                name: 'Default-Output'
+            } as OutputTask
         } as Tab;
 
         return tab;

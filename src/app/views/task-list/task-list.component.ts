@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { TaskType } from 'src/app/services/task/task-type';
+import { TaskType } from 'src/core/exectuion/task/task-type';
 import { TaskExecution } from '../../services/execution/task-execution';
-import { Task } from '../../services/task/task';
+import { Tab } from '../../services/tabs/tab';
+import { Task } from '../../../core/exectuion/task/task';
 import { TasksService } from '../../services/task/tasks.service';
 import { ExecutorService } from '../executor/service/executor.service';
 import { TaskListService } from './service/task-list.service';
@@ -17,6 +18,7 @@ export class TaskListComponent implements OnInit {
 
     taskTypes: SelectItem[];
 
+    tab: Observable<Tab | undefined>;
 
     constructor(private readonly tasksService: TasksService,
                 private readonly executorService: ExecutorService,
@@ -28,6 +30,7 @@ export class TaskListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.tab = this.taskListService.tab;
         this.taskTypes = [
             { label: 'Load', value: TaskType.LOAD },
             { label: 'Script', value: TaskType.SCRIPT }

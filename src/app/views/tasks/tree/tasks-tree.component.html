@@ -1,0 +1,7 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-organizationChart [value]="(nodes|async)"
+                             (onNodeSelect)="onSelect($event)"
+                             (onNodeUnselect)="onUnselect()"></p-organizationChart>
+    </div>
+</div>

@@ -4,12 +4,11 @@ module.exports = {
     output: {
         globalObject: 'self'
     },
-    module: {
-        rules: []
-    },
     plugins: [
         new WorkerPlugin({
-            plugins: ['AngularCompilerPlugin']
+            plugins: [
+                'AngularCompilerPlugin'
+            ]
         })
     ]
 };

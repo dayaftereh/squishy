@@ -1,14 +1,17 @@
 <div class="p-grid p-justify-end">
     <div class="p-col-1">
-        <div class="ui-inputgroup">
-            <p-dropdown [options]="taskTypes" [(ngModel)]="taskType"></p-dropdown>
-            <button pButton type="button" icon="pi pi-plus" (click)="addTask()" class="ui-button-success"></button>
-        </div>
+        <p-dropdown [options]="taskTypes" [(ngModel)]="taskType"></p-dropdown>
+    </div>
+    <div class="p-col-1">
+        <button pButton type="button" icon="pi pi-plus" (click)="addTask()" class="ui-button-success"></button>
     </div>
 </div>
-<div class="p-grid p-justify-center" *ngFor="let task of (tasks()|async)">
-    <div class="p-col-10">
+<div class="p-grid p-justify-center">
+    <div class="p-col-10 p-offset-1" *ngFor="let task of (tasks()|async)">
         <app-task-panel [task]="task"></app-task-panel>
+    </div>
+    <div class="p-col-10 p-offset-1">
+        <app-task-panel [task]="(tab|async).output"></app-task-panel>
     </div>
 </div>
 <div class="p-grid p-justify-end">

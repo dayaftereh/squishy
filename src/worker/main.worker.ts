@@ -1,6 +1,5 @@
-import { AppWorker } from './app-worker';
+import { AppCoreWorker } from './core/app-core.worker';
 
 const worker: Worker = self as any;
-const appWorker: AppWorker = new AppWorker(worker);
-appWorker.start();
-
+const coreWorker: AppCoreWorker = new AppCoreWorker(worker);
+coreWorker.start();

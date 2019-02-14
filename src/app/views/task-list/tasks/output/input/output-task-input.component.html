@@ -1,0 +1,5 @@
+<p-dropdown #dropdown
+            [(ngModel)]="value"
+            [options]="items|async"
+            (onChange)="onInputChanged()"
+            [autoWidth]="true"></p-dropdown>

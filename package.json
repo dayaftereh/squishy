@@ -31,7 +31,7 @@
     "primeng": "^7.0.5",
     "primeicons": "^1.0.0",
     "primeflex": "^1.0.0-rc.1",
-    "core-js": "^2.6.3",
+    "core-js": "^2.6.4",
     "rxjs": "^6.4.0",
     "zone.js": "^0.8.29",
     "file-saver": "^2.0.0",

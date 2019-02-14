@@ -1,8 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { LoadTask } from '../../../../services/task/load/load-task';
-import { LoadTaskData } from '../../../../services/task/load/load-task-data';
+import { LoadTask } from '../../../../../core/exectuion/task/load/load-task';
+import { LoadTaskData } from '../../../../../core/exectuion/task/load/load-task-data';
 import { TaskListService } from '../../service/task-list.service';
 
 @Component({

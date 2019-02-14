@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup">
+    <div class="p-grid">
+        <div class="p-col-6">
+            filename
+        </div>
+        <div class="p-col-6">
+            <input type="text" pInputText formControlName="filename"/>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-6">
+            input:
+        </div>
+        <div class="p-col-6">
+            <app-output-task-input formControlName="input"></app-output-task-input>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-6">
+            fields:
+        </div>
+        <div class="p-col-6">
+            <app-output-task-fields formControlName="fields"></app-output-task-fields>
+        </div>
+    </div>
+</form>

@@ -1,32 +1,28 @@
 import { Injectable } from '@angular/core';
-import { saveAs } from 'file-saver';
+import * as FileSaver from 'file-saver';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { WorkerProxy } from '../../../worker/proxy/worker.proxy';
-import { WorkerTaskExecutionStatus } from '../../../worker/tasks/worker-task-execution-status';
+import { ProxyWorker } from '../../../worker/proxy/proxy-worker';
 import { TaskExecution } from './task-execution';
 import { TaskStatus } from './task-status';
 
 @Injectable()
 export class TaskExecutorService {
 
-    private static readonly WORKER_PATH = 'worker.js';
-
-    private worker: WorkerProxy;
+    private worker: ProxyWorker;
 
     constructor() {
-        this.worker = new WorkerProxy();
+        this.init();
+    }
+
+    init(): void {
+        this.worker = new ProxyWorker();
         this.worker.start();
     }
 
-    execute(taskExecution: TaskExecution): Observable<TaskStatus> {
-        return this.worker.execute(taskExecution).pipe(map((status: WorkerTaskExecutionStatus) => {
-            console.log(status.url, saveAs);
-            saveAs(status.url, 'output.csv');
-            return {
-                progress: status.process
-            } as TaskStatus;
-        }));
+    async execute(taskExecution: TaskExecution): Promise<Blob> {
+        const blob: Blob = await this.worker.execute(taskExecution);
+        FileSaver.saveAs(blob, 'output.csv');
+        return blob;
     }
 
     async abort(): Promise<void> {

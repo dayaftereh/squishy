@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { LoadTaskFields } from '../../../../../services/task/load/load-task-fields';
+import { LoadTaskFields } from '../../../../../../core/exectuion/task/load/load-task-fields';
 
 interface KeyValuePair {
     key: number;

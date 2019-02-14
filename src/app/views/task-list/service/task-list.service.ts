@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { Task } from 'src/app/services/task/task';
+import { Task } from 'src/core/exectuion/task/task';
 import { TaskExecution } from '../../../services/execution/task-execution';
 import { Tab } from '../../../services/tabs/tab';
 import { TabRouteResolverService } from '../../../services/tabs/tab-route-resolver.service';
-import { LoadTaskData } from '../../../services/task/load/load-task-data';
+import { LoadTaskData } from '../../../../core/exectuion/task/load/load-task-data';
 import { TasksData } from '../../../services/task/tasks-data';
 import { TasksService } from '../../../services/task/tasks.service';
 
