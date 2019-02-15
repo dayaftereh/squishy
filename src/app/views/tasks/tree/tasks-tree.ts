@@ -68,7 +68,9 @@ export class TasksTree {
             return !!(task);
         }).map((task: Task) => {
             visited.add(task.id);
-            return this.getOrCreateTreeNode(task);
+            const treeNode: TreeNode = this.getOrCreateTreeNode(task);
+            this.updateLeaf(treeNode, task);
+            return treeNode;
         });
     }
 
@@ -99,6 +101,7 @@ export class TasksTree {
     private updateChildren(node: TreeNode, task: Task, children: TreeNode[]): void {
         node.leaf = false;
         node.type = undefined;
+        node.expanded = true;
         node.label = task.name;
         node.children = children;
     }

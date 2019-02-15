@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Task } from 'src/core/exectuion/task/task';
 import { Execution } from '../../../../core/exectuion/execution';
 import { OutputTask } from '../../../../core/exectuion/task/output/output-task';
@@ -14,6 +14,8 @@ import { TasksTree } from './tasks-tree';
     templateUrl: './tasks-tree.component.html'
 })
 export class TasksTreeComponent implements OnInit {
+
+    selection: any;
 
     nodes: Observable<TreeNode[]> | undefined;
 
@@ -43,7 +45,9 @@ export class TasksTreeComponent implements OnInit {
         );
 
         this.tasksTree = new TasksTree(output, tasks);
-        this.nodes = this.tasksTree.tree();
+        this.nodes = this.tasksTree.tree().pipe(
+            tap((no) => console.log('tree changed', no))
+        );
     }
 
     onSelect(event: any): void {

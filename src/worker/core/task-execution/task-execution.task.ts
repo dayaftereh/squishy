@@ -1,8 +1,6 @@
-import { TaskExecution } from '../../../app/services/execution/task-execution';
-
 export class TaskExecutionTask {
 
-    execute(taskExecution: TaskExecution): Blob {
+    execute(taskExecution: any): Blob {
         return new Blob();
     }
 

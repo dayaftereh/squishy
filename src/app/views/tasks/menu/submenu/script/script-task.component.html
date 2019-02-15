@@ -1,0 +1,13 @@
+<app-common-task [task]="task"></app-common-task>
+<form [formGroup]="formGroup">
+    <div class="p-grid">
+        <div class="p-col-12">
+            <textarea pInputTextarea formControlName="script" style="height: 250px"></textarea>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12">
+            <app-script-task-input formControlName="input"></app-script-task-input>
+        </div>
+    </div>
+</form>

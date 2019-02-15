@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup">
+    <div class="p-grid p-justify-end">
+        <div class="p-col-2">
+            <button pButton type="button" icon="pi pi-trash" class="ui-button-danger" (click)="deleteTask()"></button>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-6">
+            name:
+        </div>
+        <div class="p-col-6">
+            <input type="text" pInputText placeholder="Name" formControlName="name">
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-6">
+            disabled:
+        </div>
+        <div class="p-col-6">
+            <p-checkbox [binary]="true" formControlName="disabled"></p-checkbox>
+        </div>
+    </div>
+</form>

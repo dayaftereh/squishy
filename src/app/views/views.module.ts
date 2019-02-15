@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
+import { ExecutionsModule } from './executions/executions.module';
 import { ExecutorModule } from './executor/executor.module';
 import { LayoutModule } from './layout/layout.module';
-import { TabsModule } from './tabs/tabs.module';
-import { TaskListModule } from './task-list/task-list.module';
+import { TasksModule } from './tasks/tasks.module';
+
 
 @NgModule({
     imports: [
         // custom
-        TabsModule,
+        TasksModule,
         LayoutModule,
-        TaskListModule,
+        ExecutionsModule,
         ExecutorModule
     ],
     exports: [
-        TabsModule,
         LayoutModule,
-        TaskListModule,
         ExecutorModule
     ]
 })

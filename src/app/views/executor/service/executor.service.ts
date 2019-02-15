@@ -1,13 +1,7 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { TaskExecution } from '../../../services/execution/task-execution';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ExecutorService {
 
-    eventEmitter: EventEmitter<TaskExecution>;
-
-    constructor() {
-        this.eventEmitter = new EventEmitter<TaskExecution>();
-    }
 
 }

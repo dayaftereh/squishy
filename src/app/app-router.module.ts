@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TabRouteResolver } from './services/tabs/tab-route-resolver';
-import { TaskListComponent } from './views/task-list/task-list.component';
+import { ExecutionsRouteResolver } from './services/executions/executions-route-resolver';
+import { TasksComponent } from './views/tasks/tasks.component';
 
 const routes: Routes = [
     {
-        path: 'task-list/:id', component: TaskListComponent, resolve: { TabRouteResolver }
+        path: 'tasks/:id', component: TasksComponent, resolve: { ExecutionsRouteResolver }
     }
 ];
 

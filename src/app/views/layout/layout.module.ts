@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { ExecutionsModule } from '../executions/executions.module';
 import { ExecutorModule } from '../executor/executor.module';
-import { TabsModule } from '../tabs/tabs.module';
 import { LayoutComponent } from './layout.component';
 
 @NgModule({
@@ -11,8 +11,8 @@ import { LayoutComponent } from './layout.component';
         RouterModule,
         BrowserModule,
         // custom
-        TabsModule,
-        ExecutorModule
+        ExecutorModule,
+        ExecutionsModule
     ],
     declarations: [
         LayoutComponent

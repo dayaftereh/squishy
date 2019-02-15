@@ -1,6 +1,5 @@
 import * as Papa from 'papaparse';
 import { ParseConfig, ParseError, ParseResult } from 'papaparse';
-import { ReadLinesError } from '../../app/services/execution/read-lines/read-lines.error';
 
 export class ReadLinesTask {
 
@@ -46,7 +45,7 @@ export class ReadLinesTask {
 
     private throwParseErrors(file: File, errors: ParseError[]): void {
         const message: string = `error while parsing file [ ${file.name} ]`;
-        const error: ReadLinesError = new ReadLinesError(message);
+        const error: any = { message };
         error.file = file.name;
         error.errors = errors;
         throw error;

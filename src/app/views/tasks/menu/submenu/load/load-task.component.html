@@ -1,0 +1,19 @@
+<app-common-task [task]="task"></app-common-task>
+<form [formGroup]="formGroup">
+    <div class="p-grid">
+        <div class="p-col-12">
+            <app-load-task-fields formControlName="fields"></app-load-task-fields>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12">
+            <p-fileUpload [files]="files"
+                          [multiple]="true"
+                          [customUpload]="true"
+                          class="app-fileupload"
+                          (onClear)="onFilesCleared()"
+                          (onSelect)="onFilesSelected($event)"
+                          [showUploadButton]="false"></p-fileUpload>
+        </div>
+    </div>
+</form>

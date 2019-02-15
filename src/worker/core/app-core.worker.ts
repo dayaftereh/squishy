@@ -1,4 +1,3 @@
-import { TaskExecution } from '../../app/services/execution/task-execution';
 import { LinkServer } from '../link/link-server';
 import { ReadLinesTask } from './read-lines.task';
 
@@ -20,7 +19,7 @@ export class AppCoreWorker {
     }
 
     private registerCalls(): void {
-        this.linkServer.register('execute', (taskExecution: TaskExecution) => {
+        this.linkServer.register('execute', (taskExecution: any) => {
             return this.execute(taskExecution);
         });
 
@@ -29,7 +28,7 @@ export class AppCoreWorker {
         });
     }
 
-    private execute(taskExecution: TaskExecution): Blob {
+    private execute(taskExecution: any): Blob {
         return new Blob();
     }
 

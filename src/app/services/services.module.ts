@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
-import { TaskExecutionModule } from './execution/task-execution.module';
-import { TabsServiceModule } from './tabs/tabs-service.module';
-import { TasksServiceModule } from './task/tasks-service.module';
+import { ExecutionsServiceModule } from './executions/executions-service.module';
 
 @NgModule({
     providers: [
-        TabsServiceModule,
-        TasksServiceModule,
-        TaskExecutionModule
+        ExecutionsServiceModule
     ],
     exports: [
-        TabsServiceModule,
-        TasksServiceModule,
-        TaskExecutionModule
+        ExecutionsServiceModule
     ]
 })
 export class ServicesModule {

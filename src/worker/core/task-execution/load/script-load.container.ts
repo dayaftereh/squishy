@@ -1,13 +1,12 @@
 import { LoadTask } from '../../../../core/exectuion/task/load/load-task';
-import { LoadTaskData } from '../../../../core/exectuion/task/load/load-task-data';
 import { ReadLinesTask } from '../../read-lines.task';
 
 export class ScriptLoadContainer {
 
     private readonly task: LoadTask;
-    private readonly data: LoadTaskData;
+    private readonly data: any;
 
-    constructor(task: LoadTask, data: LoadTaskData) {
+    constructor(task: LoadTask, data: any) {
         this.task = task;
         this.data = data;
     }

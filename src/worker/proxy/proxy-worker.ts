@@ -1,4 +1,3 @@
-import { TaskExecution } from '../../app/services/execution/task-execution';
 import { LinkClient } from '../link/link-client';
 
 export class ProxyWorker {
@@ -24,7 +23,7 @@ export class ProxyWorker {
         return lines;
     }
 
-    async execute(taskExecution: TaskExecution): Promise<Blob> {
+    async execute(taskExecution: any): Promise<Blob> {
         if (!this.linkClient) {
             throw new Error(`link client not initialized`);
         }

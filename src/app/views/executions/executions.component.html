@@ -1,0 +1,22 @@
+<div class="p-grid p-justify-end">
+    <div class="p-col-1">
+        <button pButton type="button" icon="pi pi-plus" (click)="createExecution()" class="ui-button-success"></button>
+    </div>
+</div>
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-tabMenu [model]="items|async">
+            <ng-template pTemplate="item" let-item let-i="index">
+                <div *ngIf="item.label" style="position: relative; text-align: center; min-width: 10em">
+                    <div class="ui-menuitem-text">
+                        {{item.label}}
+                    </div>
+                </div>
+                <a tabindex="0" class="ui-menuitem-icon" (click)="closeExecution(item)"
+                   style="position: absolute; right: -1em; top: -.5em; padding: 0">
+                    <span class="pi pi-times"></span>
+                </a>
+            </ng-template>
+        </p-tabMenu>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { OrganizationChartModule } from 'primeng/primeng';
+import { ButtonModule, OrganizationChartModule } from 'primeng/primeng';
 import { TasksServiceModule } from '../service/tasks-service.module';
 import { TasksTreeComponent } from './tasks-tree.component';
 
