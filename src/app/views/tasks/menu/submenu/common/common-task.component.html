@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup">
-    <div class="p-grid p-justify-end">
+    <div class="p-grid p-justify-end" *ngIf="task?.type !== TaskType.OUTPUT">
         <div class="p-col-2">
             <button pButton type="button" icon="pi pi-trash" class="ui-button-danger" (click)="deleteTask()"></button>
         </div>

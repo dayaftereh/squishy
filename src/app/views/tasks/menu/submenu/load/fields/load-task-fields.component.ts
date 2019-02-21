@@ -90,7 +90,7 @@ export class LoadTaskFieldsComponent implements ControlValueAccessor {
             } as KeyValuePair;
         });
 
-        this.emitChanged();
+        //this.emitChanged();
     }
 
 }

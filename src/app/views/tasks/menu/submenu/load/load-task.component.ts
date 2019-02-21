@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { LoadTaskData } from '../../../../../../core/exectuion/data/task/load/load-task-data';
 import { LoadTask } from '../../../../../../core/exectuion/task/load/load-task';
 import { TasksService } from '../../../service/tasks.service';
 import { AbstractTaskComponent } from '../abstract-task-component';
@@ -53,10 +54,10 @@ export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
             if (file) {
                 files.push(file);
             }
-
         }
 
-
+        const data: LoadTaskData = files;
+        this.tasksService.executionData(id, data);
     }
 
     onFilesCleared(): void {
@@ -65,7 +66,7 @@ export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
         }
 
         const id: string = this.task.id;
-
+        this.tasksService.executionData(id, undefined);
     }
 
 

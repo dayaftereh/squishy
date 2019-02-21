@@ -29,6 +29,7 @@ export class TasksTree {
             }),
             map(([output, tasks]) => {
                 const executionPlan: ExecutionPlan = ExecutionPlanUtils.executionPlan(output!, tasks!);
+                console.log('executionPlan', JSON.stringify(executionPlan, null, 2));
                 return {
                     tasks,
                     executionPlan
@@ -45,6 +46,7 @@ export class TasksTree {
     private toTreeNodes(tasks: Tasks, executionPlan: ExecutionPlan): TreeNode[] {
         const visited: Set<TaskId> = new Set<TaskId>();
         const root: TreeNode = this.deep(executionPlan, visited);
+        console.log('root', JSON.stringify(root, null, 2));
         const unvisited: TreeNode [] = this.unvisited(tasks, visited);
 
         this.dropUnvisitedTreeNodes(visited);
@@ -95,7 +97,9 @@ export class TasksTree {
     private updateLeaf(node: TreeNode, task: Task): void {
         node.type = 'leaf';
         node.leaf = true;
+        node.expanded = false;
         node.label = task.name;
+        node.children = [];
     }
 
     private updateChildren(node: TreeNode, task: Task, children: TreeNode[]): void {

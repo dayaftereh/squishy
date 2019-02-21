@@ -60,6 +60,7 @@ export class ScriptTaskInputComponent implements OnInit, ControlValueAccessor {
 
     emitValueChanged(): void {
         const input: ScriptTaskInput = this.createInput();
+        console.log('emitValueChanged', input);
         if (this.onModelChange) {
             this.onModelChange(input);
         }
@@ -114,8 +115,6 @@ export class ScriptTaskInputComponent implements OnInit, ControlValueAccessor {
         if (!this.pairs || this.pairs.length < 1) {
             return input;
         }
-
-        console.log(this.pairs);
 
         this.pairs.forEach((pair: Name2TaskPair) => {
             input[pair.name] = pair.task;

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ButtonModule, OrganizationChartModule } from 'primeng/primeng';
+import { OrganizationChartModule } from 'primeng/primeng';
 import { TasksServiceModule } from '../service/tasks-service.module';
 import { TasksTreeComponent } from './tasks-tree.component';
+import { TasksTreesComponent } from './tasks-trees.component';
 
 @NgModule({
     imports: [
@@ -14,10 +15,12 @@ import { TasksTreeComponent } from './tasks-tree.component';
         TasksServiceModule
     ],
     declarations: [
-        TasksTreeComponent
+        TasksTreeComponent,
+        TasksTreesComponent
     ],
     exports: [
-        TasksTreeComponent
+        TasksTreeComponent,
+        TasksTreesComponent
     ]
 })
 export class TasksTreeModule {

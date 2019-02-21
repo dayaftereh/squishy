@@ -25,6 +25,8 @@ export class ScriptTaskComponent extends AbstractTaskComponent<ScriptTask> {
         formGroup.patchValue({
             input: task.input,
             script: task.script
+        }, {
+            emitEvent: false
         });
     }
 

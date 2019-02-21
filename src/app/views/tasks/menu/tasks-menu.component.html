@@ -1,9 +1,9 @@
-<p-panel [showHeader]="false">
+<p-panel *ngIf="!!(selection|async)">
     <div class="p-grid">
         <div class="p-col-12" [ngSwitch]="(selection|async)?.type">
-            <app-load-task [task]="(selection|async)" *ngSwitchCase="TaskType.LOAD"></app-load-task>
-            <app-script-task [task]="(selection|async)" *ngSwitchCase="TaskType.SCRIPT"></app-script-task>
-            <app-output-task [task]="(selection|async)" *ngSwitchCase="TaskType.OUTPUT"></app-output-task>
+            <app-load-task *ngSwitchCase="TaskType.LOAD"></app-load-task>
+            <app-script-task *ngSwitchCase="TaskType.SCRIPT"></app-script-task>
+            <app-output-task *ngSwitchCase="TaskType.OUTPUT"></app-output-task>
         </div>
     </div>
 </p-panel>

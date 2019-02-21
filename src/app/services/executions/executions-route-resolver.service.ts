@@ -32,4 +32,12 @@ export class ExecutionsRouteResolverService {
 
     }
 
+    remove(): void {
+        const id: string | undefined = this.subject.getValue();
+        if (id) {
+            this.executionsService.deleteExecution(id);
+            this.subject.next(undefined);
+        }
+    }
+
 }

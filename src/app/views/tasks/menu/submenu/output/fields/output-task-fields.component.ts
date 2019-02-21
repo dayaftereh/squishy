@@ -90,7 +90,7 @@ export class OutputTaskFieldsComponent implements ControlValueAccessor {
             } as KeyValuePair;
         });
 
-        this.emitChanged();
+        //this.emitChanged();
     }
 
 

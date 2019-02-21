@@ -1,9 +1,6 @@
-<div class="p-grid">
-    <div class="p-col-12" *ngFor="let node of (nodes|async)">
-        <p-organizationChart [value]="[node]"
-                             [selection]="selection"
-                             (onNodeSelect)="onSelect($event)"
-                             (onNodeUnselect)="onUnselect()"
-                             selectionMode="single"></p-organizationChart>
-    </div>
-</div>
+<p-organizationChart #tree
+                     [value]="[root]"
+                     [selection]="selection"
+                     (onNodeSelect)="onSelect($event)"
+                     (onNodeUnselect)="onUnselect()"
+                     selectionMode="single"></p-organizationChart>

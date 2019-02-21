@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Task } from 'src/core/exectuion/task/task';
 import * as uuid from 'uuid';
+import { TaskData } from '../../../../core/exectuion/data/task/task-data';
 import { Execution } from '../../../../core/exectuion/execution';
 import { TaskId } from '../../../../core/exectuion/task/task-id';
 import { TaskType } from '../../../../core/exectuion/task/task-type';
@@ -103,5 +104,21 @@ export class TasksService {
         this._execution.next(execution);
     }
 
+    executionData(taskId: TaskId, taskData: TaskData | undefined): void {
+        const execution: Execution | undefined = this._execution.getValue();
+        if (!execution) {
+            return;
+        }
+        if (taskData) {
+            execution.data[taskId] = taskData;
+        } else {
+            delete execution.data[taskId];
+        }
+    }
+
+
+    deleteExecution(): void {
+        this.executionsRouteResolverService.remove();
+    }
 
 }

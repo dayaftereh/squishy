@@ -1,0 +1,5 @@
+<div class="p-grid">
+    <div class="p-col-12" *ngFor="let node of (nodes|async)">
+        <app-tasks-tree [root]="node"></app-tasks-tree>
+    </div>
+</div>

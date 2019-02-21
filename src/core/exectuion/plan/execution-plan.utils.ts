@@ -10,26 +10,39 @@ import { ExecutionPlanEntry } from './execution-plan-entry';
 export namespace ExecutionPlanUtils {
 
     export function executionPlan(output: Task, tasks: Tasks): ExecutionPlan {
-        const children: ExecutionPlanEntry[] = ExecutionPlanUtils.deep(output, tasks);
+        const visited: Set<TaskId> = new Set<TaskId>();
+        const children: ExecutionPlanEntry[] = ExecutionPlanUtils.deep(output, tasks, visited);
         return {
             children,
             task: output
         };
     }
 
-    export function deep(root: Task, tasks: Tasks): ExecutionPlanEntry[] {
+    export function deep(root: Task, tasks: Tasks, visited?: Set<TaskId>): ExecutionPlanEntry[] {
+        console.log('deep');
+        if (visited) {
+            visited.add(root.id);
+        }
+
         const children: Task [] = ExecutionPlanUtils.getChildren(root, tasks);
         if (!children || children.length < 1) {
             return [];
         }
 
-        return children.map((child: Task) => {
-            const entries: ExecutionPlanEntry[] = ExecutionPlanUtils.deep(child, tasks);
-            return {
-                task: child,
-                children: entries
-            };
-        });
+
+        return children
+            .filter((child: Task) => {
+                if (!visited) {
+                    return true;
+                }
+                return !visited.has(child.id);
+            }).map((child: Task) => {
+                const entries: ExecutionPlanEntry[] = ExecutionPlanUtils.deep(child, tasks, visited);
+                return {
+                    task: child,
+                    children: entries
+                };
+            });
     }
 
     export function getChildren(root: Task, tasks: Tasks): Task[] {

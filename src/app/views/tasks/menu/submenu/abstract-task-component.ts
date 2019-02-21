@@ -1,4 +1,4 @@
-import { Input, OnDestroy, OnInit } from '@angular/core';
+import { OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Task } from 'src/core/exectuion/task/task';
@@ -8,23 +8,29 @@ export abstract class AbstractTaskComponent<T extends Task> implements OnInit, O
 
     formGroup: FormGroup;
 
-    @Input()
     task: T | undefined;
 
-    private subscription: Subscription | undefined;
+    private readonly subscriptions: Subscription[];
 
     protected constructor(protected readonly tasksService: TasksService) {
+        this.subscriptions = [];
         this.formGroup = this.initFormGroup();
     }
 
 
     ngOnInit(): void {
-        this.subscription = this.formGroup.valueChanges.subscribe(() => {
+        const formSubscription: Subscription = this.formGroup.valueChanges.subscribe(() => {
             this.emitUpdateTask();
         });
-        if (this.task) {
-            this.loadTask(this.formGroup, this.task);
-        }
+
+        const selectionSubscription: Subscription = this.tasksService.selection().subscribe((task: Task | undefined) => {
+            if (task) {
+                this.task = task as T;
+                this.loadTask(this.formGroup, this.task);
+            }
+        });
+
+        this.subscriptions.push(formSubscription, selectionSubscription);
     }
 
     protected getDefaultValue<T>(key: string, defaultValue: T): T {
@@ -62,10 +68,9 @@ export abstract class AbstractTaskComponent<T extends Task> implements OnInit, O
     protected abstract loadTask(formGroup: FormGroup, task: T): void ;
 
     ngOnDestroy(): void {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
+        if (this.subscriptions) {
+            this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
         }
     }
-
 
 }

@@ -1,53 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TreeNode } from 'primeng/api';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { OrganizationChart } from 'primeng/primeng';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { Task } from 'src/core/exectuion/task/task';
-import { Execution } from '../../../../core/exectuion/execution';
-import { OutputTask } from '../../../../core/exectuion/task/output/output-task';
-import { Tasks } from '../../../../core/exectuion/task/tasks';
 import { TasksService } from '../service/tasks.service';
-import { TasksTree } from './tasks-tree';
 
 @Component({
     selector: 'app-tasks-tree',
     templateUrl: './tasks-tree.component.html'
 })
-export class TasksTreeComponent implements OnInit {
+export class TasksTreeComponent implements OnInit, OnDestroy {
 
-    selection: any;
+    selection: TreeNode | undefined;
 
-    nodes: Observable<TreeNode[]> | undefined;
+    @Input()
+    root: TreeNode;
 
-    private tasksTree: TasksTree | undefined;
+    @ViewChild('tree')
+    tree: OrganizationChart;
+
+    private subscription: Subscription;
 
     constructor(private readonly tasksService: TasksService) {
 
     }
 
     ngOnInit(): void {
-        const tasks: Observable<Tasks | undefined> = this.tasksService.execution().pipe(
-            map((execution: Execution | undefined) => {
-                if (!execution) {
-                    return undefined;
-                }
-                return execution.tasks;
+        this.subscription = this.tasksService.selection().pipe(
+            filter((task: Task | undefined) => {
+                return !!(task);
             })
-        );
+        ).subscribe((task: Task | undefined) => {
+            this.handleSelection(task!);
+        });
+    }
 
-        const output: Observable<OutputTask | undefined> = this.tasksService.execution().pipe(
-            map((execution: Execution | undefined) => {
-                if (!execution) {
-                    return undefined;
-                }
-                return execution.output;
-            })
-        );
+    private handleSelection(task: Task): void {
+        if (!this.selection) {
+            return;
+        }
 
-        this.tasksTree = new TasksTree(output, tasks);
-        this.nodes = this.tasksTree.tree().pipe(
-            tap((no) => console.log('tree changed', no))
-        );
+        const current: Task = this.selection.data as Task;
+        if (current.id === task.id) {
+            return;
+        }
+
+        this.tree.selection = undefined;
     }
 
     onSelect(event: any): void {
@@ -58,11 +57,19 @@ export class TasksTreeComponent implements OnInit {
         if (!node.data) {
             return;
         }
+        this.selection = node;
         this.tasksService.select(node.data as Task);
     }
 
     onUnselect(): void {
+        this.selection = undefined;
         this.tasksService.unselect();
+    }
+
+    ngOnDestroy(): void {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 
 }

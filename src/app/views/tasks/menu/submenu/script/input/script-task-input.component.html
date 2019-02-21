@@ -3,12 +3,13 @@
         <div class="ui-inputgroup">
             <input [disabled]="disabled" type="text" pInputText placeholder="Name" [(ngModel)]="pair.name"
                    (change)="emitValueChanged()">
-            <p-dropdown [options]="tasks|async" [(ngModel)]="pair.task" (onChange)="emitValueChanged()"></p-dropdown>
+            <p-dropdown [options]="tasks|async" placeholder="Select a task" [(ngModel)]="pair.task"
+                        (onChange)="emitValueChanged()"></p-dropdown>
             <button [disabled]="disabled" pButton type="button" icon="pi pi-trash" class="ui-button-danger"
                     (click)="remove(i)"></button>
         </div>
     </div>
-    <div class="p-col-12" (click)="add()">
+    <div class="p-col-12">
         <div class="ui-inputgroup">
             <input [disabled]="true" type="text" pInputText placeholder="Index">
             <p-dropdown [disabled]="true" [options]="tasks|async"></p-dropdown>

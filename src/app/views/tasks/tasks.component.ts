@@ -36,6 +36,6 @@ export class TasksComponent implements OnInit {
     }
 
     removeExecution(): void {
-
+        this.tasksService.deleteExecution();
     }
 }

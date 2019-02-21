@@ -41,6 +41,14 @@ export class ExecutionsService {
         this._executions.next(executions);
     }
 
+    deleteExecution(id: string): void {
+        const executions: Map<string, Execution> = this._executions.getValue();
+        if (!executions.has(id)) {
+            return;
+        }
+        executions.delete(id);
+        this._executions.next(executions);
+    }
 
     createExecution(): void {
         const id: string = uuid.v4();
