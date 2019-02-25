@@ -8,6 +8,7 @@ import { Execution } from '../../../../core/exectuion/execution';
 import { TaskId } from '../../../../core/exectuion/task/task-id';
 import { TaskType } from '../../../../core/exectuion/task/task-type';
 import { Tasks } from '../../../../core/exectuion/task/tasks';
+import { ExecutionsExportService } from '../../../services/executions/executions-export.service';
 import { ExecutionsRouteResolverService } from '../../../services/executions/executions-route-resolver.service';
 
 @Injectable()
@@ -16,7 +17,8 @@ export class TasksService {
     private readonly _selection: BehaviorSubject<Task | undefined>;
     private readonly _execution: BehaviorSubject<Execution | undefined>;
 
-    constructor(private readonly executionsRouteResolverService: ExecutionsRouteResolverService) {
+    constructor(private readonly executionsRouteResolverService: ExecutionsRouteResolverService,
+                private readonly executionsExportService: ExecutionsExportService) {
         this._selection = new BehaviorSubject<Task | undefined>(undefined);
         this._execution = new BehaviorSubject<Execution | undefined>(undefined);
         this.executionsRouteResolverService.execution().subscribe(this._execution);
@@ -116,9 +118,15 @@ export class TasksService {
         }
     }
 
-
     deleteExecution(): void {
         this.executionsRouteResolverService.remove();
+    }
+
+    exportExecution(): void {
+        const execution: Execution | undefined = this._execution.getValue();
+        if (execution) {
+            this.executionsExportService.exportExecution(execution);
+        }
     }
 
 }

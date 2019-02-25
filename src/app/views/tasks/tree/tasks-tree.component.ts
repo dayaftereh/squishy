@@ -4,6 +4,7 @@ import { OrganizationChart } from 'primeng/primeng';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Task } from 'src/core/exectuion/task/task';
+import { TaskType } from '../../../../core/exectuion/task/task-type';
 import { TasksService } from '../service/tasks.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { TasksService } from '../service/tasks.service';
     templateUrl: './tasks-tree.component.html'
 })
 export class TasksTreeComponent implements OnInit, OnDestroy {
+
+    TaskType: any = TaskType;
 
     selection: TreeNode | undefined;
 

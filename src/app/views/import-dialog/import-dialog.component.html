@@ -1,0 +1,16 @@
+<p-dialog [modal]="true"
+          appendTo="body"
+          [header]="'Import'"
+          [(visible)]="visible"
+          (onHide)="onClose()">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <p-fileUpload #fileUpload
+                          [multiple]="multiple"
+                          [customUpload]="true"
+                          class="app-fileupload"
+                          accept="application/json"
+                          (uploadHandler)="uploadHandler($event)"></p-fileUpload>
+        </div>
+    </div>
+</p-dialog>

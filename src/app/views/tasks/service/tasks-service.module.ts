@@ -8,6 +8,9 @@ import { TasksService } from './tasks.service';
     ],
     providers: [
         TasksService
+    ],
+    exports: [
+        ExecutionsServiceModule
     ]
 })
 export class TasksServiceModule {

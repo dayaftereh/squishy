@@ -78,5 +78,12 @@ export class ExecutionsService {
         } as OutputTask;
     }
 
+    add(list: Execution[]): void {
+        const executions: Map<string, Execution> = this._executions.getValue();
+        list.forEach((execution: Execution) => {
+            executions.set(execution.id, execution);
+        });
+        this._executions.next(executions);
+    }
 
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule, TabMenuModule } from 'primeng/primeng';
 import { ExecutionsServiceModule } from '../../services/executions/executions-service.module';
+import { ImportDialogServiceModule } from '../import-dialog/service/import-dialog-service.module';
 import { ExecutionsComponent } from './executions.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ExecutionsComponent } from './executions.component';
         ButtonModule,
         TabMenuModule,
         // custom
-        ExecutionsServiceModule
+        ExecutionsServiceModule,
+        ImportDialogServiceModule
     ],
     declarations: [
         ExecutionsComponent

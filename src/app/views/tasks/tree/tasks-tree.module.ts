@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { OrganizationChartModule } from 'primeng/primeng';
+import { OrganizationChartModule, ScrollPanelModule } from 'primeng/primeng';
 import { TasksServiceModule } from '../service/tasks-service.module';
 import { TasksTreeComponent } from './tasks-tree.component';
 import { TasksTreesComponent } from './tasks-trees.component';
@@ -10,6 +10,7 @@ import { TasksTreesComponent } from './tasks-trees.component';
         //angular
         BrowserModule,
         //primeng
+        ScrollPanelModule,
         OrganizationChartModule,
         //custom
         TasksServiceModule

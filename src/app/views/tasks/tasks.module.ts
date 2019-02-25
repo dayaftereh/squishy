@@ -19,7 +19,8 @@ import { TasksTreeModule } from './tree/tasks-tree.module';
         // custom
         TasksMenuModule,
         TasksTreeModule,
-        TasksServiceModule
+        TasksServiceModule,
+
     ],
     declarations: [
         TasksComponent

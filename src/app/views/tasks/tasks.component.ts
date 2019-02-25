@@ -38,4 +38,9 @@ export class TasksComponent implements OnInit {
     removeExecution(): void {
         this.tasksService.deleteExecution();
     }
+
+    exportExecution(): void {
+        this.tasksService.exportExecution();
+    }
+
 }
