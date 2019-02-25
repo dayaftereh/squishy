@@ -27,7 +27,7 @@ export class ExecutionsComponent implements OnInit {
                 return executions.map((execution: Execution) => {
                     return {
                         label: execution.name,
-                        routerLink: ['tasks', execution.id]
+                        routerLink: ['execution', execution.id]
                     } as MenuItem;
                 });
             })

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExecutionsRouteResolver } from './services/executions/executions-route-resolver';
-import { TasksComponent } from './views/tasks/tasks.component';
+import { ExecutionComponent } from './views/execution/execution.component';
 
 const routes: Routes = [
     {
-        path: 'tasks/:id', component: TasksComponent, resolve: { ExecutionsRouteResolver }
+        path: 'execution/:id', component: ExecutionComponent, resolve: { ExecutionsRouteResolver }
     }
 ];
 

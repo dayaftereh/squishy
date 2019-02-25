@@ -1,0 +1,14 @@
+<div class="p-grid">
+    <div class="ui-g-12">
+        <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
+                (click)="removeExecution()"></button>
+        <button pButton type="button" icon="pi pi-cog"></button>
+        <button pButton type="button" icon="pi pi-download" (click)="exportExecution()"
+                class="ui-button-secondary"></button>
+    </div>
+</div>
+<div class="p-grid">
+    <div class="ui-g-12">
+        <app-tasks></app-tasks>
+    </div>
+</div>
