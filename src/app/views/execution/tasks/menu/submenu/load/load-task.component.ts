@@ -28,18 +28,20 @@ export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
     }
 
     protected loadTask(formGroup: FormGroup, task: LoadTask): void {
+        const loadData: LoadTaskData | undefined = this.tasksService.getExecutionData(task.id);
+        if (loadData) {
+            this.files = loadData;
+        }
+
         formGroup.patchValue({
             fields: task.fields
         }, { emitEvent: false });
     }
 
     protected updateTask(task: LoadTask): LoadTask | undefined {
-
         task.fields = this.getDefaultValue('fields', {});
-
         return task;
     }
-
 
     onFilesSelected(event: any): void {
         if (!this.task || !event || !event.files) {
@@ -47,7 +49,12 @@ export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
         }
         const id: string = this.task.id;
 
-        const fileList: FileList = event.files;
+        const files: File[] = this.toFiles(event.files);
+        const data: LoadTaskData = files;
+        this.tasksService.setExecutionData(id, data);
+    }
+
+    private toFiles(fileList: FileList): File[] {
         const files: File[] = [];
         for (let i: number = 0; i < fileList.length; i++) {
             const file: File | null = fileList.item(i);
@@ -55,9 +62,7 @@ export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
                 files.push(file);
             }
         }
-
-        const data: LoadTaskData = files;
-        this.tasksService.executionData(id, data);
+        return files;
     }
 
     onFilesCleared(): void {
@@ -66,8 +71,7 @@ export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
         }
 
         const id: string = this.task.id;
-        this.tasksService.executionData(id, undefined);
+        this.tasksService.setExecutionData(id, undefined);
     }
-
 
 }

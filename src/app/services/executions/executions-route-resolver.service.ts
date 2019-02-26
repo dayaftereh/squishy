@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
+import { filter, flatMap } from 'rxjs/operators';
 import { Execution } from '../../../core/exectuion/execution';
 import { ExecutionsService } from './executions.service';
 
@@ -9,8 +10,14 @@ export class ExecutionsRouteResolverService {
 
     private subject: BehaviorSubject<string | undefined>;
 
-    constructor(private readonly executionsService: ExecutionsService) {
+    constructor(private readonly router: Router,
+                private readonly executionsService: ExecutionsService) {
         this.subject = new BehaviorSubject<string | undefined>(undefined);
+        this.subject.pipe(filter((id: string | undefined) => {
+            return !id;
+        })).subscribe(() => {
+            this.router.navigate(['/']);
+        });
     }
 
     execution(): Observable<Execution | undefined> {
@@ -28,8 +35,8 @@ export class ExecutionsRouteResolverService {
         this.subject.next(id);
     }
 
-    update(execution: Execution, emitEvent?: boolean): void {
-
+    update(execution: Execution): void {
+        this.executionsService.update();
     }
 
     remove(): void {

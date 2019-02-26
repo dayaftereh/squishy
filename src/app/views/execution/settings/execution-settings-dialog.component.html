@@ -1,10 +1,11 @@
 <p-dialog [modal]="true"
           appendTo="body"
-          [header]="'Import'"
+          [header]="'Settings'"
           [(visible)]="visible"
-<div class="ui-g">
-    <div class="ui-g-12">
-        <app-execution-settings></app-execution-settings>
+          [contentStyle]="{width:'25vw', height:'25vh'}">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <app-execution-settings></app-execution-settings>
+        </div>
     </div>
-</div>
 </p-dialog>

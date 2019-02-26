@@ -1,8 +1,10 @@
 <div class="p-grid p-justify-start">
     <div class="p-col-3">
-        <p-dropdown [options]="types" [(ngModel)]="type"></p-dropdown>
-        <button pButton type="button" icon="pi pi-plus" class="ui-button-success"
-                (click)="addTask()"></button>
+        <div class="ui-inputgroup">
+            <p-dropdown [options]="types" [(ngModel)]="type"></p-dropdown>
+            <button pButton type="button" icon="pi pi-plus" class="ui-button-success"
+                    (click)="addTask()"></button>
+        </div>
     </div>
 </div>
 <div class="p-grid">

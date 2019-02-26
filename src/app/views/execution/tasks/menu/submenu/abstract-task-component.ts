@@ -47,7 +47,7 @@ export abstract class AbstractTaskComponent<T extends Task> implements OnInit, O
             return undefined;
         }
         const value: T | null = control.value;
-        if (!value) {
+        if (value === null || value === undefined) {
             return undefined;
         }
         return value;

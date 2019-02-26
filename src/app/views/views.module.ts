@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
+import { ExecutionModule } from './execution/execution.module';
+import { TasksModule } from './execution/tasks/tasks.module';
 import { ExecutionsModule } from './executions/executions.module';
 import { ExecutorModule } from './executor/executor.module';
 import { LayoutModule } from './layout/layout.module';
-import { TasksModule } from './execution/tasks/tasks.module';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { TasksModule } from './execution/tasks/tasks.module';
         // custom
         TasksModule,
         LayoutModule,
+        ExecutionModule,
         ExecutionsModule,
         ExecutorModule
     ],

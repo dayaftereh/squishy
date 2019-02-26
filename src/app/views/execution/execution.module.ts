@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { ExecutionComponent } from './execution.component';
+import { ExecutionSettingsModule } from './settings/execution-settings.module';
 import { TasksModule } from './tasks/tasks.module';
 
 @NgModule({
@@ -11,7 +12,8 @@ import { TasksModule } from './tasks/tasks.module';
         //primeng
         ButtonModule,
         // custom
-        TasksModule
+        TasksModule,
+        ExecutionSettingsModule
     ],
     declarations: [
         ExecutionComponent

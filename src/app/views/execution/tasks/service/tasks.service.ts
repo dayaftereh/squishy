@@ -8,7 +8,6 @@ import { Execution } from '../../../../../core/exectuion/execution';
 import { TaskId } from '../../../../../core/exectuion/task/task-id';
 import { TaskType } from '../../../../../core/exectuion/task/task-type';
 import { Tasks } from '../../../../../core/exectuion/task/tasks';
-import { ExecutionsExportService } from '../../../../services/executions/executions-export.service';
 import { ExecutionsRouteResolverService } from '../../../../services/executions/executions-route-resolver.service';
 
 @Injectable()
@@ -17,8 +16,7 @@ export class TasksService {
     private readonly _selection: BehaviorSubject<Task | undefined>;
     private readonly _execution: BehaviorSubject<Execution | undefined>;
 
-    constructor(private readonly executionsRouteResolverService: ExecutionsRouteResolverService,
-                private readonly executionsExportService: ExecutionsExportService) {
+    constructor(private readonly executionsRouteResolverService: ExecutionsRouteResolverService) {
         this._selection = new BehaviorSubject<Task | undefined>(undefined);
         this._execution = new BehaviorSubject<Execution | undefined>(undefined);
         this.executionsRouteResolverService.execution().subscribe(this._execution);
@@ -106,11 +104,15 @@ export class TasksService {
         this._execution.next(execution);
     }
 
-    executionData(taskId: TaskId, taskData: TaskData | undefined): void {
+    setExecutionData(taskId: TaskId, taskData: TaskData | undefined): void {
         const execution: Execution | undefined = this._execution.getValue();
         if (!execution) {
             return;
         }
+        if (!execution.data) {
+            execution.data = {};
+        }
+
         if (taskData) {
             execution.data[taskId] = taskData;
         } else {
@@ -118,4 +120,17 @@ export class TasksService {
         }
     }
 
+    getExecutionData(taskId: TaskId): TaskData | undefined {
+        const execution: Execution | undefined = this._execution.getValue();
+        if (!execution) {
+            return undefined;
+        }
+
+        if (!execution.data) {
+            execution.data = {};
+        }
+
+        const data: TaskData | undefined = execution.data[taskId];
+        return data;
+    }
 }

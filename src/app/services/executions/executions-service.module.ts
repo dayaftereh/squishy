@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ExportFileServiceModule } from '../export/export-file-service.module';
 import { ExecutionsExportService } from './executions-export.service';
 import { ExecutionsImportService } from './executions-import.service';
@@ -8,6 +9,7 @@ import { ExecutionsService } from './executions.service';
 
 @NgModule({
     imports: [
+        RouterModule,
         ExportFileServiceModule
     ],
     providers: [

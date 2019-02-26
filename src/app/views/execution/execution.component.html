@@ -2,9 +2,11 @@
     <div class="ui-g-12">
         <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
                 (click)="removeExecution()"></button>
-        <button pButton type="button" icon="pi pi-cog"></button>
+        <button pButton type="button" icon="pi pi-cog" (click)="settings()"></button>
         <button pButton type="button" icon="pi pi-download" (click)="exportExecution()"
                 class="ui-button-secondary"></button>
+        <button pButton type="button" icon="pi pi-caret-right" (click)="execute()"
+                class="ui-button-success"></button>
     </div>
 </div>
 <div class="p-grid">
@@ -12,3 +14,4 @@
         <app-tasks></app-tasks>
     </div>
 </div>
+<app-execution-settings-dialog></app-execution-settings-dialog>
