@@ -12,15 +12,8 @@ export class ScriptTaskComponent extends AbstractTaskComponent<ScriptTask> {
 
     options: any = {
         lineNumbers: true,
-        theme: 'material',
         mode: 'javascript',
-        extraKeys: { 'Ctrl-Space': 'autocomplete' },
-        hint: {
-            javascript: () => {
-                console.log('hint');
-                return 'text';
-            }
-        }
+        extraKeys: { 'Ctrl-Space': 'autocomplete' }
     };
 
     constructor(tasksService: TasksService) {

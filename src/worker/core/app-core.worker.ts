@@ -1,5 +1,7 @@
+import { Execution } from '../../core/exectuion/execution';
+import { ExecutionResult } from '../../core/exectuion/execution-result';
+import { Executor } from '../../core/executor/executor';
 import { LinkServer } from '../link/link-server';
-import { ReadLinesTask } from './read-lines.task';
 
 export class AppCoreWorker {
 
@@ -7,8 +9,11 @@ export class AppCoreWorker {
 
     private readonly worker: Worker;
 
+    private executor: Executor;
+
     constructor(worker: Worker) {
         this.worker = worker;
+        this.executor = new Executor();
     }
 
     start(): void {
@@ -22,19 +27,11 @@ export class AppCoreWorker {
         this.linkServer.register('execute', (taskExecution: any) => {
             return this.execute(taskExecution);
         });
-
-        this.linkServer.register('readlines', (files: File[], maxLines?: number) => {
-            return this.readLines(files, maxLines);
-        });
     }
 
-    private execute(taskExecution: any): Blob {
-        return new Blob();
+    private async execute(execution: Execution): Promise<ExecutionResult> {
+        const result: ExecutionResult = await this.executor.execute(execution);
+        return result;
     }
 
-    private readLines(files: File[], maxLines?: number): string[][] {
-        const readLinesTask: ReadLinesTask = new ReadLinesTask();
-        const lines: string[][] = readLinesTask.read(files, maxLines);
-        return lines;
-    }
 }
