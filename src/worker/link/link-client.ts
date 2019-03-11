@@ -1,5 +1,6 @@
 import { fromEvent } from 'rxjs';
 import { Callable } from './callable';
+import { LinkType } from './link-type';
 import { Call } from './message/call';
 import { Return } from './message/return';
 
@@ -50,7 +51,8 @@ export class LinkClient {
         const call: Call = {
             id,
             args,
-            operation
+            operation,
+            type: LinkType.LINK
         } as Call;
 
         this.worker.postMessage(call);
@@ -61,7 +63,15 @@ export class LinkClient {
             return;
         }
 
+        if (!event.data.hasOwnProperty('type')) {
+            return;
+        }
+
         const ret: Return = event.data as Return;
+        if (ret.type !== LinkType.LINK) {
+            return;
+        }
+
         const callable: ((ret: Return) => void) | undefined = this.callbacks.get(ret.id);
         if (callable) {
             callable(ret);

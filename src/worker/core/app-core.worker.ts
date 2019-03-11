@@ -1,5 +1,6 @@
 import { Execution } from '../../core/exectuion/execution';
 import { ExecutionResult } from '../../core/exectuion/execution-result';
+import { ExecutionStatus } from '../../core/exectuion/execution-status';
 import { Executor } from '../../core/executor/executor';
 import { LinkServer } from '../link/link-server';
 
@@ -21,11 +22,21 @@ export class AppCoreWorker {
         this.linkServer.start();
 
         this.registerCalls();
+        this.registerExecutionStatusBroadcast();
     }
 
     private registerCalls(): void {
         this.linkServer.register('execute', (taskExecution: any) => {
             return this.execute(taskExecution);
+        });
+    }
+
+    private registerExecutionStatusBroadcast(): void {
+        this.executor.subject.subscribe((status: ExecutionStatus | undefined) => {
+            this.worker.postMessage({
+                type: 'status',
+                status
+            });
         });
     }
 

@@ -1,5 +1,6 @@
 import { fromEvent } from 'rxjs';
 import { Callable } from './callable';
+import { LinkType } from './link-type';
 import { Call } from './message/call';
 import { Return } from './message/return';
 
@@ -34,7 +35,8 @@ export class LinkServer {
     private success<T>(call: Call, result: T): void {
         const ret: Return = {
             result,
-            id: call.id
+            id: call.id,
+            type: LinkType.LINK
         };
         this.worker.postMessage(ret);
     }
@@ -42,7 +44,8 @@ export class LinkServer {
     private error(call: Call, error: Error): void {
         const ret: Return = {
             error,
-            id: call.id
+            id: call.id,
+            type: LinkType.LINK
         };
         this.worker.postMessage(ret);
     }
@@ -52,7 +55,15 @@ export class LinkServer {
             return;
         }
 
+        if (!event.data.hasOwnProperty('type')) {
+            return;
+        }
+
         const call: Call = event.data as Call;
+        if (call.type !== LinkType.LINK) {
+            return;
+        }
+
         try {
             const result: any = this.call(call);
             this.success(call, result);

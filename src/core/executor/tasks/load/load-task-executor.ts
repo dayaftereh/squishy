@@ -1,14 +1,16 @@
 import * as Papa from 'papaparse';
 import { ParseConfig, ParseError, ParseResult } from 'papaparse';
-import { ExecutionData } from '../../exectuion/data/execution-data';
-import { ExecutionPlanEntry } from '../../exectuion/plan/execution-plan-entry';
-import { LoadTask } from '../../exectuion/task/load/load-task';
-import { TaskId } from '../../exectuion/task/task-id';
-import { TaskState } from '../../exectuion/task/task-state';
-import { ExecutorContext } from '../executor-context';
-import { TaskExecutor } from './task-executor';
+import { ExecutionData } from '../../../exectuion/data/execution-data';
+import { ExecutionPlanEntry } from '../../../exectuion/plan/execution-plan-entry';
+import { LoadTask } from '../../../exectuion/task/load/load-task';
+import { TaskId } from '../../../exectuion/task/task-id';
+import { TaskState } from '../../../exectuion/task/task-state';
+import { ExecutionDataLine } from '../../execution-data-line';
+import { ExecutionObject } from '../../execution-object';
+import { ExecutorContext } from '../../executor-context';
+import { TaskExecutor } from '../task-executor';
 
-export class LoadTaskExecutor<T> implements TaskExecutor<T> {
+export class LoadTaskExecutor implements TaskExecutor<ExecutionObject> {
 
     constructor(
         private readonly context: ExecutorContext,
@@ -16,20 +18,20 @@ export class LoadTaskExecutor<T> implements TaskExecutor<T> {
     ) {
     }
 
-    execute(): T {
+    execute(): ExecutionObject {
         this.context.emitStateChange(this.entry.task.id, TaskState.RUNNING);
         const lines: string[][] = this.readFiles();
-        const result: T = this.mapLines(lines);
+        const result: ExecutionObject = this.mapLines(lines);
         this.context.emitStateChange(this.entry.task.id, TaskState.COMPLETED);
         return result;
     }
 
-    private mapLines(lines: string[][]): T {
+    private mapLines(lines: string[][]): ExecutionObject {
         const loadTask: LoadTask = this.task();
 
-        const obj: any = {};
+        const obj: ExecutionObject = {};
         lines.forEach((line: string[], index: number) => {
-            const lineObject: any = {} as T;
+            const lineObject: ExecutionDataLine = {};
 
             line.forEach((value: any, index: number) => {
                 const name: string | undefined = loadTask.fields[index];
@@ -40,12 +42,12 @@ export class LoadTaskExecutor<T> implements TaskExecutor<T> {
 
             let key: string = `${index}`;
             if (loadTask.key) {
-                key = lineObject[loadTask.key];
+                key = lineObject[loadTask.key] as string;
             }
             obj[key] = lineObject;
         });
 
-        return obj as T;
+        return obj;
     }
 
     private readFiles(): string[][] {
@@ -87,11 +89,11 @@ export class LoadTaskExecutor<T> implements TaskExecutor<T> {
         throw error;
     }
 
-    task(): LoadTask {
+    private task(): LoadTask {
         return this.entry.task as LoadTask;
     }
 
-    files(): File[] {
+    private files(): File[] {
         const executionData: ExecutionData = this.context.execution.data;
         if (!executionData) {
             return [];

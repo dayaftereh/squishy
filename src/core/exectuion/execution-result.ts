@@ -1,3 +1,3 @@
 export interface ExecutionResult {
-    blob: Blob
+    blob: Blob | undefined
 }
