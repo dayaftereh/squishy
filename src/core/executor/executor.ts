@@ -5,6 +5,7 @@ import { ExecutionStatus } from '../exectuion/execution-status';
 import { ExecutionPlanUtils } from '../exectuion/plan/execution-plan.utils';
 import { ExecutorContext } from './executor-context';
 import { ScriptExecuteContext } from './tasks/script/script-execute-context';
+import { ScriptExecuteContextFactory } from './tasks/script/script-execute-context-factory';
 import { TaskExecutorFinder } from './tasks/task-executor-finder';
 
 export class Executor {
@@ -19,7 +20,7 @@ export class Executor {
         this.subject = new BehaviorSubject<ExecutionStatus | undefined>(undefined);
     }
 
-    async execute(execution: Execution): Promise<ExecutionResult> {
+    execute(execution: Execution): ExecutionResult {
         this.abort();
         this.context = this.createExecutorContext(execution);
         const result: ExecutionResult = TaskExecutorFinder.createAndRunOutput(this.context);
@@ -39,11 +40,7 @@ export class Executor {
     }
 
     private createScriptExecuteContext(): ScriptExecuteContext {
-        const context: ScriptExecuteContext = {
-            params: {},
-            addons: {}
-        };
-
+        const context: ScriptExecuteContext = ScriptExecuteContextFactory.create();
         return context;
     }
 

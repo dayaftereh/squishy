@@ -21,6 +21,9 @@ export class ExecutorService {
         this.proxy = new WorkerProxy();
         // start the worker
         this.proxy.start();
+
+        // forward the status
+        this.proxy.subject.subscribe(this.status);
     }
 
     async execute(execution: Execution): Promise<ExecutionResult> {
@@ -29,7 +32,7 @@ export class ExecutorService {
     }
 
     async cancel(): Promise<void> {
-
+        await this.proxy.abort();
     }
 
 }

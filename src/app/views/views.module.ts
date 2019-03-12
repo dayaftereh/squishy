@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { ExecutionModule } from './execution/execution.module';
 import { TasksModule } from './execution/tasks/tasks.module';
 import { ExecutionsModule } from './executions/executions.module';
-import { ExecutorModule } from './executor/executor.module';
 import { LayoutModule } from './layout/layout.module';
 
 
@@ -12,12 +11,10 @@ import { LayoutModule } from './layout/layout.module';
         TasksModule,
         LayoutModule,
         ExecutionModule,
-        ExecutionsModule,
-        ExecutorModule
+        ExecutionsModule
     ],
     exports: [
-        LayoutModule,
-        ExecutorModule
+        LayoutModule
     ]
 })
 export class ViewsModule {

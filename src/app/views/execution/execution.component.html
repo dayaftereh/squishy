@@ -1,17 +1,19 @@
 <div class="p-grid">
     <div class="ui-g-12">
-        <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
-                (click)="removeExecution()"></button>
-        <button pButton type="button" icon="pi pi-cog" (click)="settings()"></button>
+        <a pButton type="button" icon="pi pi-sitemap" [routerLink]="[{outlets:{'execution':['tasks']}}]"
+           class="ui-button-secondary"></a>
+        <a pButton type="button" icon="pi pi-cog" [routerLink]="[{outlets:{'execution':['settings']}}]"
+           class="ui-button-secondary"></a>
         <button pButton type="button" icon="pi pi-download" (click)="exportExecution()"
                 class="ui-button-secondary"></button>
-        <button pButton type="button" icon="pi pi-caret-right" (click)="execute()"
-                class="ui-button-success"></button>
+        <a pButton type="button" icon="pi pi-caret-right" [routerLink]="[{outlets:{'execution':['run']}}]"
+           class="ui-button-success"></a>
+        <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
+                (click)="removeExecution()"></button>
     </div>
 </div>
 <div class="p-grid">
     <div class="ui-g-12">
-        <app-tasks></app-tasks>
+        <router-outlet name="execution"></router-outlet>
     </div>
 </div>
-<app-execution-settings-dialog></app-execution-settings-dialog>

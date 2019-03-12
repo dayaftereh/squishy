@@ -5,7 +5,6 @@ import { Execution } from '../../../../core/exectuion/execution';
 import { ExecutionsRouteResolverService } from '../../../services/executions/executions-route-resolver.service';
 
 @Component({
-    selector: 'app-execution-settings',
     templateUrl: './execution-settings.component.html'
 })
 export class ExecutionSettingsComponent implements OnInit, OnDestroy {

@@ -8,11 +8,11 @@ export class ExecutionsExportService {
     constructor(private readonly exportFileService: ExportFileService) {
     }
 
-    async exportExecution(execution: Execution): Promise<void> {
-        await this.exportExecutions([execution]);
+    exportExecution(execution: Execution): void {
+        this.exportExecutions([execution]);
     }
 
-    async exportExecutions(executions: Execution[]): Promise<void> {
+    exportExecutions(executions: Execution[]): void {
         const exportableExecutions: Execution[] = executions.map((execution: Execution) => {
             return this.cleanExecution(execution);
         });

@@ -19,6 +19,15 @@ export class LoadTaskExecutor implements TaskExecutor<ExecutionObject> {
     }
 
     execute(): ExecutionObject {
+        try {
+            return this.execute0();
+        } catch (e) {
+            this.context.emitStateChange(this.entry.task.id, TaskState.FAILED);
+            throw e;
+        }
+    }
+
+    private execute0(): ExecutionObject {
         this.context.emitStateChange(this.entry.task.id, TaskState.RUNNING);
         const lines: string[][] = this.readFiles();
         const result: ExecutionObject = this.mapLines(lines);

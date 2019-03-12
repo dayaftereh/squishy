@@ -4,7 +4,6 @@ import { TaskType } from '../../../../core/exectuion/task/task-type';
 import { TasksService } from './service/tasks.service';
 
 @Component({
-    selector: 'app-tasks',
     templateUrl: './tasks.component.html'
 })
 export class TasksComponent implements OnInit {

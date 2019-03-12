@@ -2,7 +2,7 @@ import { fromEvent } from 'rxjs';
 import { Callable } from './callable';
 import { LinkType } from './link-type';
 import { Call } from './message/call';
-import { Return } from './message/return';
+import { LinkError, Return } from './message/return';
 
 export class LinkServer {
 
@@ -42,12 +42,35 @@ export class LinkServer {
     }
 
     private error(call: Call, error: Error): void {
+
+        const linkError: LinkError = this.errorToLinkError(error);
+
         const ret: Return = {
-            error,
+            error: linkError,
             id: call.id,
             type: LinkType.LINK
         };
+        console.error(error);
+        console.log(JSON.stringify(error));
         this.worker.postMessage(ret);
+    }
+
+    private errorToLinkError(error: Error): LinkError {
+        const linkError: LinkError = Object.assign({}, error) as LinkError;
+
+        if (error.name) {
+            linkError.name = error.name;
+        }
+
+        if (error.stack) {
+            linkError.stack = error.stack;
+        }
+
+        if (error.message) {
+            linkError.message = error.message;
+        }
+
+        return linkError;
     }
 
     private dispatch(event: MessageEvent): void {

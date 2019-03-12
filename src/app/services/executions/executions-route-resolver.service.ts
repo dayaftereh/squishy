@@ -48,7 +48,10 @@ export class ExecutionsRouteResolverService {
     }
 
     export(): void {
-
+        const id: string | undefined = this.subject.getValue();
+        if (id) {
+            this.executionsService.export([id]);
+        }
     }
 
 }

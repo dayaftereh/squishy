@@ -1,0 +1,18 @@
+<div class="p-grid">
+    <div class="ui-g-8 ui-g-offset-2">
+        <p-organizationChart [value]="(nodes|async)">
+            <ng-template let-node pTemplate="pending">
+                <p-message severity="warn" text="{{node.label}}"></p-message>
+            </ng-template>
+            <ng-template let-node pTemplate="running">
+                <p-message severity="info" text="{{node.label}}"></p-message>
+            </ng-template>
+            <ng-template let-node pTemplate="completed">
+                <p-message severity="success" text="{{node.label}}"></p-message>
+            </ng-template>
+            <ng-template let-node pTemplate="failed">
+                <p-message severity="error" text="{{node.label}}"></p-message>
+            </ng-template>
+        </p-organizationChart>
+    </div>
+</div>

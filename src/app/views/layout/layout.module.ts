@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ExecutionsModule } from '../executions/executions.module';
-import { ExecutorModule } from '../executor/executor.module';
 import { ImportDialogModule } from '../import-dialog/import-dialog.module';
 import { LayoutComponent } from './layout.component';
 
@@ -12,7 +11,6 @@ import { LayoutComponent } from './layout.component';
         RouterModule,
         BrowserModule,
         // custom
-        ExecutorModule,
         ExecutionsModule,
         ImportDialogModule
     ],

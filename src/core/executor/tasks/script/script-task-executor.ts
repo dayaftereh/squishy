@@ -21,6 +21,15 @@ export class ScriptTaskExecutor implements TaskExecutor<ExecutionObject> {
         this.context.emitStateChange(this.entry.task.id, TaskState.PENDING);
         const results: Map<string, ExecutionObject> = this.executeChildren();
 
+        try {
+            return this.execute0(results);
+        } catch (e) {
+            this.context.emitStateChange(this.entry.task.id, TaskState.FAILED);
+            throw e;
+        }
+    }
+
+    private execute0(results: Map<string, ExecutionObject>): ExecutionObject {
         this.context.emitStateChange(this.entry.task.id, TaskState.RUNNING);
         const func: Function = this.createScriptFunction();
         const result: ExecutionObject = this.executeFunction(func, results);
@@ -67,6 +76,5 @@ export class ScriptTaskExecutor implements TaskExecutor<ExecutionObject> {
     private task(): ScriptTask {
         return this.entry.task as ScriptTask;
     }
-
 
 }

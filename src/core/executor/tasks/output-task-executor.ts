@@ -19,21 +19,31 @@ export class OutputTaskExecutor implements TaskExecutor<ExecutionResult> {
 
     execute(): ExecutionResult {
         this.context.emitStateChange(this.entry.task.id, TaskState.PENDING);
+        const data: ExecutionObject | undefined = this.runChildren();
+
+        try {
+            return this.execute0(data);
+        } catch (e) {
+            this.context.emitStateChange(this.entry.task.id, TaskState.FAILED);
+            throw e;
+        }
+    }
+
+    private execute0(data: ExecutionObject | undefined): ExecutionResult {
+        this.context.emitStateChange(this.entry.task.id, TaskState.RUNNING);
 
         const result: ExecutionResult = {
             blob: undefined
         } as ExecutionResult;
 
-        const data: ExecutionObject | undefined = this.runChildren();
-        if (!data) {
-            return result;
+        if (data) {
+            result.blob = this.createBlob(data);
         }
 
-        this.context.emitStateChange(this.entry.task.id, TaskState.RUNNING);
-        result.blob = this.createBlob(data);
         this.context.emitStateChange(this.entry.task.id, TaskState.COMPLETED);
 
         return result;
+
     }
 
     private runChildren(): ExecutionObject | undefined {

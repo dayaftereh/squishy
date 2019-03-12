@@ -8,13 +8,14 @@ import { OutputTask } from '../../../core/exectuion/task/output/output-task';
 import { OutputTaskFields } from '../../../core/exectuion/task/output/output-task-fields';
 import { TaskType } from '../../../core/exectuion/task/task-type';
 import { Tasks } from '../../../core/exectuion/task/tasks';
+import { ExecutionsExportService } from './executions-export.service';
 
 @Injectable()
 export class ExecutionsService {
 
     private _executions: BehaviorSubject<Map<string, Execution>>;
 
-    constructor() {
+    constructor(private readonly executionsExportService: ExecutionsExportService) {
         this._executions = new BehaviorSubject<Map<string, Execution>>(new Map<string, Execution>());
     }
 
@@ -84,6 +85,23 @@ export class ExecutionsService {
             executions.set(execution.id, execution);
         });
         this._executions.next(executions);
+    }
+
+    export(ids: string[]): void {
+        if (!ids || ids.length < 1) {
+            return;
+        }
+
+        const executions: Map<string, Execution> = this._executions.getValue();
+        const exportExecutions: Execution[] = ids.map((id: string) => {
+            return executions.get(id);
+        }).filter((execution: Execution | undefined) => {
+            return !!(execution);
+        }).map((execution: Execution | undefined) => {
+            return execution!;
+        });
+
+        this.executionsExportService.exportExecutions(exportExecutions);
     }
 
 }
