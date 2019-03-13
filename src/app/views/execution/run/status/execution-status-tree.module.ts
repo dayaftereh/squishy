@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MessageModule, OrganizationChartModule } from 'primeng/primeng';
+import { MessageModule, OrganizationChartModule, ProgressSpinnerModule } from 'primeng/primeng';
 import { ExecutionStatusTreeComponent } from './execution-status-tree.component';
 
 @NgModule({
@@ -9,6 +9,7 @@ import { ExecutionStatusTreeComponent } from './execution-status-tree.component'
         BrowserModule,
         //primeng
         MessageModule,
+        ProgressSpinnerModule,
         OrganizationChartModule
     ],
     declarations: [

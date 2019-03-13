@@ -3,3 +3,11 @@
         <app-execution-status-tree></app-execution-status-tree>
     </div>
 </div>
+<div class="p-grid p-align-end">
+    <div class="ui-g-12">
+        <button pButton type="button" icon="pi pi-times" class="ui-button-danger" (click)="cancel()"
+                [disabled]="!(running|async)"></button>
+        <button pButton type="button" icon="pi pi-replay" class="ui-button-secondary" (click)="restart()"
+                [disabled]="(running|async)"></button>
+    </div>
+</div>

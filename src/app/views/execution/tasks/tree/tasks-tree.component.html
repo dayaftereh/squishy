@@ -6,8 +6,17 @@
                      selectionMode="single">
     <ng-template let-node pTemplate="default">
         {{node.label}}
-        <i class="pi pi-file" *ngIf="node?.data?.type === TaskType.LOAD"></i>
-        <i class="pi pi-sign-out" *ngIf="node?.data?.type === TaskType.OUTPUT"></i>
-        <i class="pi pi-align-left" *ngIf="node?.data?.type === TaskType.SCRIPT"></i>
+    </ng-template>
+    <ng-template let-node pTemplate="load">
+        {{node.label}}
+        <i class="pi pi-file"></i>
+    </ng-template>
+    <ng-template let-node pTemplate="output">
+        {{node.label}}
+        <i class="pi pi-sign-out"></i>
+    </ng-template>
+    <ng-template let-node pTemplate="script">
+        {{node.label}}
+        <i class="pi pi-align-left"></i>
     </ng-template>
 </p-organizationChart>

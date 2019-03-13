@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { SelectItem } from 'primeng/api';
 import { LoadTaskData } from '../../../../../../../core/exectuion/data/task/load/load-task-data';
 import { LoadTask } from '../../../../../../../core/exectuion/task/load/load-task';
+import { LoadTaskFormat } from '../../../../../../../core/exectuion/task/load/load-task-format';
 import { TasksService } from '../../../service/tasks.service';
 import { AbstractTaskComponent } from '../abstract-task-component';
 
@@ -14,16 +16,40 @@ import { AbstractTaskComponent } from '../abstract-task-component';
 })
 export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
 
+    LoadTaskFormat = LoadTaskFormat;
+
     files: File[];
+
+    formats: SelectItem[];
 
     constructor(tasksService: TasksService) {
         super(tasksService);
         this.files = [];
+        this.formats = [];
+    }
+
+    ngOnInit(): void {
+        super.ngOnInit();
+        this.formats.push(
+            {
+                label: 'csv',
+                value: LoadTaskFormat.CSV
+            },
+            {
+                label: 'plain',
+                value: LoadTaskFormat.PLAIN
+            }, {
+                label: 'json',
+                value: LoadTaskFormat.JSON
+            }
+        );
     }
 
     protected initFormGroup(): FormGroup {
         return new FormGroup({
-            fields: new FormControl()
+            fields: new FormControl(),
+            format: new FormControl(),
+            plainKey: new FormControl()
         });
     }
 
@@ -33,13 +59,21 @@ export class LoadTaskComponent extends AbstractTaskComponent<LoadTask> {
             this.files = loadData;
         }
 
+        if (!task.format) {
+            task.format = LoadTaskFormat.CSV;
+        }
+
         formGroup.patchValue({
-            fields: task.fields
+            fields: task.fields,
+            format: task.format,
+            plainKey: task.plainKey
         }, { emitEvent: false });
     }
 
     protected updateTask(task: LoadTask): LoadTask | undefined {
         task.fields = this.getDefaultValue('fields', {});
+        task.format = this.getDefaultValue('format', LoadTaskFormat.CSV);
+        task.plainKey = this.getDefaultValue('plainKey', 'input');
         return task;
     }
 

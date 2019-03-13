@@ -1,14 +1,16 @@
-import * as Papa from 'papaparse';
-import { ParseConfig, ParseError, ParseResult } from 'papaparse';
 import { ExecutionData } from '../../../exectuion/data/execution-data';
 import { ExecutionPlanEntry } from '../../../exectuion/plan/execution-plan-entry';
 import { LoadTask } from '../../../exectuion/task/load/load-task';
+import { LoadTaskFormat } from '../../../exectuion/task/load/load-task-format';
 import { TaskId } from '../../../exectuion/task/task-id';
 import { TaskState } from '../../../exectuion/task/task-state';
-import { ExecutionDataLine } from '../../execution-data-line';
 import { ExecutionObject } from '../../execution-object';
 import { ExecutorContext } from '../../executor-context';
 import { TaskExecutor } from '../task-executor';
+import { LoadTaskCSVLoader } from './load-task-csv-loader';
+import { LoadTaskJsonLoader } from './load-task-json-loader';
+import { LoadTaskLoader } from './load-task-loader';
+import { LoadTaskPlainLoader } from './load-task-plain-loader';
 
 export class LoadTaskExecutor implements TaskExecutor<ExecutionObject> {
 
@@ -29,73 +31,26 @@ export class LoadTaskExecutor implements TaskExecutor<ExecutionObject> {
 
     private execute0(): ExecutionObject {
         this.context.emitStateChange(this.entry.task.id, TaskState.RUNNING);
-        const lines: string[][] = this.readFiles();
-        const result: ExecutionObject = this.mapLines(lines);
+        const loader: LoadTaskLoader = this.findLoader();
+        const result: ExecutionObject = loader.load();
         this.context.emitStateChange(this.entry.task.id, TaskState.COMPLETED);
         return result;
     }
 
-    private mapLines(lines: string[][]): ExecutionObject {
-        const loadTask: LoadTask = this.task();
-
-        const obj: ExecutionObject = {};
-        lines.forEach((line: string[], index: number) => {
-            const lineObject: ExecutionDataLine = {};
-
-            line.forEach((value: any, index: number) => {
-                const name: string | undefined = loadTask.fields[index];
-                if (name) {
-                    lineObject[name] = value;
-                }
-            });
-
-            let key: string = `${index}`;
-            if (loadTask.key) {
-                key = lineObject[loadTask.key] as string;
-            }
-            obj[key] = lineObject;
-        });
-
-        return obj;
-    }
-
-    private readFiles(): string[][] {
-        const lines: string[][] = [];
+    private findLoader(): LoadTaskLoader {
         const files: File[] = this.files();
-        const parseConfig: ParseConfig = this.parseConfig();
+        const task: LoadTask = this.task();
 
-        files.forEach((file: File) => {
-            const fileLines: string[][] = this.readFile(file, parseConfig);
-            lines.push(...fileLines);
-        });
-
-        return lines;
-    }
-
-    private parseConfig(maxLines?: number): ParseConfig {
-        const config: ParseConfig = {
-            comments: '#'
-        } as ParseConfig;
-        if (maxLines && maxLines > 0) {
-            config.preview = maxLines;
+        switch (task.format) {
+            case LoadTaskFormat.CSV:
+                return new LoadTaskCSVLoader(task, files);
+            case LoadTaskFormat.PLAIN:
+                return new LoadTaskPlainLoader(task, files);
+            case LoadTaskFormat.JSON:
+                return new LoadTaskJsonLoader(task, files);
         }
-        return config;
-    }
 
-    private readFile(file: File, parseConfig: ParseConfig): string[][] {
-        const result: ParseResult = Papa.parse(file, parseConfig);
-        if (result.errors) {
-            this.throwParseErrors(file, result.errors);
-        }
-        return result.data;
-    }
-
-    private throwParseErrors(file: File, errors: ParseError[]): void {
-        const message: string = `error while parsing file [ ${file.name} ]`;
-        const error: any = new Error(message);
-        error.file = file.name;
-        error.errors = errors;
-        throw error;
+        return new LoadTaskCSVLoader(task, files);
     }
 
     private task(): LoadTask {

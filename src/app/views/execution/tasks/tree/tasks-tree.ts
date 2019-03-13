@@ -95,7 +95,6 @@ export class TasksTree {
     }
 
     private updateLeaf(node: TreeNode, task: Task): void {
-        node.type = 'leaf';
         node.leaf = true;
         node.expanded = false;
         node.label = task.name;
@@ -104,7 +103,6 @@ export class TasksTree {
 
     private updateChildren(node: TreeNode, task: Task, children: TreeNode[]): void {
         node.leaf = false;
-        node.type = undefined;
         node.expanded = true;
         node.label = task.name;
         node.children = children;
@@ -116,7 +114,8 @@ export class TasksTree {
         let treeNode: TreeNode | undefined = this.nodes.get(id);
         if (!treeNode) {
             treeNode = {
-                data: task
+                data: task,
+                type: `${task.type}`
             };
             this.nodes.set(id, treeNode);
         }

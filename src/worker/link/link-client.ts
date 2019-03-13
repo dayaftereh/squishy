@@ -2,7 +2,7 @@ import { fromEvent } from 'rxjs';
 import { Callable } from './callable';
 import { LinkType } from './link-type';
 import { Call } from './message/call';
-import { Return } from './message/return';
+import { LinkError, Return } from './message/return';
 
 export class LinkClient {
 
@@ -34,7 +34,8 @@ export class LinkClient {
                 this.callbacks.delete(id);
 
                 if (ret.error) {
-                    return reject(ret.error);
+                    const error: Error = this.linkErrorToError(ret.error);
+                    return reject(error);
                 }
 
                 resolve(ret.result);
@@ -45,6 +46,15 @@ export class LinkClient {
         });
 
         return promise;
+    }
+
+    private linkErrorToError(linkError: LinkError): Error {
+        const error: Error = new Error(linkError.message);
+        error.name = linkError.name;
+        error.stack = linkError.stack;
+
+        const objError: Error = Object.assign(error, linkError);
+        return objError;
     }
 
     private emit(id: number, operation: string, args: any[]): void {

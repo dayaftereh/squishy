@@ -42,7 +42,14 @@ export class LinkServer {
     }
 
     private error(call: Call, error: Error): void {
+        try {
+            this.error0(call, error);
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
+    private error0(call: Call, error: Error): void {
         const linkError: LinkError = this.errorToLinkError(error);
 
         const ret: Return = {
@@ -50,8 +57,7 @@ export class LinkServer {
             id: call.id,
             type: LinkType.LINK
         };
-        console.error(error);
-        console.log(JSON.stringify(error));
+
         this.worker.postMessage(ret);
     }
 
