@@ -4,7 +4,7 @@ import { TaskType } from '../../exectuion/task/task-type';
 import { ExecutionObject } from '../execution-object';
 import { ExecutorContext } from '../executor-context';
 import { LoadTaskExecutor } from './load/load-task-executor';
-import { OutputTaskExecutor } from './output-task-executor';
+import { OutputTaskExecutor } from './output/output-task-executor';
 import { ScriptTaskExecutor } from './script/script-task-executor';
 import { TaskExecutor } from './task-executor';
 

@@ -6,6 +6,7 @@ import { ExecutionData } from '../../../core/exectuion/data/execution-data';
 import { Execution } from '../../../core/exectuion/execution';
 import { OutputTask } from '../../../core/exectuion/task/output/output-task';
 import { OutputTaskFields } from '../../../core/exectuion/task/output/output-task-fields';
+import { OutputTaskFormat } from '../../../core/exectuion/task/output/output-task-format';
 import { TaskType } from '../../../core/exectuion/task/task-type';
 import { Tasks } from '../../../core/exectuion/task/tasks';
 import { ExecutionsExportService } from './executions-export.service';
@@ -75,6 +76,7 @@ export class ExecutionsService {
             disabled: false,
             type: TaskType.OUTPUT,
             filename: 'output.csv',
+            format: OutputTaskFormat.CSV,
             fields: {} as OutputTaskFields
         } as OutputTask;
     }

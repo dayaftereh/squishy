@@ -1,9 +1,9 @@
 <div class="p-grid">
     <div class="p-col-12" *ngFor="let pair of pairs; index as i">
         <div class="ui-inputgroup">
-            <input [disabled]="disabled" type="text" pInputText placeholder="Index" [(ngModel)]="pair.key"
+            <input [disabled]="disabled" type="text" pInputText placeholder="Name" [(ngModel)]="pair.key"
                    (change)="emitChanged()">
-            <input [disabled]="disabled" type="number" pInputText placeholder="Name" [(ngModel)]="pair.value"
+            <input [disabled]="disabled" type="number" pInputText placeholder="Index" [(ngModel)]="pair.value"
                    (change)="emitChanged()">
             <button [disabled]="disabled" pButton type="button" icon="pi pi-trash" class="ui-button-danger"
                     (click)="removeField(i)"></button>

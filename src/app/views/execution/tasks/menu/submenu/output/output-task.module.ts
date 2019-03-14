@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { InputTextModule } from 'primeng/primeng';
+import { InputTextModule, SelectButtonModule } from 'primeng/primeng';
 import { TasksServiceModule } from '../../../service/tasks-service.module';
 import { CommonTaskModule } from '../common/common-task.module';
 import { OutputTaskFieldsModule } from './fields/output-task-fields.module';
@@ -15,6 +15,7 @@ import { OutputTaskComponent } from './output-task.component';
         ReactiveFormsModule,
         // primeng
         InputTextModule,
+        SelectButtonModule,
         // custom
         CommonTaskModule,
         TasksServiceModule,
