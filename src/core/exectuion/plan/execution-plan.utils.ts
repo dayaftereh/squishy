@@ -19,7 +19,6 @@ export namespace ExecutionPlanUtils {
     }
 
     export function deep(root: Task, tasks: Tasks, visited?: Set<TaskId>): ExecutionPlanEntry[] {
-        console.log('deep');
         if (visited) {
             visited.add(root.id);
         }

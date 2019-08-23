@@ -28,9 +28,10 @@ export class ScriptTaskComponent extends AbstractTaskComponent<ScriptTask> {
     }
 
     protected loadTask(formGroup: FormGroup, task: ScriptTask): void {
+        const script: string = task.script || '';
         formGroup.patchValue({
-            input: task.input,
-            script: task.script
+            script,
+            input: task.input
         }, {
             emitEvent: false
         });

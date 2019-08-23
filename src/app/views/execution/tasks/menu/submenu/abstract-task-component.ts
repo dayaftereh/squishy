@@ -27,6 +27,9 @@ export abstract class AbstractTaskComponent<T extends Task> implements OnInit, O
             if (task) {
                 this.task = task as T;
                 this.loadTask(this.formGroup, this.task);
+            } else {
+                this.task = undefined;
+                this.formGroup.patchValue({}, { emitEvent: false });
             }
         });
 
