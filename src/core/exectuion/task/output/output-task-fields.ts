@@ -1,1 +1,0 @@
-export type OutputTaskFields = { [key: string]: number }

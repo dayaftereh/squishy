@@ -1,33 +1,27 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MarkdownModule } from 'ngx-markdown';
-import { AppRouterModule } from './app-router.module';
 import { AppComponent } from './app.component';
-import { I18nModule } from './i18n/i18n.module';
-import { ViewsModule } from './views/views.module';
+import { AppRoutingModule } from './app-routing.module';
+import { ProjectModule } from './projects/project/project.module';
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [
-        // angular
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        // markdown
-        MarkdownModule.forRoot({ loader: HttpClient }),
-        // i18n
-        I18nModule.forRoot(),
-        // routes
-        AppRouterModule,
-        // Custom
-        ViewsModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+  imports: [
+    // Angular    
+    BrowserModule,
+    BrowserAnimationsModule,
+    // Routing
+    AppRoutingModule,
+    // custom
+    ProjectModule
+  ],
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
+
 }

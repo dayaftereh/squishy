@@ -1,1 +1,0 @@
-export type Callable<T> = (...args: any[]) => T

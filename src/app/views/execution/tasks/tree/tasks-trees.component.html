@@ -1,9 +1,0 @@
-<div class="p-grid">
-    <p-scrollPanel class="p-col-12" [style]="{height: '90vh'}">
-        <div class="p-grid">
-            <div class="p-col-12" *ngFor="let node of (nodes|async)">
-                <app-tasks-tree [root]="node"></app-tasks-tree>
-            </div>
-        </div>
-    </p-scrollPanel>
-</div>
