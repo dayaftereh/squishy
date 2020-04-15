@@ -1,0 +1,17 @@
+<p-panel styleClass="node">
+    <p-header>
+        Script
+    </p-header>
+    <div class="p-grid">
+        <div class="p-col" *ngFor="let output of outputs">
+            {{output.name}}
+            <rete-socket class="output-socket" rete-socket [io]="output" [socket]="output.socket"></rete-socket>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col" *ngFor="let input of inputs">
+            <rete-socket rete-socket [io]="input" [socket]="input.socket"></rete-socket>
+            {{input.name}}
+        </div>
+    </div>
+</p-panel>

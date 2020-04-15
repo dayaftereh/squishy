@@ -4,9 +4,7 @@ import { AngularRenderPlugin } from 'rete-angular-render-plugin';
 import ConnectionPlugin from 'rete-connection-plugin';
 import ContextMenuPlugin from 'rete-context-menu-plugin';
 import { PackageJSON } from 'src/app/package-json';
-import { InputGraphComponent } from './components/input-graph.component';
-import { OutputGraphComponent } from './components/output-graph.component';
-import { ScriptGraphComponent } from './components/script-graph.component';
+import { NodeComponents } from './components/node-components.module';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -59,7 +57,6 @@ export class GraphComponent implements AfterViewInit {
         })
 
         this.editor.on(['process', 'nodecreated', 'noderemoved', 'connectioncreated', 'connectionremoved'], (async () => {
-            console.log("tt")
             await this.engine.abort();
             await this.engine.process(this.editor.toJSON());
         }) as any);
@@ -69,11 +66,7 @@ export class GraphComponent implements AfterViewInit {
     }
 
     private getComponents(): Component[] {
-        return [
-            new InputGraphComponent(),
-            new OutputGraphComponent(),
-            new ScriptGraphComponent()
-        ]
+        return NodeComponents
     }
 
 }

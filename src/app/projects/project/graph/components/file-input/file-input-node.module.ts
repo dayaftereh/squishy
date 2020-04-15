@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PanelModule } from 'primeng/panel';
 import { ReteModule } from 'rete-angular-render-plugin';
-import { OutputGraphNodeComponent } from './output-graph-node.component';
+import { FileInputNodeComponent } from './file-input-node.component';
 
 @NgModule({
     imports: [
@@ -14,12 +14,12 @@ import { OutputGraphNodeComponent } from './output-graph-node.component';
         ReteModule
     ],
     declarations: [
-        OutputGraphNodeComponent
+        FileInputNodeComponent
     ],
     exports: [
-        OutputGraphNodeComponent
+        FileInputNodeComponent
     ]
 })
-export class OutputGraphNodeModule {
+export class FileInputNodeModule {
 
 }

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GraphComponent } from './graph.component';
-import { GraphNodesModule } from './nodes/graph-nodes.module';
+import { NodeComponentsModule } from './components/node-components.module';
 
 @NgModule({
     imports: [
         // Angular
         BrowserModule,
         // Custom
-        GraphNodesModule
+        NodeComponentsModule
     ],
     declarations: [
         GraphComponent

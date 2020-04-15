@@ -1,0 +1,11 @@
+<p-panel styleClass="node">
+    <p-header>
+        FileOutput
+    </p-header>
+    <div class="p-grid">
+        <div class="p-col" *ngFor="let input of inputs">
+            {{input.name}}
+            <rete-socket rete-socket [io]="input" [socket]="input.socket"></rete-socket>
+        </div>
+    </div>
+</p-panel>
