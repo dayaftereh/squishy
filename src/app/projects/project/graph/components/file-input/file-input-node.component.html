@@ -1,10 +1,17 @@
 <p-panel styleClass="node">
     <p-header>
-        FileInput
+        {{nodeData!.name}}
     </p-header>
-    <div class="p-grid">
-        <div class="p-col" *ngFor="let output of outputs">
+    <div class="p-grid p-justify-end" style="text-align: right;">
+        <div class="p-col">
+            <button pButton type="button" icon="pi pi-user-edit" class="ui-button-secondary"></button>
+        </div>
+    </div>
+    <div class="p-grid p-justify-end" style="text-align: right;" *ngFor="let output of outputs">
+        <div class="p-col">
             {{output.name}}
+        </div>
+        <div class="p-col">
             <rete-socket class="output-socket" rete-socket [io]="output" [socket]="output.socket"></rete-socket>
         </div>
     </div>

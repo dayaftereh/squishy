@@ -3,8 +3,11 @@ import { Component, Engine, NodeEditor } from 'rete';
 import { AngularRenderPlugin } from 'rete-angular-render-plugin';
 import ConnectionPlugin from 'rete-connection-plugin';
 import ContextMenuPlugin from 'rete-context-menu-plugin';
+import { Data } from 'rete/types/core/data';
 import { PackageJSON } from 'src/app/package-json';
-import { NodeComponents } from './components/node-components.module';
+import { FileInputComponent } from './components/file-input/file-input.component';
+import { FileOutputComponent } from './components/file-output/file-output.component';
+import { ScriptComponent } from './components/script/script.component';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -22,7 +25,6 @@ export class GraphComponent implements AfterViewInit {
     private editor: NodeEditor | undefined
 
     constructor() {
-
     }
 
     private id(): string {
@@ -58,15 +60,30 @@ export class GraphComponent implements AfterViewInit {
 
         this.editor.on(['process', 'nodecreated', 'noderemoved', 'connectioncreated', 'connectionremoved'], (async () => {
             await this.engine.abort();
-            await this.engine.process(this.editor.toJSON());
+            
+            const json: Data = this.editor.toJSON()
+            await this.engine.process(json);
         }) as any);
+
+        this.engine.on('error', (e) => {
+            console.error(e)
+        });
 
         this.editor.view.resize()
         this.editor.trigger('process')
     }
 
     private getComponents(): Component[] {
-        return NodeComponents
+        return [
+            new FileInputComponent(),
+            new FileOutputComponent(),
+            new ScriptComponent()
+        ]
+    }
+
+    data(): void {
+        const json: Data = this.editor.toJSON()
+        console.log(json)
     }
 
 }

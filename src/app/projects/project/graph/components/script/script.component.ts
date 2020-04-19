@@ -1,83 +1,70 @@
-import { Component, Node, Output, Input } from 'rete';
-import { AngularComponent, AngularComponentData } from 'rete-angular-render-plugin';
+import { Input, Node, Output, Connection } from 'rete';
 import { NodeData, WorkerInputs, WorkerOutputs } from 'rete/types/core/data';
-import { ScriptNodeComponent } from './script-node.component';
+import { Utils } from 'src/app/utils/utils';
 import { anyTypeSocket } from '../../sockets/any-type.socket';
-import { Mathf } from 'src/app/utils/mathf';
+import { NodeComponentsType } from '../node-components.type';
+import { SquishyNodeComponent } from '../squishy-node.component';
+import { ScriptNodeComponent } from './script-node.component';
+import { ScriptData } from './script.data';
 
-export class ScriptComponent extends Component implements AngularComponent {
-
-    data: AngularComponentData;
-
-    private node: Node
+export class ScriptComponent extends SquishyNodeComponent<ScriptData> {
 
     constructor() {
-        super(`Script`)
-        this.data.render = 'angular';
-        this.data.component = ScriptNodeComponent;
+        super(`Script`, ScriptNodeComponent)
+    }
+
+    protected async nodeData(data: ScriptData): Promise<ScriptData> {
+        data.type = NodeComponentsType.Script
+        data.variables = {}
+        data.name = `Script${this.nodesCount() + 1}`
+        return data
     }
 
     async builder(node: Node): Promise<void> {
-        this.node = node;
-
-        const output: Output = new Output("key", "Return", anyTypeSocket)
+        const id: string = this.getId(node)
+        const output: Output = new Output(id, "Return", anyTypeSocket)
         node.addOutput(output)
 
-
-        this.addVariableInput()
-
+        this.addVariableInput(node)
     }
 
-    worker(node: NodeData, inputs: WorkerInputs, outputs: WorkerOutputs): void {
-        this.syncInputs(inputs)
+    worker(nodeData: NodeData, inputs: WorkerInputs, outputs: WorkerOutputs): void {
+        const node: Node | undefined = this.getNodeFromNodeData(nodeData)
+
+        if (!Utils.isNullOrUndefined(node)) {
+            this.syncInputs(node)
+        }
     }
 
-    created(node: Node): void {
-        console.log('created', node);
-    }
-
-    destroyed(node: Node): void {
-        console.log('destroyed', node);
-    }
-
-    private syncInputs(connected: WorkerInputs): void {
-
+    private syncInputs(node: Node): void {
         const removeable: string[] = []
-
-        console.log(connected)
-        console.log(this.node)
-
-        this.node.inputs.forEach((_, id: string) => {
-            if (connected[id] === undefined || connected[id] === null || connected[id].length < 1) {
+        node.inputs.forEach((input: Input, id: string) => {
+            if (Utils.isEmpty(input.connections)) {
                 removeable.push(id)
             }
         })
 
         while (removeable.length > 1) {
             const id: string = removeable.pop()
-            this.removeVariableInput(id)
+            this.removeVariableInput(node, id)
         }
 
-        if (!removeable || removeable.length < 1) {
-            this.addVariableInput()
+        if (Utils.isEmpty(removeable)) {
+            this.addVariableInput(node)
         }
-
-        //this.node.update()
     }
 
-    private addVariableInput(): void {
-        const id: string = Mathf.uuid()
+    private addVariableInput(node: Node): void {
+        const id: string = Utils.uuid()
         const input: Input = new Input(id, 'Variable', anyTypeSocket)
-        this.node.addInput(input)
+        node.addInput(input)
     }
 
-    private removeVariableInput(id: string): void {
-        if (!this.node.inputs.has(id)) {
+    private removeVariableInput(node: Node, id: string): void {
+        if (!node.inputs.has(id)) {
             return
         }
-
-        this.node.inputs.delete(id)
+        node.inputs.delete(id)
     }
-
 
 }

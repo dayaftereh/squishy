@@ -1,17 +1,29 @@
 <p-panel styleClass="node">
     <p-header>
-        Script
+        {{nodeData!.name}}
     </p-header>
-    <div class="p-grid">
-        <div class="p-col" *ngFor="let output of outputs">
-            {{output.name}}
-            <rete-socket class="output-socket" rete-socket [io]="output" [socket]="output.socket"></rete-socket>
+    <div class="p-grid p-justify-end">
+        <div class="p-col-2">
+            <button pButton type="button" icon="pi pi-file-o" class="ui-button-secondary" (click)="edit()"></button>
+        </div>
+        <div class="p-col-2">
+            <button pButton type="button" icon="pi pi-user-edit" class="ui-button-secondary"></button>
         </div>
     </div>
-    <div class="p-grid">
-        <div class="p-col" *ngFor="let input of inputs">
+    <div class="p-grid" *ngFor="let input of inputs">
+        <div class="p-col">
             <rete-socket rete-socket [io]="input" [socket]="input.socket"></rete-socket>
-            {{input.name}}
+        </div>
+        <div class="p-col">
+            <input type="text" pInputText [(ngModel)]="nodeData.variables[input.key]" />
+        </div>
+    </div>
+    <div class="p-grid p-justify-end" *ngFor="let output of outputs" style="text-align: right;">
+        <div class="p-col">
+            {{output.name}}
+        </div>
+        <div class="p-col-2">
+            <rete-socket rete-socket [io]="output" [socket]="output.socket"></rete-socket>
         </div>
     </div>
 </p-panel>

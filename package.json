@@ -21,11 +21,13 @@
     "zone.js": "~0.10.2",
     "primeng": "~9.0.5",
     "primeicons": "~2.0.0",
+    "primeflex": "~1.0.0",
     "rete": "~1.4.3-rc.1",
     "rete-angular-render-plugin": "~0.2.1",
     "rete-connection-plugin": "~0.9.0",
     "rete-context-menu-plugin": "~0.5.2",
-    "uuid": "~7.0.3"
+    "uuid": "~7.0.3",
+    "ngx-monaco-editor": "~9.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.0",
