@@ -1,10 +1,7 @@
-import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
-import { NodeComponent, NodeService, SocketType } from 'rete-angular-render-plugin';
-import { Input, IO } from 'rete';
-import { ScriptData } from './script.data';
-import { ScriptEditorService } from 'src/app/script-editor/service/script-editor.service';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { NodeComponent, NodeService } from 'rete-angular-render-plugin';
 import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
-import { ScriptEditorComponent } from 'src/app/script-editor/script-editor.component';
+import { ScriptData } from './script.data';
 
 @Component({
     templateUrl: './script-node.component.html',
@@ -22,7 +19,6 @@ export class ScriptNodeComponent extends NodeComponent implements OnInit {
     constructor(
         protected service: NodeService,
         protected cdr: ChangeDetectorRef,
-        private readonly scriptExitorService: ScriptEditorService,
         private readonly propertiesDialogService: PropertiesDialogService) {
         super(service, cdr);
     }
@@ -35,12 +31,12 @@ export class ScriptNodeComponent extends NodeComponent implements OnInit {
 
     edit(): void {
         // this.scriptExitorService.open("//Foo")
-        this.propertiesDialogService.open({
+        /*this.propertiesDialogService.open({
             title: 'Editor',
             component: ScriptEditorComponent,
             onInit: <ScriptEditorComponent>(component: ScriptEditorComponent) => {
                 console.log(component)
             }
-        })
+        })*/
     }
 }

@@ -1,7 +1,4 @@
-import { NgModule, Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { ScriptEditorService } from './service/script-editor.service';
-import { Subscription } from 'rxjs';
-import { PropertiesDialogChild } from '../properties-dialog/service/properties-dialog-child';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
     templateUrl: './script-editor.component.html',
@@ -10,55 +7,28 @@ import { PropertiesDialogChild } from '../properties-dialog/service/properties-d
         './script-editor.component.scss'
     ]
 })
-export class ScriptEditorComponent implements OnInit, OnDestroy, PropertiesDialogChild, AfterViewInit {
-
-    options: any
+export class ScriptEditorComponent implements OnInit, AfterViewInit {
 
     code: string | undefined
 
-    private editor: any
+    options: monaco.editor.EditorOptionsType
 
-    private subscription: Subscription | undefined
+    private editor: monaco.editor.IEditor | undefined
 
-    constructor(private readonly scriptExitorService: ScriptEditorService) {
+    constructor() {
 
-    }
-
-    visible(): void {
-        /*if (this.editor) {
-            this.editor.layout()
-        }*/
-    }
-
-    dispose(): void {
     }
 
     ngAfterViewInit(): void {
-        if (this.editor) {
-            this.editor.layout()
-        }
+        this.layout()
     }
 
     ngOnInit(): void {
-        console.log("ngOnInit")
         this.options = {
             theme: 'vs-dark',
             language: 'javascript',
             automaticLayout: true
-        }
-
-        this.subscription = this.scriptExitorService.onOpen((script: string) => {
-            this.code = script
-
-        })
-    }
-
-    submit(): void {
-        this.scriptExitorService.submit(this.code)
-    }
-
-    cancel(): void {
-        this.scriptExitorService.submit(this.code)
+        } as unknown as monaco.editor.EditorOptionsType
     }
 
     layout(): void {
@@ -67,15 +37,16 @@ export class ScriptEditorComponent implements OnInit, OnDestroy, PropertiesDialo
         }
     }
 
-    onEditorInit(editor: any): void {
-        this.editor = editor
+    setCode(code: string): void {
+        this.code = code
     }
 
-    ngOnDestroy(): void {
-        console.log("ngOnDestroy")
-        if (this.subscription) {
-            this.subscription.unsubscribe()
-        }
+    getCode(): string {
+        return this.code
+    }
+
+    onEditorInit(editor: monaco.editor.IEditor): void {
+        this.editor = editor
     }
 
 }

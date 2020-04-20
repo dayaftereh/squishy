@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import { ReteModule } from 'rete-angular-render-plugin';
-import { ScriptNodeComponent } from './script-node.component';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { ScriptEditorServiceModule } from 'src/app/script-editor/service/script-editor-service.module';
 import { PropertiesDialogModule } from 'src/app/properties-dialog/properties-dialog.module';
+import { ScriptNodeComponent } from './script-node.component';
 
 @NgModule({
     imports: [
@@ -21,7 +20,6 @@ import { PropertiesDialogModule } from 'src/app/properties-dialog/properties-dia
         // rete
         ReteModule,
         // Custom
-        ScriptEditorServiceModule,
         PropertiesDialogModule
     ],
     declarations: [
