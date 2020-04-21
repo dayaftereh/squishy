@@ -4,7 +4,7 @@
     </p-header>
     <div class="p-grid p-justify-end" style="text-align: right;">
         <div class="p-col">
-            <button pButton type="button" icon="pi pi-user-edit" class="ui-button-secondary"></button>
+            <button pButton type="button" icon="pi pi-user-edit" class="ui-button-secondary" (click)="edit()"></button>
         </div>
     </div>
     <div class="p-grid p-justify-end" style="text-align: right;" *ngFor="let output of outputs">

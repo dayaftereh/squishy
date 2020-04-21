@@ -32,19 +32,19 @@ export class PropertiesDialogComponent implements OnInit, OnDestroy {
     }
 
     private show(event: PropertiesDialogServiceEvent): void {
-        this.event = event;
-        this.display = true
+        this.event = event;        
         this.registerComponent(event)
+        this.display = true
     }
 
     private registerComponent(event: PropertiesDialogServiceEvent) {
         this.unregisterComponent()
         const factory: ComponentFactory<PropertiesDialogChild> = this.componentFactoryResolver.resolveComponentFactory(event.component)
-        this.componentRef = this.container.createComponent(factory)
+        this.componentRef = this.container.createComponent(factory)   
 
-        if (!Utils.isNullOrUndefined(event.onInit)) {
+        if (!Utils.isNullOrUndefined(this.event.onInit)) {
             const child: PropertiesDialogChild = this.componentRef.instance
-            event.onInit(child)
+            this.event.onInit(child)
         }
     }
 
@@ -72,18 +72,18 @@ export class PropertiesDialogComponent implements OnInit, OnDestroy {
         this.componentRef = undefined
     }
 
-    submit(): void {
+    async submit(): Promise<void> {
         const child: PropertiesDialogChild | undefined = this.child()
         if (!Utils.isNullOrUndefined(child)) {
-            child.submit()
+            await child.submit()
         }
         this.hide()
     }
 
-    cancel(): void {
+    async cancel(): Promise<void> {
         const child: PropertiesDialogChild | undefined = this.child()
         if (!Utils.isNullOrUndefined(child)) {
-            child.cancel()
+            await child.cancel()
         }
         this.hide()
     }

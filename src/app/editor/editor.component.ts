@@ -1,13 +1,13 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
-    templateUrl: './script-editor.component.html',
-    selector: 'app-script-editor',
+    templateUrl: './editor.component.html',
+    selector: 'app-editor',
     styleUrls: [
-        './script-editor.component.scss'
+        './editor.component.scss'
     ]
 })
-export class ScriptEditorComponent implements OnInit, AfterViewInit {
+export class EditorComponent implements OnInit, AfterViewInit {
 
     code: string | undefined
 

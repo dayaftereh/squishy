@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { ScriptEditorComponent } from './script-editor.component';
+import { EditorComponent } from './editor.component';
 
 @NgModule({
     imports: [
@@ -17,12 +17,12 @@ import { ScriptEditorComponent } from './script-editor.component';
         MonacoEditorModule,
     ],
     declarations: [
-        ScriptEditorComponent,
+        EditorComponent,
     ],
     exports: [
-        ScriptEditorComponent,
+        EditorComponent,
     ]
 })
-export class ScriptEditorModule {
+export class EditorModule {
 
 }

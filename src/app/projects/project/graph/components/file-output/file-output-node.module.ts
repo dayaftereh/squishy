@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
 import { ReteModule } from 'rete-angular-render-plugin';
+import { PropertiesDialogServiceModule } from 'src/app/properties-dialog/service/properties-dialog-service.module';
 import { FileOutputNodeComponent } from './file-output-node.component';
-import { ButtonModule } from 'primeng/button';
+import { FileOutputPropertiesModule } from './properties/file-output-properties.module';
 
 @NgModule({
     imports: [
@@ -13,7 +15,10 @@ import { ButtonModule } from 'primeng/button';
         PanelModule,
         ButtonModule,
         // rete
-        ReteModule
+        ReteModule,
+        // Custom
+        FileOutputPropertiesModule,
+        PropertiesDialogServiceModule
     ],
     declarations: [
         FileOutputNodeComponent

@@ -4,5 +4,5 @@ import { PropertiesDialogChild } from './properties-dialog-child';
 export interface PropertiesDialogServiceEvent {
     title: string
     component: Type<PropertiesDialogChild>
-    onInit<T extends PropertiesDialogChild>(component: T): void
+    onInit(component: unknown): void
 }

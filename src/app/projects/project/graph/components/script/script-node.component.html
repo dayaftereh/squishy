@@ -4,10 +4,10 @@
     </p-header>
     <div class="p-grid p-justify-end">
         <div class="p-col-2">
-            <button pButton type="button" icon="pi pi-file-o" class="ui-button-secondary" (click)="edit()"></button>
+            <button pButton type="button" icon="pi pi-file-o" class="ui-button-secondary" (click)="editScript()"></button>
         </div>
         <div class="p-col-2">
-            <button pButton type="button" icon="pi pi-user-edit" class="ui-button-secondary"></button>
+            <button pButton type="button" icon="pi pi-user-edit" class="ui-button-secondary" (click)="editProperties()"></button>
         </div>
     </div>
     <div class="p-grid" *ngFor="let input of inputs">

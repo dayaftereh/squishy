@@ -1,4 +1,6 @@
+import { PropertiesDialogServiceEvent } from './properties-dialog-service.event';
+
 export interface PropertiesDialogChild {
-    submit(): void
-    cancel(): void
+    submit(): Promise<void>
+    cancel(): Promise<void>
 }

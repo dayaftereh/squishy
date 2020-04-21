@@ -1,8 +1,7 @@
-import { AfterViewInit, Component as NGComponent, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component as NGComponent, ElementRef, ViewChild, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { Component, Engine, NodeEditor } from 'rete';
 import { AngularRenderPlugin } from 'rete-angular-render-plugin';
 import ConnectionPlugin from 'rete-connection-plugin';
-import ContextMenuPlugin from 'rete-context-menu-plugin';
 import { Data } from 'rete/types/core/data';
 import { PackageJSON } from 'src/app/package-json';
 import { FileInputComponent } from './components/file-input/file-input.component';
@@ -18,13 +17,16 @@ import { ScriptComponent } from './components/script/script.component';
 })
 export class GraphComponent implements AfterViewInit {
 
+    nodeEditorEvent: EventEmitter<NodeEditor>
+
     @ViewChild('nodeEditor')
     nodeEditorElement: ElementRef | undefined
 
-    private engine: Engine | undefined
     private editor: NodeEditor | undefined
+    private engine: Engine | undefined
 
     constructor() {
+        this.nodeEditorEvent = new EventEmitter<NodeEditor>(true)
     }
 
     private id(): string {
@@ -46,7 +48,7 @@ export class GraphComponent implements AfterViewInit {
         // register the plugins
         this.editor.use(ConnectionPlugin);
         this.editor.use(AngularRenderPlugin)
-        this.editor.use(ContextMenuPlugin)
+        //this.editor.use(ContextMenuPlugin)
 
         // create the rete engine
         this.engine = new Engine(id);
@@ -60,7 +62,7 @@ export class GraphComponent implements AfterViewInit {
 
         this.editor.on(['process', 'nodecreated', 'noderemoved', 'connectioncreated', 'connectionremoved'], (async () => {
             await this.engine.abort();
-            
+
             const json: Data = this.editor.toJSON()
             await this.engine.process(json);
         }) as any);
@@ -71,6 +73,8 @@ export class GraphComponent implements AfterViewInit {
 
         this.editor.view.resize()
         this.editor.trigger('process')
+
+        this.nodeEditorEvent.emit(this.editor)
     }
 
     private getComponents(): Component[] {

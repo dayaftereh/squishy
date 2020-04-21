@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProjectModule } from './projects/project/project.module';
-import { ScriptEditorModule } from './script-editor/script-editor.module';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { PropertiesDialogModule } from './properties-dialog/properties-dialog.module';
 
@@ -19,7 +18,6 @@ import { PropertiesDialogModule } from './properties-dialog/properties-dialog.mo
      MonacoEditorModule.forRoot(),
     // custom
     ProjectModule,
-    ScriptEditorModule,
     PropertiesDialogModule,
   ],
   declarations: [
