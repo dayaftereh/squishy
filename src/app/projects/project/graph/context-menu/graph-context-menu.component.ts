@@ -18,8 +18,13 @@ export class GraphContextMenuComponent implements OnInit {
     @Input()
     nodeEditorEvent: EventEmitter<NodeEditor>
 
+    private editor: NodeEditor | undefined
+
+    private mainItems: MenuItem[];
+
     constructor() {
         this.items = []
+        this.mainItems = []
     }
 
     ngOnInit(): void {
@@ -29,13 +34,15 @@ export class GraphContextMenuComponent implements OnInit {
     }
 
     private onEditor(nodeEditor: NodeEditor): void {
+        this.editor = nodeEditor
+
         nodeEditor.on(['contextmenu'], (event: unknown) => {
             this.showContextMenu(event)
         })
 
         nodeEditor.components.forEach((component: Component) => {
             const menuItem: MenuItem = this.createMenuItem(nodeEditor, component)
-            this.items.push(menuItem)
+            this.mainItems.push(menuItem)
         })
 
     }
@@ -45,14 +52,25 @@ export class GraphContextMenuComponent implements OnInit {
             label: component.name,
             command: async (event: any) => {
                 const node: Node = await this.createNode(event, component)
-                console.log(node);
                 nodeEditor.addNode(node)
             }
         }
     }
 
-    private async createNode(event: any, component: Component): Promise<Node> {
-        const node: Node = await component.createNode({})
+    private copyDeep<T>(data: T): T {
+        return JSON.parse(JSON.stringify(data)) as T
+    }
+
+    private async createNode(event: any, component: Component, data?: unknown, meta?: unknown, offset?: number): Promise<Node> {
+        if (!Utils.isNullOrUndefined(data)) {
+            data = this.copyDeep(data)
+        }
+
+        const node: Node = await component.createNode(data)
+
+        if (!Utils.isNullOrUndefined(meta)) {
+            node.meta = this.copyDeep(meta) as { [key: string]: unknown }
+        }
 
         if (Utils.isNullOrUndefined(event)) {
             return node
@@ -63,13 +81,22 @@ export class GraphContextMenuComponent implements OnInit {
             return node
         }
 
-        node.position[0] = originalEvent.x
-        node.position[1] = originalEvent.y
+        if (Utils.isNullOrUndefined(offset)) {
+            node.position[0] = originalEvent.x
+            node.position[1] = originalEvent.y
+        } else {
+            node.position[0] = originalEvent.x + offset
+            node.position[1] = originalEvent.y + offset
+        }
 
         return node
     }
 
     private showContextMenu(event: any): void {
+        if (Utils.isNullOrUndefined(this.editor)) {
+            return
+        }
+
         if (Utils.isNullOrUndefined(event)) {
             return
         }
@@ -78,9 +105,47 @@ export class GraphContextMenuComponent implements OnInit {
             return
         }
 
+        if (Utils.isNullOrUndefined(event.node)) {
+            this.items = this.mainItems
+        } else {
+            const node: Node = event.node
+            this.items = this.createNodeMenuItems(node)
+        }
+
+        mouseEvent.stopPropagation()
+
         if (this.menu) {
             this.menu.show(mouseEvent)
         }
+    }
+
+    private createNodeMenuItems(node: Node): MenuItem[] {
+        if (Utils.isNullOrUndefined(this.editor)) {
+            return []
+        }
+
+        const component: Component = this.editor.getComponent(node.name)
+
+        return [
+            {
+                label: 'Delete',
+                icon: 'pi pi-trash',
+                command: () => {
+                    this.editor.removeNode(node)
+                }
+            },
+            {
+                separator: true
+            },
+            {
+                label: 'Clone',
+                icon: 'pi pi-clone',
+                command: async (event: unknown) => {
+                    const clone: Node = await this.createNode(event, component, node.data, node.meta)
+                    this.editor.addNode(clone)
+                }
+            }
+        ]
     }
 
 

@@ -21,9 +21,10 @@ export class SquishyNodeComponent<T extends SquishyNodeData> extends Component i
         const id: string = Utils.uuid()
 
         const data: T = Object.assign({
-            id,
             type: undefined
         } as T, nodeData)
+
+        data.id = id
 
         nodeData = await this.nodeData(data)
         const node: Node = await super.createNode(nodeData)
