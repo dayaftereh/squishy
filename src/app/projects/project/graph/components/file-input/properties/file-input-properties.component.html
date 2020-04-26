@@ -9,4 +9,34 @@
             </div>
         </div>
     </div>
+    <div class="p-grid">
+        <div class="p-col">
+            Mode:
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-selectButton [options]="modes" formControlName="mode"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            Encoding:
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-dropdown [options]="encodings" formControlName="encoding"></p-dropdown>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            Accept:
+        </div>
+        <div class="p-col">
+            <p-autoComplete [suggestions]="acceptSuggestions" (completeMethod)="filterSuggestions()"
+                formControlName="accept" [dropdown]="true" [size]="15">
+            </p-autoComplete>
+        </div>
+    </div>
 </form>

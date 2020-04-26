@@ -62,7 +62,6 @@ export class GraphComponent implements AfterViewInit {
 
         this.editor.on(['process', 'nodecreated', 'noderemoved', 'connectioncreated', 'connectionremoved'], (async () => {
             await this.engine.abort();
-
             const json: Data = this.editor.toJSON()
             await this.engine.process(json);
         }) as any);

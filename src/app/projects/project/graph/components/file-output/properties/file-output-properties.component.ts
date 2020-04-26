@@ -19,7 +19,8 @@ export class FileOutputPropertiesComponent implements PropertiesDialogChild {
 
     private initFormGroup(): void {
         this.formGroup = new FormGroup({
-            name: new FormControl()
+            name: new FormControl(),
+            filename: new FormControl(),
         })
     }
 
@@ -29,6 +30,7 @@ export class FileOutputPropertiesComponent implements PropertiesDialogChild {
         }
 
         this.fileOutputData.name = Utils.getFormValue(this.formGroup, 'name', this.fileOutputData.name)
+        this.fileOutputData.filename = Utils.getFormValue(this.formGroup, 'filename', this.fileOutputData.filename)
     }
 
     async  cancel(): Promise<void> {

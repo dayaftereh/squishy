@@ -39,4 +39,28 @@ export class Utils {
         return value as T
     }
 
+    static setFromDisabled(formGroup: FormGroup | undefined, name: string, disabled: boolean, emitEvent?: boolean): void {
+        if (Utils.isNullOrUndefined(formGroup)) {
+            return
+        }
+        const formControl: AbstractControl | null = formGroup.get(name)
+        if (Utils.isNullOrUndefined(formControl)) {
+            return
+        }
+
+        if (disabled) {
+            formControl.disable(
+                {
+                    emitEvent
+                }
+            )
+        } else {
+            formControl.enable(
+                {
+                    emitEvent
+                }
+            )
+        }
+    }
+
 }
