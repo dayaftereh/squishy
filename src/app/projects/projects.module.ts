@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ProjectComponent } from './project.component';
-import { GraphModule } from './graph/graph.module';
-import { ProjectsServiceModule } from '../service/projects-service.module';
+import { ProjectsServiceModule } from './service/projects-service.module';
+import { ProjectsComponent } from './projects.component';
+import { ListboxModule } from 'primeng/listbox';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 
@@ -13,15 +13,17 @@ import { RouterModule } from '@angular/router';
         BrowserModule,
         // PrimeNG
         ButtonModule,
+        ListboxModule,
         // Custom
-        GraphModule,
         ProjectsServiceModule
     ],
     declarations: [
-        ProjectComponent
+        ProjectsComponent
     ],
     exports: [
-        ProjectComponent
+        ProjectsComponent
     ]
 })
-export class ProjectModule { }
+export class ProjectsModule {
+
+}

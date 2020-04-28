@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProjectModule } from './projects/project/project.module';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { PropertiesDialogModule } from './properties-dialog/properties-dialog.module';
+import { ProjectsModule } from './projects/projects.module';
+import { RunnerModule } from './runner/runner.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   imports: [
@@ -14,10 +17,13 @@ import { PropertiesDialogModule } from './properties-dialog/properties-dialog.mo
     BrowserAnimationsModule,
     // Routing
     AppRoutingModule,
-     //MonacoEditor
-     MonacoEditorModule.forRoot(),
+    //MonacoEditor
+    MonacoEditorModule.forRoot(),
     // custom
+    HomeModule,
+    RunnerModule,
     ProjectModule,
+    ProjectsModule,
     PropertiesDialogModule,
   ],
   declarations: [

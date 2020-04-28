@@ -63,4 +63,20 @@ export class Utils {
         }
     }
 
+    static forEachProperty<T>(o: T, fn: (value: unknown, key: string) => void): void {
+        const keys: string[] = Object.keys(o)
+        keys.forEach((key: string) => {
+            const value: unknown = o[key]
+            fn(value, key)
+        })
+    }
+
+    static mapProperties<T, R>(o: T, fn: (value: unknown, key: string) => R): R[] {
+        const keys: string[] = Object.keys(o)
+        return keys.map((key: string) => {
+            const value: unknown = o[key]
+            return fn(value, key)
+        })
+    }
+
 }

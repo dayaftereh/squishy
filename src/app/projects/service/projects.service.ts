@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { SquishyProject } from '../project/project';
+import { map, switchMap } from 'rxjs/operators';
+import { SquishyProject } from './squishy-project';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Utils } from 'src/app/utils/utils';
 
 type Projects = { [key: string]: SquishyProject }
 
@@ -31,4 +33,31 @@ export class ProjectsService {
             })
         )
     }
+
+    getProjectFromRoute(activatedRoute: ActivatedRoute): Observable<SquishyProject | undefined> {
+       return activatedRoute.paramMap.pipe(
+            map((paramMap: ParamMap) => {
+                return paramMap.get(`id`)
+            }),
+            switchMap((id: string) => {
+                return this.get(id)
+            })
+        )
+    }
+
+    create(name: string): string {
+        // generate new project id
+        const id: string = Utils.uuid()
+        // create the project
+        const project: SquishyProject = {
+            id, 
+            name
+        } as SquishyProject
+        // update the projects
+        this.update(project)
+
+        return id
+    }
+
+
 }
