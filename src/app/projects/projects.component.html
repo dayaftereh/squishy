@@ -1,9 +1,14 @@
 <div class="p-grid">
-    <div class="p-col p-offset-3">
+    <div class="p-col">
+        <app-projects-upload></app-projects-upload>
+    </div>
+    <div class="p-col">
         <div class="p-grid">
             <div class="p-col">
-                <button pButton type="button" icon="pi pi-th-large" class="ui-button-secondary" [routerLink]="['/home']"></button>
-                <button pButton type="button" icon="pi pi-plus" label="New Project" class="ui-button-success" (click)="createProject()"></button>
+                <button pButton type="button" icon="pi pi-th-large" class="ui-button-secondary"
+                    [routerLink]="['/home']"></button>
+                <button pButton type="button" icon="pi pi-plus" label="New Project" class="ui-button-success"
+                    (click)="createProject()"></button>
             </div>
         </div>
         <div class="p-grid">

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SquishyProject } from '../service/squishy-project';
 import { ProjectsService } from '../service/projects.service';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,9 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription | undefined
 
-    constructor(private readonly activatedRoute: ActivatedRoute,
+    constructor(
+        private readonly router: Router,
+        private readonly activatedRoute: ActivatedRoute,
         private readonly projectsService: ProjectsService) {
     }
 
@@ -21,6 +23,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
         this.subscription = this.projectsService.getProjectFromRoute(this.activatedRoute).subscribe((project: SquishyProject | undefined) => {
             if (project) {
                 this.project = project
+            } else {
+                this.router.navigate(['/projects'])
             }
         })
     }

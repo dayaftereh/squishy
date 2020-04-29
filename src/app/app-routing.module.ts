@@ -10,7 +10,8 @@ const routes: Routes = [
     { path: 'runner', component: RunnerComponent },
     { path: 'projects', component: ProjectsComponent },
     { path: 'project/:id', component: ProjectComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' }
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({

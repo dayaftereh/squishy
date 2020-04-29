@@ -6,6 +6,8 @@ import { SquishyProject } from './service/squishy-project';
 import { map } from 'rxjs/operators';
 import { Utils } from '../utils/utils';
 import { Router } from '@angular/router';
+import { PropertiesDialogService } from '../properties-dialog/service/properties-dialog.service';
+import { NewProjectComponent } from './new-project/new-project.component';
 
 @Component({
     templateUrl: './projects.component.html',
@@ -19,7 +21,11 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription | undefined
 
-    constructor(private readonly projectsService: ProjectsService, private readonly router: Router) {
+    constructor(
+        private readonly router: Router,
+        private readonly projectsService: ProjectsService,
+        private readonly propertiesDialogService: PropertiesDialogService
+    ) {
 
     }
 
@@ -58,7 +64,14 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     }
 
     createProject(): void {
-        this.projectsService.create("foo" + this.projects.length)
+        // open the properties dialog with the new project component
+        this.propertiesDialogService.open({
+            component: NewProjectComponent,
+            title: 'New Project',
+            onInit: (component: NewProjectComponent) => {
+
+            }
+        })
     }
 
     ngOnDestroy(): void {

@@ -79,4 +79,33 @@ export class Utils {
         })
     }
 
+    static async readFileAsText(file: File, encoding?: string): Promise<string> {
+        var completed: boolean = false
+        const fileReader: FileReader = new FileReader()
+        return new Promise((resolve, reject) => {
+            // if reader fails
+            fileReader.onerror = (e) => {
+                if (!completed) {
+                    reject(e)
+                }
+                completed = true
+            }
+
+            // callback for done
+            const done = () => {
+                if (!completed) {
+                    const content: string = fileReader.result as string
+                    resolve(content)
+                }
+                completed = true
+            }
+
+            fileReader.onload = done
+            fileReader.onloadend = done
+
+            // read the file as text
+            fileReader.readAsText(file, encoding)
+        })
+    }
+
 }
