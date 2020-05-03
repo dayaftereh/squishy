@@ -7,11 +7,12 @@ import { PackageJSON } from 'src/app/package-json';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import { FileOutputComponent } from './components/file-output/file-output.component';
 import { ScriptComponent } from './components/script/script.component';
-import { ProjectsService } from '../../service/projects.service';
+import { ProjectsService } from '../../../projects-service/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SquishyProject } from '../../service/squishy-project';
+import { SquishyProject } from '../../../projects-service/squishy-project';
 import { Utils } from 'src/app/utils/utils';
+import { GraphNodesManager } from './graph-nodes.manager';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -34,9 +35,12 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private subscription: Subscription | undefined
 
+    private graphNodesManager: GraphNodesManager
+
     constructor(private readonly activatedRoute: ActivatedRoute,
         private readonly projectsService: ProjectsService) {
         this.nodeEditorEvent = new EventEmitter<NodeEditor>(true)
+        this.graphNodesManager = new GraphNodesManager()
     }
 
     ngOnInit(): void {
@@ -58,7 +62,10 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
             }
         }
         this.project = project
-
+        // set the project data to the graph nodes manager
+        if (!Utils.isNullOrUndefined(this.project.data)) {
+            this.graphNodesManager.setData(this.project.data)
+        }
     }
 
     private id(): string {
@@ -102,8 +109,9 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
             console.error(e)
         });
 
-         // check if project exists
-         if (this.project && this.project.data) {
+        // check if project exists
+        if (this.project && this.project.data) {
+            console.log(this.project.data)
             // load project data
             this.editor.fromJSON(this.project.data)
         }
@@ -126,13 +134,16 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
             this.project.data = data
             this.projectsService.update(this.project)
         }
+
+        // update the data in the graph nodes manager
+        this.graphNodesManager.setData(data)
     }
 
     private getComponents(): Component[] {
         return [
-            new FileInputComponent(),
-            new FileOutputComponent(),
-            new ScriptComponent()
+            new ScriptComponent(this.graphNodesManager),
+            new FileInputComponent(this.graphNodesManager),
+            new FileOutputComponent(this.graphNodesManager),
         ]
     }
 

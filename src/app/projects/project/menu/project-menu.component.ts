@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ProjectsService } from '../../service/projects.service';
-import { SquishyProject } from '../../service/squishy-project';
+import { ProjectsService } from '../../../projects-service/projects.service';
+import { SquishyProject } from '../../../projects-service/squishy-project';
 import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
 import { ProjectPropertiesComponent } from '../properties/project-properties.component';
+import { Downloader } from 'src/app/utils/downloader';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
     templateUrl: './project-menu.component.html',
@@ -17,6 +19,7 @@ export class ProjectMenuComponent {
     private subscription: Subscription | undefined
 
     constructor(
+        private readonly router: Router,
         private readonly activatedRoute: ActivatedRoute,
         private readonly projectsService: ProjectsService,
         private readonly propertiesDialogService: PropertiesDialogService
@@ -39,6 +42,22 @@ export class ProjectMenuComponent {
                 component.setProject(this.project)
             }
         })
+    }
+
+    downloadProject(): void {
+        // check if a project is loaded
+        if (!this.project) {
+            return
+        }
+        // download the project
+        Downloader.downloadPorjects([this.project])
+    }
+
+    execute(): void {
+        if (Utils.isNullOrUndefined(this.project)) {
+            return
+        }
+        this.router.navigate(["/executor", this.project.id])
     }
 
     ngOnDestroy(): void {

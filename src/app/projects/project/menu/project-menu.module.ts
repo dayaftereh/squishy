@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { PropertiesDialogServiceModule } from 'src/app/properties-dialog/service/properties-dialog-service.module';
-import { ProjectsServiceModule } from '../../service/projects-service.module';
+import { ProjectsServiceModule } from '../../../projects-service/projects-service.module';
 import { ProjectMenuComponent } from './project-menu.component';
 
 @NgModule({

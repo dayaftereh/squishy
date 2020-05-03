@@ -4,6 +4,7 @@ import { GraphModule } from './graph/graph.module';
 import { ProjectMenuModule } from './menu/project-menu.module';
 import { ProjectComponent } from './project.component';
 import { ProjectPropertiesModule } from './properties/project-properties.module';
+import { ProjectsServiceModule } from 'src/app/projects-service/projects-service.module';
 
 @NgModule({
     imports: [
@@ -12,6 +13,7 @@ import { ProjectPropertiesModule } from './properties/project-properties.module'
         // Custom
         GraphModule,
         ProjectMenuModule,
+        ProjectsServiceModule,
         ProjectPropertiesModule
     ],
     declarations: [

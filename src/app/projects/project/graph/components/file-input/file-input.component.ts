@@ -7,16 +7,19 @@ import { FileInputNodeComponent } from './file-input-node.component';
 import { FileInputData } from './file-input.data';
 import { FileInputMode } from './file-input.mode';
 import { Encoding } from 'src/app/utils/encodings';
+import { GraphNodesManager } from '../../graph-nodes.manager';
 
 export class FileInputComponent extends SquishyNodeComponent<FileInputData> {
 
-    constructor() {
-        super(`File-Input`, FileInputNodeComponent)
+    constructor(protected readonly graphNodesManager: GraphNodesManager) {
+        super(`File-Input`, FileInputNodeComponent, graphNodesManager)
     }
 
     protected async nodeData(data: FileInputData): Promise<FileInputData> {
+        const n: number = this.graphNodesManager.size() + 1
+
         data.type = NodeComponentsType.FileInput
-        data.name = `File-Input${this.nodesCount() + 1}`
+        data.name = `File-Input${n}`
         data.mode = FileInputMode.Text
         data.encoding = Encoding.UTF_8
         data.accept = "*"
@@ -24,6 +27,8 @@ export class FileInputComponent extends SquishyNodeComponent<FileInputData> {
     }
 
     async builder(node: Node): Promise<void> {
+        await super.builder(node)
+
         const id: string = this.getId(node)
         const output: Output = new Output(id, 'Content', anyTypeSocket)
         node.addOutput(output)

@@ -1,0 +1,6 @@
+<div class="p-grid">
+    <div class="p-col">
+        <p-fileUpload [styleClass]="'app-projects-manager-upload'" [maxFileSize]="10000000" [customUpload]="true"
+            accept="application/json" (uploadHandler)="onUpload($event)" [multiple]="true"></p-fileUpload>
+    </div>
+</div>

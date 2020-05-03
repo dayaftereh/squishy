@@ -3,18 +3,16 @@ import { AngularComponent, AngularComponentData } from 'rete-angular-render-plug
 import { NodeData, WorkerInputs, WorkerOutputs } from 'rete/types/core/data';
 import { Utils } from 'src/app/utils/utils';
 import { SquishyNodeData } from './squishy-node.data';
+import { GraphNodesManager } from '../graph-nodes.manager';
 
 export class SquishyNodeComponent<T extends SquishyNodeData> extends Component implements AngularComponent {
 
     data: AngularComponentData | undefined;
 
-    private nodes: Map<string, Node>
-
-    constructor(name: string, component: any) {
+    constructor(name: string, component: any, protected readonly graphNodesManager: GraphNodesManager) {
         super(name)
         this.data.render = 'angular';
         this.data.component = component;
-        this.nodes = new Map<string, Node>();
     }
 
     async createNode(nodeData?: {}): Promise<Node> {
@@ -28,26 +26,9 @@ export class SquishyNodeComponent<T extends SquishyNodeData> extends Component i
 
         nodeData = await this.nodeData(data)
         const node: Node = await super.createNode(nodeData)
-        this.nodes.set(id, node)
+        // invoke the new node to the graph nodes manager
+        this.graphNodesManager.build(node)
         return node
-    }
-
-    protected getNode(id: string): Node | undefined {
-        if (this.nodes.has(id)) {
-            return this.nodes.get(id)
-        }
-        return undefined
-    }
-
-    protected getNodeFromNodeData(node: NodeData): Node | undefined {
-        if (Utils.isNullOrUndefined(node) || Utils.isNullOrUndefined(node.data)) {
-            return undefined
-        }
-        const data: SquishyNodeData = (node.data as any) as SquishyNodeData
-        if (this.nodes.has(data.id)) {
-            return this.nodes.get(data.id)
-        }
-        return undefined
     }
 
     protected async nodeData(data: T): Promise<T> {
@@ -59,12 +40,9 @@ export class SquishyNodeComponent<T extends SquishyNodeData> extends Component i
         return data.id
     }
 
-    protected nodesCount(): number {
-        return this.nodes.size
-    }
-
     async builder(node: Node): Promise<void> {
-        throw new Error("Method not implemented.");
+        // invoke the new node to the graph nodes manager
+        this.graphNodesManager.build(node)
     }
 
     worker(node: NodeData, inputs: WorkerInputs, outputs: WorkerOutputs): void {

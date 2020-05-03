@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SquishyProject } from '../../projects-service/squishy-project';
-import { ProjectsService } from '../../projects-service/projects.service';
+import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProjectsService } from 'src/app/projects-service/projects.service';
 
 @Component({
-    templateUrl: './project.component.html'
+    templateUrl: './executor.component.html'
 })
-export class ProjectComponent implements OnInit, OnDestroy {
+export class ExecutorComponent implements OnInit, OnDestroy {
 
     project: SquishyProject | undefined
 
@@ -24,7 +24,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
             if (project) {
                 this.project = project
             } else {
-                this.router.navigate(['/projects'])
+                this.router.navigate(['/runner'])
             }
         })
     }
@@ -34,5 +34,4 @@ export class ProjectComponent implements OnInit, OnDestroy {
             this.subscription.unsubscribe()
         }
     }
-
 }

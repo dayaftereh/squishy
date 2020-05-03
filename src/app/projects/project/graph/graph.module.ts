@@ -4,7 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { NodeComponentsModule } from './components/node-components.module';
 import { GraphComponent } from './graph.component';
 import { GraphContextMenuModule } from './context-menu/graph-context-menu.module';
-import { ProjectsServiceModule } from '../../service/projects-service.module';
+import { ProjectsServiceModule } from '../../../projects-service/projects-service.module';
 
 @NgModule({
     imports: [

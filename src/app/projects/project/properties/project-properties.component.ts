@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ProjectsService } from '../../service/projects.service';
+import { ProjectsService } from '../../../projects-service/projects.service';
 import { Utils } from 'src/app/utils/utils';
-import { SquishyProject } from '../../service/squishy-project';
+import { SquishyProject } from '../../../projects-service/squishy-project';
 
 @Component({
     templateUrl: './project-properties.component.html'

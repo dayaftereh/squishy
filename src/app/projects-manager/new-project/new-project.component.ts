@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Utils } from 'src/app/utils/utils';
-import { ProjectsService } from '../service/projects.service';
+import { ProjectsService } from 'src/app/projects-service/projects.service';
 
 @Component({
     templateUrl: './new-project.component.html'
@@ -27,7 +27,7 @@ export class NewProjectComponent implements PropertiesDialogChild {
     }
 
     async cancel(): Promise<void> {
-        
+
     }
 
 }

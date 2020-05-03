@@ -1,25 +1,5 @@
 <div class="p-grid">
     <div class="p-col">
-        <app-projects-upload></app-projects-upload>
-    </div>
-    <div class="p-col">
-        <div class="p-grid">
-            <div class="p-col">
-                <button pButton type="button" icon="pi pi-th-large" class="ui-button-secondary"
-                    [routerLink]="['/home']"></button>
-                <button pButton type="button" icon="pi pi-plus" label="New Project" class="ui-button-success"
-                    (click)="createProject()"></button>
-            </div>
-        </div>
-        <div class="p-grid">
-            <div class="p-col-3">
-                <p-listbox [options]="projects" [styleClass]="'app-projects-list'" [listStyle]="{'min-height':'50vh'}"
-                    [filter]="true" (onDblClick)="onDblClick($event)">
-                    <p-header>
-                        Projects
-                    </p-header>
-                </p-listbox>
-            </div>
-        </div>
-    </div>
+        <app-projects-manager (onProject)="onProject($event)"></app-projects-manager>
+    </div>    
 </div>

@@ -26,6 +26,19 @@ export class ProjectsService {
         this._projects.next(projects)
     }
 
+    updateAll(list: SquishyProject[]): void {
+        // get all loaded projects
+        const projects: Projects = this._projects.value
+
+        // load the projects into loaded projects
+        list.forEach((project: SquishyProject) => {
+            projects[project.id] = project
+        })
+
+        // notify about projects changed
+        this._projects.next(projects)
+    }
+
     get(id: string): Observable<SquishyProject> {
         return this._projects.asObservable().pipe(
             map((projects: Projects) => {
@@ -35,7 +48,7 @@ export class ProjectsService {
     }
 
     getProjectFromRoute(activatedRoute: ActivatedRoute): Observable<SquishyProject | undefined> {
-       return activatedRoute.paramMap.pipe(
+        return activatedRoute.paramMap.pipe(
             map((paramMap: ParamMap) => {
                 return paramMap.get(`id`)
             }),
@@ -50,13 +63,45 @@ export class ProjectsService {
         const id: string = Utils.uuid()
         // create the project
         const project: SquishyProject = {
-            id, 
+            id,
             name
         } as SquishyProject
         // update the projects
         this.update(project)
 
         return id
+    }
+
+    delete(project: SquishyProject): void {
+        // get all loaded projects
+        const projects: Projects = this._projects.value
+
+        // check if the rpoject exists
+        if (Utils.isNullOrUndefined(projects[project.id])) {
+            return
+        }
+
+        // drop the project
+        delete projects[project.id]
+
+        // notify about change
+        this._projects.next(projects)
+    }
+
+    deleteAll(list: SquishyProject[]): void {
+        // get all loaded projects
+        const projects: Projects = this._projects.value
+
+        // get only existsing projects
+        list.filter((project: SquishyProject) => {
+            return !Utils.isNullOrUndefined(projects[project.id])
+        }).forEach((project: SquishyProject) => {
+            // drop the project
+            delete projects[project.id]
+        })
+
+        // notify about change
+        this._projects.next(projects)
     }
 
 
