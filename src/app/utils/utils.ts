@@ -1,5 +1,8 @@
 import * as uuid from 'uuid';
 import { FormGroup, AbstractControl } from '@angular/forms';
+import { SquishyNodeData } from '../projects/project/graph/components/squishy-node.data';
+import { SquishyProject } from '../projects-service/squishy-project';
+import { NodesData, NodeData } from 'rete/types/core/data';
 
 export class Utils {
 
@@ -105,6 +108,24 @@ export class Utils {
 
             // read the file as text
             fileReader.readAsText(file, encoding)
+        })
+    }
+
+    static getSquishyNodesData(project: SquishyProject | undefined): SquishyNodeData[] {
+        // check if project, data and nodes exists
+        if (Utils.isNullOrUndefined(project) || Utils.isNullOrUndefined(project.data) || Utils.isNullOrUndefined(project.data.nodes)) {
+            return []
+        }
+        // get the nodes from the project
+        const nodes: NodesData = project.data.nodes
+        // map the nodes to data    
+        return Utils.mapProperties(nodes, (nodeData: NodeData) => {
+            if (Utils.isNullOrUndefined(nodeData) || Utils.isNullOrUndefined(nodeData.data)) {
+                return undefined
+            }
+            return nodeData.data as any as SquishyNodeData
+        }).filter((data: SquishyNodeData | undefined) => {
+            return !Utils.isNullOrUndefined(data)
         })
     }
 
