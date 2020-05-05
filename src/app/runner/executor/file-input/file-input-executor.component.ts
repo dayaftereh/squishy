@@ -1,8 +1,7 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FileInputData } from 'src/app/projects/project/graph/components/file-input/file-input.data';
-import { FileUpload } from 'primeng/fileupload/fileupload';
 import { Utils } from 'src/app/utils/utils';
-import { ExecutorService } from '../executor-service/executor.service';
+import { ExecutorService } from '../../../executor-service/executor.service';
 
 @Component({
     templateUrl: './file-input-executor.component.html',

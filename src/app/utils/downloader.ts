@@ -1,5 +1,5 @@
 import { saveAs } from 'file-saver';
-import * as sanitize from 'sanitize-filename';
+import * as filenamify from 'filenamify';
 import { SquishyProject } from '../projects-service/squishy-project';
 
 export class Downloader {
@@ -11,7 +11,7 @@ export class Downloader {
 
     static escapeFilename(filename: string): string {
         const whitoutWhitespace: string = filename.replace(/\s+/g, '_')
-        return sanitize(whitoutWhitespace)
+        return filenamify(whitoutWhitespace, { replacement: '-' })
     }
 
     static downloadPorjects(projects: SquishyProject[]): void {

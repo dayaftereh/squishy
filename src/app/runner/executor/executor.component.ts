@@ -1,15 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SquishyProject } from 'src/app/projects-service/squishy-project';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { FileInputData } from 'src/app/projects/project/graph/components/file-input/file-input.data';
-import { Utils } from 'src/app/utils/utils';
-import { Node } from 'rete';
-import { NodeData } from 'rete/types/core/data';
-import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
 import { NodeComponentsType } from 'src/app/projects/project/graph/components/node-components.type';
-import { ExecutorService } from './executor-service/executor.service';
+import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
+import { Utils } from 'src/app/utils/utils';
+import { ExecutorService } from '../../executor-service/executor.service';
 
 @Component({
     templateUrl: './executor.component.html',
@@ -43,6 +41,7 @@ export class ExecutorComponent implements OnInit, OnDestroy {
                 this.router.navigate(['/runner'])
             }
         })
+
     }
 
     fileInputs(): FileInputData[] {

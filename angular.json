@@ -39,7 +39,8 @@
               "node_modules/primeflex/primeflex.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
