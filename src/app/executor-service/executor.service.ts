@@ -4,8 +4,9 @@ import { map } from 'rxjs/operators';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import * as Comlink from 'comlink';
 import { Executor } from 'src/worker/executor';
-import { ExecutionResult } from 'src/worker/execution-result';
-import { ExecutionStatus } from 'src/worker/execution-status';
+import { ExecutionResult } from 'src/worker/execution/execution-result';
+import { ExecutionStatus } from 'src/worker/execution/execution-status';
+import { ExecutionData } from '../../worker/execution/execution-data';
 
 @Injectable()
 export class ExecutorService {
@@ -16,10 +17,10 @@ export class ExecutorService {
     private project: SquishyProject | undefined
     private _status: Subject<ExecutionStatus>
     private _executable: BehaviorSubject<void>
-    private executorData: { [key: string]: unknown } | undefined
+    private executionData: ExecutionData | undefined
 
     constructor() {
-        this.executorData = {}
+        this.executionData = {}
         this._status = new Subject<ExecutionStatus>()
         this._executable = new BehaviorSubject<void>(undefined)
         this.initWorker()
@@ -37,14 +38,14 @@ export class ExecutorService {
 
     setProject(project: SquishyProject): void {
         // reset the excutor data
-        this.executorData = {}
+        this.executionData = {}
         // update the project
         this.project = project;
     }
 
     setData(id: string, data: unknown): void {
-        if (this.executorData) {
-            this.executorData[id] = data
+        if (this.executionData) {
+            this.executionData[id] = data
         }
         this._executable.next()
     }
@@ -53,7 +54,7 @@ export class ExecutorService {
         if (!this.project) {
             return false
         }
-        if (!this.executorData) {
+        if (!this.executionData) {
             return false
         }
     }
@@ -71,8 +72,10 @@ export class ExecutorService {
     }
 
     async execute(): Promise<ExecutionResult> {
-        console.log(this.project, this.executorData)
-        const result: ExecutionResult = await this.executor.execute()
+        if (!this.project || !this.executionData) {
+            throw new Error()
+        }
+        const result: ExecutionResult = await this.executor.execute(this.project, this.executionData)
         return result
     }
 

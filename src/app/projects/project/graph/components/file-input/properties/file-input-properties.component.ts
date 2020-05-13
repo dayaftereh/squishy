@@ -7,6 +7,7 @@ import { SelectItem } from 'primeng/api/selectitem';
 import { Encodings, Encoding } from 'src/app/utils/encodings';
 import { FileInputMode, FileInputModes } from '../file-input.mode';
 import { Subscription } from 'rxjs';
+import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
     templateUrl: './file-input-properties.component.html'
@@ -75,9 +76,8 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
     }
 
     private onFormChanged(): void {
-        const mode: FileInputMode = Utils.getFormValue(this.formGroup, 'mode', FileInputMode.Text)
-        console.log(mode)
-        Utils.setFromDisabled(this.formGroup, 'encoding', mode !== FileInputMode.Text, false)
+        const mode: FileInputMode = FromUtils.getFormValue(this.formGroup, 'mode', FileInputMode.Text)
+        FromUtils.setFromDisabled(this.formGroup, 'encoding', mode !== FileInputMode.Text, false)
     }
 
     async submit(): Promise<void> {
@@ -85,10 +85,10 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
             return
         }
 
-        this.fileInputData.name = Utils.getFormValue(this.formGroup, 'name', this.fileInputData.name)
-        this.fileInputData.mode = Utils.getFormValue(this.formGroup, 'mode', this.fileInputData.mode)
-        this.fileInputData.accept = Utils.getFormValue(this.formGroup, 'accept', this.fileInputData.accept)
-        this.fileInputData.encoding = Utils.getFormValue(this.formGroup, 'encoding', this.fileInputData.encoding)
+        this.fileInputData.name = FromUtils.getFormValue(this.formGroup, 'name', this.fileInputData.name)
+        this.fileInputData.mode = FromUtils.getFormValue(this.formGroup, 'mode', this.fileInputData.mode)
+        this.fileInputData.accept = FromUtils.getFormValue(this.formGroup, 'accept', this.fileInputData.accept)
+        this.fileInputData.encoding = FromUtils.getFormValue(this.formGroup, 'encoding', this.fileInputData.encoding)
     }
 
     async cancel(): Promise<void> {

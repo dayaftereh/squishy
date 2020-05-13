@@ -1,8 +1,7 @@
+import { NodeData, NodesData } from 'rete/types/core/data';
 import * as uuid from 'uuid';
-import { FormGroup, AbstractControl } from '@angular/forms';
-import { SquishyNodeData } from '../projects/project/graph/components/squishy-node.data';
 import { SquishyProject } from '../projects-service/squishy-project';
-import { NodesData, NodeData } from 'rete/types/core/data';
+import { SquishyNodeData } from '../projects/project/graph/components/squishy-node.data';
 
 export class Utils {
 
@@ -23,47 +22,6 @@ export class Utils {
             return true
         }
         return !array || array.length < 1
-    }
-
-    static getFormValue<T>(formGroup: FormGroup | undefined, name: string, defaultValue: T): T {
-        if (Utils.isNullOrUndefined(formGroup)) {
-            return defaultValue
-        }
-        const formControl: AbstractControl | null = formGroup.get(name)
-        if (Utils.isNullOrUndefined(formControl)) {
-            return defaultValue
-        }
-
-        const value: T | null = formControl.value
-        if (Utils.isNullOrUndefined(value)) {
-            return defaultValue
-        }
-
-        return value as T
-    }
-
-    static setFromDisabled(formGroup: FormGroup | undefined, name: string, disabled: boolean, emitEvent?: boolean): void {
-        if (Utils.isNullOrUndefined(formGroup)) {
-            return
-        }
-        const formControl: AbstractControl | null = formGroup.get(name)
-        if (Utils.isNullOrUndefined(formControl)) {
-            return
-        }
-
-        if (disabled) {
-            formControl.disable(
-                {
-                    emitEvent
-                }
-            )
-        } else {
-            formControl.enable(
-                {
-                    emitEvent
-                }
-            )
-        }
     }
 
     static forEachProperty<T>(o: T, fn: (value: unknown, key: string) => void): void {
@@ -111,15 +69,22 @@ export class Utils {
         })
     }
 
-    static getSquishyNodesData(project: SquishyProject | undefined): SquishyNodeData[] {
+    static getNodesData(project: SquishyProject | undefined): NodeData[] {
         // check if project, data and nodes exists
         if (Utils.isNullOrUndefined(project) || Utils.isNullOrUndefined(project.data) || Utils.isNullOrUndefined(project.data.nodes)) {
             return []
         }
         // get the nodes from the project
         const nodes: NodesData = project.data.nodes
-        // map the nodes to data    
+
+        // get all nodes
         return Utils.mapProperties(nodes, (nodeData: NodeData) => {
+            return nodeData
+        })
+    }
+
+    static getSquishyNodesData(project: SquishyProject | undefined): SquishyNodeData[] {
+        return Utils.getNodesData(project).map((nodeData: NodeData) => {
             if (Utils.isNullOrUndefined(nodeData) || Utils.isNullOrUndefined(nodeData.data)) {
                 return undefined
             }
@@ -127,6 +92,14 @@ export class Utils {
         }).filter((data: SquishyNodeData | undefined) => {
             return !Utils.isNullOrUndefined(data)
         })
+    }
+
+    static headOfSet<T>(set: Set<T>): T | undefined {
+        const values: T[] = Array.from(set.values())
+        if (!values) {
+            return undefined
+        }
+        return values[0]
     }
 
 }

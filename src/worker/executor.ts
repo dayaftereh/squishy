@@ -1,23 +1,40 @@
 import { Subject } from 'rxjs'
-import { ExecutionResult } from './execution-result'
-import { ExecutionStatus } from './execution-status'
+import { ExecutionResult } from './execution/execution-result'
+import { ExecutionStatus } from './execution/execution-status'
+import { SquishyProject } from 'src/app/projects-service/squishy-project'
+import { Execution } from './execution/execution'
+import { ExecutionData } from './execution/execution-data'
 
 export class Executor {
 
     private _status: Subject<ExecutionStatus> | undefined
+
+    private execution: Execution | undefined
 
     constructor() {
         this._status = new Subject<ExecutionStatus>()
     }
 
     async cancel(): Promise<void> {
-
+        if (this.execution) {
+            this.execution.cancel()
+        }
     }
 
-    async execute(): Promise<ExecutionResult> {
-        console.log("Hello")
-        return {
-            time: 42.0
+    async execute(project: SquishyProject, data: ExecutionData): Promise<ExecutionResult> {
+        try {
+            // create a new execution
+            this.execution = new Execution(this._status)
+
+            // load the project and the execution data
+            this.execution.load(project, data)
+
+            // execute the execution
+            const result: ExecutionResult = await this.execution.execute()
+
+            return result
+        } finally {
+            this.execution = undefined
         }
     }
 

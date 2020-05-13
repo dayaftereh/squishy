@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
 import { Utils } from 'src/app/utils/utils';
 import { FileOutputData } from '../file-output.data';
+import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
     templateUrl: './file-output-properties.component.html'
@@ -29,8 +30,8 @@ export class FileOutputPropertiesComponent implements PropertiesDialogChild {
             return
         }
 
-        this.fileOutputData.name = Utils.getFormValue(this.formGroup, 'name', this.fileOutputData.name)
-        this.fileOutputData.filename = Utils.getFormValue(this.formGroup, 'filename', this.fileOutputData.filename)
+        this.fileOutputData.name = FromUtils.getFormValue(this.formGroup, 'name', this.fileOutputData.name)
+        this.fileOutputData.filename = FromUtils.getFormValue(this.formGroup, 'filename', this.fileOutputData.filename)
     }
 
     async  cancel(): Promise<void> {

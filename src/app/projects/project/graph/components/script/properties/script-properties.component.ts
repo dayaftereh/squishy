@@ -3,6 +3,7 @@ import { PropertiesDialogChild } from 'src/app/properties-dialog/service/propert
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { ScriptData } from '../script.data';
 import { Utils } from 'src/app/utils/utils';
+import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
     templateUrl: './script-properties.component.html'
@@ -27,7 +28,7 @@ export class ScriptPropertiesComponent implements PropertiesDialogChild {
             return
         }
         
-        this.scriptData.name = Utils.getFormValue(this.formGroup, 'name', this.scriptData.name)
+        this.scriptData.name = FromUtils.getFormValue(this.formGroup, 'name', this.scriptData.name)
     }
 
     async  cancel(): Promise<void> {

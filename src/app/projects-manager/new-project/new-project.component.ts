@@ -3,6 +3,7 @@ import { PropertiesDialogChild } from 'src/app/properties-dialog/service/propert
 import { FormGroup, FormControl } from '@angular/forms';
 import { Utils } from 'src/app/utils/utils';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
     templateUrl: './new-project.component.html'
@@ -22,7 +23,7 @@ export class NewProjectComponent implements PropertiesDialogChild {
     }
 
     async submit(): Promise<void> {
-        const name: string = Utils.getFormValue(this.formGroup, 'name', 'Noname')
+        const name: string = FromUtils.getFormValue(this.formGroup, 'name', 'Noname')
         this.projectsService.create(name)
     }
 

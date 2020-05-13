@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ProjectsService } from '../../../projects-service/projects.service';
 import { Utils } from 'src/app/utils/utils';
 import { SquishyProject } from '../../../projects-service/squishy-project';
+import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
     templateUrl: './project-properties.component.html'
@@ -29,7 +30,7 @@ export class ProjectPropertiesComponent implements PropertiesDialogChild {
         if (Utils.isNullOrUndefined(this.project)) {
             return
         }
-        this.project.name = Utils.getFormValue(this.formGroup, 'name', this.project.name)
+        this.project.name = FromUtils.getFormValue(this.formGroup, 'name', this.project.name)
         // notify about project change
         this.projectsService.update(this.project)
     }
