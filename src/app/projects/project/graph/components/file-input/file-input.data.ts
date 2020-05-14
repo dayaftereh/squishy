@@ -6,4 +6,5 @@ export interface FileInputData extends SquishyNodeData {
     encoding: Encoding;
     mode: FileInputMode;
     accept: string;
+    extendedOutput: boolean
 }

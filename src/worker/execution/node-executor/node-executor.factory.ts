@@ -1,4 +1,4 @@
-import { InputData, InputsData, NodeData } from 'rete/types/core/data';
+import { InputData, InputsData, NodeData, InputConnectionData } from 'rete/types/core/data';
 import { FileInputData } from 'src/app/projects/project/graph/components/file-input/file-input.data';
 import { FileOutputData } from 'src/app/projects/project/graph/components/file-output/file-output.data';
 import { NodeComponentsType } from 'src/app/projects/project/graph/components/node-components.type';
@@ -61,7 +61,7 @@ export class NodeExecutorFactory {
         // get the dependencies
         const dependencies: string[] = await this.dependencies(nodeData)
         // create the script node executor
-        const executor: ScriptNodeExecutor = new ScriptNodeExecutor(scriptData, nodeExecutionData, dependencies)
+        const executor: ScriptNodeExecutor = new ScriptNodeExecutor(scriptData, nodeExecutionData, dependencies, nodeData.inputs)
 
         return executor
     }
@@ -85,16 +85,24 @@ export class NodeExecutorFactory {
         // get the node input
         const inputs: InputsData = nodeData.inputs
 
-        // get the list of dependecies for this node from the inputs
-        return Utils.mapProperties(inputs, (inputData: InputData, key: string) => {
+        // list with the dependencies
+        const dependencies: string[] = []
+        // get all inputs
+        Utils.forEachProperty(inputs, (inputData: InputData) => {
+            // check if the input has a connection
             if (Utils.isNullOrUndefined(inputData.connections) || !inputData.connections) {
-                return undefined
+                return
             }
-            return key
-        }).filter((key: string | undefined) => {
-            return !Utils.isNullOrUndefined(key)
+
+            // get each connection
+            inputData.connections.forEach((inputConnectionData: InputConnectionData) => {
+                // get the id of the connection
+                const id: string = inputConnectionData.output
+                dependencies.push(id)
+            })
         })
 
+        return dependencies
     }
 
 }

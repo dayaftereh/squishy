@@ -31,7 +31,9 @@
     "ngx-monaco-editor": "~9.0.0",
     "file-saver": "~2.0.2",
     "sanitize-filename": "~1.6.3",
-    "comlink": "~4.3.0"
+    "comlink": "~4.3.0",
+    "moment": "~2.25.3",
+    "mathjs": "~7.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.0",
@@ -40,6 +42,7 @@
     "@angular/language-service": "~9.1.0",
     "@types/node": "^12.11.1",
     "@types/file-saver": "~2.0.1",
+    "@types/mathjs": "~6.0.5",
     "codelyzer": "^5.1.2",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

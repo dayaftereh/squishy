@@ -1,0 +1,1 @@
+export type ExecutionContext = { [key: string]: unknown }

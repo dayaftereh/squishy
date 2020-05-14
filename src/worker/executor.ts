@@ -27,7 +27,7 @@ export class Executor {
             this.execution = new Execution(this._status)
 
             // load the project and the execution data
-            this.execution.load(project, data)
+            await this.execution.load(project, data)
 
             // execute the execution
             const result: ExecutionResult = await this.execution.execute()

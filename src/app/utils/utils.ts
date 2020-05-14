@@ -69,6 +69,35 @@ export class Utils {
         })
     }
 
+    static async readFileAsArrayBuffer(file: File): Promise<ArrayBuffer> {
+        var completed: boolean = false
+        const fileReader: FileReader = new FileReader()
+        return new Promise((resolve, reject) => {
+            // if reader fails
+            fileReader.onerror = (e) => {
+                if (!completed) {
+                    reject(e)
+                }
+                completed = true
+            }
+
+            // callback for done
+            const done = () => {
+                if (!completed) {
+                    const buffer: ArrayBuffer = fileReader.result as ArrayBuffer
+                    resolve(buffer)
+                }
+                completed = true
+            }
+
+            fileReader.onload = done
+            fileReader.onloadend = done
+
+            // read the file as text
+            fileReader.readAsArrayBuffer(file)
+        })
+    }
+
     static getNodesData(project: SquishyProject | undefined): NodeData[] {
         // check if project, data and nodes exists
         if (Utils.isNullOrUndefined(project) || Utils.isNullOrUndefined(project.data) || Utils.isNullOrUndefined(project.data.nodes)) {

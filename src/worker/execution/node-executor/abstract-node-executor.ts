@@ -17,8 +17,13 @@ export abstract class AbstractNodeExecutor<T, R> implements NodeExecutor {
         this._executed = false
     }
 
+    get nodeId(): string {
+        const nodeData: SquishyNodeData = this.nodeData as any as SquishyNodeData
+        return nodeData.id
+    }
+
     get nodeData(): T {
-        return this.nodeData as T
+        return this._nodeData as T
     }
 
     get executionData(): R {
@@ -56,7 +61,7 @@ export abstract class AbstractNodeExecutor<T, R> implements NodeExecutor {
         }
     }
 
-    protected async isExecuteable(execution: Execution): Promise<boolean> {
+    async isExecuteable(execution: Execution): Promise<boolean> {
         // get all dependent executors
         const dependentExecutors: NodeExecutor[] = await this.getDependentNodeExecutors(execution)
 
@@ -79,6 +84,10 @@ export abstract class AbstractNodeExecutor<T, R> implements NodeExecutor {
         }))
         return dependentExecutors
     }
+
+    abstract result(): any
+
+    abstract isOutput(): boolean
 
     protected abstract internalExecute(execution: Execution): Promise<void>
 }

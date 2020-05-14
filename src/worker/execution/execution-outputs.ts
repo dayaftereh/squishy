@@ -1,0 +1,1 @@
+export type ExecutionOutputs = { [key: string]: any }
