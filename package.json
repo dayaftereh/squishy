@@ -1,10 +1,11 @@
 {
   "name": "squishy",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve"
   },
+  "homepage": "https://github.com/dayaftereh/squishy#readme",
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.0",
@@ -33,11 +34,14 @@
     "sanitize-filename": "~1.6.3",
     "comlink": "~4.3.0",
     "moment": "~2.25.3",
-    "mathjs": "~7.0.0"
+    "mathjs": "~7.0.0",
+    "@fortawesome/fontawesome-svg-core": "~1.2.28",
+    "@fortawesome/free-brands-svg-icons": "~5.13.0",
+    "@fortawesome/angular-fontawesome": "~0.6.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.0",
-    "@angular/cli": "~9.1.0",
+    "@angular/cli": "~9.1.6",
     "@angular/compiler-cli": "~9.1.0",
     "@angular/language-service": "~9.1.0",
     "@types/node": "^12.11.1",

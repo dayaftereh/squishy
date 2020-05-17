@@ -4,90 +4,135 @@ import { Execution } from '../execution';
 import { Utils } from 'src/app/utils/utils';
 import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
+import { NodeData, InputsData, InputData, InputConnectionData } from 'rete/types/core/data';
 
-export abstract class AbstractNodeExecutor<T, R> implements NodeExecutor {
+export abstract class AbstractNodeExecutor implements NodeExecutor {
 
-    private _executed: boolean
+    private executed: boolean
+
+    protected result: any
 
     constructor(
-        private readonly _nodeData: T,
-        private readonly _executionData: R,
-        private readonly _dependencies: string[],
+        protected readonly execution: Execution,
+        protected readonly nodeData: NodeData,
+        protected readonly executionData: unknown,
     ) {
-        this._executed = false
+        this.executed = false
     }
 
-    get nodeId(): string {
-        const nodeData: SquishyNodeData = this.nodeData as any as SquishyNodeData
-        return nodeData.id
+    isExecuted(): boolean {
+        return this.executed
     }
 
-    get nodeData(): T {
-        return this._nodeData as T
-    }
-
-    get executionData(): R {
-        return this._executionData as R
-    }
-
-    get dependencies(): string[] {
-        return this._dependencies
-    }
-
-    get executed(): boolean {
-        return this._executed
-    }
-
-    protected id(): string | undefined {
-        if (Utils.isNullOrUndefined(this._nodeData)) {
+    getNodeData<T>(): T | undefined {
+        const squishyNodeData: SquishyNodeData | undefined = this.squishyNodeData()
+        if (Utils.isNullOrUndefined(squishyNodeData)) {
             return undefined
         }
-        const squishyNodeData: SquishyNodeData = this._nodeData as any as SquishyNodeData
+        return squishyNodeData as any as T
+    }
+
+    getExecutionData<T>(): T | undefined {
+        if (Utils.isNullOrUndefined(this.executionData)) {
+            return undefined
+        }
+        return this.executionData as any as T
+    }
+
+    squishyNodeData(): SquishyNodeData | undefined {
+        if (Utils.isNullOrUndefined(this.nodeData) || Utils.isNullOrUndefined(this.nodeData.data)) {
+            return undefined
+        }
+        const squishyNodeData: SquishyNodeData = this.nodeData.data as any as SquishyNodeData
+        return squishyNodeData
+    }
+
+    id(): string | undefined {
+        const squishyNodeData: SquishyNodeData | undefined = this.squishyNodeData()
+        if (Utils.isNullOrUndefined(squishyNodeData)) {
+            return undefined
+        }
         return squishyNodeData.id
     }
 
-    async execute(execution: Execution): Promise<void> {
+    async execute(): Promise<void> {
         // check if this node executor executeable
-        const executeable: boolean = await this.isExecuteable(execution)
+        const executeable: boolean = await this.isExecuteable()
         // check if executeable
         if (!executeable) {
             throw new Error(`unable to execute nod executor [ ${this.id()} ], because node executor not executable`)
         }
 
         try {
-            await this.internalExecute(execution)
+            await this.internalExecute()
         } finally {
-            this._executed = true
+            this.executed = true
         }
     }
 
-    async isExecuteable(execution: Execution): Promise<boolean> {
+    async isExecuteable(): Promise<boolean> {
         // get all dependent executors
-        const dependentExecutors: NodeExecutor[] = await this.getDependentNodeExecutors(execution)
+        const dependentExecutors: NodeExecutor[] = await this.getDependentNodeExecutors()
 
         // check if all executors are executed
         return dependentExecutors.every((nodeExecutor: NodeExecutor) => {
-            return nodeExecutor.executed
+            return nodeExecutor.isExecuted()
         })
     }
 
-    async getDependentNodeExecutors(execution: Execution): Promise<NodeExecutor[]> {
+    async getInputConnections(): Promise<Set<string>> {
+        // create a new set with all input connections
+        const connections: Set<string> = new Set<string>()
+        // check if node data given and node data has input
+        if (Utils.isNullOrUndefined(this.nodeData) || Utils.isNullOrUndefined(this.nodeData.inputs)) {
+            return connections
+        }
+
+        // get the node input
+        const inputs: InputsData = this.nodeData.inputs
+
+        Utils.forEachProperty(inputs, (inputData: InputData) => {
+            // check if the input has a connection
+            if (Utils.isNullOrUndefined(inputData.connections) || !inputData.connections) {
+                return
+            }
+            // get each connection
+            inputData.connections.forEach((inputConnectionData: InputConnectionData) => {
+                // get the id of the connection
+                const id: string = inputConnectionData.output
+                connections.add(id)
+            })
+        })
+
+        return connections
+    }
+
+    async getDependentNodeExecutors(): Promise<NodeExecutor[]> {
+        // get all input connected node executor ids 
+        const connections: Set<string> = await this.getInputConnections()
+        // get the dependencies as list
+        const dependencies: string[] = Array.from(connections.values())
         // get all dependent executors
-        const dependentExecutors: NodeExecutor[] = await Promise.all(this._dependencies.map(async (id: string) => {
+        const dependentExecutors: NodeExecutor[] = await Promise.all(dependencies.map(async (id: string) => {
             // get the executor
-            const nodeExecutor: NodeExecutor = await execution.getExecutor(id)
+            const nodeExecutor: NodeExecutor = await this.execution.getExecutor(id)
             // check if the executor exists
             if (Utils.isNullOrUndefined(nodeExecutor)) {
                 throw new Error(`unable to find node executor for depnendency [ ${id} ]`)
             }
             return nodeExecutor
         }))
+
         return dependentExecutors
     }
 
-    abstract result(): any
+    getResult(): any | undefined {
+        return this.result
+    }
 
-    abstract isOutput(): boolean
+    hasOutput(): boolean {
+        return false
+    }
 
-    protected abstract internalExecute(execution: Execution): Promise<void>
+    protected abstract internalExecute(): Promise<void>
 }

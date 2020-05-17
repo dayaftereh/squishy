@@ -6,16 +6,20 @@ export class ScriptExecutionContext {
 
     plugins: ScriptTools | undefined
 
-    constructor(private readonly _execution: Execution, public readonly context: ExecutionContext) {
+    constructor(private readonly execution: Execution) {
         this.plugins = new ScriptTools()
     }
 
     get running(): boolean {
-        return this._execution.running
+        return this.execution.running
+    }
+
+    get context(): any {
+        return this.execution.context()
     }
 
     cancel(): void {
-        this._execution.cancel()
+        this.execution.cancel()
     }
 
     progress(value: number): void {

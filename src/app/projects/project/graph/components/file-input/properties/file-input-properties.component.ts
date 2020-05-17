@@ -36,6 +36,8 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
             mode: new FormControl(),
             encoding: new FormControl(),
             accept: new FormControl(),
+            multiple: new FormControl(),
+            extendedOutput: new FormControl(),
         })
     }
 
@@ -89,6 +91,8 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
         this.fileInputData.mode = FromUtils.getFormValue(this.formGroup, 'mode', this.fileInputData.mode)
         this.fileInputData.accept = FromUtils.getFormValue(this.formGroup, 'accept', this.fileInputData.accept)
         this.fileInputData.encoding = FromUtils.getFormValue(this.formGroup, 'encoding', this.fileInputData.encoding)
+        this.fileInputData.multiple = FromUtils.getFormValue(this.formGroup, 'multiple', this.fileInputData.multiple)
+        this.fileInputData.extendedOutput = FromUtils.getFormValue(this.formGroup, 'extendedOutput', this.fileInputData.extendedOutput)
     }
 
     async cancel(): Promise<void> {

@@ -8,6 +8,7 @@ import { NodeComponentsType } from 'src/app/projects/project/graph/components/no
 import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
 import { Utils } from 'src/app/utils/utils';
 import { ExecutorService } from '../../executor-service/executor.service';
+import { ExecutionResult } from 'src/worker/execution/execution-result';
 
 @Component({
     templateUrl: './executor.component.html',
@@ -53,7 +54,8 @@ export class ExecutorComponent implements OnInit, OnDestroy {
     }
 
     async execute(): Promise<void> {
-        await this.executorService.execute()
+        const result: ExecutionResult = await this.executorService.execute()
+        console.log(result)
     }
 
     ngOnDestroy(): void {

@@ -11,6 +11,7 @@ import { ProjectModule } from './projects/project/project.module';
 import { ProjectsModule } from './projects/projects.module';
 import { PropertiesDialogModule } from './properties-dialog/properties-dialog.module';
 import { RunnerModule } from './runner/runner.module';
+import { VersionModule } from './version/version.module';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { RunnerModule } from './runner/runner.module';
     // custom
     HomeModule,
     RunnerModule,
+    VersionModule,
     ProjectModule,
     ProjectsModule,
     ConfirmDialogModule,

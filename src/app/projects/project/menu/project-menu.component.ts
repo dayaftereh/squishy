@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../../projects-service/projects.service';
@@ -12,7 +12,7 @@ import { Utils } from 'src/app/utils/utils';
     templateUrl: './project-menu.component.html',
     selector: 'app-project-menu'
 })
-export class ProjectMenuComponent {
+export class ProjectMenuComponent implements OnInit, OnDestroy{
 
     project: SquishyProject | undefined
 

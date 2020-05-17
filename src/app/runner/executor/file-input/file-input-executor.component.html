@@ -1,7 +1,7 @@
 <p-card [header]="fileInputData?.name">
     <div class="p-grid">
         <div class="p-col">
-            <p-fileUpload [multiple]="true" [customUpload]="true" [showUploadButton]="false"
+            <p-fileUpload [multiple]="fileInputData?.multiple" [customUpload]="true" [showUploadButton]="false"
                 [showCancelButton]="false" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)"></p-fileUpload>
         </div>
     </div>

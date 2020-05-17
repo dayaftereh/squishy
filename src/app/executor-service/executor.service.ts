@@ -7,6 +7,13 @@ import { Executor } from 'src/worker/executor';
 import { ExecutionResult } from 'src/worker/execution/execution-result';
 import { ExecutionStatus } from 'src/worker/execution/execution-status';
 import { ExecutionData } from '../../worker/execution/execution-data';
+import { Utils } from '../utils/utils';
+import { SquishyNodeData } from '../projects/project/graph/components/squishy-node.data';
+import { NodeComponentsType } from '../projects/project/graph/components/node-components.type';
+import { FileOutputData } from '../projects/project/graph/components/file-output/file-output.data';
+import { Downloader } from '../utils/downloader';
+import { UrlHandlingStrategy } from '@angular/router';
+import { ExecutionResultManager } from './execution-result.manager';
 
 @Injectable()
 export class ExecutorService {
@@ -76,7 +83,14 @@ export class ExecutorService {
             throw new Error()
         }
         const result: ExecutionResult = await this.executor.execute(this.project, this.executionData)
+        // create the result manager
+        const executionResultManager: ExecutionResultManager = new ExecutionResultManager(this.project)
+        // dispatch the received result from the execution
+        await executionResultManager.dispatch(result)
+
         return result
     }
+
+
 
 }

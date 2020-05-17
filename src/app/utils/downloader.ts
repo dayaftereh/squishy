@@ -4,7 +4,7 @@ import { SquishyProject } from '../projects-service/squishy-project';
 
 export class Downloader {
 
-    static download(blob: Blob, filename: string): void {
+    static download(blob: Blob | string, filename: string): void {
         const sanitizeFilename: string = Downloader.escapeFilename(filename)
         saveAs(blob, sanitizeFilename)
     }

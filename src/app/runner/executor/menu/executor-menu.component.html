@@ -1,0 +1,9 @@
+<div class="p-grid">
+    <div class="p-col">
+        <button pButton type="button" icon="pi pi-bars" class="ui-button-secondary" [routerLink]="['/runner']"></button>
+        <button pButton type="button" icon="pi pi-pencil" class="ui-button-secondary"
+            [routerLink]="['/project', project?.id]"></button>
+        <button pButton type="button" icon="pi pi-download" class="ui-button-secondary"
+            (click)="downloadProject()"></button>
+    </div>
+</div>

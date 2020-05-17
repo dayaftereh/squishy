@@ -36,7 +36,7 @@ export class Execution {
         return nodeExecutor
     }
 
-    async context(): Promise<ExecutionContext> {
+    context(): ExecutionContext {
         return this._context
     }
 
@@ -45,8 +45,8 @@ export class Execution {
     }
 
     async load(project: SquishyProject, data: ExecutionData): Promise<void> {
-        console.log(project)
-        const factory: NodeExecutorFactory = new NodeExecutorFactory()
+        // create a new node exector factory
+        const factory: NodeExecutorFactory = new NodeExecutorFactory(this)
         // create all node executors
         await Promise.all(Utils.getNodesData(project).map(async (nodeData: NodeData) => {
             // check if the node has data
@@ -89,7 +89,7 @@ export class Execution {
     private async progress(runnable: string[]): Promise<void> {
         // check if runnable node executor available
         if (runnable.length > 0) {
-            await this.progressOpen(runnable)
+            await this.executorRunnable(runnable)
             return
         }
 
@@ -97,25 +97,24 @@ export class Execution {
         await this.inspectRunnableNodes(runnable)
     }
 
-    private async progressOpen(runnable: string[]): Promise<void> {
+    private async executorRunnable(runnable: string[]): Promise<void> {
         // get the next runnable node id
         const id: string = runnable.shift()
-
-        console.log("execute", id)
 
         // get the node executor for the runnable id
         const nodeExecutor: NodeExecutor = this.nodeExecutors.get(id)
         // execute the executor
-        await nodeExecutor.execute(this)
+        await nodeExecutor.execute()
         // next tick
         return this.tick(runnable)
     }
 
     private async inspectRunnableNodes(runnable: string[]): Promise<void> {
+        // list with all not yet executed executors
         const executors: NodeExecutor[] = []
         // find the not yet finished node executors
         this.nodeExecutors.forEach((nodeExecutor: NodeExecutor) => {
-            if (!nodeExecutor.executed) {
+            if (!nodeExecutor.isExecuted()) {
                 executors.push(nodeExecutor)
             }
         })
@@ -123,10 +122,10 @@ export class Execution {
         // check which executor is executable
         await Promise.all(executors.map(async (nodeExecutor: NodeExecutor) => {
             // check if the node executor is executable
-            const executable: boolean = await nodeExecutor.isExecuteable(this)
+            const executable: boolean = await nodeExecutor.isExecuteable()
             if (executable) {
                 // add the executor to the runnable executors
-                const id: string = nodeExecutor.nodeId
+                const id: string = nodeExecutor.id()
                 runnable.push(id)
             }
         }))
@@ -146,17 +145,18 @@ export class Execution {
     }
 
     private async getOutputs(): Promise<ExecutionOutputs> {
+        // create the executions outputs
         const outputs: ExecutionOutputs = {}
         // check each node executor
         this.nodeExecutors.forEach((nodeExecutor: NodeExecutor) => {
             // check if the executor has an output
-            if (!nodeExecutor.isOutput()) {
+            if (!nodeExecutor.hasOutput()) {
                 return
             }
             // get the id of the executor
-            const id: string = nodeExecutor.nodeId
+            const id: string = nodeExecutor.id()
             // get the result of the node executor
-            outputs[id] = nodeExecutor.result()
+            outputs[id] = nodeExecutor.getResult()
         })
 
         return outputs

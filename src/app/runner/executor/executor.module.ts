@@ -5,6 +5,7 @@ import { ProjectsServiceModule } from 'src/app/projects-service/projects-service
 import { ExecutorServiceModule } from '../../executor-service/executor-service.module';
 import { ExecutorComponent } from './executor.component';
 import { FileInputExecutorModule } from './file-input/file-input-executor.module';
+import { ExecutorMenuModule } from './menu/executor-menu.module';
 
 @NgModule({
     imports: [
@@ -13,6 +14,7 @@ import { FileInputExecutorModule } from './file-input/file-input-executor.module
         // PrimeNG
         ButtonModule,
         // Custom
+        ExecutorMenuModule,
         ExecutorServiceModule,
         ProjectsServiceModule,
         FileInputExecutorModule,

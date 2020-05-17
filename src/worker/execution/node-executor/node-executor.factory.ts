@@ -9,12 +9,13 @@ import { FileInputNodeExecutor } from './file-input/file-input.node-executor';
 import { FileOutputNodeExecutor } from './file-output/file-output.node-executor';
 import { NodeExecutor } from './node-executor';
 import { ScriptNodeExecutor } from './script/script.node-executor';
+import { Execution } from '../execution';
 
 export class NodeExecutorFactory {
 
     private factoryFunction: Map<NodeComponentsType, (nodeData: NodeData, nodeExecutionData: any) => Promise<NodeExecutor>>
 
-    constructor() {
+    constructor(private readonly execution: Execution) {
         this.init()
     }
 
@@ -45,64 +46,22 @@ export class NodeExecutorFactory {
     }
 
     private async createFileInput(nodeData: NodeData, nodeExecutionData: any): Promise<FileInputNodeExecutor> {
-        // get the file input data
-        const fileInputData: FileInputData = nodeData.data as any as FileInputData
-        // get the dependencies
-        const dependencies: string[] = await this.dependencies(nodeData)
         // create the file input node executor
-        const executor: FileInputNodeExecutor = new FileInputNodeExecutor(fileInputData, nodeExecutionData, dependencies)
-
+        const executor: FileInputNodeExecutor = new FileInputNodeExecutor(this.execution, nodeData, nodeExecutionData)
         return executor
     }
 
     private async createScript(nodeData: NodeData, nodeExecutionData: any): Promise<ScriptNodeExecutor> {
-        // get the script data
-        const scriptData: ScriptData = nodeData.data as any as ScriptData
-        // get the dependencies
-        const dependencies: string[] = await this.dependencies(nodeData)
         // create the script node executor
-        const executor: ScriptNodeExecutor = new ScriptNodeExecutor(scriptData, nodeExecutionData, dependencies, nodeData.inputs)
-
+        const executor: ScriptNodeExecutor = new ScriptNodeExecutor(this.execution, nodeData, nodeExecutionData)
         return executor
     }
 
     private async createFileOutput(nodeData: NodeData, nodeExecutionData: any): Promise<FileOutputNodeExecutor> {
-        // get the file output data
-        const fileOutputData: FileOutputData = nodeData.data as any as FileOutputData
-        // get the dependencies
-        const dependencies: string[] = await this.dependencies(nodeData)
         // create the file output node executor
-        const executor: FileOutputNodeExecutor = new FileOutputNodeExecutor(fileOutputData, nodeExecutionData, dependencies)
+        const executor: FileOutputNodeExecutor = new FileOutputNodeExecutor(this.execution, nodeData, nodeExecutionData)
 
         return executor
-    }
-
-    private async dependencies(nodeData: NodeData): Promise<string[]> {
-        // check if the node has inputs
-        if (Utils.isNullOrUndefined(nodeData) || Utils.isNullOrUndefined(nodeData.inputs)) {
-            return []
-        }
-        // get the node input
-        const inputs: InputsData = nodeData.inputs
-
-        // list with the dependencies
-        const dependencies: string[] = []
-        // get all inputs
-        Utils.forEachProperty(inputs, (inputData: InputData) => {
-            // check if the input has a connection
-            if (Utils.isNullOrUndefined(inputData.connections) || !inputData.connections) {
-                return
-            }
-
-            // get each connection
-            inputData.connections.forEach((inputConnectionData: InputConnectionData) => {
-                // get the id of the connection
-                const id: string = inputConnectionData.output
-                dependencies.push(id)
-            })
-        })
-
-        return dependencies
     }
 
 }

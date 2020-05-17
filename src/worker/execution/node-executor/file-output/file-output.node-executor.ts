@@ -1,53 +1,49 @@
+import { NodeData } from 'rete/types/core/data';
 import { FileOutputData } from 'src/app/projects/project/graph/components/file-output/file-output.data';
 import { Execution } from '../../execution';
 import { AbstractNodeExecutor } from '../abstract-node-executor';
-import { FileOutputExecutionData } from './file-output.execution-data';
 import { NodeExecutor } from '../node-executor';
-import { UrlObject } from 'url';
+import { FileOutputExecutionData } from './file-output.execution-data';
 
-export class FileOutputNodeExecutor extends AbstractNodeExecutor<FileOutputData, FileOutputExecutionData> {
+export class FileOutputNodeExecutor extends AbstractNodeExecutor {
 
-    private _result: any
-
-    constructor(nodeData: FileOutputData, executionData: FileOutputExecutionData, dependencies: string[]) {
-        super(nodeData, executionData, dependencies)
+    constructor(execution: Execution, nodeData: NodeData, executionData: FileOutputExecutionData) {
+        super(execution, nodeData, executionData)
     }
 
-    protected async internalExecute(execution: Execution): Promise<void> {
+    protected async internalExecute(): Promise<void> {
         // get all dependent node executors
-        const dependencies: NodeExecutor[] = await this.getDependentNodeExecutors(execution)
+        const dependencies: NodeExecutor[] = await this.getDependentNodeExecutors()
         // check if same dependencies exists
         if (!dependencies || dependencies.length < 1) {
-            return
+            throw new Error(`unable to execute file output executor [ ${this.id()} ], because no dependent node executor found`)
         }
 
         // get the node executor
         const nodeExecutor: NodeExecutor = dependencies[0]
+
         // check if the node executor is executed
-        if (!nodeExecutor.executed) {
-            throw new Error(`dependet node executor [ ${nodeExecutor.nodeId} ] for node [ ${this.nodeId} ] are not executed`)
+        if (!nodeExecutor.isExecuted()) {
+            throw new Error(`dependet node executor [ ${nodeExecutor.id()} ] for node [ ${this.id()} ] are not executed`)
         }
+
         // get the content from the depended node executor
-        const content: any = nodeExecutor.result()
+        const content: any = nodeExecutor.getResult()
 
         // create the blob
         const blob: Blob = new Blob([content], {
-            type: this.nodeData.contentType,
-            endings: this.nodeData.endings
+            type: this.getNodeData<FileOutputData>().contentType,
+            endings: this.getNodeData<FileOutputData>().endings
         })
 
         // create the Blob URL
         const url: string = URL.createObjectURL(blob)
         // set the url as result
-        this._result = url
+        this.result = url
     }
 
-    isOutput(): boolean {
+    hasOutput(): boolean {
         return true
-    }
-
-    result(): any {
-        return this._result
     }
 
 }
