@@ -1,8 +1,13 @@
 import { saveAs } from 'file-saver';
-import * as sanitize from 'sanitize-filename'
 import { SquishyProject } from '../projects-service/squishy-project';
 
 export class Downloader {
+
+    private static illegalRe: RegExp = /[\/\?<>\\:\*\|"]/g;
+    private static controlRe: RegExp = /[\x00-\x1f\x80-\x9f]/g;
+    private static reservedRe: RegExp = /^\.+$/;
+    private static windowsReservedRe: RegExp = /^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i;
+    private static windowsTrailingRe: RegExp = /[\. ]+$/;
 
     static download(blob: Blob | string, filename: string): void {
         const sanitizeFilename: string = Downloader.escapeFilename(filename)
@@ -11,7 +16,20 @@ export class Downloader {
 
     static escapeFilename(filename: string): string {
         const whitoutWhitespace: string = filename.replace(/\s+/g, '_')
-        return sanitize(whitoutWhitespace, { replacement: '-' })
+        return Downloader.filenameSanitize(whitoutWhitespace, '-')
+    }
+
+    static filenameSanitize(filename: string, replacement?: string): string {
+        if (!replacement) {
+            replacement = ''
+        }
+
+        return filename
+            .replace(Downloader.illegalRe, replacement)
+            .replace(Downloader.controlRe, replacement)
+            .replace(Downloader.reservedRe, replacement)
+            .replace(Downloader.windowsReservedRe, replacement)
+            .replace(Downloader.windowsTrailingRe, replacement)
     }
 
     static downloadPorjects(projects: SquishyProject[]): void {

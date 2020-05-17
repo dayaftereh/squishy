@@ -1,7 +1,7 @@
-:host /deep/ .app-projects-manager-upload {
+:host ::ng-deep .app-projects-manager-upload {
     padding-top: 40px;
 }
 
-:host /deep/ .ui-fileupload-content {
+:host ::ng-deep .ui-fileupload-content {
     min-height: 50vh;
 }
