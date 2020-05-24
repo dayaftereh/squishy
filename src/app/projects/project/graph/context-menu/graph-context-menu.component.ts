@@ -1,7 +1,8 @@
 import { Component as NgComponent, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { ContextMenu } from 'primeng/contextmenu/public_api';
-import { NodeEditor, Component, Node } from 'rete';
+import { Component, Node, NodeEditor } from 'rete';
 import { Utils } from 'src/app/utils/utils';
 
 @NgComponent({
@@ -22,7 +23,7 @@ export class GraphContextMenuComponent implements OnInit {
 
     private mainItems: MenuItem[];
 
-    constructor() {
+    constructor(private readonly translateService: TranslateService) {
         this.items = []
         this.mainItems = []
     }
@@ -36,21 +37,29 @@ export class GraphContextMenuComponent implements OnInit {
     private onEditor(nodeEditor: NodeEditor): void {
         this.editor = nodeEditor
 
-        nodeEditor.on(['contextmenu'], (event: unknown) => {
-            this.showContextMenu(event)
+        nodeEditor.on(['contextmenu'], async (event: unknown) => {
+            await this.showContextMenu(event)
         })
 
-        nodeEditor.components.forEach((component: Component) => {
-            const menuItem: MenuItem = this.createMenuItem(nodeEditor, component)
+        nodeEditor.components.forEach(async (component: Component) => {
+            const menuItem: MenuItem = await this.createMenuItem(nodeEditor, component)
             this.mainItems.push(menuItem)
         })
 
     }
 
-    private createMenuItem(nodeEditor: NodeEditor, component: Component): MenuItem {
+    private async createMenuItem(nodeEditor: NodeEditor, component: Component): Promise<MenuItem> {
+        // get the name of the component
+        const name: string = component.name
+        // make the name to lower cases
+        const nameLower: string = name.toLocaleLowerCase()
+        // get the context menu label
+        const label: string = await this.translateService.get(`projects.project.graph.context-menu.components.${nameLower}`).toPromise()
+
         return {
-            label: component.name,
+            label,
             command: async (event: any) => {
+                // create the node and add to the editor
                 const node: Node = await this.createNode(event, component)
                 nodeEditor.addNode(node)
             }
@@ -92,7 +101,7 @@ export class GraphContextMenuComponent implements OnInit {
         return node
     }
 
-    private showContextMenu(event: any): void {
+    private async showContextMenu(event: any): Promise<void> {
         if (Utils.isNullOrUndefined(this.editor)) {
             return
         }
@@ -109,7 +118,7 @@ export class GraphContextMenuComponent implements OnInit {
             this.items = this.mainItems
         } else {
             const node: Node = event.node
-            this.items = this.createNodeMenuItems(node)
+            this.items = await this.createNodeMenuItems(node)
         }
 
         mouseEvent.stopPropagation()
@@ -119,16 +128,19 @@ export class GraphContextMenuComponent implements OnInit {
         }
     }
 
-    private createNodeMenuItems(node: Node): MenuItem[] {
+    private async createNodeMenuItems(node: Node): Promise<MenuItem[]> {
         if (Utils.isNullOrUndefined(this.editor)) {
             return []
         }
+
+        const cloneLabel: string = await this.translateService.get('projects.project.graph.context-menu.btn.clone').toPromise()
+        const deleteLabel: string = await this.translateService.get('projects.project.graph.context-menu.btn.delete').toPromise()
 
         const component: Component = this.editor.getComponent(node.name)
 
         return [
             {
-                label: 'Delete',
+                label: deleteLabel,
                 icon: 'pi pi-trash',
                 command: () => {
                     this.editor.removeNode(node)
@@ -138,7 +150,7 @@ export class GraphContextMenuComponent implements OnInit {
                 separator: true
             },
             {
-                label: 'Clone',
+                label: cloneLabel,
                 icon: 'pi pi-clone',
                 command: async (event: unknown) => {
                     const clone: Node = await this.createNode(event, component, node.data, node.meta)

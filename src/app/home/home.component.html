@@ -1,17 +1,27 @@
 <div class="p-grid">
     <div class="p-col-3 p-offset-3">
-        <p-card header="Runner">
-            <div>Execute a created project.</div>
+        <p-card header="{{'home.runner.header' | translate}}">
+            <div class="p-grid">
+                <div class="p-col">
+                    {{'home.runner.description' | translate}}
+                </div>
+            </div>
             <p-footer>
-                <button pButton type="button" label="Run" icon="pi pi-play" [routerLink]="['/runner']" class="ui-button-secondary"></button>
+                <button pButton type="button" label=" {{'home.btn.run' | translate}}" icon="pi pi-play" [routerLink]="['/runner']"
+                    class="ui-button-secondary"></button>
             </p-footer>
         </p-card>
     </div>
     <div class="p-col-3">
-        <p-card header="Projects">
-            Create a individual project.
+        <p-card header="{{'home.projects.header' | translate}}">
+            <div class="p-grid">
+                <div class="p-col">
+                    {{'home.projects.description' | translate}}
+                </div>
+            </div>
             <p-footer>
-                <button pButton type="button" label="Edit" icon="pi pi-user-edit" [routerLink]="['/projects']" class="ui-button-secondary"></button>
+                <button pButton type="button" label=" {{'home.btn.edit' | translate}}" icon="pi pi-user-edit" [routerLink]="['/projects']"
+                    class="ui-button-secondary"></button>
             </p-footer>
         </p-card>
     </div>

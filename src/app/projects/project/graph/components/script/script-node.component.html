@@ -4,10 +4,12 @@
     </p-header>
     <div class="p-grid p-justify-end">
         <div class="p-col-2">
-            <button pButton type="button" icon="pi pi-file-o" class="ui-button-secondary" (click)="editScript()"></button>
+            <button pButton type="button" icon="pi pi-file-o" class="ui-button-secondary"
+                (click)="editScript()"></button>
         </div>
         <div class="p-col-2">
-            <button pButton type="button" icon="pi pi-cog" class="ui-button-secondary" (click)="editProperties()"></button>
+            <button pButton type="button" icon="pi pi-cog" class="ui-button-secondary"
+                (click)="editProperties()"></button>
         </div>
     </div>
     <div class="p-grid" *ngFor="let input of inputs">
@@ -20,7 +22,7 @@
     </div>
     <div class="p-grid p-justify-end" *ngFor="let output of outputs" style="text-align: right;">
         <div class="p-col">
-            {{output.name}}
+            {{'projects.project.graph.components.script.node.output.lbl' | translate}}
         </div>
         <div class="p-col-2">
             <rete-socket rete-socket [io]="output" [socket]="output.socket"></rete-socket>

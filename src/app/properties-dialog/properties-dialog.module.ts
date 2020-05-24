@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { PropertiesDialogComponent } from './properties-dialog.component';
@@ -12,6 +13,8 @@ import { PropertiesDialogServiceModule } from './service/properties-dialog-servi
         // PrimeNG
         DialogModule,
         ButtonModule,
+        // ngx-translate,
+        TranslateModule,
         // custom
         PropertiesDialogServiceModule
     ],

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationService } from 'primeng/api';
 import { SelectItem } from 'primeng/api/selectitem';
 import { Subscription } from 'rxjs';
@@ -6,9 +7,9 @@ import { map } from 'rxjs/operators';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
+import { Downloader } from 'src/app/utils/downloader';
 import { Utils } from 'src/app/utils/utils';
 import { NewProjectComponent } from '../new-project/new-project.component';
-import { Downloader } from 'src/app/utils/downloader';
 
 @Component({
     templateUrl: './projects-manager-list.component.html',
@@ -30,6 +31,7 @@ export class ProjectsManagerListComponent implements OnInit, OnDestroy {
 
     constructor(
         private readonly projectsService: ProjectsService,
+        private readonly translateService: TranslateService,
         private readonly confirmationService: ConfirmationService,
         private readonly propertiesDialogService: PropertiesDialogService,
     ) {
@@ -80,27 +82,33 @@ export class ProjectsManagerListComponent implements OnInit, OnDestroy {
         }
     }
 
-    createProject(): void {
+    async createProject(): Promise<void> {
+        const title: string = await this.translateService.get('project-manager.new-project.header').toPromise()
+
         // open the properties dialog with the new project component
         this.propertiesDialogService.open({
             component: NewProjectComponent,
-            title: 'New Project',
+            title,
             onInit: (component: NewProjectComponent) => {
 
             }
         })
     }
 
-    deleteProjects(): void {
+    async deleteProjects(): Promise<void> {
         // check if a project is selected
         if (!this.selection) {
             return
         }
 
+        // get header and message for confirmation dialog
+        const header: string = await this.translateService.get('project-manager.list.delete-dialog.header').toPromise()
+        const message: string = await this.translateService.get('project-manager.list.delete-dialog.message').toPromise()
+
         // open confirm dialog
         this.confirmationService.confirm({
-            header: 'Delete',
-            message: 'Are you sure that you want to delete all selected projects ?',
+            header,
+            message,
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.deleteCurrentSelection()

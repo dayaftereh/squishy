@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
 import { ReteModule } from 'rete-angular-render-plugin';
@@ -16,6 +17,8 @@ import { FileOutputPropertiesModule } from './properties/file-output-properties.
         ButtonModule,
         // rete
         ReteModule,
+        // ngx-translate,
+        TranslateModule,
         // Custom
         FileOutputPropertiesModule,
         PropertiesDialogServiceModule

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { ProjectsServiceModule } from 'src/app/projects-service/projects-service.module';
 import { ExecutorServiceModule } from '../../executor-service/executor-service.module';
@@ -13,6 +14,8 @@ import { ExecutorMenuModule } from './menu/executor-menu.module';
         BrowserModule,
         // PrimeNG
         ButtonModule,
+        // ngx-translate,
+        TranslateModule,
         // Custom
         ExecutorMenuModule,
         ExecutorServiceModule,

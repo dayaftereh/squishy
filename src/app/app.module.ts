@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 import { HomeModule } from './home/home.module';
+import { I18NModule } from './i18n/i18n.module';
 import { ProjectModule } from './projects/project/project.module';
 import { ProjectsModule } from './projects/projects.module';
 import { PropertiesDialogModule } from './properties-dialog/properties-dialog.module';
@@ -23,6 +24,8 @@ import { VersionModule } from './version/version.module';
     AppRoutingModule,
     //MonacoEditor
     MonacoEditorModule.forRoot(),
+    // I18n
+    I18NModule,
     // custom
     HomeModule,
     RunnerModule,

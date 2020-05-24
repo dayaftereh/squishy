@@ -1,7 +1,7 @@
 <form [formGroup]="formGroup">
     <div class="p-grid">
         <div class="p-col">
-            Name:
+            {{'projects.project.graph.components.file-input.properties.name.lbl' | translate}}
         </div>
         <div class="p-col">
             <div class="ui-inputgroup">
@@ -11,7 +11,7 @@
     </div>
     <div class="p-grid">
         <div class="p-col">
-            Mode:
+            {{'projects.project.graph.components.file-input.properties.mode.lbl' | translate}}
         </div>
         <div class="p-col">
             <div class="ui-inputgroup">
@@ -21,7 +21,7 @@
     </div>
     <div class="p-grid">
         <div class="p-col">
-            Encoding:
+            {{'projects.project.graph.components.file-input.properties.encoding.lbl' | translate}}
         </div>
         <div class="p-col">
             <div class="ui-inputgroup">
@@ -31,7 +31,7 @@
     </div>
     <div class="p-grid">
         <div class="p-col">
-            Accept:
+            {{'projects.project.graph.components.file-input.properties.accept.lbl' | translate}}
         </div>
         <div class="p-col">
             <p-autoComplete [suggestions]="acceptSuggestions" (completeMethod)="filterSuggestions()"
@@ -41,7 +41,7 @@
     </div>
     <div class="p-grid">
         <div class="p-col">
-            Multiple:
+            {{'projects.project.graph.components.file-input.properties.multiple.lbl' | translate}}
         </div>
         <div class="p-col">
             <p-checkbox [binary]="true" formControlName="multiple"></p-checkbox>
@@ -49,7 +49,7 @@
     </div>
     <div class="p-grid">
         <div class="p-col">
-            Extended Output:
+            {{'projects.project.graph.components.file-input.properties.extended-output.lbl' | translate}}            
         </div>
         <div class="p-col">
             <p-checkbox [binary]="true" formControlName="extendedOutput"></p-checkbox>

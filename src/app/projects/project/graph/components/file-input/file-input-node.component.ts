@@ -3,6 +3,7 @@ import { NodeComponent, NodeService } from 'rete-angular-render-plugin';
 import { FileInputData } from './file-input.data';
 import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
 import { FileInputPropertiesComponent } from './properties/file-input-properties.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     templateUrl: './file-input-node.component.html',
@@ -20,6 +21,7 @@ export class FileInputNodeComponent extends NodeComponent {
     constructor(
         protected service: NodeService,
         protected cdr: ChangeDetectorRef,
+        private readonly translateService: TranslateService,
         private readonly propertiesDialogService: PropertiesDialogService) {
         super(service, cdr);
     }
@@ -30,8 +32,10 @@ export class FileInputNodeComponent extends NodeComponent {
     }
 
     async edit(): Promise<void> {
+        const title: string = await this.translateService.get('projects.project.graph.components.file-input.properties.header').toPromise()
+
         this.propertiesDialogService.open({
-            title: 'Properties',
+            title,
             component: FileInputPropertiesComponent,
             onInit: (component: FileInputPropertiesComponent) => {
                 component.setFileInputData(this.nodeData)

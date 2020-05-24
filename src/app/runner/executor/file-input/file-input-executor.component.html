@@ -2,7 +2,10 @@
     <div class="p-grid">
         <div class="p-col">
             <p-fileUpload [multiple]="fileInputData?.multiple" [customUpload]="true" [showUploadButton]="false"
-                [showCancelButton]="false" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)"></p-fileUpload>
+                [showCancelButton]="false" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)"
+                chooseLabel="{{'p-fileUpload.btn.choose' | translate}}"
+                uploadLabel="{{'p-fileUpload.btn.upload' | translate}}"
+                cancelLabel="{{'p-fileUpload.btn.cancel' | translate}}"></p-fileUpload>
         </div>
     </div>
 </p-card>

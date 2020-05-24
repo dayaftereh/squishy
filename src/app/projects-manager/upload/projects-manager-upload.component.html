@@ -1,6 +1,9 @@
 <div class="p-grid">
     <div class="p-col">
         <p-fileUpload [styleClass]="'app-projects-manager-upload'" [maxFileSize]="10000000" [customUpload]="true"
-            accept="application/json" (uploadHandler)="onUpload($event)" [multiple]="true"></p-fileUpload>
+            accept="application/json" (uploadHandler)="onUpload($event)" [multiple]="true"
+            chooseLabel="{{'p-fileUpload.btn.choose' | translate}}"
+            uploadLabel="{{'p-fileUpload.btn.upload' | translate}}"
+            cancelLabel="{{'p-fileUpload.btn.cancel' | translate}}"></p-fileUpload>
     </div>
 </div>

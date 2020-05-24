@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HomeComponent } from './home.component';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { HomeComponent } from './home.component';
 
 @NgModule({
     imports: [
@@ -12,7 +13,9 @@ import { RouterModule } from '@angular/router';
         BrowserModule,
         // PrimeNG
         CardModule,
-        ButtonModule
+        ButtonModule,
+        // ngx-translate,
+        TranslateModule
     ],
     declarations: [
         HomeComponent

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { GraphContextMenuComponent } from './graph-context-menu.component';
 
@@ -8,7 +9,9 @@ import { GraphContextMenuComponent } from './graph-context-menu.component';
         // Angular
         BrowserModule,
         // PrimNG
-        ContextMenuModule
+        ContextMenuModule,
+        // ngx-translate,
+        TranslateModule
     ],
     declarations: [
         GraphContextMenuComponent

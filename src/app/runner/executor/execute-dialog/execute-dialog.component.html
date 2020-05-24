@@ -1,13 +1,13 @@
-<p-dialog header="Executing" [(visible)]="visible" [modal]="true" [resizable]="false" [closable]="false"
+<p-dialog header=" {{'executor.execute-dialog.header' | translate}}" [(visible)]="visible" [modal]="true" [resizable]="false" [closable]="false"
     [draggable]="false" [style]="{'width':'50vw'}">
     <div class="p-grid">
         <div class="p-col">
-            State: {{status?.state}}
+            {{'executor.execute-dialog.state.lbl' | translate}} {{status?.state}}
         </div>
     </div>
     <div class="p-grid">
         <div class="p-col">
-            Status: {{status?.executed}} / {{status?.total}}
+            {{'executor.execute-dialog.status.lbl' | translate}} {{status?.executed}} / {{status?.total}}
         </div>
     </div>
     <div class="p-grid">

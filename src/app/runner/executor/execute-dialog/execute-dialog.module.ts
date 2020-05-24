@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { ProgressBarModule } from 'primeng/progressbar';
@@ -14,6 +15,8 @@ import { ExecuteDialogComponent } from './execute-dialog.component';
         DialogModule,
         ButtonModule,
         ProgressBarModule,
+        // ngx-translate,
+        TranslateModule,
         // Custom
         ExecutorServiceModule,
     ],

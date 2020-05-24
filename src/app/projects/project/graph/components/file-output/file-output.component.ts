@@ -10,7 +10,7 @@ import { GraphNodesManager } from '../../graph-nodes.manager';
 export class FileOutputComponent extends SquishyNodeComponent<FileOutputData> {
 
     constructor(protected readonly graphNodesManager: GraphNodesManager) {
-        super(`FileOutput`, FileOutputNodeComponent, graphNodesManager)
+        super(`File-Output`, FileOutputNodeComponent, graphNodesManager)
     }
 
     protected async nodeData(data: FileOutputData): Promise<FileOutputData> {

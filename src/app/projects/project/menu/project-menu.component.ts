@@ -1,18 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { ProjectsService } from '../../../projects-service/projects.service';
-import { SquishyProject } from '../../../projects-service/squishy-project';
 import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
-import { ProjectPropertiesComponent } from '../properties/project-properties.component';
 import { Downloader } from 'src/app/utils/downloader';
 import { Utils } from 'src/app/utils/utils';
+import { ProjectsService } from '../../../projects-service/projects.service';
+import { SquishyProject } from '../../../projects-service/squishy-project';
+import { ProjectPropertiesComponent } from '../properties/project-properties.component';
 
 @Component({
     templateUrl: './project-menu.component.html',
     selector: 'app-project-menu'
 })
-export class ProjectMenuComponent implements OnInit, OnDestroy{
+export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     project: SquishyProject | undefined
 
@@ -22,6 +23,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy{
         private readonly router: Router,
         private readonly activatedRoute: ActivatedRoute,
         private readonly projectsService: ProjectsService,
+        private readonly translateService: TranslateService,
         private readonly propertiesDialogService: PropertiesDialogService
     ) {
     }
@@ -34,10 +36,12 @@ export class ProjectMenuComponent implements OnInit, OnDestroy{
         })
     }
 
-    openProperties(): void {
+    async openProperties(): Promise<void> {
+        const title: string = await this.translateService.get(`projects.project.properties.header`).toPromise()
+
         this.propertiesDialogService.open({
             component: ProjectPropertiesComponent,
-            title: 'Project',
+            title,
             onInit: (component: ProjectPropertiesComponent) => {
                 component.setProject(this.project)
             }
