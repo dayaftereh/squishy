@@ -4,6 +4,7 @@ import { ExecutionStatus } from './execution/execution-status'
 import { SquishyProject } from 'src/app/projects-service/squishy-project'
 import { Execution } from './execution/execution'
 import { ExecutionData } from './execution/execution-data'
+import { ExecutionState } from './execution/execution-state'
 
 export class Executor {
 
@@ -23,6 +24,14 @@ export class Executor {
 
     async execute(project: SquishyProject, data: ExecutionData): Promise<ExecutionResult> {
         try {
+            // fire the initializing state
+            this._status.next({
+                total: 0,
+                executed: 0,
+                progress: 0.0,
+                state: ExecutionState.INITIALIZING
+            })
+            
             // create a new execution
             this.execution = new Execution(this._status)
 

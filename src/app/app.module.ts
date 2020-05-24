@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { ProjectModule } from './projects/project/project.module';
 import { ProjectsModule } from './projects/projects.module';
 import { PropertiesDialogModule } from './properties-dialog/properties-dialog.module';
+import { ExecuteDialogModule } from './runner/executor/execute-dialog/execute-dialog.module';
 import { RunnerModule } from './runner/runner.module';
 import { VersionModule } from './version/version.module';
 
@@ -28,6 +29,7 @@ import { VersionModule } from './version/version.module';
     VersionModule,
     ProjectModule,
     ProjectsModule,
+    ExecuteDialogModule,
     ConfirmDialogModule,
     PropertiesDialogModule,
   ],

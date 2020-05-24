@@ -1,0 +1,21 @@
+<p-dialog header="Executing" [(visible)]="visible" [modal]="true" [resizable]="false" [closable]="false"
+    [draggable]="false" [style]="{'width':'50vw'}">
+    <div class="p-grid">
+        <div class="p-col">
+            State: {{status?.state}}
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            Status: {{status?.executed}} / {{status?.total}}
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            <p-progressBar [value]="status?.progress"></p-progressBar>
+        </div>
+    </div>
+    <p-footer>
+        <button pButton [disabled]="!cancelable" type="button" label="Cancel" (click)="cancel()"></button>
+    </p-footer>
+</p-dialog>

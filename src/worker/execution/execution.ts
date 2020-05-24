@@ -1,5 +1,5 @@
 import { NodeData } from 'rete/types/core/data';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
 import { Utils } from 'src/app/utils/utils';
@@ -7,18 +7,23 @@ import { ExecutionContext } from './execution-context';
 import { ExecutionData } from './execution-data';
 import { ExecutionOutputs } from './execution-outputs';
 import { ExecutionResult } from './execution-result';
+import { ExecutionState } from './execution-state';
 import { ExecutionStatus } from './execution-status';
 import { NodeExecutor } from './node-executor/node-executor';
 import { NodeExecutorFactory } from './node-executor/node-executor.factory';
 
 export class Execution {
 
+    private _progress: number
+    private _executed: number
     private _running: boolean
     private _context: ExecutionContext
     private nodeExecutors: Map<string, NodeExecutor>
 
-    constructor(private readonly _status: Observable<ExecutionStatus>) {
+    constructor(private readonly _status: Subject<ExecutionStatus>) {
         this._context = {}
+        this._executed = 0
+        this._progress = 0
         this._running = false
         this.nodeExecutors = new Map<string, NodeExecutor>()
     }
@@ -38,6 +43,16 @@ export class Execution {
 
     context(): ExecutionContext {
         return this._context
+    }
+
+    progress(value: number): void {
+        // get the max size
+        const part: number = 1.0 / this.nodeExecutors.size
+        // caclulate the total progress
+        this._progress = (part * this._executed) + (part * value)
+
+        // update the current status
+        this.status(ExecutionState.RUNNING)
     }
 
     async cancel(): Promise<void> {
@@ -64,18 +79,21 @@ export class Execution {
             // set the node executors
             this.nodeExecutors.set(id, nodeExecutor)
         }))
-
     }
 
     async execute(): Promise<ExecutionResult> {
         const time: number = Date.now()
+        // start with zero progress
+        this.progress(0.0)
         // runnable node executor list
         const runnable: string[] = []
         // progress all node executors
-        await this.progress(runnable)
+        await this.run(runnable)
 
         // get the node execution outputs
         const outputs: ExecutionOutputs = await this.getOutputs()
+        // notify about execution done
+        this.status(ExecutionState.DONE)
 
         // calculate time taken
         const delta: number = Date.now() - time
@@ -86,7 +104,7 @@ export class Execution {
         } as ExecutionResult
     }
 
-    private async progress(runnable: string[]): Promise<void> {
+    private async run(runnable: string[]): Promise<void> {
         // check if runnable node executor available
         if (runnable.length > 0) {
             await this.executorRunnable(runnable)
@@ -105,6 +123,12 @@ export class Execution {
         const nodeExecutor: NodeExecutor = this.nodeExecutors.get(id)
         // execute the executor
         await nodeExecutor.execute()
+
+        // increment executed
+        this._executed++
+        // update the current progress
+        this.progress(0.0)
+
         // next tick
         return this.tick(runnable)
     }
@@ -139,12 +163,14 @@ export class Execution {
     private async tick(runnable: string[]): Promise<void> {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                this.progress(runnable).then(resolve, reject)
+                this.run(runnable).then(resolve, reject)
             })
         })
     }
 
     private async getOutputs(): Promise<ExecutionOutputs> {
+        // notifay about output collecting
+        this.status(ExecutionState.COLLECTING)
         // create the executions outputs
         const outputs: ExecutionOutputs = {}
         // check each node executor
@@ -160,6 +186,20 @@ export class Execution {
         })
 
         return outputs
+    }
+
+    private status(state: ExecutionState): void {
+        // get the total of executions
+        const total: number = this.nodeExecutors.size
+        // calculate the progress in %
+        const progress: number = this._progress * 100.0
+        // fire the status
+        this._status.next({
+            total,
+            state,
+            progress,
+            executed: this._executed,
+        })
     }
 
 }

@@ -22,22 +22,30 @@ export class ExecutorService {
     private executor: Executor | undefined
 
     private project: SquishyProject | undefined
+    private executionData: ExecutionData | undefined
+
+    private _done: Subject<void>
+    private _started: Subject<void>
     private _status: Subject<ExecutionStatus>
     private _executable: BehaviorSubject<void>
-    private executionData: ExecutionData | undefined
 
     constructor() {
         this.executionData = {}
+        this._done = new Subject<void>()
         this._status = new Subject<ExecutionStatus>()
+        this._started = new Subject<void>()
         this._executable = new BehaviorSubject<void>(undefined)
         this.initWorker()
     }
 
     private async initWorker(): Promise<void> {
+        // create the web worker
         this.worker = new Worker('../../worker/executor.worker.ts', { type: 'module' })
+        // make a proxy around the web worker
         const ExecutorProxy: any = Comlink.wrap<Executor>(this.worker)
+        // create the executor
         this.executor = await (new ExecutorProxy())
-
+        // subscribe to the execution status
         this.executor.subscribe(Comlink.proxy(async (status: ExecutionStatus) => {
             this._status.next(status)
         }))
@@ -78,19 +86,40 @@ export class ExecutorService {
         return this._status.asObservable()
     }
 
-    async execute(): Promise<ExecutionResult> {
-        if (!this.project || !this.executionData) {
-            throw new Error()
-        }
-        const result: ExecutionResult = await this.executor.execute(this.project, this.executionData)
-        // create the result manager
-        const executionResultManager: ExecutionResultManager = new ExecutionResultManager(this.project)
-        // dispatch the received result from the execution
-        await executionResultManager.dispatch(result)
-
-        return result
+    done(): Observable<void> {
+        return this._done.asObservable()
     }
 
+    started(): Observable<void> {
+        return this._started.asObservable()
+    }
+
+    async execute(): Promise<ExecutionResult> {
+        if (!this.project || !this.executionData) {
+            throw new Error('no project or execute data given')
+        }
+
+        // notify about execution started
+        this._started.next()
+
+        try {
+            // execute the project with the given execution data
+            const result: ExecutionResult = await this.executor.execute(this.project, this.executionData)
+            // create the result manager
+            const executionResultManager: ExecutionResultManager = new ExecutionResultManager(this.project)
+            // dispatch the received result from the execution
+            await executionResultManager.dispatch(result)
+
+            return result
+        } finally {
+            // notify about execution completed
+            this._done.next()
+        }
+    }
+
+    async cancel(): Promise<void> {
+        await this.executor.cancel()
+    }
 
 
 }
