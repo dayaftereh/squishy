@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Utils } from 'src/app/utils/utils';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
 import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
@@ -28,6 +27,10 @@ export class NewProjectComponent implements PropertiesDialogChild {
     }
 
     async cancel(): Promise<void> {
+
+    }
+
+    resized(): void {
 
     }
 

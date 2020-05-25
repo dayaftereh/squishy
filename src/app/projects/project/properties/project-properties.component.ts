@@ -50,4 +50,8 @@ export class ProjectPropertiesComponent implements PropertiesDialogChild {
         }
     }
 
+    resized(): void {
+
+    }
+
 }

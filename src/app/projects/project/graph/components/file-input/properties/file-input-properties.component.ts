@@ -110,4 +110,8 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
         }
     }
 
+    resized(): void {
+
+    }
+
 }

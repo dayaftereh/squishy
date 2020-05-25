@@ -43,4 +43,8 @@ export class FileOutputPropertiesComponent implements PropertiesDialogChild {
         this.formGroup.patchValue(fileOutputData)
     }
 
+    resized(): void {
+
+    }
+
 }

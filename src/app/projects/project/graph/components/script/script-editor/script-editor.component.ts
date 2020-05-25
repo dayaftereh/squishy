@@ -55,4 +55,10 @@ export class ScriptEditorComponent implements PropertiesDialogChild, AfterViewIn
         }
     }
 
+    resized(): void {
+        if (this.editor) {
+            this.editor.layout()
+        }
+    }
+
 }

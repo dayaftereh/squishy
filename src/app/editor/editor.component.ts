@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
     templateUrl: './editor.component.html',
@@ -7,7 +9,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
         './editor.component.scss'
     ]
 })
-export class EditorComponent implements OnInit, AfterViewInit {
+export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     code: string | undefined
 
@@ -15,13 +17,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
     private editor: monaco.editor.IEditor | undefined
 
+    private _layout: EventEmitter<void>
+
+    private subscription: Subscription | undefined
+
     constructor() {
-
+        this._layout = new EventEmitter<void>(true)
     }
 
-    ngAfterViewInit(): void {
-        this.layout()
-    }
 
     ngOnInit(): void {
         this.options = {
@@ -29,12 +32,22 @@ export class EditorComponent implements OnInit, AfterViewInit {
             language: 'javascript',
             automaticLayout: true
         } as unknown as monaco.editor.EditorOptionsType
+
+        this.subscription = this._layout.pipe(
+            delay(100)
+        ).subscribe(() => {
+            if (this.editor) {
+                this.editor.layout()
+            }
+        })
+    }
+
+    ngAfterViewInit(): void {
+        this.layout()
     }
 
     layout(): void {
-        if (this.editor) {
-            this.editor.layout()
-        }
+        this._layout.emit()
     }
 
     setCode(code: string): void {
@@ -49,4 +62,9 @@ export class EditorComponent implements OnInit, AfterViewInit {
         this.editor = editor
     }
 
+    ngOnDestroy(): void {
+        if (this.subscription) {
+            this.subscription.unsubscribe()
+        }
+    }
 }

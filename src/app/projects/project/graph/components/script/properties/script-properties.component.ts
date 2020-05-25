@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
-import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
-import { ScriptData } from '../script.data';
-import { Utils } from 'src/app/utils/utils';
 import { FromUtils } from 'src/app/utils/form-utils';
+import { Utils } from 'src/app/utils/utils';
+import { ScriptData } from '../script.data';
 
 @Component({
     templateUrl: './script-properties.component.html'
@@ -27,7 +27,7 @@ export class ScriptPropertiesComponent implements PropertiesDialogChild {
         if (Utils.isNullOrUndefined(this.scriptData)) {
             return
         }
-        
+
         this.scriptData.name = FromUtils.getFormValue(this.formGroup, 'name', this.scriptData.name)
     }
 
@@ -38,6 +38,10 @@ export class ScriptPropertiesComponent implements PropertiesDialogChild {
         this.scriptData = scriptData;
 
         this.formGroup.patchValue(scriptData)
+    }
+
+    resized(): void {
+
     }
 
 }
