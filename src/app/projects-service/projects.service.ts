@@ -4,31 +4,44 @@ import { map, switchMap } from 'rxjs/operators';
 import { SquishyProject } from './squishy-project';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
-
-type Projects = { [key: string]: SquishyProject }
+import { LocalStorageService } from '../local-storage/local-storage.service';
+import { SquishyProjects } from './squishy-projects';
 
 @Injectable()
 export class ProjectsService {
 
-    private _projects: BehaviorSubject<Projects>
+    private _projects: BehaviorSubject<SquishyProjects>
 
-    constructor() {
-        this._projects = new BehaviorSubject<Projects>({})
+    constructor(private readonly localStorageService: LocalStorageService) {
+        // get the projects from local storage
+        const localStorageProjects: SquishyProjects = this.localStorageService.getProjects()
+        // create the projects subject
+        this._projects = new BehaviorSubject<SquishyProjects>(localStorageProjects)
+        // get always changed projects to local storage
+        this.subscribeProjects()
     }
 
-    projects(): Observable<Projects> {
+    private subscribeProjects(): void {
+        // subscribe to the change of projects
+        this._projects.subscribe((projects: SquishyProjects) => {
+            // set the current projects to local storage
+            this.localStorageService.setProjects(projects)
+        })
+    }
+
+    projects(): Observable<SquishyProjects> {
         return this._projects.asObservable()
     }
 
     update(project: SquishyProject): void {
-        const projects: Projects = this._projects.value
+        const projects: SquishyProjects = this._projects.value
         projects[project.id] = project
         this._projects.next(projects)
     }
 
     updateAll(list: SquishyProject[]): void {
         // get all loaded projects
-        const projects: Projects = this._projects.value
+        const projects: SquishyProjects = this._projects.value
 
         // load the projects into loaded projects
         list.forEach((project: SquishyProject) => {
@@ -41,7 +54,7 @@ export class ProjectsService {
 
     get(id: string): Observable<SquishyProject> {
         return this._projects.asObservable().pipe(
-            map((projects: Projects) => {
+            map((projects: SquishyProjects) => {
                 return projects[id] as SquishyProject
             })
         )
@@ -74,7 +87,7 @@ export class ProjectsService {
 
     delete(project: SquishyProject): void {
         // get all loaded projects
-        const projects: Projects = this._projects.value
+        const projects: SquishyProjects = this._projects.value
 
         // check if the rpoject exists
         if (Utils.isNullOrUndefined(projects[project.id])) {
@@ -90,7 +103,7 @@ export class ProjectsService {
 
     deleteAll(list: SquishyProject[]): void {
         // get all loaded projects
-        const projects: Projects = this._projects.value
+        const projects: SquishyProjects = this._projects.value
 
         // get only existsing projects
         list.filter((project: SquishyProject) => {
