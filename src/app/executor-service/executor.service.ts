@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import * as Comlink from 'comlink';
-import { Executor } from 'src/worker/executor';
+import { BehaviorSubject, Observable, Subject, from } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
+import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { ExecutionResult } from 'src/worker/execution/execution-result';
 import { ExecutionStatus } from 'src/worker/execution/execution-status';
+import { Executor } from 'src/worker/executor';
 import { ExecutionData } from '../../worker/execution/execution-data';
-import { Utils } from '../utils/utils';
-import { SquishyNodeData } from '../projects/project/graph/components/squishy-node.data';
-import { NodeComponentsType } from '../projects/project/graph/components/node-components.type';
-import { FileOutputData } from '../projects/project/graph/components/file-output/file-output.data';
-import { Downloader } from '../utils/downloader';
-import { UrlHandlingStrategy } from '@angular/router';
 import { ExecutionResultManager } from './execution-result.manager';
+import { ExecutionState } from 'src/worker/execution/execution-state';
+import { ExecutionLatch } from '../utils/execution-latch';
 
 @Injectable()
 export class ExecutorService {
+
+    private _workerId: number
 
     private worker: Worker | undefined
     private executor: Executor | undefined
@@ -24,23 +22,25 @@ export class ExecutorService {
     private project: SquishyProject | undefined
     private executionData: ExecutionData | undefined
 
-    private _done: Subject<void>
-    private _started: Subject<void>
     private _status: Subject<ExecutionStatus>
     private _executable: BehaviorSubject<void>
 
+    private _cancelLatch: ExecutionLatch<void> | undefined
+
     constructor() {
+        this._workerId = 0
         this.executionData = {}
-        this._done = new Subject<void>()
         this._status = new Subject<ExecutionStatus>()
-        this._started = new Subject<void>()
         this._executable = new BehaviorSubject<void>(undefined)
-        this.initWorker()
+        this.createWorker()
     }
 
-    private async initWorker(): Promise<void> {
+    private async createWorker(): Promise<void> {
         // create the web worker
-        this.worker = new Worker('../../worker/executor.worker.ts', { type: 'module' })
+        this.worker = new Worker('../../worker/executor.worker.ts', {
+            type: 'module',
+            name: `SquishyWorker-${this._workerId++}`
+        })
         // make a proxy around the web worker
         const ExecutorProxy: any = Comlink.wrap<Executor>(this.worker)
         // create the executor
@@ -87,24 +87,47 @@ export class ExecutorService {
     }
 
     done(): Observable<void> {
-        return this._done.asObservable()
+        return this._status.pipe(
+            filter((status: ExecutionStatus) => {
+                return status.state === ExecutionState.DONE
+            }),
+            map(() => undefined)
+        )
     }
 
     started(): Observable<void> {
-        return this._started.asObservable()
+        return this._status.pipe(
+            filter((status: ExecutionStatus) => {
+                return status.state === ExecutionState.STARTED
+            }),
+            map(() => undefined)
+        )
     }
 
-    async execute(): Promise<ExecutionResult> {
+    async execute(): Promise<ExecutionResult | undefined> {
+        // check for project and execute data
         if (!this.project || !this.executionData) {
-            throw new Error('no project or execute data given')
+            throw new Error('no project or execution data given')
         }
 
-        // notify about execution started
-        this._started.next()
+        // create the cancel latch for this execution
+        this._cancelLatch = new ExecutionLatch<void>()
+
+        // fire the started state
+        this.emitStatus(ExecutionState.STARTED)
 
         try {
             // execute the project with the given execution data
-            const result: ExecutionResult = await this.executor.execute(this.project, this.executionData)
+            const result: ExecutionResult | void = await Promise.race([
+                // wait for cancel or execution done
+                this._cancelLatch.await(),
+                this.executor.execute(this.project, this.executionData)
+            ])
+            // check if the execution has been canceled
+            if (!result) {
+                return undefined
+            }
+
             // create the result manager
             const executionResultManager: ExecutionResultManager = new ExecutionResultManager(this.project)
             // dispatch the received result from the execution
@@ -112,13 +135,37 @@ export class ExecutorService {
 
             return result
         } finally {
-            // notify about execution completed
-            this._done.next()
+            // reset the cancel latch
+            this._cancelLatch = undefined
+            // fire the done state
+            this.emitStatus(ExecutionState.DONE)
         }
     }
 
+    private emitStatus(state: ExecutionState): void {
+        // create a empty state
+        this._status.next({
+            state,
+            total: 0,
+            executed: 0,
+            progress: 0.0,
+        } as ExecutionStatus)
+    }
+
     async cancel(): Promise<void> {
-        await this.executor.cancel()
+        // check if a worker has been created
+        if (this.worker) {
+            // terminate the worker
+            this.worker.terminate()
+        }
+
+        // check if a cancel latch active
+        if (this._cancelLatch) {
+            // release the cancel latch to cancel the execution
+            this._cancelLatch.resolve()
+        }
+        // create a new worker, because last was canceled
+        this.createWorker()
     }
 
 

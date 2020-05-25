@@ -16,12 +16,6 @@ export class Executor {
         this._status = new Subject<ExecutionStatus>()
     }
 
-    async cancel(): Promise<void> {
-        if (this.execution) {
-            this.execution.cancel()
-        }
-    }
-
     async execute(project: SquishyProject, data: ExecutionData): Promise<ExecutionResult> {
         try {
             // fire the initializing state

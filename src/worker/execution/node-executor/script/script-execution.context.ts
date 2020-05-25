@@ -15,16 +15,8 @@ export class ScriptExecutionContext {
         this.plugins = new ScriptTools()
     }
 
-    get running(): boolean {
-        return this.execution.running
-    }
-
     get context(): any {
         return this.execution.context()
-    }
-
-    cancel(): void {
-        this.execution.cancel()
     }
 
     progress(value: number): void {

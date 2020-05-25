@@ -16,7 +16,6 @@ export class Execution {
 
     private _progress: number
     private _executed: number
-    private _running: boolean
     private _context: ExecutionContext
     private nodeExecutors: Map<string, NodeExecutor>
 
@@ -24,12 +23,7 @@ export class Execution {
         this._context = {}
         this._executed = 0
         this._progress = 0
-        this._running = false
         this.nodeExecutors = new Map<string, NodeExecutor>()
-    }
-
-    get running(): boolean {
-        return this._running
     }
 
     async getExecutor(id: string): Promise<NodeExecutor | undefined> {
@@ -53,10 +47,6 @@ export class Execution {
 
         // update the current status
         this.status(ExecutionState.RUNNING)
-    }
-
-    async cancel(): Promise<void> {
-        this._running = false
     }
 
     async load(project: SquishyProject, data: ExecutionData): Promise<void> {
@@ -92,8 +82,8 @@ export class Execution {
 
         // get the node execution outputs
         const outputs: ExecutionOutputs = await this.getOutputs()
-        // notify about execution done
-        this.status(ExecutionState.DONE)
+        // notify about execution is response to main
+        this.status(ExecutionState.RESPONSE)
 
         // calculate time taken
         const delta: number = Date.now() - time
