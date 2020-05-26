@@ -7,6 +7,7 @@ import { ExecutorServiceModule } from '../../executor-service/executor-service.m
 import { ExecutorComponent } from './executor.component';
 import { FileInputExecutorModule } from './file-input/file-input-executor.module';
 import { ExecutorMenuModule } from './menu/executor-menu.module';
+import { ExecutorErrorModule } from './error/executor-error.module';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { ExecutorMenuModule } from './menu/executor-menu.module';
         TranslateModule,
         // Custom
         ExecutorMenuModule,
+        ExecutorErrorModule,
         ExecutorServiceModule,
         ProjectsServiceModule,
         FileInputExecutorModule,

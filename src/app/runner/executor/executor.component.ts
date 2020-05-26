@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
@@ -9,6 +9,7 @@ import { SquishyNodeData } from 'src/app/projects/project/graph/components/squis
 import { Utils } from 'src/app/utils/utils';
 import { ExecutorService } from '../../executor-service/executor.service';
 import { ExecutionResult } from 'src/worker/execution/execution-result';
+import { ExecutorErrorComponent } from './error/executor-error.component';
 
 @Component({
     templateUrl: './executor.component.html',
@@ -19,6 +20,9 @@ import { ExecutionResult } from 'src/worker/execution/execution-result';
 export class ExecutorComponent implements OnInit, OnDestroy {
 
     project: SquishyProject | undefined
+
+    @ViewChild('executorError')
+    executorError: ExecutorErrorComponent | undefined
 
     private subscription: Subscription | undefined
 
@@ -54,11 +58,22 @@ export class ExecutorComponent implements OnInit, OnDestroy {
     }
 
     async execute(): Promise<void> {
+        // reset the errors from last execution
+        if (this.executorError) {
+            this.executorError.clear()
+        }
+
         try {
             const result: ExecutionResult = await this.executorService.execute()
             console.log(result)
         } catch (e) {
-
+            // check if executor error exists
+            if (this.executorError) {
+                // add the error
+                this.executorError.addError(e)
+            }
+            // print the error to console
+            console.error(e)
         }
     }
 
