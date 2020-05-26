@@ -6,4 +6,5 @@ In browser data transform pipeline.
 ## Tested
 
  - Safari 13.1+
+ - Firefox 64+
  - Google Chrome 81+

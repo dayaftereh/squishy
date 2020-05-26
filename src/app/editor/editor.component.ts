@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, UnaryFunction } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Component({
@@ -17,12 +17,12 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private editor: monaco.editor.IEditor | undefined
 
-    private _layout: EventEmitter<void>
+    private _layout: EventEmitter<monaco.editor.IDimension | undefined>
 
     private subscription: Subscription | undefined
 
     constructor() {
-        this._layout = new EventEmitter<void>(true)
+        this._layout = new EventEmitter<monaco.editor.IDimension | undefined>(true)
     }
 
 
@@ -35,9 +35,9 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.subscription = this._layout.pipe(
             delay(100)
-        ).subscribe(() => {
+        ).subscribe((dimension: monaco.editor.IDimension | undefined) => {
             if (this.editor) {
-                this.editor.layout()
+                this.editor.layout(dimension)
             }
         })
     }
@@ -46,8 +46,8 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
         this.layout()
     }
 
-    layout(): void {
-        this._layout.emit()
+    layout(dimension?: monaco.editor.IDimension): void {
+        this._layout.emit(dimension)
     }
 
     setCode(code: string): void {

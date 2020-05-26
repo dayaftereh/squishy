@@ -1,20 +1,19 @@
-import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, AfterViewInit, EventEmitter } from '@angular/core';
 import { Dialog } from 'primeng/dialog';
 import { Subscription } from 'rxjs';
 import { Utils } from '../utils/utils';
 import { PropertiesDialogChild } from './service/properties-dialog-child';
 import { PropertiesDialogServiceEvent } from './service/properties-dialog-service.event';
 import { PropertiesDialogService } from './service/properties-dialog.service';
+import { ElementUtils } from '../utils/element-utils';
 
 @Component({
     templateUrl: './properties-dialog.component.html',
     selector: 'app-properties-dialog'
 })
-export class PropertiesDialogComponent implements OnInit, OnDestroy {
+export class PropertiesDialogComponent implements OnInit, AfterViewInit, OnDestroy {
 
     display: boolean
-
-    maximized: boolean
 
     event: PropertiesDialogServiceEvent | undefined
 
@@ -24,29 +23,54 @@ export class PropertiesDialogComponent implements OnInit, OnDestroy {
     @ViewChild('container', { read: ViewContainerRef })
     container: ViewContainerRef | undefined
 
-    private subscription: Subscription | undefined
+    private resize: EventEmitter<void>
+
+    private subscriptions: Subscription[]
     private componentRef: ComponentRef<PropertiesDialogChild> | undefined
 
-    constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
-        private readonly propertiesDialogService: PropertiesDialogService) {
+    constructor(
+        private readonly propertiesDialogService: PropertiesDialogService,
+        private readonly componentFactoryResolver: ComponentFactoryResolver,
+    ) {
+        this.subscriptions = []
+        this.resize = new EventEmitter<void>(true)
     }
 
     ngOnInit(): void {
-        this.subscription = this.propertiesDialogService.onOpen((event: PropertiesDialogServiceEvent) => {
+        const eventSubscription: Subscription = this.propertiesDialogService.onOpen((event: PropertiesDialogServiceEvent) => {
             this.show(event)
         })
+
+        const resizeSubscription: Subscription = this.resize.subscribe(() => {
+            this.emitResize()
+        })
+
+        this.subscriptions.push(eventSubscription, resizeSubscription)
+
+    }
+
+    ngAfterViewInit(): void {
+        if (this.dialog) {
+            // workaround to get maximize event from pDialog
+            this.overwriteDialogMaximize()
+        }
+    }
+
+    private overwriteDialogMaximize(): void {
+        const maximize: () => void = this.dialog.maximize
+        // overwrite the maximize function from pDialog 
+        this.dialog.maximize = () => {
+            // execute the p-dialog function
+            maximize.call(this.dialog)
+
+            this.maximize()
+        }
     }
 
     private show(event: PropertiesDialogServiceEvent): void {
         this.event = event;
         this.registerComponent(event)
         this.display = true
-
-        if (this.dialog) {
-            this.maximized = this.dialog.maximized
-        } else {
-            this.maximized = false
-        }
     }
 
     private registerComponent(event: PropertiesDialogServiceEvent) {
@@ -104,24 +128,36 @@ export class PropertiesDialogComponent implements OnInit, OnDestroy {
         this.hide()
     }
 
-    maximize(): void {
-        if (this.dialog) {
-            this.dialog.maximize()
+    private emitResize(): void {
+        if (!this.dialog) {
+            return
         }
-        this.maximized = this.dialog.maximized
 
-        console.log(this.dialog.container.clientWidth, this.dialog.container.clientHeight)
+        // get the content element for the dialog
+        const contentElement: HTMLElement = this.dialog.contentViewChild.nativeElement
+        // calculate the dimension of the content element
+        const dimension: { width: number, height: number } = ElementUtils.getElementDimension(contentElement)
 
+        // nofify cleint about changed size
         const child: PropertiesDialogChild | undefined = this.child()
         if (!Utils.isNullOrUndefined(child)) {
-            child.resized()
+            child.resized(dimension.width, dimension.height)
         }
     }
 
+    private maximize(): void {
+        this.resize.emit()
+    }
+
     ngOnDestroy(): void {
+        // unregister the current component
         this.unregisterComponent()
-        if (!Utils.isNullOrUndefined(this.subscription)) {
-            this.subscription.unsubscribe()
+
+        // unsubscribe subscriptions
+        if (this.subscriptions) {
+            this.subscriptions.forEach((subscription: Subscription) => {
+                subscription.unsubscribe()
+            })
         }
     }
 

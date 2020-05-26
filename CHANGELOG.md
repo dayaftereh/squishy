@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - `I18n` for english
  - projects now stored in `localStorage`
  - `ExecuteDialog` for execution status, progress and cancel
+ - `maximize` to properties and script editor dialog
 
 ## 0.1.0
 
