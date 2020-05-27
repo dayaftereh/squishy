@@ -24,8 +24,10 @@ export class SquishyNodeComponent<T extends SquishyNodeData> extends Component i
 
         data.id = id
 
-        nodeData = await this.nodeData(data)
-        const node: Node = await super.createNode(nodeData)
+           const nodeData2 = await this.nodeData(data)
+
+
+        const node: Node = await super.createNode(nodeData2)
         // invoke the new node to the graph nodes manager
         this.graphNodesManager.build(node)
         return node

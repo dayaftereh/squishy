@@ -64,3 +64,6 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
  /** babel-polyfill for rete.js. */
 import 'babel-polyfill';
+
+// Do this import before any code that manipulates the DOM.
+import '@webcomponents/custom-elements'
