@@ -1,20 +1,20 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FileInputData } from '../file-input.data';
-import { Utils } from 'src/app/utils/utils';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { SelectItem } from 'primeng/api/selectitem';
-import { Encodings, Encoding } from 'src/app/utils/encodings';
-import { FileInputMode, FileInputModes } from '../file-input.mode';
 import { Subscription } from 'rxjs';
-import { FromUtils } from 'src/app/utils/form-utils';
+import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
+import { Encoding, Encodings } from 'src/app/utils/encodings';
+import { FormUtils } from 'src/app/utils/form-utils';
+import { Utils } from 'src/app/utils/utils';
+import { FileInputData } from '../file-input.data';
+import { FileInputMode, FileInputModes } from '../file-input.mode';
 
 @Component({
     templateUrl: './file-input-properties.component.html'
 })
-export class FileInputPropertiesComponent implements PropertiesDialogChild, OnInit, OnDestroy {
-
-    formGroup: FormGroup | undefined
+export class FileInputPropertiesComponent extends AbstractPropertiesDialogChildComponent {
 
     encodings: SelectItem[] | undefined
 
@@ -24,14 +24,15 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
 
     acceptSuggestions: string[] | undefined
 
-    private subscription: Subscription | undefined
-
-    constructor() {
-        this.initFormGroup()
+    constructor(
+        protected readonly activatedRoute: ActivatedRoute,
+        protected readonly projectsService: ProjectsService,
+    ) {
+        super(activatedRoute, projectsService)
     }
 
-    private initFormGroup(): void {
-        this.formGroup = new FormGroup({
+    protected createFormGroup(): FormGroup {
+        return new FormGroup({
             name: new FormControl(),
             mode: new FormControl(),
             encoding: new FormControl(),
@@ -42,6 +43,8 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
     }
 
     ngOnInit(): void {
+        super.ngOnInit()
+
         this.encodings = Encodings.map((encoding: Encoding) => {
             return {
                 label: `${encoding}`,
@@ -56,9 +59,11 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
             }
         })
 
-        this.subscription = this.formGroup.valueChanges.subscribe(() => {
+        const formGroupSubscription: Subscription = this.formGroup.valueChanges.subscribe(() => {
             this.onFormChanged()
         })
+
+        this.subscriptions.push(formGroupSubscription)
 
         this.acceptSuggestions = [
             "*",
@@ -78,8 +83,8 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
     }
 
     private onFormChanged(): void {
-        const mode: FileInputMode = FromUtils.getFormValue(this.formGroup, 'mode', FileInputMode.Text)
-        FromUtils.setFromDisabled(this.formGroup, 'encoding', mode !== FileInputMode.Text, false)
+        const mode: FileInputMode = this.getFormValue('mode', FileInputMode.Text)
+        FormUtils.setFromDisabled(this.formGroup, 'encoding', mode !== FileInputMode.Text, false)
     }
 
     async submit(): Promise<void> {
@@ -87,31 +92,22 @@ export class FileInputPropertiesComponent implements PropertiesDialogChild, OnIn
             return
         }
 
-        this.fileInputData.name = FromUtils.getFormValue(this.formGroup, 'name', this.fileInputData.name)
-        this.fileInputData.mode = FromUtils.getFormValue(this.formGroup, 'mode', this.fileInputData.mode)
-        this.fileInputData.accept = FromUtils.getFormValue(this.formGroup, 'accept', this.fileInputData.accept)
-        this.fileInputData.encoding = FromUtils.getFormValue(this.formGroup, 'encoding', this.fileInputData.encoding)
-        this.fileInputData.multiple = FromUtils.getFormValue(this.formGroup, 'multiple', this.fileInputData.multiple)
-        this.fileInputData.extendedOutput = FromUtils.getFormValue(this.formGroup, 'extendedOutput', this.fileInputData.extendedOutput)
-    }
+        this.fileInputData.name = this.getFormValue('name', this.fileInputData.name)
+        this.fileInputData.mode = this.getFormValue('mode', this.fileInputData.mode)
+        this.fileInputData.accept = this.getFormValue('accept', this.fileInputData.accept)
+        this.fileInputData.encoding = this.getFormValue('encoding', this.fileInputData.encoding)
+        this.fileInputData.multiple = this.getFormValue('multiple', this.fileInputData.multiple)
+        this.fileInputData.extendedOutput = this.getFormValue('extendedOutput', this.fileInputData.extendedOutput)
 
-    async cancel(): Promise<void> {
+        this.emitProjectChanged()
     }
 
     setFileInputData(fileInputData: FileInputData): void {
         this.fileInputData = fileInputData;
 
-        this.formGroup.patchValue(fileInputData)
-    }
-
-    ngOnDestroy(): void {
-        if (this.subscription) {
-            this.subscription.unsubscribe()
+        if (!Utils.isNullOrUndefined(this.formGroup)) {
+            this.formGroup.patchValue(fileInputData)
         }
-    }
-
-    resized(): void {
-
     }
 
 }

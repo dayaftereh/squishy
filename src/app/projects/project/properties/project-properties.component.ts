@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
-import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
-import { FormGroup, FormControl } from '@angular/forms';
-import { ProjectsService } from '../../../projects-service/projects.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
+import { FormUtils } from 'src/app/utils/form-utils';
 import { Utils } from 'src/app/utils/utils';
+import { ProjectsService } from '../../../projects-service/projects.service';
 import { SquishyProject } from '../../../projects-service/squishy-project';
-import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
     templateUrl: './project-properties.component.html'
 })
-export class ProjectPropertiesComponent implements PropertiesDialogChild {
+export class ProjectPropertiesComponent extends AbstractPropertiesDialogChildComponent {
 
-    formGroup: FormGroup | undefined
-
-    project: SquishyProject | undefined
-
-    constructor(private readonly projectsService: ProjectsService) {
-        this.initFormGroup()
+    constructor(
+        protected readonly activatedRoute: ActivatedRoute,
+        protected readonly projectsService: ProjectsService,
+    ) {
+        super(activatedRoute, projectsService)
     }
 
-    private initFormGroup(): void {
-        this.formGroup = new FormGroup({
+    createFormGroup(): FormGroup {
+        return new FormGroup({
             name: new FormControl()
         })
     }
@@ -30,28 +30,24 @@ export class ProjectPropertiesComponent implements PropertiesDialogChild {
         if (Utils.isNullOrUndefined(this.project)) {
             return
         }
-        this.project.name = FromUtils.getFormValue(this.formGroup, 'name', this.project.name)
-        // notify about project change
-        this.projectsService.update(this.project)
-    }
 
-    async cancel(): Promise<void> {
+        this.project.name = this.getFormValue('name', this.project.name)
 
+        this.emitProjectChanged()
     }
 
     setProject(project: SquishyProject | undefined): void {
+        if (Utils.isNullOrUndefined(project)) {
+            return
+        }
+        
         this.project = project
 
         // check if porject exists
-        if (this.project) {
+        if (this.formGroup) {
             this.formGroup.patchValue({
                 name: this.project.name
             })
         }
     }
-
-    resized(): void {
-
-    }
-
 }

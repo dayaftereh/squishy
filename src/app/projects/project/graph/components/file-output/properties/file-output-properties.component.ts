@@ -1,25 +1,27 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
+import { ActivatedRoute } from '@angular/router';
+import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
 import { Utils } from 'src/app/utils/utils';
 import { FileOutputData } from '../file-output.data';
-import { FromUtils } from 'src/app/utils/form-utils';
 
 @Component({
     templateUrl: './file-output-properties.component.html'
 })
-export class FileOutputPropertiesComponent implements PropertiesDialogChild {
-
-    formGroup: FormGroup | undefined
+export class FileOutputPropertiesComponent extends AbstractPropertiesDialogChildComponent {
 
     fileOutputData: FileOutputData | undefined
 
-    constructor() {
-        this.initFormGroup()
+    constructor(
+        protected readonly activatedRoute: ActivatedRoute,
+        protected readonly projectsService: ProjectsService,
+    ) {
+        super(activatedRoute, projectsService)
     }
 
-    private initFormGroup(): void {
-        this.formGroup = new FormGroup({
+    protected createFormGroup(): FormGroup {
+        return new FormGroup({
             name: new FormControl(),
             filename: new FormControl(),
         })
@@ -30,21 +32,20 @@ export class FileOutputPropertiesComponent implements PropertiesDialogChild {
             return
         }
 
-        this.fileOutputData.name = FromUtils.getFormValue(this.formGroup, 'name', this.fileOutputData.name)
-        this.fileOutputData.filename = FromUtils.getFormValue(this.formGroup, 'filename', this.fileOutputData.filename)
-    }
+        // get changed values
+        this.fileOutputData.name = this.getFormValue('name', this.fileOutputData.name)
+        this.fileOutputData.filename = this.getFormValue('filename', this.fileOutputData.filename)
 
-    async  cancel(): Promise<void> {
+        // notify about project changed
+        this.emitProjectChanged()
     }
 
     setFileOutputData(fileOutputData: FileOutputData): void {
         this.fileOutputData = fileOutputData;
 
-        this.formGroup.patchValue(fileOutputData)
-    }
-
-    resized(): void {
-
+        if (!Utils.isNullOrUndefined(this.formGroup)) {
+            this.formGroup.patchValue(fileOutputData)
+        }
     }
 
 }

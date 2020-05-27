@@ -1,11 +1,11 @@
-import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, AfterViewInit, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, EventEmitter, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Dialog } from 'primeng/dialog';
 import { Subscription } from 'rxjs';
+import { ElementUtils } from '../utils/element-utils';
 import { Utils } from '../utils/utils';
 import { PropertiesDialogChild } from './service/properties-dialog-child';
 import { PropertiesDialogServiceEvent } from './service/properties-dialog-service.event';
 import { PropertiesDialogService } from './service/properties-dialog.service';
-import { ElementUtils } from '../utils/element-utils';
 
 @Component({
     templateUrl: './properties-dialog.component.html',
@@ -25,6 +25,9 @@ export class PropertiesDialogComponent implements OnInit, AfterViewInit, OnDestr
 
     private resize: EventEmitter<void>
 
+    private _submit: EventEmitter<void>
+    private _cancel: EventEmitter<void>
+
     private subscriptions: Subscription[]
     private componentRef: ComponentRef<PropertiesDialogChild> | undefined
 
@@ -34,6 +37,8 @@ export class PropertiesDialogComponent implements OnInit, AfterViewInit, OnDestr
     ) {
         this.subscriptions = []
         this.resize = new EventEmitter<void>(true)
+        this._submit = new EventEmitter<void>(true)
+        this._cancel = new EventEmitter<void>(true)
     }
 
     ngOnInit(): void {
@@ -45,8 +50,20 @@ export class PropertiesDialogComponent implements OnInit, AfterViewInit, OnDestr
             this.emitResize()
         })
 
-        this.subscriptions.push(eventSubscription, resizeSubscription)
+        const submitSubscription: Subscription = this._submit.subscribe(async () => {
+            await this.submit()
+        })
 
+        const cancelSubscription: Subscription = this._cancel.subscribe(async () => {
+            await this.cancel()
+        })
+
+        this.subscriptions.push(
+            eventSubscription,
+            resizeSubscription,
+            submitSubscription,
+            cancelSubscription
+        )
     }
 
     ngAfterViewInit(): void {
@@ -78,8 +95,10 @@ export class PropertiesDialogComponent implements OnInit, AfterViewInit, OnDestr
         const factory: ComponentFactory<PropertiesDialogChild> = this.componentFactoryResolver.resolveComponentFactory(event.component)
         this.componentRef = this.container.createComponent(factory)
 
+        const child: PropertiesDialogChild = this.componentRef.instance
+        child.inject(this._submit, this._cancel)
+
         if (!Utils.isNullOrUndefined(this.event.onInit)) {
-            const child: PropertiesDialogChild = this.componentRef.instance
             this.event.onInit(child)
         }
     }

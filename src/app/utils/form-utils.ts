@@ -1,7 +1,7 @@
 import { AbstractControl, FormGroup } from '@angular/forms'
 import { Utils } from './utils'
 
-export class FromUtils {
+export class FormUtils {
 
     constructor() {
 

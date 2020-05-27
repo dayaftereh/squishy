@@ -4,19 +4,31 @@ import { ScriptData } from '../script.data';
 import { EditorComponent } from 'src/app/editor/editor.component';
 import { Utils } from 'src/app/utils/utils';
 import { PropertiesDialogServiceEvent } from 'src/app/properties-dialog/service/properties-dialog-service.event';
+import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
+import { ActivatedRoute } from '@angular/router';
+import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     templateUrl: './script-editor.component.html'
 })
-export class ScriptEditorComponent implements PropertiesDialogChild, AfterViewInit {
+export class ScriptEditorComponent extends AbstractPropertiesDialogChildComponent implements AfterViewInit {
 
     scriptData: ScriptData | undefined
 
     @ViewChild('editor')
     editor: EditorComponent | undefined
 
-    constructor(private changeDetectorRef: ChangeDetectorRef) {
+    constructor(
+        private changeDetectorRef: ChangeDetectorRef,
+        protected readonly activatedRoute: ActivatedRoute,
+        protected readonly projectsService: ProjectsService,
+    ) {
+        super(activatedRoute, projectsService)
+    }
 
+    createFormGroup(): FormGroup {
+        return new FormGroup({})
     }
 
     ngAfterViewInit(): void {
@@ -31,7 +43,10 @@ export class ScriptEditorComponent implements PropertiesDialogChild, AfterViewIn
         if (this.scriptData && this.editor) {
             const script: string = this.editor.getCode()
             this.scriptData.script = script
+
+            this.emitProjectChanged()
         }
+        
         this.reset()
     }
 

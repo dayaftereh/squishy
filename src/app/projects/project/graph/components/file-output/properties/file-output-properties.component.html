@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup">
+<form [formGroup]="formGroup" (ngSubmit)="triggerSubmit()">
     <div class="p-grid">
         <div class="p-col">
             {{'projects.project.graph.components.file-output.properties.name.lbl' | translate}}

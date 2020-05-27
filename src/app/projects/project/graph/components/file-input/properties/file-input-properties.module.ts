@@ -8,10 +8,13 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FileInputPropertiesComponent } from './file-input-properties.component';
+import { ProjectsServiceModule } from 'src/app/projects-service/projects-service.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         // Angular
+        RouterModule,
         BrowserModule,
         ReactiveFormsModule,
         // ngx-translate,
@@ -22,6 +25,8 @@ import { FileInputPropertiesComponent } from './file-input-properties.component'
         InputTextModule,
         SelectButtonModule,
         AutoCompleteModule,
+        // custom
+        ProjectsServiceModule
     ],
     declarations: [
         FileInputPropertiesComponent
