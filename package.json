@@ -1,10 +1,10 @@
 {
   "name": "squishy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot=true --baseHref=./ --prod=true"
+    "build": "ng build --aot=true --baseHref=/squishy/ --prod=true"
   },
   "homepage": "https://github.com/dayaftereh/squishy#readme",
   "private": true,
