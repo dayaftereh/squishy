@@ -1,18 +1,19 @@
-import { AfterViewInit, Component as NGComponent, ElementRef, ViewChild, ChangeDetectorRef, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component as NGComponent, ElementRef, EventEmitter, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Component, Engine, NodeEditor } from 'rete';
 import { AngularRenderPlugin } from 'rete-angular-render-plugin';
 import ConnectionPlugin from 'rete-connection-plugin';
 import { Data } from 'rete/types/core/data';
+import { Subscription } from 'rxjs';
 import { PackageJSON } from 'src/app/package-json';
+import { Utils } from 'src/app/utils/utils';
+import { ProjectsService } from '../../../projects-service/projects.service';
+import { SquishyProject } from '../../../projects-service/squishy-project';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import { FileOutputComponent } from './components/file-output/file-output.component';
 import { ScriptComponent } from './components/script/script.component';
-import { ProjectsService } from '../../../projects-service/projects.service';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { SquishyProject } from '../../../projects-service/squishy-project';
-import { Utils } from 'src/app/utils/utils';
 import { GraphNodesManager } from './graph-nodes.manager';
+import { ProjectGraphService } from './service/project-graph.service';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -33,38 +34,48 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
     private engine: Engine | undefined
     private editor: NodeEditor | undefined
 
-    private subscription: Subscription | undefined
+    private subscriptions: Subscription[]
 
     private graphNodesManager: GraphNodesManager
 
-    constructor(private readonly activatedRoute: ActivatedRoute,
-        private readonly projectsService: ProjectsService) {
-        this.nodeEditorEvent = new EventEmitter<NodeEditor>(true)
+    constructor(
+        private readonly activatedRoute: ActivatedRoute,
+        private readonly projectsService: ProjectsService,
+        private readonly projectGraphService: ProjectGraphService) {
+        this.subscriptions = []
         this.graphNodesManager = new GraphNodesManager()
+        this.nodeEditorEvent = new EventEmitter<NodeEditor>(true)
     }
 
     ngOnInit(): void {
         // register on project
-        this.subscription = this.projectsService.getProjectFromRoute(this.activatedRoute).subscribe((project: SquishyProject | undefined) => {
+        const projectSubscription: Subscription = this.projectsService.getProjectFromRoute(this.activatedRoute).subscribe((project: SquishyProject | undefined) => {
+            const needUpdate: boolean = Utils.isNullOrUndefined(this.project)
+            this.project = project
             // check if project
-            if (project) {
-                this.onProject(project)
+            if (needUpdate) {
+                this.onDataChanged()
             }
         })
+
+        const dataChangedSubscription: Subscription = this.projectGraphService.onDataChanged(() => {
+            this.updateData()
+        })
+
+        this.subscriptions.push(projectSubscription, dataChangedSubscription)
     }
 
-    private onProject(project: SquishyProject): void {
-        // update editor if already exists
-        if (Utils.isNullOrUndefined(this.project) && !Utils.isNullOrUndefined(project.data)) {
-            if (!Utils.isNullOrUndefined(this.editor)) {
-                this.editor.fromJSON(project.data)
-                this.editor.trigger('process')
-            }
+    private onDataChanged(): void {
+        if (Utils.isNullOrUndefined(this.project) || Utils.isNullOrUndefined(this.project.data)) {
+            return
         }
-        this.project = project
+
         // set the project data to the graph nodes manager
-        if (!Utils.isNullOrUndefined(this.project.data)) {
-            this.graphNodesManager.setData(this.project.data)
+        this.graphNodesManager.setData(this.project.data)
+
+        if (!Utils.isNullOrUndefined(this.editor)) {
+            this.editor.fromJSON(this.project.data)
+            this.editor.trigger('process')
         }
     }
 
@@ -148,8 +159,10 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
+        if (this.subscriptions) {
+            this.subscriptions.forEach((subscription: Subscription) => {
+                subscription.unsubscribe()
+            });
         }
     }
 

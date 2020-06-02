@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
 import { Utils } from 'src/app/utils/utils';
+import { ProjectGraphService } from '../../../service/project-graph.service';
 import { FileOutputData } from '../file-output.data';
 
 @Component({
@@ -16,6 +17,7 @@ export class FileOutputPropertiesComponent extends AbstractPropertiesDialogChild
     constructor(
         protected readonly activatedRoute: ActivatedRoute,
         protected readonly projectsService: ProjectsService,
+        private readonly projectGraphService: ProjectGraphService
     ) {
         super(activatedRoute, projectsService)
     }
@@ -38,6 +40,7 @@ export class FileOutputPropertiesComponent extends AbstractPropertiesDialogChild
 
         // notify about project changed
         this.emitProjectChanged()
+        this.projectGraphService.emitDataChanged()
     }
 
     setFileOutputData(fileOutputData: FileOutputData): void {

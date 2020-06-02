@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { InputTextModule } from 'primeng/inputtext';
-import { FileOutputPropertiesComponent } from './file-output-properties.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { InputTextModule } from 'primeng/inputtext';
+import { ProjectsServiceModule } from 'src/app/projects-service/projects-service.module';
+import { ProjectGraphServiceModule } from '../../../service/project-graph-service.module';
+import { FileOutputPropertiesComponent } from './file-output-properties.component';
 
 @NgModule({
     imports: [
@@ -13,7 +15,10 @@ import { TranslateModule } from '@ngx-translate/core';
         // ngx-translate,
         TranslateModule,
         // PrimeNG
-        InputTextModule
+        InputTextModule,
+        // Custom
+        ProjectsServiceModule,
+        ProjectGraphServiceModule,
     ],
     declarations: [
         FileOutputPropertiesComponent

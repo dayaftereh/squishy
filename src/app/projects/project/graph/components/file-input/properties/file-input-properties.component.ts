@@ -8,6 +8,7 @@ import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialo
 import { Encoding, Encodings } from 'src/app/utils/encodings';
 import { FormUtils } from 'src/app/utils/form-utils';
 import { Utils } from 'src/app/utils/utils';
+import { ProjectGraphService } from '../../../service/project-graph.service';
 import { FileInputData } from '../file-input.data';
 import { FileInputMode, FileInputModes } from '../file-input.mode';
 
@@ -27,6 +28,7 @@ export class FileInputPropertiesComponent extends AbstractPropertiesDialogChildC
     constructor(
         protected readonly activatedRoute: ActivatedRoute,
         protected readonly projectsService: ProjectsService,
+        private readonly projectGraphService: ProjectGraphService
     ) {
         super(activatedRoute, projectsService)
     }
@@ -100,6 +102,7 @@ export class FileInputPropertiesComponent extends AbstractPropertiesDialogChildC
         this.fileInputData.extendedOutput = this.getFormValue('extendedOutput', this.fileInputData.extendedOutput)
 
         this.emitProjectChanged()
+        this.projectGraphService.emitDataChanged()
     }
 
     setFileInputData(fileInputData: FileInputData): void {

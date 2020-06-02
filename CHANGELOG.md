@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - projects now stored in `localStorage`
  - `ExecuteDialog` for execution status, progress and cancel
  - `maximize` to properties and script editor dialog
+ - `error-manager` for execution exceptions
 
 ## 0.1.0
 

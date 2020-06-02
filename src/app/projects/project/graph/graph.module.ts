@@ -5,6 +5,7 @@ import { NodeComponentsModule } from './components/node-components.module';
 import { GraphComponent } from './graph.component';
 import { GraphContextMenuModule } from './context-menu/graph-context-menu.module';
 import { ProjectsServiceModule } from '../../../projects-service/projects-service.module';
+import { ProjectGraphServiceModule } from './service/project-graph-service.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { ProjectsServiceModule } from '../../../projects-service/projects-servic
         NodeComponentsModule,
         ProjectsServiceModule,
         GraphContextMenuModule,
+        ProjectGraphServiceModule,
     ],
     declarations: [
         GraphComponent

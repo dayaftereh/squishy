@@ -3,6 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { InputTextModule } from 'primeng/inputtext';
+import { ProjectsServiceModule } from 'src/app/projects-service/projects-service.module';
+import { ProjectGraphServiceModule } from '../../../service/project-graph-service.module';
 import { ScriptPropertiesComponent } from './script-properties.component';
 
 @NgModule({
@@ -13,7 +15,10 @@ import { ScriptPropertiesComponent } from './script-properties.component';
         // ngx-translate,
         TranslateModule,
         // PrimeNG
-        InputTextModule
+        InputTextModule,
+        // Custom
+        ProjectsServiceModule,
+        ProjectGraphServiceModule,
     ],
     declarations: [
         ScriptPropertiesComponent

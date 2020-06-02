@@ -5,6 +5,7 @@ import { EditorComponent } from 'src/app/editor/editor.component';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
 import { Utils } from 'src/app/utils/utils';
+import { ProjectGraphService } from '../../../service/project-graph.service';
 import { ScriptData } from '../script.data';
 
 @Component({
@@ -21,6 +22,7 @@ export class ScriptEditorComponent extends AbstractPropertiesDialogChildComponen
         private changeDetectorRef: ChangeDetectorRef,
         protected readonly activatedRoute: ActivatedRoute,
         protected readonly projectsService: ProjectsService,
+        private readonly projectGraphService: ProjectGraphService,
     ) {
         super(activatedRoute, projectsService)
     }
@@ -43,6 +45,7 @@ export class ScriptEditorComponent extends AbstractPropertiesDialogChildComponen
             this.scriptData.script = script
 
             this.emitProjectChanged()
+            this.projectGraphService.emitDataChanged()
         }
 
         console.log(this.scriptData)

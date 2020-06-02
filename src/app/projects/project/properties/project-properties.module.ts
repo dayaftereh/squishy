@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ProjectsServiceModule } from '../../../projects-service/projects-service.module';
+import { ProjectGraphServiceModule } from '../graph/service/project-graph-service.module';
 import { ProjectPropertiesComponent } from './project-properties.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -16,7 +17,9 @@ import { TranslateModule } from '@ngx-translate/core';
         // ngx-translate,
         TranslateModule,
         // custom
-        ProjectsServiceModule
+        ProjectsServiceModule,
+        ProjectGraphServiceModule
+
     ],
     declarations: [
         ProjectPropertiesComponent

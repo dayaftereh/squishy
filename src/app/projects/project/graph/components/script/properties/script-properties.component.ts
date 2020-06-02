@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
 import { Utils } from 'src/app/utils/utils';
+import { ProjectGraphService } from '../../../service/project-graph.service';
 import { ScriptData } from '../script.data';
 
 @Component({
@@ -16,6 +17,7 @@ export class ScriptPropertiesComponent extends AbstractPropertiesDialogChildComp
     constructor(
         protected readonly activatedRoute: ActivatedRoute,
         protected readonly projectsService: ProjectsService,
+        private readonly projectGraphService: ProjectGraphService
     ) {
         super(activatedRoute, projectsService)
     }
@@ -34,6 +36,7 @@ export class ScriptPropertiesComponent extends AbstractPropertiesDialogChildComp
         this.scriptData.name = this.getFormValue('name', this.scriptData.name)
 
         this.emitProjectChanged()
+        this.projectGraphService.emitDataChanged()
     }
 
 

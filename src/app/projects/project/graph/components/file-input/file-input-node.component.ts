@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { NodeComponent, NodeService } from 'rete-angular-render-plugin';
-import { FileInputData } from './file-input.data';
-import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
-import { FileInputPropertiesComponent } from './properties/file-input-properties.component';
 import { TranslateService } from '@ngx-translate/core';
+import { NodeComponent, NodeService } from 'rete-angular-render-plugin';
+import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
+import { FileInputData } from './file-input.data';
+import { FileInputPropertiesComponent } from './properties/file-input-properties.component';
 
 @Component({
     templateUrl: './file-input-node.component.html',
