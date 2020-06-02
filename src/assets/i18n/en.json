@@ -151,5 +151,10 @@
             "accept": "Yes",
             "reject": "No"
         }
+    },
+    "error-manager": {
+        "stacktrace":{
+            "lbl": "Stacktrace"
+        }
     }
 }

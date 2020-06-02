@@ -17,8 +17,18 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
     protected async internalExecute(): Promise<void> {
         // create the function
         const fn: () => Promise<any> = await this.createFunction()
-        // call the function
-        this.result = await fn()
+
+        try {
+            // call the function
+            this.result = await fn()
+        } catch (e) {
+            // append component to error
+            e.component = this.nodeData.name
+
+            // retrow the error
+            throw e
+        }
+
     }
 
     private async createContext(): Promise<ScriptExecutionContext> {

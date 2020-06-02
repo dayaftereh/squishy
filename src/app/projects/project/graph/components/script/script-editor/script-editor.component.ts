@@ -1,13 +1,11 @@
-import { Component, ViewChild, AfterViewInit, OnInit, ChangeDetectorRef } from '@angular/core';
-import { PropertiesDialogChild } from 'src/app/properties-dialog/service/properties-dialog-child';
-import { ScriptData } from '../script.data';
-import { EditorComponent } from 'src/app/editor/editor.component';
-import { Utils } from 'src/app/utils/utils';
-import { PropertiesDialogServiceEvent } from 'src/app/properties-dialog/service/properties-dialog-service.event';
-import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
-import { ActivatedRoute } from '@angular/router';
-import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { EditorComponent } from 'src/app/editor/editor.component';
+import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
+import { Utils } from 'src/app/utils/utils';
+import { ScriptData } from '../script.data';
 
 @Component({
     templateUrl: './script-editor.component.html'
@@ -46,7 +44,9 @@ export class ScriptEditorComponent extends AbstractPropertiesDialogChildComponen
 
             this.emitProjectChanged()
         }
-        
+
+        console.log(this.scriptData)
+
         this.reset()
     }
 

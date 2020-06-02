@@ -1,0 +1,28 @@
+<p-toast styleClass="app-error-toast" position="top-center">
+    <ng-template let-message pTemplate="message">
+        <div>
+            <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+            <h3>
+                {{message?.summary}}
+            </h3>
+            <p *ngIf="message?.component">
+                {{message.component}}
+            </p>
+            <p>
+                {{message?.detail}}
+            </p>
+        </div>
+        <div class="p-grid ui-fluid" *ngIf="message?.stacktrace">
+            <div class="p-col">
+                <p-panel header="{{'error-manager.stacktrace.lbl'| translate}}" [showHeader]="true" [style]="{'width':'18em'}" [toggleable]="true" [collapsed]="true">
+                    <div style="overflow: auto;">
+                        <dl>
+                            <dt> {{ message?.stacktrace[0] }} </dt>
+                            <dd *ngFor="let line of message?.stacktrace | slice:1">{{ line }}</dd>
+                        </dl>
+                    </div>
+                </p-panel>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

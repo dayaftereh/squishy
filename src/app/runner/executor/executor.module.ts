@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
+import { ErrorManagerServiceModule } from 'src/app/error-manager/service/error-manager-service.module';
 import { ProjectsServiceModule } from 'src/app/projects-service/projects-service.module';
 import { ExecutorServiceModule } from '../../executor-service/executor-service.module';
 import { ExecutorComponent } from './executor.component';
 import { FileInputExecutorModule } from './file-input/file-input-executor.module';
 import { ExecutorMenuModule } from './menu/executor-menu.module';
-import { ExecutorErrorModule } from './error/executor-error.module';
 
 @NgModule({
     imports: [
@@ -19,10 +19,10 @@ import { ExecutorErrorModule } from './error/executor-error.module';
         TranslateModule,
         // Custom
         ExecutorMenuModule,
-        ExecutorErrorModule,
         ExecutorServiceModule,
         ProjectsServiceModule,
         FileInputExecutorModule,
+        ErrorManagerServiceModule,
     ],
     declarations: [
         ExecutorComponent

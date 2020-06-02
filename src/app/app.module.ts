@@ -6,6 +6,7 @@ import { ConfirmationService } from 'primeng/api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
+import { ErrorManagerModule } from './error-manager/error-manager.module';
 import { HomeModule } from './home/home.module';
 import { I18NModule } from './i18n/i18n.module';
 import { ProjectModule } from './projects/project/project.module';
@@ -32,6 +33,7 @@ import { VersionModule } from './version/version.module';
     VersionModule,
     ProjectModule,
     ProjectsModule,
+    ErrorManagerModule,
     ExecuteDialogModule,
     ConfirmDialogModule,
     PropertiesDialogModule,
