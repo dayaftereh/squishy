@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot=true --baseHref=/squishy/ --prod=true"
+    "build": "ng build --aot=true --baseHref=./ --prod=true"
   },
   "homepage": "https://github.com/dayaftereh/squishy#readme",
   "private": true,
