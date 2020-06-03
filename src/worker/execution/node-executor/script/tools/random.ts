@@ -31,6 +31,7 @@ export class Random {
         while (i > 0) {
             const s: string = this.rndStr()
             i -= s.length
+            buf.push(s)
         }
 
         const str: string = buf.join('')

@@ -1,10 +1,11 @@
-import { Subject } from 'rxjs'
-import { ExecutionResult } from './execution/execution-result'
-import { ExecutionStatus } from './execution/execution-status'
+import { asyncScheduler, Subject } from 'rxjs'
+import { throttleTime } from 'rxjs/operators'
 import { SquishyProject } from 'src/app/projects-service/squishy-project'
 import { Execution } from './execution/execution'
 import { ExecutionData } from './execution/execution-data'
+import { ExecutionResult } from './execution/execution-result'
 import { ExecutionState } from './execution/execution-state'
+import { ExecutionStatus } from './execution/execution-status'
 
 export class Executor {
 
@@ -25,7 +26,7 @@ export class Executor {
                 progress: 0.0,
                 state: ExecutionState.INITIALIZING
             })
-            
+
             // create a new execution
             this.execution = new Execution(this._status)
 

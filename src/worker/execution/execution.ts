@@ -16,6 +16,7 @@ export class Execution {
 
     private _progress: number
     private _executed: number
+    private _lastUpdate: number
     private _context: ExecutionContext
     private nodeExecutors: Map<string, NodeExecutor>
 
@@ -39,14 +40,21 @@ export class Execution {
         return this._context
     }
 
-    progress(value: number): void {
+    progress(value: number, force?: boolean): void {
         // get the max size
         const part: number = 1.0 / this.nodeExecutors.size
         // caclulate the total progress
         this._progress = (part * this._executed) + (part * value)
 
-        // update the current status
-        this.status(ExecutionState.RUNNING)
+        // calculate delta for last update
+        const delta: number = Date.now() - this._lastUpdate
+
+        // check if status needs updated
+        if (delta > 500 || force) {
+            this._lastUpdate = Date.now()
+            // update the current status
+            this.status(ExecutionState.RUNNING)
+        }
     }
 
     async load(project: SquishyProject, data: ExecutionData): Promise<void> {
@@ -73,8 +81,10 @@ export class Execution {
 
     async execute(): Promise<ExecutionResult> {
         const time: number = Date.now()
+        // set last update to now
+        this._lastUpdate = time
         // start with zero progress
-        this.progress(0.0)
+        this.progress(0.0, true)
         // runnable node executor list
         const runnable: string[] = []
         // progress all node executors
@@ -117,7 +127,7 @@ export class Execution {
         // increment executed
         this._executed++
         // update the current progress
-        this.progress(0.0)
+        this.progress(0.0, true)
 
         // next tick
         return this.tick(runnable)
@@ -182,7 +192,7 @@ export class Execution {
         // get the total of executions
         const total: number = this.nodeExecutors.size
         // calculate the progress in %
-        const progress: number = this._progress * 100.0
+        const progress: number = Math.round(this._progress * 100.0)
         // fire the status
         this._status.next({
             total,
