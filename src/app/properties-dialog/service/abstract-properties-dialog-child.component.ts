@@ -1,7 +1,7 @@
 import { PropertiesDialogChild } from './properties-dialog-child';
 import { FormGroup } from '@angular/forms';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
-import { OnInit, OnDestroy, EventEmitter } from '@angular/core';
+import { OnInit, OnDestroy, EventEmitter, Component, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SquishyProjects } from 'src/app/projects-service/squishy-projects';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { Utils } from 'src/app/utils/utils';
 import { FormUtils } from 'src/app/utils/form-utils';
 
+@Injectable()
 export abstract class AbstractPropertiesDialogChildComponent implements OnInit, OnDestroy, PropertiesDialogChild {
 
     formGroup: FormGroup | undefined

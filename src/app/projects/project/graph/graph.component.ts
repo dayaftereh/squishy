@@ -121,8 +121,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         });
 
         // check if project exists
-        if (this.project && this.project.data) {
-            console.log(this.project.data)
+        if (this.project && this.project.data) {           
             // load project data
             this.editor.fromJSON(this.project.data)
         }

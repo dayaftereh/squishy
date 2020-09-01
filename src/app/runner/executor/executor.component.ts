@@ -60,7 +60,6 @@ export class ExecutorComponent implements OnInit, OnDestroy {
 
         try {
             const result: ExecutionResult = await this.executorService.execute()
-            console.log(result)
         } catch (e) {
             this.errorManagerService.error(e)
             // print the error to console

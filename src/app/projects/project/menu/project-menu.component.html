@@ -1,9 +1,12 @@
 <div class="p-grid">
     <div class="p-col">
-        <button pButton type="button" icon="pi pi-bars" class="ui-button-secondary"
-            [routerLink]="['/projects']"></button>
-        <button pButton type="button" icon="pi pi-play" class="ui-button-success" (click)="execute()"></button>
-        <button pButton type="button" icon="pi pi-cog" class="ui-button-secondary" (click)="openProperties()"></button>
-        <button pButton type="button" icon="pi pi-download" class="ui-button-secondary" (click)="downloadProject()"></button>
+        <span class="p-buttonset">
+            <button pButton type="button" icon="pi pi-bars" class="p-button-secondary"
+                [routerLink]="['/projects']"></button>
+            <button pButton type="button" icon="pi pi-play" class="p-button-success" (click)="execute()"></button>
+            <button pButton type="button" icon="pi pi-cog" class="p-button-info" (click)="openProperties()"></button>
+            <button pButton type="button" icon="pi pi-download" class="p-button-secondary"
+                (click)="downloadProject()"></button>
+        </span>
     </div>
 </div>

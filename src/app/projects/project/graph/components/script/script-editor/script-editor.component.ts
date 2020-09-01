@@ -48,8 +48,6 @@ export class ScriptEditorComponent extends AbstractPropertiesDialogChildComponen
             this.projectGraphService.emitDataChanged()
         }
 
-        console.log(this.scriptData)
-
         this.reset()
     }
 
