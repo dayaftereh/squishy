@@ -1,4 +1,5 @@
 import { Vec2 } from './vec2'
+import { Matrix3 } from './matrix3'
 
 export class Point2 {
 
@@ -70,5 +71,9 @@ export class Point2 {
         const y: number = this.y
         return new Point2(x, y)
     }
-    
+
+    applyMatrix3(m: Matrix3): Point2 {
+        return m.applyPoint2(this)
+    }
+
 }

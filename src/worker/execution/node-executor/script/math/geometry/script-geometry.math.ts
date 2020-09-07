@@ -3,6 +3,10 @@ import { Vec3 } from './vec3';
 import { Point2 } from './point2';
 import { Point3 } from './point3';
 import { Transform2 } from './transform2';
+import { Matrix4 } from './matrix4';
+import { Matrix3 } from './matrix3';
+import { Quaternion } from './quaternion';
+import { Ray } from './ray';
 
 export class ScriptGeometryMath {
 
@@ -28,6 +32,22 @@ export class ScriptGeometryMath {
 
     transform2(): Transform2 {
         return Transform2.identity()
+    }
+
+    matrix3(): Matrix3 {
+        return Matrix3.identity()
+    }
+
+    matrix4(): Matrix4 {
+        return Matrix4.identity()
+    }
+
+    quaternion(): Quaternion {
+        return Quaternion.identity()
+    }
+
+    ray(origin: Vec3, direction: Vec3): Ray {
+        return new Ray(origin, direction)
     }
 
 }

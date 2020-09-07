@@ -11,7 +11,7 @@ export class ScriptMath {
     }
 
     limit(min: number, value: number, max: number): number {
-        return Math.min(max, Math.max(min, value))
+        return ScriptMath.clamp(min, value, max)
     }
 
     toDegrees(rad: number): number {
@@ -20,6 +20,10 @@ export class ScriptMath {
 
     toRadians(deg: number): number {
         return deg * Math.PI / 180.0
+    }
+
+    static clamp(min: number, value: number, max: number): number {
+        return Math.min(max, Math.max(min, value))
     }
 
     static closeZero(x: number): boolean {

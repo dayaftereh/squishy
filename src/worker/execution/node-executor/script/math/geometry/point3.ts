@@ -1,3 +1,6 @@
+import { Matrix3 } from './matrix3'
+import { Matrix4 } from './matrix4'
+import { Quaternion } from './quaternion'
 import { Vec3 } from './vec3'
 
 export class Point3 {
@@ -76,6 +79,18 @@ export class Point3 {
         const y: number = this.y
         const z: number = this.z
         return new Point3(x, y, z)
+    }
+
+    applyMatrix3(m: Matrix3): Point3 {
+        return m.applyPoint3(this)
+    }
+
+    applyMatrix4(m: Matrix4): Point3 {
+        return m.applyPoint3(this)
+    }
+
+    applyQuaternion(q: Quaternion): Point3 {
+        return q.applyPoint3(this)
     }
 
 }
