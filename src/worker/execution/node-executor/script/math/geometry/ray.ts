@@ -1,10 +1,9 @@
-import { Vec3 } from './vec3';
-import { Vec2 } from './vec2';
-import { Matrix4 } from './matrix4';
-import { Quaternion } from './quaternion';
-import { Plane } from './plane';
 import { ScriptMath } from '../script.math';
-import { Script } from 'vm';
+import { Matrix4 } from './matrix4';
+import { Plane } from './plane';
+import { Quaternion } from './quaternion';
+import { Sphere } from './sphere';
+import { Vec3 } from './vec3';
 
 export class Ray {
 
@@ -110,6 +109,47 @@ export class Ray {
 
         // ray origin is behind the plane (and is pointing behind it)
         return false;
+    }
+
+    intersectSphere(sphere: Sphere): Vec3 | undefined {
+        const vector: Vec3 = sphere.center.subtractWith(this.origin)
+        const tca: number = vector.dotWith(this.direction)
+        const d2: number = vector.dotWith(vector) - tca * tca
+        const radius2: number = sphere.radius * sphere.radius
+
+        if (d2 > radius2) {
+            return undefined
+        }
+
+        const thc: number = Math.sqrt(radius2 - d2)
+
+        // t0 = first intersect point - entrance on front of sphere
+        const t0: number = tca - thc
+
+        // t1 = second intersect point - exit point on back of sphere
+        const t1: number = tca + thc
+
+        // test to see if both t0 and t1 are behind the ray - if so, return undefined
+        if (t0 < 0.0 && t1 < 0.0) {
+            return undefined
+        }
+
+        // test to see if t0 is behind the ray:
+        // if it is, the ray is inside the sphere, so return the second exit point scaled by t1,
+        // in order to always return an intersect point that is in front of the ray.
+        if (t0 < 0.0) {
+            return this.at(t1)
+        }
+
+        // else t0 is in front of the ray, so return the first collision point scaled by t0
+        return this.at(t0)
+    }
+
+    intersectsSphere(sphere: Sphere): boolean {
+        const co: Vec3 = sphere.center.subtractWith(this.origin)
+        const v: number = co.dotWith(this.direction)
+        const discriminant: number = v * v - co.dotWith(co) + sphere.radius * sphere.radius
+        return discriminant > 0 || ScriptMath.closeZero(discriminant)
     }
 
 }

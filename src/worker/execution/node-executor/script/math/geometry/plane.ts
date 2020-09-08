@@ -42,5 +42,9 @@ export class Plane {
         const point: Vec3 = this.normal.scale(-this.constant)
         return point
     }
-    
+
+    normalAt(point: Vec3): Vec3 {
+        return this.normal.clone()
+    }
+
 }

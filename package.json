@@ -38,7 +38,8 @@
     "@fortawesome/angular-fontawesome": "~0.7.0",
     "@ngx-translate/core": "~13.0.0",
     "@ngx-translate/http-loader": "~6.0.0",
-    "@webcomponents/custom-elements": "~1.4.2"
+    "@webcomponents/custom-elements": "~1.4.2",
+    "ngx-markdown": "~10.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.8",

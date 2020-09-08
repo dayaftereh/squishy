@@ -7,6 +7,8 @@ import { Matrix4 } from './matrix4';
 import { Matrix3 } from './matrix3';
 import { Quaternion } from './quaternion';
 import { Ray } from './ray';
+import { Plane } from './plane';
+import { Sphere } from './sphere';
 
 export class ScriptGeometryMath {
 
@@ -48,6 +50,14 @@ export class ScriptGeometryMath {
 
     ray(origin: Vec3, direction: Vec3): Ray {
         return new Ray(origin, direction)
+    }
+
+    plane(normal: Vec3, constant: number): Plane {
+        return new Plane(normal, constant)
+    }
+
+    sphere(origin: Vec3, radius: number): Sphere {
+        return new Sphere(origin, radius)
     }
 
 }

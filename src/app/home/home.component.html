@@ -7,8 +7,8 @@
                 </div>
             </div>
             <p-footer>
-                <button pButton type="button" label=" {{'home.btn.run' | translate}}" icon="pi pi-play" [routerLink]="['/runner']"
-                    class="p-button-secondary"></button>
+                <button pButton type="button" label=" {{'home.btn.run' | translate}}" icon="pi pi-play"
+                    [routerLink]="['/runner']" class="p-button-secondary"></button>
             </p-footer>
         </p-card>
     </div>
@@ -20,8 +20,23 @@
                 </div>
             </div>
             <p-footer>
-                <button pButton type="button" label=" {{'home.btn.edit' | translate}}" icon="pi pi-user-edit" [routerLink]="['/projects']"
-                    class="p-button-secondary"></button>
+                <button pButton type="button" label=" {{'home.btn.edit' | translate}}" icon="pi pi-user-edit"
+                    [routerLink]="['/projects']" class="p-button-secondary"></button>
+            </p-footer>
+        </p-card>
+    </div>
+</div>
+<div class="p-grid">
+    <div class="p-col-3 p-offset-3">
+        <p-card header="{{'home.documentation.header' | translate}}">
+            <div class="p-grid">
+                <div class="p-col">
+                    {{'home.documentation.description' | translate}}
+                </div>
+            </div>
+            <p-footer>
+                <button pButton type="button" label=" {{'home.btn.docu' | translate}}" icon="pi pi-question-circle"
+                    [routerLink]="['/documentation']" class="p-button-secondary"></button>
             </p-footer>
         </p-card>
     </div>

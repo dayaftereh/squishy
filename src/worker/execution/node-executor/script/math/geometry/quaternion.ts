@@ -1,9 +1,8 @@
-import { Vec3 } from './vec3'
+import { ScriptMath } from '../script.math'
 import { Matrix3 } from './matrix3'
 import { Matrix4 } from './matrix4'
-import { ScriptMath } from '../script.math'
-import { Script } from 'vm'
 import { Point3 } from './point3'
+import { Vec3 } from './vec3'
 
 export class Quaternion {
     x: number | undefined

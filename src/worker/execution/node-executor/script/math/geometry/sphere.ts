@@ -34,4 +34,9 @@ export class Sphere {
         const radius: number = this.radius * m.maxScaleOnAxis()
         return new Sphere(center, radius)
     }
+
+    normalAt(point: Vec3): Vec3 {
+        const n: Vec3 = point.subtractWith(this.center)
+        return n.normalize()
+    }
 }
