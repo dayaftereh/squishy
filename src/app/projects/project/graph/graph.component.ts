@@ -52,6 +52,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         const projectSubscription: Subscription = this.projectsService.getProjectFromRoute(this.activatedRoute).subscribe((project: SquishyProject | undefined) => {
             const needUpdate: boolean = Utils.isNullOrUndefined(this.project)
             this.project = project
+            this.project.data.id = this.id()
             // check if project
             if (needUpdate) {
                 this.onDataChanged()
@@ -73,7 +74,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         // set the project data to the graph nodes manager
         this.graphNodesManager.setData(this.project.data)
 
-        if (!Utils.isNullOrUndefined(this.editor)) {
+        if (!Utils.isNullOrUndefined(this.editor)) {            
             this.editor.fromJSON(this.project.data)
             this.editor.trigger('process')
         }
@@ -81,7 +82,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private id(): string {
         const packageJson: PackageJSON = new PackageJSON()
-        return `${packageJson.name}@${packageJson.version}`
+        return `${packageJson.name}@0.1.0`
     }
 
     ngAfterViewInit(): void {
