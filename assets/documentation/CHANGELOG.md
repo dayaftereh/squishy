@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - update to angular `10.x`
  - updated some dependencies
 
+### Fixed
+
+ - issue with `ErrorManager` and `p-toast` from new **PrimeNG**
+
 ## 0.1.1 - 02.06.2020
 
 ### Changed
