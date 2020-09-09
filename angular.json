@@ -30,6 +30,11 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-monaco-editor/assets/monaco",
                 "output": "./assets/monaco/"
+              },
+              {
+                "glob": "CHANGELOG.md",
+                "input": "",
+                "output": "./assets/documentation/"
               }
             ],
             "styles": [
@@ -45,6 +50,7 @@
               "node_modules/marked/lib/marked.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/components/prism-javascript.min.js",
+              "node_modules/prismjs/components/prism-typescript.min.js",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
             ],
             "webWorkerTsConfig": "tsconfig.worker.json"

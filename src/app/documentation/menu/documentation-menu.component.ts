@@ -37,6 +37,10 @@ export class DocumentationMenuComponent implements OnInit {
             {
                 label: 'File-Output',
                 routerLink: ["/documentation/file-output"],
+            },
+            {
+                label: 'Changelog',
+                routerLink: ["/documentation/CHANGELOG"],
             }
         )
     }

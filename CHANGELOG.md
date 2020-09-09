@@ -16,14 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  
  - `geometry` to script `math` context
+ - documentation based on `markdown` files
 
 ### Changed
 
  - update to angular `10.x`
  - updated some dependencies
-
-### Removed
-### Fixed
 
 ## 0.1.1 - 02.06.2020
 
