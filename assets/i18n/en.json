@@ -11,9 +11,14 @@
             "header": "Projects",
             "description": "Create a individual project."
         },
+        "documentation": {
+            "header": "Documentation",
+            "description": "Learn more about Squishy."
+        },
         "btn": {
             "run": "Run",
-            "edit": "Edit"
+            "edit": "Edit",
+            "docu": "Documentation"
         }
     },
     "projects": {
