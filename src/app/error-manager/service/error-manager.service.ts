@@ -25,6 +25,8 @@ export class ErrorManagerService {
         const event: ErrorManagerEvent = {} as ErrorManagerEvent
 
         event.sticky = true
+        event.severity = 'error'
+        event.closable = true
         event.summary = error.name
         event.detail = error.message
         event.component = this.component(error)

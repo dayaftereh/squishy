@@ -1,3 +1,4 @@
-:host ::ng-deep .app-error-toast .ui-toast-message {
-    background: #f8b7bd;
+:host ::ng-deep .app-error-toast.p-toast {
+        width: 50vw;    
+        margin-left: -25%;
 }
