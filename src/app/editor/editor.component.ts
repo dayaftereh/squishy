@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
-import { Subscription, UnaryFunction } from 'rxjs';
+import { AfterViewInit, Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Component({
@@ -13,15 +13,18 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     code: string | undefined
 
-    options: monaco.editor.EditorOptionsType
+    options: monaco.editor.IEditorOptions
 
     private editor: monaco.editor.IEditor | undefined
 
     private _layout: EventEmitter<monaco.editor.IDimension | undefined>
 
+    private _content: EventEmitter<string | undefined>
+
     private subscription: Subscription | undefined
 
     constructor() {
+        this._content = new EventEmitter<string | undefined>(true)
         this._layout = new EventEmitter<monaco.editor.IDimension | undefined>(true)
     }
 
@@ -31,7 +34,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
             theme: 'vs-dark',
             language: 'javascript',
             automaticLayout: true
-        } as unknown as monaco.editor.EditorOptionsType
+        } as unknown as monaco.editor.IEditorOptions
 
         this.subscription = this._layout.pipe(
             delay(100)
@@ -39,6 +42,12 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
             if (this.editor) {
                 this.editor.layout(dimension)
             }
+        })
+    }
+
+    setLanguage(language: string): void {
+        this.options = Object.assign({}, this.options, {
+            language
         })
     }
 
@@ -60,6 +69,17 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onEditorInit(editor: monaco.editor.IEditor): void {
         this.editor = editor
+        this.layout()
+    }
+
+    onChange(content: string | undefined): void {
+        if (this._content) {
+            this._content.emit(content)
+        }
+    }
+
+    onContentChanged(fn: (content: string) => void): Subscription {
+        return this._content.subscribe(fn)
     }
 
     ngOnDestroy(): void {

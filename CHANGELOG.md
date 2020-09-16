@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  
  - `geometry` to script `math` context
  - documentation based on `markdown` files
+ - `Text-Input` as no node component
 
 ### Changed
 

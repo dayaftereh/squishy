@@ -10,6 +10,7 @@ import { FileOutputNodeExecutor } from './file-output/file-output.node-executor'
 import { NodeExecutor } from './node-executor';
 import { ScriptNodeExecutor } from './script/script.node-executor';
 import { Execution } from '../execution';
+import { TextInputNodeExecutor } from './text-input/text-input.node-executor';
 
 export class NodeExecutorFactory {
 
@@ -26,6 +27,7 @@ export class NodeExecutorFactory {
         this.factoryFunction.set(NodeComponentsType.FileInput, this.createFileInput)
         this.factoryFunction.set(NodeComponentsType.Script, this.createScript)
         this.factoryFunction.set(NodeComponentsType.FileOutput, this.createFileOutput)
+        this.factoryFunction.set(NodeComponentsType.TextInput, this.createTextInput)
     }
 
     async create(nodeData: NodeData, nodeExecutionData: any): Promise<NodeExecutor> {
@@ -60,6 +62,13 @@ export class NodeExecutorFactory {
     private async createFileOutput(nodeData: NodeData, nodeExecutionData: any): Promise<FileOutputNodeExecutor> {
         // create the file output node executor
         const executor: FileOutputNodeExecutor = new FileOutputNodeExecutor(this.execution, nodeData, nodeExecutionData)
+
+        return executor
+    }
+
+    private async createTextInput(nodeData: NodeData, nodeExecutionData: any): Promise<TextInputNodeExecutor> {
+        // create the text input node executor
+        const executor: TextInputNodeExecutor = new TextInputNodeExecutor(this.execution, nodeData, nodeExecutionData)
 
         return executor
     }

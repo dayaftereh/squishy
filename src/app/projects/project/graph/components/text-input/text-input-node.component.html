@@ -1,0 +1,23 @@
+<p-panel styleClass="node">
+    <p-header>
+        {{textInputData!.name}}
+    </p-header>
+    <div class="p-grid p-justify-end">
+        <div class="p-col">
+            <button pButton type="button" icon="pi pi-file-o" class="p-button-secondary"
+                (click)="editContent()"></button>
+        </div>
+        <div class="p-col">
+            <button pButton type="button" icon="pi pi-cog" class="p-button-secondary"
+                (click)="editProperties()"></button>
+        </div>
+    </div>
+    <div class="p-grid p-justify-end" style="text-align: right;" *ngFor="let output of outputs">
+        <div class="p-col">
+            {{'projects.project.graph.components.text-input.node.output.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <rete-socket class="output-socket" rete-socket [io]="output" [socket]="output.socket"></rete-socket>
+        </div>
+    </div>
+</p-panel>

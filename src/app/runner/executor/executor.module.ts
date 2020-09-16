@@ -8,6 +8,7 @@ import { ExecutorServiceModule } from '../../executor-service/executor-service.m
 import { ExecutorComponent } from './executor.component';
 import { FileInputExecutorModule } from './file-input/file-input-executor.module';
 import { ExecutorMenuModule } from './menu/executor-menu.module';
+import { TextInputExecutorModule } from './text-input-executor/text-input-executor.module';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { ExecutorMenuModule } from './menu/executor-menu.module';
         ExecutorMenuModule,
         ExecutorServiceModule,
         ProjectsServiceModule,
+        TextInputExecutorModule,
         FileInputExecutorModule,
         ErrorManagerServiceModule,
     ],

@@ -10,6 +10,7 @@ import { SquishyNodeData } from 'src/app/projects/project/graph/components/squis
 import { Utils } from 'src/app/utils/utils';
 import { ExecutionResult } from 'src/worker/execution/execution-result';
 import { ExecutorService } from '../../executor-service/executor.service';
+import { TextInputData } from 'src/app/projects/project/graph/components/text-input/text-input.data';
 
 @Component({
     templateUrl: './executor.component.html',
@@ -44,6 +45,15 @@ export class ExecutorComponent implements OnInit, OnDestroy {
             }
         })
 
+    }
+
+    textInputs(): TextInputData[] {
+        // get all text inputs
+        return Utils.getSquishyNodesData(this.project).filter((nodeData: SquishyNodeData) => {
+            return nodeData.type === NodeComponentsType.TextInput
+        }).map((nodeData: SquishyNodeData) => {
+            return nodeData as TextInputData
+        })
     }
 
     fileInputs(): FileInputData[] {

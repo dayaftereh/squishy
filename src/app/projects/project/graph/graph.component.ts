@@ -14,6 +14,7 @@ import { FileOutputComponent } from './components/file-output/file-output.compon
 import { ScriptComponent } from './components/script/script.component';
 import { GraphNodesManager } from './graph-nodes.manager';
 import { ProjectGraphService } from './service/project-graph.service';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -153,6 +154,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
     private getComponents(): Component[] {
         return [
             new ScriptComponent(this.graphNodesManager),
+            new TextInputComponent(this.graphNodesManager),
             new FileInputComponent(this.graphNodesManager),
             new FileOutputComponent(this.graphNodesManager),
         ]
