@@ -1,6 +1,6 @@
 import { AfterViewInit, Component as NGComponent, ElementRef, EventEmitter, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Component, Engine, NodeEditor } from 'rete';
+import { Component, Engine, Node, NodeEditor } from 'rete';
 import { AngularRenderPlugin } from 'rete-angular-render-plugin';
 import ConnectionPlugin from 'rete-connection-plugin';
 import { Data } from 'rete/types/core/data';
@@ -12,9 +12,10 @@ import { SquishyProject } from '../../../projects-service/squishy-project';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import { FileOutputComponent } from './components/file-output/file-output.component';
 import { ScriptComponent } from './components/script/script.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
+import { GraphMouseEventManager } from './graph-mouse-event.manager';
 import { GraphNodesManager } from './graph-nodes.manager';
 import { ProjectGraphService } from './service/project-graph.service';
-import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -38,6 +39,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
     private subscriptions: Subscription[]
 
     private graphNodesManager: GraphNodesManager
+    private mouseEventManager: GraphMouseEventManager | undefined
 
     constructor(
         private readonly activatedRoute: ActivatedRoute,
@@ -75,7 +77,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         // set the project data to the graph nodes manager
         this.graphNodesManager.setData(this.project.data)
 
-        if (!Utils.isNullOrUndefined(this.editor)) {            
+        if (!Utils.isNullOrUndefined(this.editor)) {
             this.editor.fromJSON(this.project.data)
             this.editor.trigger('process')
         }
@@ -97,6 +99,10 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         // create the node editor
         this.editor = new NodeEditor(id, container)
 
+        // add the mouse event manager
+        this.mouseEventManager = new GraphMouseEventManager(this.editor, this.nodeEditorElement)
+        this.mouseEventManager.register()
+
         // register the plugins
         this.editor.use(ConnectionPlugin);
         this.editor.use(AngularRenderPlugin)
@@ -117,13 +123,18 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
             await this.updateData()
         }) as any);
 
+        // remove the node from graph nodes manager
+        this.editor.on('noderemoved', (node: Node) => {
+            this.graphNodesManager.remove(node)
+        })
+
         // handle error on engine
         this.engine.on('error', (e) => {
             console.error(e)
         });
 
         // check if project exists
-        if (this.project && this.project.data) {           
+        if (this.project && this.project.data) {
             // load project data
             this.editor.fromJSON(this.project.data)
         }
@@ -165,6 +176,10 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
             this.subscriptions.forEach((subscription: Subscription) => {
                 subscription.unsubscribe()
             });
+        }
+
+        if (this.mouseEventManager) {
+            this.mouseEventManager.unregister()
         }
     }
 

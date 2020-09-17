@@ -1,15 +1,17 @@
-import { Component as NgComponent, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
+import { Component as NgComponent, EventEmitter, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { ContextMenu } from 'primeng/contextmenu/public_api';
-import { Component, Node, NodeEditor } from 'rete';
+import { Node, NodeEditor } from 'rete';
+import { Component } from 'rete/types/engine';
+import { Subscription } from 'rxjs';
 import { Utils } from 'src/app/utils/utils';
 
 @NgComponent({
     templateUrl: './graph-context-menu.component.html',
     selector: 'app-graph-context-menu'
 })
-export class GraphContextMenuComponent implements OnInit {
+export class GraphContextMenuComponent implements OnInit, OnDestroy {
 
     items: MenuItem[]
 
@@ -19,19 +21,27 @@ export class GraphContextMenuComponent implements OnInit {
     @Input()
     nodeEditorEvent: EventEmitter<NodeEditor>
 
+    private mouseLocation: { x: number, y: number }
+
     private editor: NodeEditor | undefined
 
     private mainItems: MenuItem[];
 
+    private subscriptions: Subscription[]
+
     constructor(private readonly translateService: TranslateService) {
         this.items = []
         this.mainItems = []
+        this.subscriptions = []
+        this.mouseLocation = { x: 0.0, y: 0.0 }
     }
 
     ngOnInit(): void {
-        this.nodeEditorEvent.subscribe((nodeEditor: NodeEditor) => {
+        const nodeEditorSubscription: Subscription = this.nodeEditorEvent.subscribe((nodeEditor: NodeEditor) => {
             this.onEditor(nodeEditor)
         })
+
+        this.subscriptions.push(nodeEditorSubscription)
     }
 
     private onEditor(nodeEditor: NodeEditor): void {
@@ -41,10 +51,20 @@ export class GraphContextMenuComponent implements OnInit {
             await this.showContextMenu(event)
         })
 
-        nodeEditor.components.forEach(async (component: Component) => {
-            const menuItem: MenuItem = await this.createMenuItem(nodeEditor, component)
-            this.mainItems.push(menuItem)
+        nodeEditor.on('mousemove', (event: any) => {
+            this.mouseLocation.x = event.x
+            this.mouseLocation.y = event.y
         })
+
+        const components: Component[] = Array.from(nodeEditor.components.values())
+        Promise.all(
+            components.sort((a: Component, b: Component) => {
+                return a.name.localeCompare(b.name)
+            }).map(async (component: Component) => {
+                const menuItem: MenuItem = await this.createMenuItem(nodeEditor, component)
+                this.mainItems.push(menuItem)
+            })
+        )
 
     }
 
@@ -75,7 +95,7 @@ export class GraphContextMenuComponent implements OnInit {
             data = this.copyDeep(data)
         }
 
-        const node: Node = await component.createNode(data)
+        const node: Node = await (component as any).createNode(data)
 
         if (!Utils.isNullOrUndefined(meta)) {
             node.meta = this.copyDeep(meta) as { [key: string]: unknown }
@@ -90,12 +110,15 @@ export class GraphContextMenuComponent implements OnInit {
             return node
         }
 
+        const x: number = this.mouseLocation.x
+        const y: number = this.mouseLocation.y
+
         if (Utils.isNullOrUndefined(offset)) {
-            node.position[0] = originalEvent.x
-            node.position[1] = originalEvent.y
+            node.position[0] = x
+            node.position[1] = y
         } else {
-            node.position[0] = originalEvent.x + offset
-            node.position[1] = originalEvent.y + offset
+            node.position[0] = x + offset
+            node.position[1] = y + offset
         }
 
         return node
@@ -158,6 +181,12 @@ export class GraphContextMenuComponent implements OnInit {
                 }
             }
         ]
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach((subscription: Subscription) => {
+            subscription.unsubscribe()
+        })
     }
 
 

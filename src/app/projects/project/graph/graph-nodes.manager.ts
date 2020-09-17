@@ -50,6 +50,14 @@ export class GraphNodesManager {
         return undefined
     }
 
+    remove(node: Node): void {
+        const id: string = this.getId(node)
+        if (!this.nodes.has(id)) {
+            return
+        }
+        this.nodes.delete(id)
+    }
+
     setData(data: Data): void {
         this.data = data
     }
