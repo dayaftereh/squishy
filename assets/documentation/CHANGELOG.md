@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  
  - `geometry` to script `math` context
  - documentation based on `markdown` files
+ - `Text-Input` as no node component
 
 ### Changed
 
@@ -26,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
  - issue with `ErrorManager` and `p-toast` from new **PrimeNG**
+ - issue with tables and `ContextMenu` not opens
 
 ## 0.1.1 - 02.06.2020
 
