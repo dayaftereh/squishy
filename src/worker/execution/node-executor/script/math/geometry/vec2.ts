@@ -1,5 +1,5 @@
+import { Mathf } from '../Mathf';
 import { Matrix3 } from './matrix3';
-import { ScriptMath } from '../script.math';
 
 export class Vec2 {
 
@@ -38,7 +38,7 @@ export class Vec2 {
 
     normalize(): Vec2 {
         const l: number = this.length()
-        if (ScriptMath.closeZero(l)) {
+        if (Mathf.closeZero(l)) {
             return new Vec2(0.0, 0.0)
         }
         const x: number = this.x / l

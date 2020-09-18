@@ -1,13 +1,17 @@
+import { AfterViewInit, ElementRef } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationService } from 'primeng/api';
 import { SelectItem } from 'primeng/api/selectitem';
+import { Listbox } from 'primeng/listbox';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
 import { Downloader } from 'src/app/utils/downloader';
+import { TouchHoldEventHandler } from 'src/app/utils/touch-hold-event.handler';
 import { Utils } from 'src/app/utils/utils';
 import { NewProjectComponent } from '../new-project/new-project.component';
 
@@ -18,7 +22,7 @@ import { NewProjectComponent } from '../new-project/new-project.component';
         './projects-manager-list.component.scss'
     ]
 })
-export class ProjectsManagerListComponent implements OnInit, OnDestroy {
+export class ProjectsManagerListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @Output()
     onProject: EventEmitter<SquishyProject>
@@ -27,7 +31,12 @@ export class ProjectsManagerListComponent implements OnInit, OnDestroy {
 
     selection: SquishyProject[] | undefined
 
-    private subscription: Subscription | undefined
+    private subscriptions: Subscription[]
+
+    @ViewChild('listBox')
+    listBox: Listbox | undefined
+
+    private touchHoldEventHandler: TouchHoldEventHandler
 
     constructor(
         private readonly projectsService: ProjectsService,
@@ -35,11 +44,12 @@ export class ProjectsManagerListComponent implements OnInit, OnDestroy {
         private readonly confirmationService: ConfirmationService,
         private readonly propertiesDialogService: PropertiesDialogService,
     ) {
+        this.subscriptions = []
         this.onProject = new EventEmitter<SquishyProject>(true);
     }
 
     ngOnInit(): void {
-        this.subscription = this.projectsService.projects()
+        const subscription: Subscription = this.projectsService.projects()
             .pipe(
                 map((projects: { [key: string]: SquishyProject }) => {
                     return Utils.mapProperties(projects, (value: SquishyProject) => {
@@ -59,6 +69,33 @@ export class ProjectsManagerListComponent implements OnInit, OnDestroy {
             .subscribe((projects: SelectItem[]) => {
                 this.projects = projects
             })
+
+        this.subscriptions.push(subscription)
+    }
+
+    ngAfterViewInit(): void {
+        const elementRef: ElementRef = this.listBox.el
+        this.touchHoldEventHandler = new TouchHoldEventHandler(elementRef)
+        this.touchHoldEventHandler.register()
+
+        const subscription: Subscription = this.touchHoldEventHandler.subscribe(async (event: TouchEvent) => {
+            await this.onTouched()
+        })
+        this.subscriptions.push(subscription)
+    }
+
+    async onTouched(): Promise<void> {
+        if (!this.selection || this.selection.length < 1) {
+            return
+        }
+
+        const project: SquishyProject = this.selection[0]
+
+        // check if on project given
+        if (this.onProject) {
+            // notify about selected project
+            this.onProject.emit(project)
+        }
     }
 
     async onDblClick(event: any): Promise<void> {
@@ -140,8 +177,12 @@ export class ProjectsManagerListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (this.subscription) {
-            this.subscription.unsubscribe()
+        this.subscriptions.forEach((subscription: Subscription) => {
+            subscription.unsubscribe()
+        })
+
+        if (this.touchHoldEventHandler) {
+            this.touchHoldEventHandler.unregister()
         }
     }
 

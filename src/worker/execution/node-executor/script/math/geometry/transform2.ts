@@ -1,8 +1,6 @@
-import { ScriptMath } from '../script.math';
-import { Vec2 } from './vec2';
-import { Point3 } from './point3';
+import { Mathf } from '../Mathf';
 import { Point2 } from './point2';
-import { Vec3 } from './vec3';
+import { Vec2 } from './vec2';
 
 /**
  * [a c e]
@@ -30,7 +28,7 @@ export class Transform2 {
     scale(sx: number, sy: number): Transform2 {
         const t: Transform2 = this.clone()
 
-        if (ScriptMath.closeZero(t.a)) {
+        if (Mathf.closeZero(t.a)) {
             t.a = sx
         } else {
             t.a *= sx
@@ -39,7 +37,7 @@ export class Transform2 {
         t.b *= sx
         t.c *= sy
 
-        if (ScriptMath.closeZero(t.d)) {
+        if (Mathf.closeZero(t.d)) {
             t.d = sy
         } else {
             t.d *= sy
@@ -58,7 +56,7 @@ export class Transform2 {
 
     inverse(): Transform2 {
         const det: number = this.det()
-        if (ScriptMath.closeZero(det)) {
+        if (Mathf.closeZero(det)) {
             return Transform2.identity()
         }
 

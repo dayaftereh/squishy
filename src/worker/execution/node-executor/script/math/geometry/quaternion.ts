@@ -1,4 +1,4 @@
-import { ScriptMath } from '../script.math'
+import { Mathf } from '../Mathf'
 import { Matrix3 } from './matrix3'
 import { Matrix4 } from './matrix4'
 import { Point3 } from './point3'
@@ -133,7 +133,7 @@ export class Quaternion {
     }
 
     fromUnitVectors(vFrom: Vec3, vTo: Vec3): Quaternion {
-        const eps: number = ScriptMath.epsilon
+        const eps: number = Mathf.EPSILON
         const result: Quaternion = Quaternion.zero()
 
         let r: number = vFrom.dotWith(vTo)
@@ -164,7 +164,7 @@ export class Quaternion {
     }
 
     angleTo(q: Quaternion): number {
-        return 2.0 * Math.acos(Math.abs(ScriptMath.clamp(-1.0, this.dot(q), 1.0)))
+        return 2.0 * Math.acos(Math.abs(Mathf.clamp(-1.0, this.dot(q), 1.0)))
     }
 
     static identity(): Quaternion {
@@ -203,7 +203,7 @@ export class Quaternion {
 
         let l: number = this.length()
 
-        if (ScriptMath.closeZero(l)) {
+        if (Mathf.closeZero(l)) {
             return Quaternion.identity()
         }
 
@@ -238,15 +238,15 @@ export class Quaternion {
     }
 
     slerp(q: Quaternion, t: number): Quaternion {
-        t = ScriptMath.clamp(0.0, t, 1.0)
+        t = Mathf.clamp(0.0, t, 1.0)
 
         const result: Quaternion = this.clone()
 
-        if (ScriptMath.closeZero(t)) {
+        if (Mathf.closeZero(t)) {
             return result
         }
 
-        if (ScriptMath.closeEquals(1.0, t)) {
+        if (Mathf.closeEquals(1.0, t)) {
             return q.clone()
         }
 

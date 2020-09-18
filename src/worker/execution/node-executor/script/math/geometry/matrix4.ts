@@ -1,8 +1,7 @@
-import { Matrix3 } from './matrix3'
-import { Vec3 } from './vec3'
-import { ScriptMath } from '../script.math'
+import { Mathf } from '../Mathf'
 import { Point3 } from './point3'
 import { Quaternion } from './quaternion'
+import { Vec3 } from './vec3'
 
 export class Matrix4 {
 
@@ -103,17 +102,18 @@ export class Matrix4 {
 
         let z: Vec3 = eye.subtractWith(target)
 
-        if (ScriptMath.closeZero(z.lengthSquared())) {
+
+        if (Mathf.closeZero(z.lengthSquared())) {
             // eye and target are in the same position
             z.z = 1.0
         }
         z = z.normalize()
 
         let x: Vec3 = up.crossWith(z)
-        if (ScriptMath.closeZero(x.lengthSquared())) {
+        if (Mathf.closeZero(x.lengthSquared())) {
             const epsilon: number = 0.0001
             // up and z are parallel
-            if (ScriptMath.closeEquals(Math.abs(up.z), 1.0)) {
+            if (Mathf.closeEquals(Math.abs(up.z), 1.0)) {
                 z.x += epsilon
             } else {
                 z.z += epsilon
@@ -272,7 +272,7 @@ export class Matrix4 {
 
         const det: number = n11 * t11 + n21 * t12 + n31 * t13 + n41 * t14
 
-        if (ScriptMath.closeZero(det)) {
+        if (Mathf.closeZero(det)) {
             return result
         }
 

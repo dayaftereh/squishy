@@ -1,8 +1,8 @@
-import { ScriptMath } from '../script.math'
 import { Vec2 } from './vec2'
 import { Vec3 } from './vec3'
 import { Point2 } from './point2'
 import { Point3 } from './point3'
+import { Mathf } from '../Mathf'
 
 /*
 * https://github.com/mrdoob/three.js/blob/dev/src/math/Matrix3.js
@@ -127,7 +127,7 @@ export class Matrix3 {
 
             det: number = n11 * t11 + n21 * t12 + n31 * t13;
 
-        if (ScriptMath.closeZero(det)) {
+        if (Mathf.closeZero(det)) {
             return Matrix3.zero()
         }
 

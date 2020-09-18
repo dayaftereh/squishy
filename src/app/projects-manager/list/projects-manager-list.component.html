@@ -13,7 +13,7 @@
 </div>
 <div class="p-grid">
     <div class="p-col-3">
-        <p-listbox [checkbox]="true" [(ngModel)]="selection" [multiple]="true" [options]="projects"
+        <p-listbox #listBox [checkbox]="true" [(ngModel)]="selection" [multiple]="true" [options]="projects"
             [styleClass]="'app-projects-manager-list'" [listStyle]="{'min-height':'50vh'}" [filter]="true"
             (onDblClick)="onDblClick($event)">
             <p-header>

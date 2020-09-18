@@ -1,6 +1,6 @@
+import { Mathf } from '../Mathf'
 import { Matrix3 } from './matrix3'
 import { Matrix4 } from './matrix4'
-import { ScriptMath } from '../script.math'
 import { Quaternion } from './quaternion'
 
 export class Vec3 {
@@ -34,7 +34,7 @@ export class Vec3 {
 
     normalize(): Vec3 {
         const l: number = this.length()
-        if (ScriptMath.closeZero(l)) {
+        if (Mathf.closeZero(l)) {
             return new Vec3(0.0, 0.0, 0.0)
         }
         const x: number = this.x / l
