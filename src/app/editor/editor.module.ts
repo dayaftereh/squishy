@@ -5,6 +5,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { EditorComponent } from './editor.component';
+import { EditorTypesServiceModule } from './types-service/editor-types-service.module';
 
 @NgModule({
     imports: [
@@ -15,6 +16,8 @@ import { EditorComponent } from './editor.component';
         DialogModule,
         ButtonModule,
         MonacoEditorModule,
+        // Custom
+        EditorTypesServiceModule
     ],
     declarations: [
         EditorComponent,

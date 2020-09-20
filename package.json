@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "gen-script": "tsc --project ./tsconfig.script.json && ts-node ./tools/types-to-json.ts",
     "build": "ng build --aot=true --baseHref=./ --prod=true"
   },
   "homepage": "https://github.com/dayaftereh/squishy#readme",

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { EditorTypesService } from './types-service/editor-types.service';
 
 @Component({
     templateUrl: './editor.component.html',
@@ -23,13 +24,13 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private subscription: Subscription | undefined
 
-    constructor() {
+    constructor(private readonly editorTypesService: EditorTypesService) {
         this._content = new EventEmitter<string | undefined>(true)
         this._layout = new EventEmitter<monaco.editor.IDimension | undefined>(true)
     }
 
 
-    ngOnInit(): void {
+    async ngOnInit(): Promise<void> {
         this.options = {
             theme: 'vs-dark',
             language: 'javascript',
@@ -67,9 +68,13 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
         return this.code
     }
 
-    onEditorInit(editor: monaco.editor.IEditor): void {
+    async onEditorInit(editor: monaco.editor.IEditor): Promise<void> {
         this.editor = editor
         this.layout()
+
+        await this.editorTypesService.injectTypes()
+
+        console.log(monaco.languages.typescript.javascriptDefaults.getExtraLibs())
     }
 
     onChange(content: string | undefined): void {

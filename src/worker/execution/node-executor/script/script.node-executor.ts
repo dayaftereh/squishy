@@ -4,9 +4,12 @@ import { Utils } from 'src/app/utils/utils';
 import { Execution } from '../../execution';
 import { AbstractNodeExecutor } from '../abstract-node-executor';
 import { NodeExecutor } from '../node-executor';
-import { ScriptExecutionContext } from './script-execution.context';
+import { Mathf } from './math/Mathf';
+import { Plugins } from './plugins/plugins';
 import { ScriptExecutionData } from './script.execution-data';
 import { ScriptVariable } from './script.variable';
+import { Squishy } from './squishy';
+import { SquishyObject } from './squishy-object';
 
 export class ScriptNodeExecutor extends AbstractNodeExecutor {
 
@@ -31,17 +34,20 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
 
     }
 
-    private async createContext(): Promise<ScriptExecutionContext> {
-        const context: ScriptExecutionContext = new ScriptExecutionContext(this.execution)
-        return context
+    private async createSquishy(): Promise<Squishy> {
+        const squishy: Squishy = new SquishyObject(this.execution)
+        return squishy
     }
 
     private async createFunction(): Promise<() => Promise<any>> {
         // create the variables for the script function
         const variables: ScriptVariable[] = await this.variables()
 
-        // create the context for the execution
-        const context: ScriptExecutionContext = await this.createContext()
+        // create the static variables
+        const staticVariables: ScriptVariable[] = await this.createStaticVariables()
+
+        // add the static variables
+        variables.push(...staticVariables)
 
         // get the name of the variable
         const variableNames: string[] = variables.map((variable: ScriptVariable) => {
@@ -57,6 +63,8 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
             const variableValues: any[] = variables.map((variable: ScriptVariable) => {
                 return variable.value
             })
+            // create a new execution context
+            const context: any = {}
 
             // call the script function
             const result = await fn.call(context, ...variableValues)
@@ -64,6 +72,27 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
             return result
         }
 
+    }
+
+    private async createStaticVariables(): Promise<ScriptVariable[]> {
+        const squishy: Squishy = await this.createSquishy()
+
+        const variables: ScriptVariable[] = [
+            {
+                name: 'Squishy',
+                value: squishy
+            },
+            {
+                name: 'Mathf',
+                value: Mathf
+            },
+            {
+                name: 'Plugins',
+                value: Plugins
+            }
+        ]
+
+        return variables
     }
 
     private async variables(): Promise<ScriptVariable[]> {
