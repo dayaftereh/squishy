@@ -5,7 +5,7 @@ import { EditorTypes } from './editor-types';
 @Injectable()
 export class EditorTypesService {
 
-    private static URL: string = "./assets/script.d.json"
+    private static URL: string = "./assets/scripts.d.ts"
 
     constructor(private readonly http: HttpClient) {
 
@@ -20,22 +20,22 @@ export class EditorTypesService {
         return types
     }
 
+    private async fetchTypesString(): Promise<string> {
+
+        const content: string = await this.http.get(EditorTypesService.URL, {
+            responseType: 'text'
+        }).toPromise()
+
+        return content
+    }
+
+    private async addExtraLib(content: string, path: string): Promise<void> {
+        monaco.languages.typescript.javascriptDefaults.addExtraLib(content, path);
+    }
+
     async injectTypes(): Promise<void> {
-        const types: EditorTypes = await this.fetchTypes()
-        const files: string[] = Object.keys(types)
-
-        files.forEach((file: string) => {
-            file = file.replace(/\\/g, "/")
-            const content: string = types[file]
-            const path: string = `file:///node_modules/@types/${file}`;
-
-            console.log(path, content)
-
-            monaco.languages.typescript.javascriptDefaults.addExtraLib(
-                content,
-                path
-            );
-        })
+        const scriptTypes: string = await this.fetchTypesString()
+        await this.addExtraLib(scriptTypes, 'scripts.d.ts')
 
         console.log(monaco.languages.typescript.javascriptDefaults.getExtraLibs())
     }

@@ -39,11 +39,12 @@ export class FileInputNodeExecutor extends AbstractNodeExecutor {
             }
         }))
 
-        // check if a reasult was found
+        // check if a result was found
         if (Utils.isNullOrUndefined(result) || !result) {
-            this.result = result
             return
         }
+
+        this.result = result
 
         // set the found file as result
         if (result.length < 2) {

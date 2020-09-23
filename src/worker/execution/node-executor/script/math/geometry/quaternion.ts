@@ -281,7 +281,7 @@ export class Quaternion {
 
         const sqrSinHalfTheta: number = 1.0 - cosHalfTheta * cosHalfTheta
 
-        if (sqrSinHalfTheta <= Number.EPSILON) {
+        if (sqrSinHalfTheta <= Mathf.EPSILON) {
             const s: number = 1.0 - t;
             result.w = s * w + t * result.w;
             result.x = s * x + t * result.x;

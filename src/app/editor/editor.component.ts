@@ -34,7 +34,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
         this.options = {
             theme: 'vs-dark',
             language: 'javascript',
-            automaticLayout: true
+            automaticLayout: true,
         } as unknown as monaco.editor.IEditorOptions
 
         this.subscription = this._layout.pipe(

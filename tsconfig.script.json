@@ -1,18 +1,14 @@
 {
     "include": [
         "src/worker/execution/node-executor/script/math/mathf.ts",
-        "src/worker/execution/node-executor/script/plugins/plugins.ts",
-        "src/worker/execution/node-executor/script/squishy.ts"
+        "src/worker/execution/node-executor/script/squishy.ts",
+        "src/worker/execution/node-executor/script/plugins/plugins.ts"
     ],
     "compilerOptions": {
-        "declaration": true,
-        "allowJs": true,
-        "isolatedModules": false,
+        "module": "CommonJS",
         "emitDeclarationOnly": true,
+        "moduleResolution": "node",
+        "declaration": true,
         "outDir": "./dist/script"
-    },
-    "exclude": [
-        "dist",
-        "node_modules"
-    ]
+    }
 }
