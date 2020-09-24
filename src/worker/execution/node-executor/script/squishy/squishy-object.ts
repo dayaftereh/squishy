@@ -1,8 +1,8 @@
-import { Execution } from '../../execution';
-import { Mathf } from './math/Mathf';
-import { Squishy } from './squishy';
+import { Execution } from '../../../execution';
+import { Mathf } from '../math/Mathf';
+import { SquishyApi } from './squishy-api';
 
-export class SquishyObject implements Squishy {
+export class SquishyObject implements SquishyApi {
 
     constructor(private readonly execution: Execution) {
 

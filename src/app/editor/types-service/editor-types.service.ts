@@ -1,32 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EditorTypes } from './editor-types';
 
 @Injectable()
 export class EditorTypesService {
 
     private static URL: string = "./assets/scripts.d.ts"
+    private static LIB_PATH: string = 'ts:types/scripts.d.ts'
 
     constructor(private readonly http: HttpClient) {
 
     }
 
-    private async fetchTypes(): Promise<EditorTypes> {
-
-        const types: EditorTypes = await this.http.get<EditorTypes>(EditorTypesService.URL, {
-            responseType: 'json'
-        }).toPromise()
-
-        return types
-    }
-
-    private async fetchTypesString(): Promise<string> {
-
+    private async fetchTypes(): Promise<string> {
         const content: string = await this.http.get(EditorTypesService.URL, {
             responseType: 'text'
         }).toPromise()
-
         return content
+    }
+
+    private async isExtraLibLoaded(path: string): Promise<boolean> {
+        const libs: monaco.languages.typescript.IExtraLibs = monaco.languages.typescript.javascriptDefaults.getExtraLibs()
+        const lib: monaco.languages.typescript.IExtraLib | undefined = libs[path];
+        return lib !== undefined && lib !== null
     }
 
     private async addExtraLib(content: string, path: string): Promise<void> {
@@ -34,10 +29,16 @@ export class EditorTypesService {
     }
 
     async injectTypes(): Promise<void> {
-        const scriptTypes: string = await this.fetchTypesString()
-        await this.addExtraLib(scriptTypes, 'scripts.d.ts')
+        // check if already loaded
+        const loaded: boolean = await this.isExtraLibLoaded(EditorTypesService.LIB_PATH)
+        if (loaded) {
+            return
+        }
 
-        console.log(monaco.languages.typescript.javascriptDefaults.getExtraLibs())
+        // load the types from server
+        const scriptTypes: string = await this.fetchTypes()
+        // add the lib to editor
+        await this.addExtraLib(scriptTypes, EditorTypesService.LIB_PATH)
     }
 
 }

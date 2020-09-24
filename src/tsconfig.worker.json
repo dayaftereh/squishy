@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/worker",
     "lib": [
@@ -9,9 +9,9 @@
     "types": []
   },
   "include": [
-    "src/worker/**/*.ts"
+    "worker/**/*.ts"
   ],
   "exclude": [
-    "src/assets"
+    "assets"
   ]
 }

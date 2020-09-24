@@ -19,11 +19,13 @@ const scriptDir: string = path.join(distDir, 'script');
 
 const inputFiles: string[] = [
     path.join(scriptDir, 'math/mathf.d.ts'),
-    path.join(scriptDir, 'squishy.d.ts'),
+    path.join(scriptDir, 'squishy/squishy-api.d.ts'),
     // path.join(scriptDir, 'plugins/plugins.d.ts'),
 ]
 
-const outputFile: string = path.join(distDir, 'scripts.d.ts')
+const srcDir: string = './src'
+const assetsDir: string = path.join(srcDir, 'assets')
+const outputFile: string = path.join(assetsDir, 'scripts.d.ts')
 
 const loadSourceFile = (filePath: string) => {
     const code: string = fs.readFileSync(filePath, 'utf8')
@@ -202,19 +204,12 @@ const build = (file: string, first?: boolean) => {
     ].join(newline)
 }
 
-/*
-const inputFile2: string = path.join(scriptDir, 'squishy.d.ts')
-const root: ts.SourceFile = loadSourceFile(inputFile2)
-inspectDeep(root, 0)
-*/
-
-
 const typesContent: string[] = inputFiles.map((file: string) => {
     const content: string = build(file, true)
     return content
 })
 
-typesContent.push(`declare const Squishy: Squishy`)
+typesContent.push(`declare const Squishy: SquishyApi`)
 
 
 fs.writeFileSync(outputFile, typesContent.join(newline))

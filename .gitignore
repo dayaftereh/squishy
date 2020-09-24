@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # types for script context
-/src/assets/script.d.json
+/src/assets/scripts.d.ts

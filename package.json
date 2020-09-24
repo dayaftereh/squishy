@@ -3,8 +3,8 @@
   "version": "0.1.2-rc.3",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "gen-script": "tsc --project ./tsconfig.script.json && ts-node --project ./tsconfig.tools.json ./tools/types-to-json.ts",
+    "start": "npm run generate-script-types && ng serve",
+    "generate-script-types": "tsc --project ./tsconfig.script.json && ts-node --project ./tsconfig.tools.json ./tools/generate-script-types.ts",
     "build": "ng build --aot=true --baseHref=./ --prod=true"
   },
   "homepage": "https://github.com/dayaftereh/squishy#readme",
