@@ -1,16 +1,29 @@
-import { Vec2 } from './vec2'
-import { Vec3 } from './vec3'
+import { Mathf } from '../Mathf'
 import { Point2 } from './point2'
 import { Point3 } from './point3'
-import { Mathf } from '../Mathf'
+import { Vec2 } from './vec2'
+import { Vec3 } from './vec3'
 
 /*
-* https://github.com/mrdoob/three.js/blob/dev/src/math/Matrix3.js
+* A class representing a 3x3 matrix.
 */
 export class Matrix3 {
 
     private elements: number[]
 
+    /**
+     * Creates and initializes the 3D Matrix to the 3x3. 
+     * The constructor takes the arguments in row-major order, while internally they are stored in the elements array in column-major order.
+     * @param n11 
+     * @param n12 
+     * @param n13 
+     * @param n21 
+     * @param n22 
+     * @param n23 
+     * @param n31 
+     * @param n32 
+     * @param n33 
+     */
     constructor(n11: number, n12: number, n13: number, n21: number, n22: number, n23: number, n31: number, n32: number, n33: number) {
         this.elements = [
             n11, n21, n31,
@@ -19,6 +32,9 @@ export class Matrix3 {
         ]
     }
 
+    /**
+     * Creates and initializes the 3D Matrix to the 3x3 with zero values. 
+     */
     static zero(): Matrix3 {
         const m: Matrix3 = new Matrix3(
             0.0, 0.0, 0.0,
@@ -28,6 +44,9 @@ export class Matrix3 {
         return m
     }
 
+    /**
+     * Creates and initializes the 3D Matrix to the 3x3 identity matrix.
+     */
     static identity(): Matrix3 {
         const m: Matrix3 = new Matrix3(
             1.0, 0.0, 0.0,
@@ -169,7 +188,7 @@ export class Matrix3 {
         return transpose
     }
 
-    transform(tx: number, ty: number, sx: number, sy: number, rotation: number, cx: number, cy: number): Matrix3 {
+    static transform(tx: number, ty: number, sx: number, sy: number, rotation: number, cx: number, cy: number): Matrix3 {
         const c: number = Math.cos(rotation);
         const s: number = Math.sin(rotation);
 

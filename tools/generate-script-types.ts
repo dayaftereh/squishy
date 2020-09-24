@@ -19,8 +19,8 @@ const scriptDir: string = path.join(distDir, 'script');
 
 const inputFiles: string[] = [
     path.join(scriptDir, 'math/mathf.d.ts'),
-    path.join(scriptDir, 'squishy/squishy-api.d.ts'),
-    // path.join(scriptDir, 'plugins/plugins.d.ts'),
+    path.join(scriptDir, 'squishy/squishy-types.d.ts'),
+    path.join(scriptDir, 'plugins/plugins-types.d.ts'),
 ]
 
 const srcDir: string = './src'
@@ -88,7 +88,7 @@ const allImportFiles = (root: ts.Node, kind: ts.SyntaxKind) => {
 
 const removeKeywords = (content: string) => {
     content = content.replace(/export declare/g, "")
-    content = content.replace(/export interface/g, "declare class")
+    content = content.replace(/export interface/g, "class")
     return content
 }
 
@@ -124,7 +124,8 @@ const inspect = (file: ts.SourceFile) => {
         ts.SyntaxKind.ClassDeclaration,
         ts.SyntaxKind.FunctionDeclaration,
         ts.SyntaxKind.VariableDeclarationList,
-        ts.SyntaxKind.InterfaceDeclaration
+        ts.SyntaxKind.InterfaceDeclaration,
+        ts.SyntaxKind.NamespaceKeyword
     ])
 
 
@@ -161,7 +162,8 @@ const joinImportFiles = (root: string, importFiles: ImportFile[]) => {
 }
 
 const build = (file: string, first?: boolean) => {
-    if (visited.has(file)) {
+    const exists: boolean = fs.existsSync(file)
+    if (visited.has(file) || !exists) {
         return undefined
     }
     visited.add(file)
@@ -205,11 +207,15 @@ const build = (file: string, first?: boolean) => {
 }
 
 const typesContent: string[] = inputFiles.map((file: string) => {
+    console.log("generation types for ", file)
     const content: string = build(file, true)
     return content
 })
 
-typesContent.push(`declare const Squishy: SquishyApi`)
+typesContent.push(
+    `declare const Squishy: SquishyTypes.Squishy`,
+    `declare const Plugins: PluginsTypes.Plugins`,
+)
 
-
+console.log("writing generated types to ", outputFile)
 fs.writeFileSync(outputFile, typesContent.join(newline))

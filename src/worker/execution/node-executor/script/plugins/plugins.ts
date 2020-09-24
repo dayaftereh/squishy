@@ -1,5 +1,5 @@
-import * as Plugins from "./plugins.module"
+import * as dayjs from "dayjs";
 
-export {
-    Plugins
+export class Plugins {
+    dayjs = dayjs
 }

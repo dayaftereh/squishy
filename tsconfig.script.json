@@ -1,8 +1,8 @@
 {
     "include": [
         "src/worker/execution/node-executor/script/math/mathf.ts",
-        "src/worker/execution/node-executor/script/plugins/plugins.ts",
-        "src/worker/execution/node-executor/script/squishy/squishy-api.ts"
+        "src/worker/execution/node-executor/script/plugins/plugins-types.ts",
+        "src/worker/execution/node-executor/script/squishy/squishy-types.ts"
     ],
     "compilerOptions": {
         "module": "CommonJS",

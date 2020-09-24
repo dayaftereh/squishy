@@ -73,8 +73,6 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
         this.layout()
 
         await this.editorTypesService.injectTypes()
-
-        console.log(monaco.languages.typescript.javascriptDefaults.getExtraLibs())
     }
 
     onChange(content: string | undefined): void {

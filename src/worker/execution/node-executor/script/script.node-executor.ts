@@ -8,7 +8,7 @@ import { Mathf } from './math/Mathf';
 import { Plugins } from './plugins/plugins';
 import { ScriptExecutionData } from './script.execution-data';
 import { ScriptVariable } from './script.variable';
-import { SquishyApi } from './squishy/squishy-api';
+import { Squishy } from './squishy/squishy';
 import { SquishyObject } from './squishy/squishy-object';
 
 export class ScriptNodeExecutor extends AbstractNodeExecutor {
@@ -34,9 +34,14 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
 
     }
 
-    private async createSquishy(): Promise<SquishyApi> {
-        const squishy: SquishyApi = new SquishyObject(this.execution)
+    private async createSquishy(): Promise<Squishy> {
+        const squishy: Squishy = new SquishyObject(this.execution)
         return squishy
+    }
+
+    private async createPlugins(): Promise<Plugins> {
+        const plugins: Plugins = new Plugins()
+        return plugins
     }
 
     private async createFunction(): Promise<() => Promise<any>> {
@@ -75,7 +80,8 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
     }
 
     private async createStaticVariables(): Promise<ScriptVariable[]> {
-        const squishy: SquishyApi = await this.createSquishy()
+        const squishy: Squishy = await this.createSquishy()
+        const plugins: Plugins = await this.createPlugins()
 
         const variables: ScriptVariable[] = [
             {
@@ -88,7 +94,7 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
             },
             {
                 name: 'Plugins',
-                value: Plugins
+                value: plugins
             }
         ]
 

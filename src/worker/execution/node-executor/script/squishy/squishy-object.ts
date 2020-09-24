@@ -1,11 +1,14 @@
 import { Execution } from '../../../execution';
 import { Mathf } from '../math/Mathf';
-import { SquishyApi } from './squishy-api';
+import { SquishyIO } from './io/squishy-io';
+import { Squishy } from './squishy';
 
-export class SquishyObject implements SquishyApi {
+export class SquishyObject implements Squishy {
+
+    io: SquishyIO
 
     constructor(private readonly execution: Execution) {
-
+        this.io = new SquishyIO()
     }
 
     get context(): any {

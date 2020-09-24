@@ -2,13 +2,30 @@ import { Mathf } from '../Mathf'
 import { Matrix3 } from './matrix3'
 import { Matrix4 } from './matrix4'
 import { Quaternion } from './quaternion'
-
+/**
+ * Class representing a 3D vector. A 3D vector is an ordered triplet of numbers (labeled x, y, and z).
+ */
 export class Vec3 {
 
+    /**
+     * the x value of this vector. Default is 0.
+     */
     x: number | undefined
+    /**
+     * the y value of this vector. Default is 0.
+     */
     y: number | undefined
+    /**
+     * the z value of this vector. Default is 0.
+     */
     z: number | undefined
 
+    /**
+     * Creates a new 3D vector.
+     * @param x the x value of the vector.
+     * @param y the y value of the vector.
+     * @param z the z value of the vector.
+     */
     constructor(x: number, y: number, z: number) {
         this.x = x
         this.y = y
@@ -122,7 +139,7 @@ export class Vec3 {
         return new Vec3(x, y, z)
     }
 
-    random(): Vec3 {
+    static random(): Vec3 {
         const x: number = Math.random()
         const y: number = Math.random()
         const z: number = Math.random()
@@ -160,6 +177,30 @@ export class Vec3 {
 
     distanceTo(p: Vec3): number {
         return this.distance(p.x, p.y, p.z)
+    }
+
+    /**
+     * Returns a unit vector for the x axis (1.0, 0.0, 0.0)
+     */
+    static xAxis(): Vec3 {
+        const v: Vec3 = new Vec3(1.0, 0.0, 0.0);
+        return v
+    }
+
+    /**
+     * Returns a unit vector for the y axis (0.0, 1.0, 0.0)
+     */
+    static yAxis(): Vec3 {
+        const v: Vec3 = new Vec3(0.0, 1.0, 0.0);
+        return v
+    }
+
+    /**
+     * Returns a unit vector for the z axis (0.0, 0.0, 1.0)
+     */
+    static zAxis(): Vec3 {
+        const v: Vec3 = new Vec3(0.0, 0.0, 1.0);
+        return v
     }
 
 }

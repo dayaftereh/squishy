@@ -54,8 +54,7 @@ export abstract class AbstractPropertiesDialogChildComponent implements OnInit, 
         return value
     }
 
-    triggerSubmit(): void {
-        console.log("trigger")
+    triggerSubmit(): void {     
         if (Utils.isNullOrUndefined(this.events) || Utils.isNullOrUndefined(this.events.submit)) {
             return
         }

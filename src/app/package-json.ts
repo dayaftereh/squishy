@@ -18,4 +18,8 @@ export class PackageJSON {
         return packageJson.name
     }
 
+    get graphVersion(): string {
+        return packageJson.graphVersion
+    }
+
 }

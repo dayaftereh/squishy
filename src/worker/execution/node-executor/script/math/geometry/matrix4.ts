@@ -52,7 +52,7 @@ export class Matrix4 {
         return m
     }
 
-    rotationFromEuler(x: number, y: number, z: number): Matrix4 {
+    static rotationFromEuler(x: number, y: number, z: number): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
 
@@ -96,7 +96,7 @@ export class Matrix4 {
         return result
     }
 
-    lookAt(eye: Vec3, target: Vec3, up: Vec3): Matrix4 {
+    static lookAt(eye: Vec3, target: Vec3, up: Vec3): Matrix4 {
         const result: Matrix4 = Matrix4.identity()
         const te: number[] = result.elements
 
@@ -317,7 +317,7 @@ export class Matrix4 {
         return this.multiplyScale(v.x, v.y, v.z)
     }
 
-    translation(x: number, y: number, z: number): Matrix4 {
+    static translation(x: number, y: number, z: number): Matrix4 {
         const m: Matrix4 = new Matrix4(
             1.0, 0.0, 0.0, x,
             0.0, 1.0, 0.0, y,
@@ -327,7 +327,7 @@ export class Matrix4 {
         return m
     }
 
-    rotationX(theta: number): Matrix4 {
+    static rotationX(theta: number): Matrix4 {
         const c: number = Math.cos(theta)
         const s: number = Math.sin(theta)
 
@@ -340,7 +340,7 @@ export class Matrix4 {
         return m
     }
 
-    rotationY(theta: number): Matrix4 {
+    static rotationY(theta: number): Matrix4 {
         const c: number = Math.cos(theta)
         const s: number = Math.sin(theta)
 
@@ -353,7 +353,7 @@ export class Matrix4 {
         return m
     }
 
-    rotationZ(theta: number): Matrix4 {
+    static rotationZ(theta: number): Matrix4 {
         const c: number = Math.cos(theta)
         const s: number = Math.sin(theta)
 
@@ -366,7 +366,7 @@ export class Matrix4 {
         return m
     }
 
-    rotationAxis(x: number, y: number, z: number, angle: number): Matrix4 {
+    static rotationAxis(x: number, y: number, z: number, angle: number): Matrix4 {
         const c: number = Math.cos(angle)
         const s: number = Math.sin(angle)
         const t: number = 1.0 - c
@@ -383,11 +383,11 @@ export class Matrix4 {
         return m
     }
 
-    rotationAxisWith(axis: Vec3, angle: number): Matrix4 {
-        return this.rotationAxis(axis.x, axis.y, axis.z, angle)
+    static rotationAxisWith(axis: Vec3, angle: number): Matrix4 {
+        return Matrix4.rotationAxis(axis.x, axis.y, axis.z, angle)
     }
 
-    scale(x: number, y: number, z: number): Matrix4 {
+    static scale(x: number, y: number, z: number): Matrix4 {
         const m: Matrix4 = new Matrix4(
             x, 0.0, 0.0, 0.0,
             0.0, y, 0.0, 0.0,
@@ -397,11 +397,11 @@ export class Matrix4 {
         return m
     }
 
-    scaleWith(v: Vec3): Matrix4 {
-        return this.scale(v.x, v.y, v.z)
+    static scaleWith(v: Vec3): Matrix4 {
+        return Matrix4.scale(v.x, v.y, v.z)
     }
 
-    shear(x: number, y: number, z: number): Matrix4 {
+    static shear(x: number, y: number, z: number): Matrix4 {
         const m: Matrix4 = new Matrix4(
             1.0, y, z, 0.0,
             x, 1.0, z, 0.0,
@@ -411,11 +411,11 @@ export class Matrix4 {
         return m
     }
 
-    shearWith(v: Vec3): Matrix4 {
-        return this.shear(v.x, v.y, v.z)
+    static shearWith(v: Vec3): Matrix4 {
+        return Matrix4.shear(v.x, v.y, v.z)
     }
 
-    perspective(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4 {
+    static perspective(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
 
@@ -435,7 +435,7 @@ export class Matrix4 {
         return result
     }
 
-    orthographic(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4 {
+    static orthographic(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
 
@@ -481,7 +481,7 @@ export class Matrix4 {
         return this.elements[index]
     }
 
-    compose(position: Vec3, quaternion: Quaternion, scale: Vec3): Matrix4 {
+    static compose(position: Vec3, quaternion: Quaternion, scale: Vec3): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
 
@@ -522,10 +522,10 @@ export class Matrix4 {
         return result
     }
 
-    rotationFromQuaternion(q: Quaternion): Matrix4 {
+    static rotationFromQuaternion(q: Quaternion): Matrix4 {
         const scale: Vec3 = new Vec3(1.0, 1.0, 1.0)
         const position: Vec3 = new Vec3(0.0, 0.0, 0.0)
-        return this.compose(position, q, scale)
+        return Matrix4.compose(position, q, scale)
     }
 
     maxScaleOnAxis(): number {

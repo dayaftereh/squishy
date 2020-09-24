@@ -135,7 +135,7 @@ export class Transform2 {
     }
 
     rotateDegrees(theta: number): Transform2 {
-        const angle: number = theta * Math.PI / 180.0
+        const angle: number = Mathf.toRadians(theta)
         return this.rotate(angle)
     }
 

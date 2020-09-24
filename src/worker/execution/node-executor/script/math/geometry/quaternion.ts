@@ -25,7 +25,7 @@ export class Quaternion {
         return new Quaternion(this.x, this.y, this.z, this.w)
     }
 
-    fromEuler(x: number, y: number, z: number): Quaternion {
+    static fromEuler(x: number, y: number, z: number): Quaternion {
         const result: Quaternion = Quaternion.zero()
 
         const c1: number = Math.cos(x / 2.0)
@@ -45,11 +45,11 @@ export class Quaternion {
         return result
     }
 
-    fromEulerWith(v: Vec3): Quaternion {
-        return this.fromEuler(v.x, v.y, v.z)
+    static fromEulerWith(v: Vec3): Quaternion {
+        return Quaternion.fromEuler(v.x, v.y, v.z)
     }
 
-    fromAxisAngle(x: number, y: number, z: number, angle: number): Quaternion {
+    static fromAxisAngle(x: number, y: number, z: number, angle: number): Quaternion {
         const result: Quaternion = Quaternion.zero()
 
         const halfAngle: number = angle / 2.0
@@ -63,11 +63,11 @@ export class Quaternion {
         return result
     }
 
-    fromAxisAngleWith(v: Vec3, angle: number): Quaternion {
-        return this.fromAxisAngle(v.x, v.y, v.z, angle)
+    static fromAxisAngleWith(v: Vec3, angle: number): Quaternion {
+        return Quaternion.fromAxisAngle(v.x, v.y, v.z, angle)
     }
 
-    private fromMatrix(
+    private static fromMatrix(
         m11: number, m12: number, m13: number,
         m21: number, m22: number, m23: number,
         m31: number, m32: number, m33: number): Quaternion {
@@ -116,23 +116,23 @@ export class Quaternion {
         return result
     }
 
-    fromMatrix3(m: Matrix3): Quaternion {
-        return this.fromMatrix(
+    static fromMatrix3(m: Matrix3): Quaternion {
+        return Quaternion.fromMatrix(
             m.at(0), m.at(4), m.at(8),
             m.at(1), m.at(5), m.at(9),
             m.at(2), m.at(6), m.at(9),
         )
     }
 
-    fromMatrix4(m: Matrix4): Quaternion {
-        return this.fromMatrix(
+    static fromMatrix4(m: Matrix4): Quaternion {
+        return Quaternion.fromMatrix(
             m.at(0), m.at(4), m.at(8),
             m.at(1), m.at(5), m.at(9),
             m.at(2), m.at(6), m.at(9),
         )
     }
 
-    fromUnitVectors(vFrom: Vec3, vTo: Vec3): Quaternion {
+    static fromUnitVectors(vFrom: Vec3, vTo: Vec3): Quaternion {
         const eps: number = Mathf.EPSILON
         const result: Quaternion = Quaternion.zero()
 

@@ -16,6 +16,7 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { GraphMouseEventManager } from './graph-mouse-event.manager';
 import { GraphNodesManager } from './graph-nodes.manager';
 import { ProjectGraphService } from './service/project-graph.service';
+import * as semver from 'semver'
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -55,7 +56,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         const projectSubscription: Subscription = this.projectsService.getProjectFromRoute(this.activatedRoute).subscribe((project: SquishyProject | undefined) => {
             const needUpdate: boolean = Utils.isNullOrUndefined(this.project)
             this.project = project
-            this.project.data.id = this.id()
+            this.project.data.id = GraphComponent.id()
             // check if project
             if (needUpdate) {
                 this.onDataChanged()
@@ -83,9 +84,10 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    private id(): string {
+    static id(): string {
         const packageJson: PackageJSON = new PackageJSON()
-        return `${packageJson.name}@0.1.0`
+        const version: string = semver.coerce(packageJson.version)
+        return `${packageJson.name}@${version}`
     }
 
     ngAfterViewInit(): void {
@@ -95,7 +97,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
             return
         }
         // get the id for the node editor
-        const id: string = this.id()
+        const id: string = GraphComponent.id()
         // create the node editor
         this.editor = new NodeEditor(id, container)
 

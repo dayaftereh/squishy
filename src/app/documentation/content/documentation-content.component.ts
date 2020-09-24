@@ -16,9 +16,7 @@ export class DocumentationContentComponent implements OnInit, OnDestroy {
 
     }
 
-    ngOnInit(): void {
-        console.log(this.activatedRoute)
-
+    ngOnInit(): void {       
         const url: Observable<string> = this.activatedRoute.url.pipe(
             map((values: UrlSegment[]) => {
                 return values.join('/')
