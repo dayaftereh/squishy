@@ -56,7 +56,10 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         const projectSubscription: Subscription = this.projectsService.getProjectFromRoute(this.activatedRoute).subscribe((project: SquishyProject | undefined) => {
             const needUpdate: boolean = Utils.isNullOrUndefined(this.project)
             this.project = project
-            this.project.data.id = GraphComponent.id()
+
+            if(!Utils.isNullOrUndefined(this.project.data)){
+                this.project.data.id = GraphComponent.id()
+            }
             // check if project
             if (needUpdate) {
                 this.onDataChanged()
