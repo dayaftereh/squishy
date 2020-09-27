@@ -2,8 +2,8 @@ import { Component, Node } from 'rete';
 import { AngularComponent, AngularComponentData } from 'rete-angular-render-plugin';
 import { NodeData, WorkerInputs, WorkerOutputs } from 'rete/types/core/data';
 import { Utils } from 'src/app/utils/utils';
-import { SquishyNodeData } from './squishy-node.data';
 import { GraphNodesManager } from '../graph-nodes.manager';
+import { SquishyNodeData } from './squishy-node.data';
 
 export class SquishyNodeComponent<T extends SquishyNodeData> extends Component implements AngularComponent {
 
@@ -23,9 +23,7 @@ export class SquishyNodeComponent<T extends SquishyNodeData> extends Component i
         } as T, nodeData)
 
         data.id = id
-
-           const nodeData2 = await this.nodeData(data)
-
+        const nodeData2 = await this.nodeData(data)
 
         const node: Node = await super.createNode(nodeData2)
         // invoke the new node to the graph nodes manager

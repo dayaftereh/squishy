@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup" (ngSubmit)="triggerSubmit()">
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.name.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="text" formControlName="name" pInputText />
+            </div>
+        </div>
+    </div>
+</form>

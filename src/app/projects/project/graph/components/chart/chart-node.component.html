@@ -1,0 +1,23 @@
+<p-panel styleClass="node">
+    <p-header>
+        {{nodeData!.name}}
+    </p-header>
+    <div class="p-grid p-justify-end">
+        <div class="p-col-2">
+            <button pButton type="button" icon="pi pi-cog" class="p-button-secondary"
+                (click)="editProperties()"></button>
+        </div>
+    </div>
+    <div class="p-grid" *ngFor="let input of inputs">
+        <div class="p-col">
+            <rete-socket rete-socket [io]="input" [socket]="input.socket"></rete-socket>
+        </div>
+        <div class="p-col">
+            <button pButton type="button" icon="pi pi-cog" class="p-button-secondary"
+                (click)="editDataset(input.key)"></button>
+        </div>
+        <div class="p-col">
+            <input type="text" pInputText [(ngModel)]="nodeData.datasets[input.key].name" />
+        </div>
+    </div>
+</p-panel>

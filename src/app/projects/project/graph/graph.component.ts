@@ -17,6 +17,7 @@ import { GraphMouseEventManager } from './graph-mouse-event.manager';
 import { GraphNodesManager } from './graph-nodes.manager';
 import { ProjectGraphService } from './service/project-graph.service';
 import * as semver from 'semver'
+import { ChartComponent } from './components/chart/chart.component';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -166,6 +167,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private getComponents(): Component[] {
         return [
+            new ChartComponent(this.graphNodesManager),
             new ScriptComponent(this.graphNodesManager),
             new TextInputComponent(this.graphNodesManager),
             new FileInputComponent(this.graphNodesManager),

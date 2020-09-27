@@ -4,7 +4,7 @@
   "graphVersion": ">=0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run generate-script-types && ng serve",
+    "start": "ng serve",
     "generate-script-types": "tsc --project ./tsconfig.script.json && ts-node --project ./tsconfig.tools.json ./tools/generate-script-types.ts",
     "build": "npm run generate-script-types && ng build --aot=true --baseHref=./ --prod=true"
   },

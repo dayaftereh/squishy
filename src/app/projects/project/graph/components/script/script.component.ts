@@ -1,17 +1,23 @@
-import { Input, Node, Output, Connection } from 'rete';
-import { NodeData, WorkerInputs, WorkerOutputs } from 'rete/types/core/data';
-import { Utils } from 'src/app/utils/utils';
+import { Input, Node, Output } from 'rete';
+import { NodeData } from 'rete/types/core/data';
+import { GraphNodesManager } from '../../graph-nodes.manager';
 import { anyTypeSocket } from '../../sockets/any-type.socket';
 import { NodeComponentsType } from '../node-components.type';
+import { NodeDynamicInputManager } from '../node-dynamic-input.manager';
 import { SquishyNodeComponent } from '../squishy-node.component';
 import { ScriptNodeComponent } from './script-node.component';
 import { ScriptData } from './script.data';
-import { GraphNodesManager } from '../../graph-nodes.manager';
 
 export class ScriptComponent extends SquishyNodeComponent<ScriptData> {
 
+    private dynamicInputManager: NodeDynamicInputManager
+
     constructor(protected readonly graphNodesManager: GraphNodesManager) {
         super(`Script`, ScriptNodeComponent, graphNodesManager)
+        this.dynamicInputManager = new NodeDynamicInputManager(
+            this.variableFactory,
+            graphNodesManager
+        )
     }
 
     protected async nodeData(data: ScriptData): Promise<ScriptData> {
@@ -31,74 +37,16 @@ export class ScriptComponent extends SquishyNodeComponent<ScriptData> {
         const output: Output = new Output(id, "Return", anyTypeSocket)
         node.addOutput(output)
 
-        // get the node data
-        const nodeData: NodeData | undefined = this.graphNodesManager.getNodeDataFromNode(node)
-        // check if node data found
-        if (!Utils.isNullOrUndefined(nodeData)) {
-            // load the node data
-            this.loadNodeData(node, nodeData)
-        }
-
-        // check if already an input added
-        if (node.inputs.size < 1) {            
-            this.addVariableInput(node)
-        }
+        this.dynamicInputManager.load(node)
     }
 
-    private loadNodeData(node: Node, nodeData: NodeData): void {
-        // check if the node has inputs
-        if (Utils.isNullOrUndefined(nodeData.inputs)) {
-            return
-        }
-
-        // add all already created inputs
-        Utils.forEachProperty(nodeData.inputs, (_, id: string) => {
-            this.addVariableInput(node, id)
-        })
+    worker(nodeData: NodeData): void {
+        this.dynamicInputManager.update(nodeData)
     }
 
-    worker(nodeData: NodeData, inputs: WorkerInputs, outputs: WorkerOutputs): void {
-        // get the node from the node data
-        const node: Node | undefined = this.graphNodesManager.getNodeFromNodeData(nodeData)
-
-        if (!Utils.isNullOrUndefined(node)) {
-            this.syncInputs(node)
-        }
-    }
-
-    private syncInputs(node: Node): void {
-        const removeable: string[] = []
-        node.inputs.forEach((input: Input, id: string) => {
-            if (Utils.isEmpty(input.connections)) {
-                removeable.push(id)
-            }
-        })
-
-        while (removeable.length > 1) {
-            const id: string = removeable.pop()
-            this.removeVariableInput(node, id)
-        }
-
-        if (Utils.isEmpty(removeable)) {
-            this.addVariableInput(node)
-        }
-    }
-
-    private addVariableInput(node: Node, id?: string): void {
-        // check if a id is given
-        if (Utils.isNullOrUndefined(id)) {
-            // generate a new id
-            id = Utils.uuid()
-        }
+    private variableFactory(id: string): Input {
         const input: Input = new Input(id, 'Variable', anyTypeSocket)
-        node.addInput(input)
-    }
-
-    private removeVariableInput(node: Node, id: string): void {
-        if (!node.inputs.has(id)) {
-            return
-        }
-        node.inputs.delete(id)
+        return input
     }
 
 }
