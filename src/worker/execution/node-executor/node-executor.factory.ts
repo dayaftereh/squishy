@@ -1,15 +1,13 @@
-import { InputData, InputsData, NodeData, InputConnectionData } from 'rete/types/core/data';
-import { FileInputData } from 'src/app/projects/project/graph/components/file-input/file-input.data';
-import { FileOutputData } from 'src/app/projects/project/graph/components/file-output/file-output.data';
+import { NodeData } from 'rete/types/core/data';
 import { NodeComponentsType } from 'src/app/projects/project/graph/components/node-components.type';
-import { ScriptData } from 'src/app/projects/project/graph/components/script/script.data';
 import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
 import { Utils } from 'src/app/utils/utils';
+import { Execution } from '../execution';
+import { ChartNodeExecutor } from './chart/chart.node-executor';
 import { FileInputNodeExecutor } from './file-input/file-input.node-executor';
 import { FileOutputNodeExecutor } from './file-output/file-output.node-executor';
 import { NodeExecutor } from './node-executor';
 import { ScriptNodeExecutor } from './script/script.node-executor';
-import { Execution } from '../execution';
 import { TextInputNodeExecutor } from './text-input/text-input.node-executor';
 
 export class NodeExecutorFactory {
@@ -24,10 +22,11 @@ export class NodeExecutorFactory {
         // create the map with the factory functions
         this.factoryFunction = new Map<NodeComponentsType, (nodeData: NodeData, nodeExecutionData: any) => Promise<NodeExecutor>>()
         // regster all factories function
-        this.factoryFunction.set(NodeComponentsType.FileInput, this.createFileInput)
+        this.factoryFunction.set(NodeComponentsType.Chart, this.createChart)
         this.factoryFunction.set(NodeComponentsType.Script, this.createScript)
-        this.factoryFunction.set(NodeComponentsType.FileOutput, this.createFileOutput)
+        this.factoryFunction.set(NodeComponentsType.FileInput, this.createFileInput)
         this.factoryFunction.set(NodeComponentsType.TextInput, this.createTextInput)
+        this.factoryFunction.set(NodeComponentsType.FileOutput, this.createFileOutput)
     }
 
     async create(nodeData: NodeData, nodeExecutionData: any): Promise<NodeExecutor> {
@@ -69,6 +68,13 @@ export class NodeExecutorFactory {
     private async createTextInput(nodeData: NodeData, nodeExecutionData: any): Promise<TextInputNodeExecutor> {
         // create the text input node executor
         const executor: TextInputNodeExecutor = new TextInputNodeExecutor(this.execution, nodeData, nodeExecutionData)
+
+        return executor
+    }
+
+    private async createChart(nodeData: NodeData, nodeExecutionData: any): Promise<ChartNodeExecutor> {
+        // create the chart node executor
+        const executor: ChartNodeExecutor = new ChartNodeExecutor(this.execution, nodeData, nodeExecutionData)
 
         return executor
     }

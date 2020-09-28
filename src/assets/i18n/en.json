@@ -109,6 +109,9 @@
                             "header": "Chart Properties",
                             "name": {
                                 "lbl": "Name"
+                            },
+                            "animation": {
+                                "lbl": "Animation"
                             }
                         },
                         "dataset": {

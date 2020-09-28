@@ -3,16 +3,17 @@ import { Input, Node } from 'rete';
 import { NodeData } from 'rete/types/core/data';
 import { Utils } from 'src/app/utils/utils';
 import { GraphNodesManager } from '../graph-nodes.manager';
+import { NodeDynamicInputEvent } from './node-dynamic-input.event';
 import { NodeInputFactory } from './node-input-factory';
 
 export class NodeDynamicInputManager {
 
-    onDelete: EventEmitter<string>
+    onDelete: EventEmitter<NodeDynamicInputEvent>
 
     constructor(
         private readonly factory: NodeInputFactory,
         private readonly graphNodesManager: GraphNodesManager) {
-        this.onDelete = new EventEmitter<string>();
+        this.onDelete = new EventEmitter<NodeDynamicInputEvent>();
     }
 
     load(node: Node): void {
@@ -29,7 +30,6 @@ export class NodeDynamicInputManager {
         if (!node.inputs || node.inputs.size < 1) {
             this.addInput(node)
         }
-
     }
 
     private loadNodeData(node: Node, nodeData: NodeData): void {
@@ -51,6 +51,15 @@ export class NodeDynamicInputManager {
         if (!Utils.isNullOrUndefined(node)) {
             this.syncInputs(node)
         }
+    }
+
+    hasConnection(nodeData: NodeData, id: string): boolean {
+        // get the node from the node data
+        const node: Node | undefined = this.graphNodesManager.getNodeFromNodeData(nodeData)
+        if (Utils.isNullOrUndefined(node)) {
+            return false
+        }
+        return node.inputs.has(id)
     }
 
     private syncInputs(node: Node): void {
@@ -83,7 +92,13 @@ export class NodeDynamicInputManager {
     }
 
     private removeInput(node: Node, id: string): void {
-        this.onDelete.emit(id)
+        const event: NodeDynamicInputEvent = {
+            id,
+            node
+        }
+
+        this.onDelete.emit(event)
+
         if (!node.inputs.has(id)) {
             return
         }

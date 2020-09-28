@@ -24,7 +24,8 @@ export class ChartPropertiesComponent extends AbstractPropertiesDialogChildCompo
 
     createFormGroup(): FormGroup {
         return new FormGroup({
-            name: new FormControl()
+            name: new FormControl(),
+            animation: new FormControl(),
         })
     }
 
@@ -34,6 +35,7 @@ export class ChartPropertiesComponent extends AbstractPropertiesDialogChildCompo
         }
 
         this.chartData.name = this.getFormValue('name', this.chartData.name)
+        this.chartData.animation = this.getFormValue('animation', this.chartData.animation)
 
         this.emitProjectChanged()
         this.projectGraphService.emitDataChanged()

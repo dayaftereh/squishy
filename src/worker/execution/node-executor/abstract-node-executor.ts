@@ -1,10 +1,8 @@
-import { NodeExecutor } from './node-executor';
-import { ExecutionData } from '../execution-data';
-import { Execution } from '../execution';
-import { Utils } from 'src/app/utils/utils';
+import { InputConnectionData, InputData, InputsData, NodeData } from 'rete/types/core/data';
 import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
-import { SquishyProject } from 'src/app/projects-service/squishy-project';
-import { NodeData, InputsData, InputData, InputConnectionData } from 'rete/types/core/data';
+import { Utils } from 'src/app/utils/utils';
+import { Execution } from '../execution';
+import { NodeExecutor } from './node-executor';
 
 export abstract class AbstractNodeExecutor implements NodeExecutor {
 
@@ -124,6 +122,38 @@ export abstract class AbstractNodeExecutor implements NodeExecutor {
         }))
 
         return dependentExecutors
+    }
+
+    async getExecutorId(id: string): Promise<string | undefined> {
+        if (Utils.isNullOrUndefined(this.nodeData) || Utils.isNullOrUndefined(this.nodeData.inputs)) {
+            return undefined
+        }
+        // get the inputs for this node
+        const inputs: InputsData = this.nodeData.inputs
+
+        // check if
+        if (Utils.isNullOrUndefined(inputs[id])) {
+            return undefined
+        }
+        // get the input data
+        const inputData: InputData = inputs[id]
+        // check if the input has a connection
+        if (!inputData.connections || inputData.connections.length < 1) {
+            return undefined
+        }
+        // get the first connection
+        const inputConnectionData: InputConnectionData = inputData.connections[0]
+
+        return inputConnectionData.output
+    }
+
+    async getExecutor(id: string): Promise<NodeExecutor | undefined> {
+        // get the executor id for the given variable
+        const executorId: string | undefined = await this.getExecutorId(id)
+        // get the node executor
+        const nodeExecutor: NodeExecutor | undefined = await this.execution.getExecutor(executorId)
+
+        return nodeExecutor
     }
 
     getResult(): any | undefined {

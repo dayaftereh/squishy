@@ -1,5 +1,6 @@
 import { Input, Node, Output } from 'rete';
 import { NodeData } from 'rete/types/core/data';
+import { Utils } from 'src/app/utils/utils';
 import { GraphNodesManager } from '../../graph-nodes.manager';
 import { anyTypeSocket } from '../../sockets/any-type.socket';
 import { NodeComponentsType } from '../node-components.type';
@@ -41,7 +42,25 @@ export class ScriptComponent extends SquishyNodeComponent<ScriptData> {
     }
 
     worker(nodeData: NodeData): void {
+        this.syncVariables(nodeData)
         this.dynamicInputManager.update(nodeData)
+    }
+
+    private syncVariables(nodeData: NodeData): void {
+        if (Utils.isNullOrUndefined(nodeData.data)) {
+            return
+        }
+        const scriptData: ScriptData = nodeData.data as any as ScriptData
+        if (Utils.isNullOrUndefined(scriptData.variables)) {
+            return
+        }
+
+        const keys: string[] = Object.keys(scriptData.variables)
+        keys.filter((id: string) => {
+            return !this.dynamicInputManager.hasConnection(nodeData, id)
+        }).filter((id: string) => {
+            delete scriptData.variables[id]
+        })
     }
 
     private variableFactory(id: string): Input {

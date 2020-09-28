@@ -51,7 +51,8 @@
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/components/prism-javascript.min.js",
               "node_modules/prismjs/components/prism-typescript.min.js",
-              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+              "node_modules/chart.js/dist/Chart.js"
             ],
             "webWorkerTsConfig": "./src/tsconfig.worker.json"
           },

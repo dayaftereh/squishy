@@ -4,13 +4,14 @@ import { Subscription } from 'rxjs';
 import { ErrorManagerService } from 'src/app/error-manager/service/error-manager.service';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
+import { ChartData } from 'src/app/projects/project/graph/components/chart/chart.data';
 import { FileInputData } from 'src/app/projects/project/graph/components/file-input/file-input.data';
 import { NodeComponentsType } from 'src/app/projects/project/graph/components/node-components.type';
 import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
+import { TextInputData } from 'src/app/projects/project/graph/components/text-input/text-input.data';
 import { Utils } from 'src/app/utils/utils';
 import { ExecutionResult } from 'src/worker/execution/execution-result';
 import { ExecutorService } from '../../executor-service/executor.service';
-import { TextInputData } from 'src/app/projects/project/graph/components/text-input/text-input.data';
 
 @Component({
     templateUrl: './executor.component.html',
@@ -62,6 +63,15 @@ export class ExecutorComponent implements OnInit, OnDestroy {
             return nodeData.type === NodeComponentsType.FileInput
         }).map((nodeData: SquishyNodeData) => {
             return nodeData as FileInputData
+        })
+    }
+
+    charts(): ChartData[] {
+        // get all charts
+        return Utils.getSquishyNodesData(this.project).filter((nodeData: SquishyNodeData) => {
+            return nodeData.type === NodeComponentsType.Chart
+        }).map((nodeData: SquishyNodeData) => {
+            return nodeData as ChartData
         })
     }
 
