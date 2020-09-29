@@ -1,0 +1,221 @@
+{
+    "app": {
+        "name": "squishy"
+    },
+    "home": {
+        "runner": {
+            "header": "Runner",
+            "description": "Execute a created project."
+        },
+        "projects": {
+            "header": "Projects",
+            "description": "Create a individual project."
+        },
+        "documentation": {
+            "header": "Documentation",
+            "description": "Learn more about Squishy."
+        },
+        "btn": {
+            "run": "Run",
+            "edit": "Edit",
+            "docu": "Documentation"
+        }
+    },
+    "projects": {
+        "project": {
+            "graph": {
+                "components": {
+                    "file-input": {
+                        "node": {
+                            "output": {
+                                "lbl": "Data"
+                            }
+                        },
+                        "properties": {
+                            "header": "File-Input Properties",
+                            "name": {
+                                "lbl": "Name:"
+                            },
+                            "mode": {
+                                "lbl": "Mode:"
+                            },
+                            "encoding": {
+                                "lbl": "Encoding:"
+                            },
+                            "accept": {
+                                "lbl": "Accept:"
+                            },
+                            "multiple": {
+                                "lbl": "Multiple:"
+                            },
+                            "extended-output": {
+                                "lbl": "Extended Output:"
+                            }
+                        }
+                    },
+                    "file-output": {
+                        "node": {
+                            "input": {
+                                "lbl": "Data"
+                            }
+                        },
+                        "properties": {
+                            "header": "File-Output Properties",
+                            "name": {
+                                "lbl": "Name:"
+                            },
+                            "filename": {
+                                "lbl": "Filename:"
+                            }
+                        }
+                    },
+                    "script": {
+                        "node": {
+                            "output": {
+                                "lbl": "Return"
+                            }
+                        },
+                        "editor": {
+                            "header": "Script Editor"
+                        },
+                        "properties": {
+                            "header": "File-Script Properties",
+                            "name": {
+                                "lbl": "Name:"
+                            }
+                        }
+                    },
+                    "text-input": {
+                        "node": {
+                            "output": {
+                                "lbl": "Content"
+                            }
+                        },
+                        "editor": {
+                            "header": "Text-Input Editor"
+                        },
+                        "properties": {
+                            "header": "Text-Input Properties",
+                            "name": {
+                                "lbl": "Name:"
+                            },
+                            "type": {
+                                "lbl": "Type:"
+                            }
+                        }
+                    },
+                    "chart": {
+                        "properties": {
+                            "header": "Chart Properties",
+                            "name": {
+                                "lbl": "Name"
+                            },
+                            "animation": {
+                                "lbl": "Animation"
+                            },
+                            "pan": {
+                                "lbl": "Pan"
+                            },
+                            "zoom": {
+                                "lbl": "Zoom"
+                            },
+                            "tooltipFractionDigits":{
+                                "lbl": "Tooltip Fraction"
+                            }
+                        },
+                        "dataset": {
+                            "header": "Dataset Config",
+                            "name": {
+                                "lbl": "Name"
+                            },
+                            "color": {
+                                "lbl": "Color"
+                            },
+                            "lines": {
+                                "lbl": "Show Lines"
+                            },
+                            "fill": {
+                                "lbl": "Fill"
+                            }
+                        }
+                    }
+                },
+                "context-menu": {
+                    "components": {
+                        "script": "Script",
+                        "file-input": "File-Input",
+                        "file-output": "File-Output",
+                        "text-input": "Text-Input",
+                        "chart": "Chart"
+                    },
+                    "btn": {
+                        "delete": "Delete",
+                        "clone": "Clone"
+                    }
+                }
+            },
+            "properties": {
+                "header": "Project Properties",
+                "name": {
+                    "lbl": "Name"
+                }
+            }
+        }
+    },
+    "project-manager": {
+        "new-project": {
+            "header": "New Project",
+            "name": {
+                "lbl": "Name"
+            }
+        },
+        "list": {
+            "delete-dialog": {
+                "header": "Delete",
+                "message": "Are you sure that you want to delete all selected projects ?"
+            },
+            "header": "Projects"
+        }
+    },
+    "properties-dialog": {
+        "btn": {
+            "save": "Save",
+            "cancel": "Cancel"
+        }
+    },
+    "executor": {
+        "project": {
+            "lbl": "Project:"
+        },
+        "btn": {
+            "execute": "Execute"
+        },
+        "execute-dialog": {
+            "header": "Executing",
+            "state": {
+                "lbl": "State:"
+            },
+            "status": {
+                "lbl": "Status:"
+            }
+        }
+    },
+    "p-fileUpload": {
+        "btn": {
+            "cancel": "Cancel",
+            "choose": "Choose",
+            "upload": "Upload"
+        }
+    },
+    "p-confirmDialog": {
+        "btn": {
+            "accept": "Yes",
+            "reject": "No"
+        }
+    },
+    "error-manager": {
+        "stacktrace": {
+            "lbl": "Stacktrace"
+        }
+    }
+}
