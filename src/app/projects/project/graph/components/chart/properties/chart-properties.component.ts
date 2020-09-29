@@ -33,6 +33,7 @@ export class ChartPropertiesComponent extends AbstractPropertiesDialogChildCompo
             zoom: new FormControl(),
             name: new FormControl(),
             animation: new FormControl(),
+            lineTension: new FormControl(),
             tooltipFractionDigits: new FormControl(),
         })
     }
@@ -60,6 +61,7 @@ export class ChartPropertiesComponent extends AbstractPropertiesDialogChildCompo
         this.chartData.zoom = this.getFormValue('zoom', this.chartData.zoom)
         this.chartData.name = this.getFormValue('name', this.chartData.name)
         this.chartData.animation = this.getFormValue('animation', this.chartData.animation)
+        this.chartData.lineTension = this.getFormValue('lineTension', this.chartData.lineTension)
         this.chartData.tooltipFractionDigits = this.getFormValue('tooltipFractionDigits', this.chartData.tooltipFractionDigits)
 
         this.emitProjectChanged()

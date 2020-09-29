@@ -26,7 +26,7 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
         // load and create all datasets
         const datasets: any[] = await Promise.all(Utils.mapProperties(chartData.datasets, async (value: ChartDatasetConfig, key: string) => {
             // load the dataset
-            const dataset: any = this.dataset(key, value)
+            const dataset: any = this.dataset(key, chartData, value)
             return dataset
         }))
 
@@ -51,7 +51,7 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
         this.result = result
     }
 
-    private async dataset(id: string, datasetConfig: ChartDatasetConfig): Promise<any[]> {
+    private async dataset(id: string, chartData: ChartData, datasetConfig: ChartDatasetConfig): Promise<any[]> {
         // get the node node executor
         const nodeExecutor: NodeExecutor | undefined = await this.getExecutor(id)
 
@@ -67,14 +67,16 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
         // get the result
         const data: any = nodeExecutor.getResult()
         // create the data set
-        const dataset: any = this.createDataset(data, datasetConfig)
+        const dataset: any = this.createDataset(data, chartData, datasetConfig)
 
         return dataset
     }
 
-    private async createDataset(data: any, datasetConfig: ChartDatasetConfig): Promise<any> {
+    private async createDataset(data: any, chartData: ChartData, datasetConfig: ChartDatasetConfig): Promise<any> {
+        const lineTension: number = chartData.lineTension || 0.0
         return {
             data,
+            lineTension,
             fill: datasetConfig.fill,
             label: datasetConfig.name,
             showLine: datasetConfig.lines,
@@ -85,7 +87,7 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
 
     private async options(chartData: ChartData): Promise<any> {
         const zoom: any = await this.zoomPanPlugin(chartData)
-        const animationDuration: number = chartData.animation ? 750.0 : 0.0
+        const animationDuration: number = Math.max(chartData.animation ? 750.0 : 0.0, 0.0)
         return {
             animation: {
                 duration: animationDuration

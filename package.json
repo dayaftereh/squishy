@@ -1,6 +1,6 @@
 {
   "name": "squishy",
-  "version": "0.1.4",
+  "version": "0.1.4-rc.2",
   "graphVersion": ">=0.1.0",
   "scripts": {
     "ng": "ng",

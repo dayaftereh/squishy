@@ -5,10 +5,13 @@ import { AngularRenderPlugin } from 'rete-angular-render-plugin';
 import ConnectionPlugin from 'rete-connection-plugin';
 import { Data } from 'rete/types/core/data';
 import { Subscription } from 'rxjs';
+import * as semver from 'semver';
+import { ErrorManagerService } from 'src/app/error-manager/service/error-manager.service';
 import { PackageJSON } from 'src/app/package-json';
 import { Utils } from 'src/app/utils/utils';
 import { ProjectsService } from '../../../projects-service/projects.service';
 import { SquishyProject } from '../../../projects-service/squishy-project';
+import { ChartComponent } from './components/chart/chart.component';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import { FileOutputComponent } from './components/file-output/file-output.component';
 import { ScriptComponent } from './components/script/script.component';
@@ -16,8 +19,6 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { GraphMouseEventManager } from './graph-mouse-event.manager';
 import { GraphNodesManager } from './graph-nodes.manager';
 import { ProjectGraphService } from './service/project-graph.service';
-import * as semver from 'semver'
-import { ChartComponent } from './components/chart/chart.component';
 
 @NGComponent({
     selector: 'app-project-graph',
@@ -46,7 +47,8 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(
         private readonly activatedRoute: ActivatedRoute,
         private readonly projectsService: ProjectsService,
-        private readonly projectGraphService: ProjectGraphService) {
+        private readonly projectGraphService: ProjectGraphService,
+        private readonly errorManagerService: ErrorManagerService) {
         this.subscriptions = []
         this.graphNodesManager = new GraphNodesManager()
         this.nodeEditorEvent = new EventEmitter<NodeEditor>(true)
@@ -58,7 +60,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
             const needUpdate: boolean = Utils.isNullOrUndefined(this.project)
             this.project = project
 
-            if(!Utils.isNullOrUndefined(this.project.data)){
+            if (!Utils.isNullOrUndefined(this.project.data)) {
                 this.project.data.id = GraphComponent.id()
             }
             // check if project
@@ -135,8 +137,8 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         })
 
         // handle error on engine
-        this.engine.on('error', (e) => {
-            console.error(e)
+        this.engine.on('error', (e: Error) => {
+            this.errorManagerService.error(e)
         });
 
         // check if project exists

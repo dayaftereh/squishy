@@ -6,6 +6,7 @@ import { ExecutorService } from 'src/app/executor-service/executor.service';
 import { ChartData } from 'src/app/projects/project/graph/components/chart/chart.data';
 import { Utils } from 'src/app/utils/utils';
 import { ChartExecutionResult } from 'src/worker/execution/node-executor/chart/chart-execution.result';
+import { clamp } from 'src/worker/execution/node-executor/script/math/math.module';
 
 @Component({
     templateUrl: './chart-executor.component.html',
@@ -68,6 +69,8 @@ export class ChartExecutorComponent implements OnInit, OnDestroy {
         if (!Utils.isNullOrUndefined(this.chartData)) {
             maximumFractionDigits = this.chartData.tooltipFractionDigits
         }
+
+        maximumFractionDigits = clamp(0.0, maximumFractionDigits, 20.0)
 
         const nf: Intl.NumberFormat = new Intl.NumberFormat(undefined, {
             maximumFractionDigits

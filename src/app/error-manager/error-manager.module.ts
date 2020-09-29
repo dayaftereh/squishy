@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { PanelModule } from 'primeng/panel';
 import { ToastModule } from 'primeng/toast';
 import { ErrorManagerComponent } from './error-manager.component';
+import { GlobalErrorHandler } from './global-error-handler';
 import { ErrorManagerServiceModule } from './service/error-manager-service.module';
 
 @NgModule({
@@ -20,7 +21,11 @@ import { ErrorManagerServiceModule } from './service/error-manager-service.modul
         ErrorManagerServiceModule
     ],
     providers: [
-        MessageService
+        MessageService,
+        {
+            provide: ErrorHandler,
+            useClass: GlobalErrorHandler
+        }
     ],
     declarations: [
         ErrorManagerComponent

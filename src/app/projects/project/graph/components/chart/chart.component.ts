@@ -30,11 +30,13 @@ export class ChartComponent extends SquishyNodeComponent<ChartData> {
 
         data.type = NodeComponentsType.Chart
         data.datasets = {}
+        data.lineTension = 0.0
         data.name = `Chart${n}`
         data.animation = true
         data.pan = ChartZoomPanAxis.None
         data.zoom = ChartZoomPanAxis.None
         data.tooltipFractionDigits = 3
+
         return data
     }
 

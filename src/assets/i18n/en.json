@@ -119,8 +119,11 @@
                             "zoom": {
                                 "lbl": "Zoom"
                             },
-                            "tooltipFractionDigits":{
+                            "tooltipFractionDigits": {
                                 "lbl": "Tooltip Fraction"
+                            },
+                            "lineTension": {
+                                "lbl": "Line Tension"
                             }
                         },
                         "dataset": {

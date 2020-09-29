@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as semver from 'semver';
+import { ErrorManagerService } from 'src/app/error-manager/service/error-manager.service';
 import { PackageJSON } from 'src/app/package-json';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
@@ -15,11 +16,22 @@ import { Utils } from 'src/app/utils/utils';
 })
 export class ProjectsManagerUploadComponent {
 
-    constructor(private readonly projectsService: ProjectsService) {
+    constructor(
+        private readonly projectsService: ProjectsService,
+        private readonly errorManagerService: ErrorManagerService) {
 
     }
 
     async onUpload(event: any): Promise<void> {
+        try {
+            await this.internalUpload(event)
+        } catch (error) {
+            console.error(error)
+            this.errorManagerService.error(error)
+        }
+    }
+
+    async internalUpload(event: any): Promise<void> {
         // check if event given
         if (Utils.isNullOrUndefined(event) || Utils.isNullOrUndefined(event.files)) {
             return
@@ -58,7 +70,8 @@ export class ProjectsManagerUploadComponent {
             throw new Error(`unable to path project version [ ${id} ]`)
         }
 
-        return values[1]
+        const version: string = semver.coerce(values[1])
+        return version
     }
 
     private verifyAndUpdateGraphVersion(project: SquishyProject): void {

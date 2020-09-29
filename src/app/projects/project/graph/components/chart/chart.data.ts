@@ -4,6 +4,7 @@ import { ChartZoomPanAxis } from './chart-zoom-pan-axis';
 
 export interface ChartData extends SquishyNodeData {
     animation: boolean
+    lineTension: number
     pan: ChartZoomPanAxis
     zoom: ChartZoomPanAxis
     tooltipFractionDigits: number

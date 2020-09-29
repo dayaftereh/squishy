@@ -28,9 +28,12 @@ export class ErrorManagerService {
         event.severity = 'error'
         event.closable = true
         event.summary = error.name
-        event.detail = error.message
         event.component = this.component(error)
         event.stacktrace = this.stacktrace(error)
+
+        if (!!(event.stacktrace) && event.stacktrace.length > 0) {
+            event.detail = event.stacktrace[0]
+        }
 
         return event
     }
