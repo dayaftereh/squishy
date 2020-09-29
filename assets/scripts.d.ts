@@ -1,5 +1,53 @@
 declare namespace Mathf {
 
+/**
+ * The class is used to encapsulate colors in the default sRGBA color space.
+ * Every color has an implicit alpha value of 1.0 or an explicit undefined provided in the constructor.
+ * The alpha value defines the transparency of a color and can be represented by a value in the range 0.0 - 1.0
+ */
+ class Color {
+    /**
+     * the red component [0, 1]
+     */
+    r: number;
+    /**
+     * the green component [0, 1]
+     */
+    g: number;
+    /**
+     *  the blue component [0, 1]
+     */
+    b: number;
+    /**
+     * the alpha component [0, 1]
+     */
+    a: number | undefined;
+    /**
+     * Creates an sRGBA color with the specified red, green, blue, and alpha values in the range [0, 1].
+     * @param r the red component
+     * @param g the green component
+     * @param b the blue component
+     * @param a the alpha component
+     */
+    constructor(r: number, g: number, b: number, a?: number);
+    /**
+     * Converts an HSL color value to RGB. Conversion formula adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+     * Assumes h, s, and l are contained in the set [0, 1] and returns a new color.
+     * @param h The hue [0, 1]
+     * @param s The saturation [0, 1]
+     * @param l The lightness [0, 1]
+     */
+    static fromHSL(h: number, s: number, l: number): Color;
+    /**
+     * Creates a random RGB color using Color.fromHSL() with a random hue
+     */
+    static random(): Color;
+    toHex(): string;
+    toString(): string;
+    isAlpha(): boolean;
+}
+
+
 
  class Matrix3 {
     private elements;
@@ -462,7 +510,7 @@ declare namespace Mathf {
     multiply(t: Transform2): Transform2;
     transform(x: number, y: number): Point2;
     transformVec(v: Vec2): Vec2;
-    transformPoint(p: Point2): Mathf.Point2;
+    transformPoint(p: Point2): Point2;
     scaleX(): number;
     scaleY(): number;
     translateX(): number;
@@ -473,7 +521,6 @@ declare namespace Mathf {
     rotateDegrees(theta: number): Transform2;
     clone(): Transform2;
 }
-
 
 
  const EPSILON: number
@@ -560,9 +607,16 @@ class Squishy {
  class SquishyIO {
     static NEWLINE: string;
     static DELIMITER: string;
-    csvStringify(data: (unknown[][]) | undefined, delimiter?: string, newline?: string): string;
+    static XML_MIME_TYPE: string;
+    static NF: Intl.NumberFormat;
+    csvStringify(data: (unknown[][]) | undefined, toString?: (x: unknown) => string, delimiter?: string, newline?: string): string;
     csvParse(content: string | undefined, delimiter?: string): string[][];
-    numberToString(x: number): string;
+    xmlParse(content: string, options?: any, mimeType?: string): any;
+    /**
+     * converts the given number to a string based on the local browser language formatting
+     * @param x the number to format
+     */
+    numberToLocal(x: number): string;
 }
 
 

@@ -103,6 +103,41 @@
                                 "lbl": "Type:"
                             }
                         }
+                    },
+                    "chart": {
+                        "properties": {
+                            "header": "Chart Properties",
+                            "name": {
+                                "lbl": "Name"
+                            },
+                            "animation": {
+                                "lbl": "Animation"
+                            },
+                            "pan": {
+                                "lbl": "Pan"
+                            },
+                            "zoom": {
+                                "lbl": "Zoom"
+                            },
+                            "tooltipFractionDigits":{
+                                "lbl": "Tooltip Fraction"
+                            }
+                        },
+                        "dataset": {
+                            "header": "Dataset Config",
+                            "name": {
+                                "lbl": "Name"
+                            },
+                            "color": {
+                                "lbl": "Color"
+                            },
+                            "lines": {
+                                "lbl": "Show Lines"
+                            },
+                            "fill": {
+                                "lbl": "Fill"
+                            }
+                        }
                     }
                 },
                 "context-menu": {
@@ -110,7 +145,8 @@
                         "script": "Script",
                         "file-input": "File-Input",
                         "file-output": "File-Output",
-                        "text-input": "Text-Input"
+                        "text-input": "Text-Input",
+                        "chart": "Chart"
                     },
                     "btn": {
                         "delete": "Delete",
