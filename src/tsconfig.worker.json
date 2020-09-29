@@ -12,6 +12,8 @@
     "worker/**/*.ts"
   ],
   "exclude": [
-    "assets"
+    "assets",
+    "**/*/squishy-types.ts",
+    "**/*/plugins-types.ts"
   ]
 }

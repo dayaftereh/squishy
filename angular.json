@@ -22,7 +22,13 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "./src/tsconfig.app.json",
-            "aot": true,
+            "aot": true,            
+            "allowedCommonJsDependencies": [
+              "semver",
+              "chart.js",
+              "file-saver",
+              "chartjs-plugin-zoom"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -75,7 +81,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
+                  "maximumWarning": "3mb",
                   "maximumError": "5mb"
                 },
                 {

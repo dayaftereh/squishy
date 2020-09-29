@@ -1,4 +1,4 @@
-import { Mathf } from '../Mathf'
+import { closeZero } from '../math-functions'
 import { Point2 } from './point2'
 import { Point3 } from './point3'
 import { Vec2 } from './vec2'
@@ -146,7 +146,7 @@ export class Matrix3 {
 
             det: number = n11 * t11 + n21 * t12 + n31 * t13;
 
-        if (Mathf.closeZero(det)) {
+        if (closeZero(det)) {
             return Matrix3.zero()
         }
 

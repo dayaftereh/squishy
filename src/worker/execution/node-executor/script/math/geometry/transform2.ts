@@ -1,4 +1,4 @@
-import { Mathf } from '../Mathf';
+import { closeZero, toRadians } from '../math-functions';
 import { Point2 } from './point2';
 import { Vec2 } from './vec2';
 
@@ -28,7 +28,7 @@ export class Transform2 {
     scale(sx: number, sy: number): Transform2 {
         const t: Transform2 = this.clone()
 
-        if (Mathf.closeZero(t.a)) {
+        if (closeZero(t.a)) {
             t.a = sx
         } else {
             t.a *= sx
@@ -37,7 +37,7 @@ export class Transform2 {
         t.b *= sx
         t.c *= sy
 
-        if (Mathf.closeZero(t.d)) {
+        if (closeZero(t.d)) {
             t.d = sy
         } else {
             t.d *= sy
@@ -56,7 +56,7 @@ export class Transform2 {
 
     inverse(): Transform2 {
         const det: number = this.det()
-        if (Mathf.closeZero(det)) {
+        if (closeZero(det)) {
             return Transform2.identity()
         }
 
@@ -135,7 +135,7 @@ export class Transform2 {
     }
 
     rotateDegrees(theta: number): Transform2 {
-        const angle: number = Mathf.toRadians(theta)
+        const angle: number = toRadians(theta)
         return this.rotate(angle)
     }
 

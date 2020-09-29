@@ -1,4 +1,5 @@
-import { Mathf } from '../Mathf'
+import { EPSILON } from '../math-constants'
+import { clamp, closeEquals, closeZero } from '../math-functions'
 import { Matrix3 } from './matrix3'
 import { Matrix4 } from './matrix4'
 import { Point3 } from './point3'
@@ -133,7 +134,7 @@ export class Quaternion {
     }
 
     static fromUnitVectors(vFrom: Vec3, vTo: Vec3): Quaternion {
-        const eps: number = Mathf.EPSILON
+        const eps: number = EPSILON
         const result: Quaternion = Quaternion.zero()
 
         let r: number = vFrom.dotWith(vTo)
@@ -164,7 +165,7 @@ export class Quaternion {
     }
 
     angleTo(q: Quaternion): number {
-        return 2.0 * Math.acos(Math.abs(Mathf.clamp(-1.0, this.dot(q), 1.0)))
+        return 2.0 * Math.acos(Math.abs(clamp(-1.0, this.dot(q), 1.0)))
     }
 
     static identity(): Quaternion {
@@ -203,7 +204,7 @@ export class Quaternion {
 
         let l: number = this.length()
 
-        if (Mathf.closeZero(l)) {
+        if (closeZero(l)) {
             return Quaternion.identity()
         }
 
@@ -238,15 +239,15 @@ export class Quaternion {
     }
 
     slerp(q: Quaternion, t: number): Quaternion {
-        t = Mathf.clamp(0.0, t, 1.0)
+        t = clamp(0.0, t, 1.0)
 
         const result: Quaternion = this.clone()
 
-        if (Mathf.closeZero(t)) {
+        if (closeZero(t)) {
             return result
         }
 
-        if (Mathf.closeEquals(1.0, t)) {
+        if (closeEquals(1.0, t)) {
             return q.clone()
         }
 
@@ -281,7 +282,7 @@ export class Quaternion {
 
         const sqrSinHalfTheta: number = 1.0 - cosHalfTheta * cosHalfTheta
 
-        if (sqrSinHalfTheta <= Mathf.EPSILON) {
+        if (sqrSinHalfTheta <= EPSILON) {
             const s: number = 1.0 - t;
             result.w = s * w + t * result.w;
             result.x = s * x + t * result.x;

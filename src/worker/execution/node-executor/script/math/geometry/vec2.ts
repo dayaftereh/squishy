@@ -1,4 +1,4 @@
-import { Mathf } from '../Mathf';
+import { closeZero } from '../math-functions';
 import { Matrix3 } from './matrix3';
 /**
  * Class representing a 2D vector. A 2D vector is an ordered pair of numbers (labeled x and y)
@@ -83,7 +83,7 @@ export class Vec2 {
      */
     normalize(): Vec2 {
         const l: number = this.length()
-        if (Mathf.closeZero(l)) {
+        if (closeZero(l)) {
             return new Vec2(0.0, 0.0)
         }
         const x: number = this.x / l

@@ -1,4 +1,4 @@
-import { Mathf } from '../Mathf'
+import { closeZero } from '../math-functions'
 import { Matrix3 } from './matrix3'
 import { Matrix4 } from './matrix4'
 import { Quaternion } from './quaternion'
@@ -51,7 +51,7 @@ export class Vec3 {
 
     normalize(): Vec3 {
         const l: number = this.length()
-        if (Mathf.closeZero(l)) {
+        if (closeZero(l)) {
             return new Vec3(0.0, 0.0, 0.0)
         }
         const x: number = this.x / l

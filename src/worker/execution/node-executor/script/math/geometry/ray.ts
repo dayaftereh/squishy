@@ -1,4 +1,4 @@
-import { Mathf } from '../Mathf';
+import { closeZero } from '../math-functions';
 import { Matrix4 } from './matrix4';
 import { Plane } from './plane';
 import { Quaternion } from './quaternion';
@@ -70,9 +70,9 @@ export class Ray {
 
     distanceToPlane(plane: Plane): number | undefined {
         const denominator: number = plane.normal.dotWith(this.direction)
-        if (Mathf.closeZero(denominator)) {
+        if (closeZero(denominator)) {
             const distance: number = plane.distanceToPoint(this.origin)
-            if (Mathf.closeZero(distance)) {
+            if (closeZero(distance)) {
                 return 0.0
             }
 
@@ -99,7 +99,7 @@ export class Ray {
 
     intersectsPlane(plane: Plane): boolean {
         const distToPoint: number = plane.distanceToPoint(this.origin);
-        if (Mathf.closeZero(distToPoint)) {
+        if (closeZero(distToPoint)) {
             return true
         }
         const denominator: number = plane.normal.dotWith(this.direction)
@@ -149,7 +149,7 @@ export class Ray {
         const co: Vec3 = sphere.center.subtractWith(this.origin)
         const v: number = co.dotWith(this.direction)
         const discriminant: number = v * v - co.dotWith(co) + sphere.radius * sphere.radius
-        return discriminant > 0 || Mathf.closeZero(discriminant)
+        return discriminant > 0 || closeZero(discriminant)
     }
 
 }

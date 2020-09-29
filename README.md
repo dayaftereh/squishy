@@ -5,7 +5,8 @@ It allows to load file from local file-system, transform the content and export 
 
 ## Demo
 
-[Squishy Editor](https://dayaftereh.github.io/squishy) is the last version and published on [Github Pages](https://pages.github.com/).
+[Squishy Editor](https://dayaftereh.github.io/squishy) is the last release and published on [Github Pages](https://pages.github.com/).
+Or use the [Unstable Version](https://dayaftereh.github.io/squishy/latest) from the last build.
 
 ## Supported Browser
 
