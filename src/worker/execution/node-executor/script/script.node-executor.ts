@@ -4,7 +4,7 @@ import { Utils } from 'src/app/utils/utils';
 import { Execution } from '../../execution';
 import { AbstractNodeExecutor } from '../abstract-node-executor';
 import { NodeExecutor } from '../node-executor';
-import { Mathf } from './math/Mathf';
+import { Mathf } from './math/mathf';
 import { Plugins } from './plugins/plugins';
 import { ScriptExecutionData } from './script.execution-data';
 import { ScriptVariable } from './script.variable';

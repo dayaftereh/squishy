@@ -1,5 +1,5 @@
 import { Execution } from '../../../execution';
-import { Mathf } from '../math/Mathf';
+import { clamp } from '../math/math-functions';
 import { SquishyIO } from './io/squishy-io';
 import { Squishy } from './squishy';
 
@@ -17,7 +17,7 @@ export class SquishyObject implements Squishy {
 
     progress(value: number): void {
         // limit the value to 0 -> 1
-        value = Mathf.clamp(0.0, value, 1.0)
+        value = clamp(0.0, value, 1.0)
         // update the progress
         this.execution.progress(value)
     }
