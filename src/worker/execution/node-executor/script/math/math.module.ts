@@ -1,3 +1,4 @@
+export { Color } from './color'
 export { Matrix3 } from './geometry/matrix3'
 export { Matrix4 } from './geometry/matrix4'
 export { Plane } from './geometry/plane'
@@ -12,4 +13,3 @@ export { Vec3 } from './geometry/vec3'
 export * from './math-constants'
 export * from './math-functions'
 export { Random } from './random'
-

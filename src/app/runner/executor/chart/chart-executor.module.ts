@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { CardModule } from 'primeng/card';
-import { FileUploadModule } from 'primeng/fileupload';
-import { ExecutorServiceModule } from '../../../executor-service/executor-service.module';
-import { FileInputExecutorComponent } from './file-input-executor.component';
+import { ChartModule } from 'primeng/chart';
+import { ExecutorServiceModule } from 'src/app/executor-service/executor-service.module';
+import { ChartExecutorComponent } from './chart-executor.component';
 
 @NgModule({
     imports: [
@@ -14,17 +14,17 @@ import { FileInputExecutorComponent } from './file-input-executor.component';
         TranslateModule,
         // PrimeNG
         CardModule,
-        FileUploadModule,
+        ChartModule,
         // Custom
-        ExecutorServiceModule,
+        ExecutorServiceModule
     ],
     declarations: [
-        FileInputExecutorComponent
+        ChartExecutorComponent
     ],
     exports: [
-        FileInputExecutorComponent
+        ChartExecutorComponent
     ]
 })
-export class FileInputExecutorModule {
+export class ChartExecutorModule {
 
 }

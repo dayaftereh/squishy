@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import * as Comlink from 'comlink';
-import { BehaviorSubject, Observable, Subject, from } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { ExecutionResult } from 'src/worker/execution/execution-result';
+import { ExecutionState } from 'src/worker/execution/execution-state';
 import { ExecutionStatus } from 'src/worker/execution/execution-status';
 import { Executor } from 'src/worker/executor';
 import { ExecutionData } from '../../worker/execution/execution-data';
-import { ExecutionResultManager } from './execution-result.manager';
-import { ExecutionState } from 'src/worker/execution/execution-state';
 import { ExecutionLatch } from '../utils/execution-latch';
+import { ExecutionResultEvent } from './execution-result.event';
+import { ExecutionResultManager } from './execution-result.manager';
 
 @Injectable()
 export class ExecutorService {
@@ -24,14 +25,16 @@ export class ExecutorService {
 
     private _status: Subject<ExecutionStatus>
     private _executable: BehaviorSubject<void>
+    private _executionResult: Subject<ExecutionResultEvent>
 
     private _cancelLatch: ExecutionLatch<void> | undefined
 
     constructor() {
         this._workerId = 0
         this.executionData = {}
-        this._status = new Subject<ExecutionStatus>()
+        this._status = new EventEmitter<ExecutionStatus>(true)
         this._executable = new BehaviorSubject<void>(undefined)
+        this._executionResult = new EventEmitter<ExecutionResultEvent>(true)
         this.createWorker()
     }
 
@@ -104,6 +107,14 @@ export class ExecutorService {
         )
     }
 
+    executionResult(id: string): Observable<ExecutionResultEvent> {
+        return this._executionResult.pipe(
+            filter((event: ExecutionResultEvent) => {
+                return event.id === id
+            })
+        )
+    }
+
     async execute(): Promise<ExecutionResult | undefined> {
         // check for project and execute data
         if (!this.project || !this.executionData) {
@@ -129,7 +140,7 @@ export class ExecutorService {
             }
 
             // create the result manager
-            const executionResultManager: ExecutionResultManager = new ExecutionResultManager(this.project)
+            const executionResultManager: ExecutionResultManager = new ExecutionResultManager(this.project, this._executionResult)
             // dispatch the received result from the execution
             await executionResultManager.dispatch(result)
 

@@ -1,4 +1,4 @@
-import { InputConnectionData, InputData, InputsData, NodeData } from 'rete/types/core/data';
+import { NodeData } from 'rete/types/core/data';
 import { ScriptData } from 'src/app/projects/project/graph/components/script/script.data';
 import { Utils } from 'src/app/utils/utils';
 import { Execution } from '../../execution';
@@ -112,19 +112,17 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
     }
 
     private async createVariable(id: string, name: string): Promise<ScriptVariable> {
-        // get the executor id for the given variable
-        const executorId: string = await this.getExecutorId(id)
-        // get the node executor
-        const nodeExecutor: NodeExecutor | undefined = await this.execution.getExecutor(executorId)
+        // get the node node executor
+        const nodeExecutor: NodeExecutor | undefined = await this.getExecutor(id)
 
         // check if node executor found
         if (Utils.isNullOrUndefined(nodeExecutor)) {
-            throw new Error(`unable to find node executor [ ${executorId} ] for variable [ ${name}, ${id} ]`)
+            throw new Error(`unable to find node executor [ ${nodeExecutor.id()} ] for id [ ${id} ] and variable [ ${name} ]`)
         }
 
         // check if the node executor already executed
         if (!nodeExecutor.isExecuted()) {
-            throw new Error(`node executor [ ${executorId} ] for variable [ ${name}, ${id} ] is not yet executed`)
+            throw new Error(`node executor [ ${nodeExecutor.id()} ] for variable [ ${name}, ${id} ] is not yet executed`)
         }
         // get the result from the node executor
         const result: any = nodeExecutor.getResult()
@@ -134,29 +132,6 @@ export class ScriptNodeExecutor extends AbstractNodeExecutor {
             name,
             value: result
         }
-    }
-
-    private async getExecutorId(id: string): Promise<string> {
-        if (Utils.isNullOrUndefined(this.nodeData) || Utils.isNullOrUndefined(this.nodeData.inputs)) {
-            throw new Error(`unable to find nodeData and inputs`)
-        }
-        // get the inputs for this node
-        const inputs: InputsData = this.nodeData.inputs
-
-        // check if
-        if (Utils.isNullOrUndefined(inputs[id])) {
-            throw new Error(`unable to find node input for id [ ${id} ]`)
-        }
-        // get the input data
-        const inputData: InputData = inputs[id]
-        // check if the input has a connection
-        if (!inputData.connections || inputData.connections.length < 1) {
-            throw new Error(`no connected on node input [ ${id} ]`)
-        }
-        // get the first connection
-        const inputConnectionData: InputConnectionData = inputData.connections[0]
-
-        return inputConnectionData.output
     }
 
 }

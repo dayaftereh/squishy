@@ -148,7 +148,7 @@ export class PropertiesDialogComponent implements OnInit, AfterViewInit, OnDestr
     }
 
     private emitResize(): void {
-        if (!this.dialog) {
+        if (!this.dialog || !this.dialog.contentViewChild || !this.dialog.contentViewChild.nativeElement) {
             return
         }
 
