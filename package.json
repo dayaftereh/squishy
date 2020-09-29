@@ -43,7 +43,8 @@
     "@webcomponents/custom-elements": "~1.4.2",
     "ngx-markdown": "~10.1.1",
     "semver": "~7.3.2",
-    "chart.js": "~2.9.3"
+    "chart.js": "~2.9.3",
+    "xmldom": "~0.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.1",

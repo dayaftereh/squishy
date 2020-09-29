@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] // 0.1.4
 
 ### Added
+
  - `Color` class to `Mathf` to work with RGBA colors
  - `Chart` node to display output in `chart.js`
+ - `SquishyIO.xmlParse` to parse xml with `xmldom`
  
 ### Changed
+
+ - `SquishyIO.csvStringify` to pass a `toString` function
+
 ### Removed
 ### Fixed
 
