@@ -112,6 +112,15 @@
                             },
                             "animation": {
                                 "lbl": "Animation"
+                            },
+                            "pan": {
+                                "lbl": "Pan"
+                            },
+                            "zoom": {
+                                "lbl": "Zoom"
+                            },
+                            "tooltipFractionDigits":{
+                                "lbl": "Tooltip Fraction"
                             }
                         },
                         "dataset": {

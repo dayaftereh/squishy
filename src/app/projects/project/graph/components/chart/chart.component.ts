@@ -10,6 +10,7 @@ import { NodeDynamicInputManager } from '../node-dynamic-input.manager';
 import { SquishyNodeComponent } from '../squishy-node.component';
 import { ChartDatasetConfig } from './chart-dataset.config';
 import { ChartNodeComponent } from './chart-node.component';
+import { ChartZoomPanAxis } from './chart-zoom-pan-axis';
 import { ChartData } from './chart.data';
 
 export class ChartComponent extends SquishyNodeComponent<ChartData> {
@@ -31,6 +32,9 @@ export class ChartComponent extends SquishyNodeComponent<ChartData> {
         data.datasets = {}
         data.name = `Chart${n}`
         data.animation = true
+        data.pan = ChartZoomPanAxis.None
+        data.zoom = ChartZoomPanAxis.None
+        data.tooltipFractionDigits = 3
         return data
     }
 

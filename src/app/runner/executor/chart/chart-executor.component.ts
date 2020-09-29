@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import 'chartjs-plugin-zoom';
 import { Subscription } from 'rxjs';
 import { ExecutionResultEvent } from 'src/app/executor-service/execution-result.event';
 import { ExecutorService } from 'src/app/executor-service/executor.service';
@@ -54,9 +55,37 @@ export class ChartExecutorComponent implements OnInit, OnDestroy {
         // get the result
         const result: ChartExecutionResult = event.result as ChartExecutionResult
 
-        // set data and options
+        // set data
         this.data = result.data
-        this.options = result.options
+        // get default options
+        const defaultOptions: any = this.defaultOptions()
+        // set options
+        this.options = Object.assign({}, result.options, defaultOptions)
+    }
+
+    private defaultOptions(): any {
+        let maximumFractionDigits: number = 3
+        if (!Utils.isNullOrUndefined(this.chartData)) {
+            maximumFractionDigits = this.chartData.tooltipFractionDigits
+        }
+
+        const nf: Intl.NumberFormat = new Intl.NumberFormat(undefined, {
+            maximumFractionDigits
+        })
+
+        return {
+            tooltips: {
+                callbacks: {
+                    label: (item: any, data: any) => {
+                        let x: number | undefined = item.xLabel
+                        let y: number | undefined = item.yLabel
+                        let xLabel: string = nf.format(x)
+                        let yLabel: string = nf.format(y)
+                        return `x: ${xLabel}, y: ${yLabel}`
+                    }
+                }
+            }
+        }
     }
 
     ngOnDestroy(): void {

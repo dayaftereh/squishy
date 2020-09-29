@@ -1,5 +1,6 @@
 import { NodeData } from 'rete/types/core/data';
 import { ChartDatasetConfig } from 'src/app/projects/project/graph/components/chart/chart-dataset.config';
+import { ChartZoomPanAxis } from 'src/app/projects/project/graph/components/chart/chart-zoom-pan-axis';
 import { ChartData } from 'src/app/projects/project/graph/components/chart/chart.data';
 import { Utils } from 'src/app/utils/utils';
 import { Execution } from '../../execution';
@@ -83,6 +84,7 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
     }
 
     private async options(chartData: ChartData): Promise<any> {
+        const zoom: any = await this.zoomPanPlugin(chartData)
         const animationDuration: number = chartData.animation ? 750.0 : 0.0
         return {
             animation: {
@@ -91,8 +93,35 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
             hover: {
                 animationDuration: animationDuration
             },
-            responsiveAnimationDuration: animationDuration
+            responsiveAnimationDuration: animationDuration,
+            plugins: {
+                zoom
+            }
         }
+    }
+
+    private async zoomPanPlugin(chartData: ChartData): Promise<any> {
+        const panEnabled: boolean = chartData.pan !== ChartZoomPanAxis.None
+        const zoomEnabled: boolean = chartData.zoom !== ChartZoomPanAxis.None
+
+        let zoom: any = {
+            pan: {
+                enabled: panEnabled
+            },
+            zoom: {
+                enabled: zoomEnabled
+            }
+        }
+
+        if (panEnabled) {
+            zoom.pan.mode = `${chartData.pan}`.toLowerCase()
+        }
+
+        if (zoomEnabled) {
+            zoom.zoom.mode = `${chartData.zoom}`.toLowerCase()
+        }
+
+        return zoom
     }
 
     hasOutput(): boolean {

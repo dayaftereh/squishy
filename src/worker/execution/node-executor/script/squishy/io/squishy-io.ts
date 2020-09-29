@@ -5,6 +5,9 @@ export class SquishyIO {
     static NEWLINE: string = "\n"
     static DELIMITER: string = ';'
     static XML_MIME_TYPE: string = 'application/xml'
+    static NF: Intl.NumberFormat = new Intl.NumberFormat(undefined, {
+        maximumFractionDigits: 20
+    })
 
     csvStringify(data: (unknown[][]) | undefined, toString?: (x: unknown) => string, delimiter?: string, newline?: string): string {
         if (!data) {
@@ -67,8 +70,12 @@ export class SquishyIO {
         return document
     }
 
-    numberToString(x: number): string {
-        return `${x}`.replace(/\./g, ",")
+    /**
+     * converts the given number to a string based on the local browser language formatting
+     * @param x the number to format
+     */
+    numberToLocal(x: number): string {
+        return SquishyIO.NF.format(x)
     }
 
 }

@@ -16,3 +16,19 @@ The following browsers are supported by *Squishy*.
 | Safari        | 13.1+   | Yes     | Yes    | -     |
 | Firefox       | 64+     | Yes     | Yes    | 1GB       |
 | Google Chrome | 81+     | Yes     | Yes    | 500MB     |
+
+# Build
+
+Install the npm packages described in the package.json and verify that it works:
+
+```bash
+npm install
+```
+
+Use the `build` command to build (compiles TypeScript and copies assets) the application into `./dist` directory.
+
+```bash
+npm run build
+```
+
+Copy the content of the `./dist` directory to the web-server.

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { ProjectsServiceModule } from 'src/app/projects-service/projects-service.module';
 import { ProjectGraphServiceModule } from '../../../service/project-graph-service.module';
 import { ChartPropertiesComponent } from './chart-properties.component';
@@ -18,6 +19,7 @@ import { ChartPropertiesComponent } from './chart-properties.component';
         // PrimeNG
         CheckboxModule,
         InputTextModule,
+        SelectButtonModule,
         // Custom
         ProjectsServiceModule,
         ProjectGraphServiceModule,

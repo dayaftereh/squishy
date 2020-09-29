@@ -19,4 +19,34 @@
             </div>
         </div>
     </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.pan.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-selectButton [options]="zoomPanOptions" formControlName="pan"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.zoom.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-selectButton [options]="zoomPanOptions" formControlName="zoom"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.tooltipFractionDigits.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" min="0" max="20" step="1" formControlName="tooltipFractionDigits" pInputText />
+            </div>
+        </div>
+    </div>
 </form>
