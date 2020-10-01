@@ -207,6 +207,7 @@ const build = (file: string, first?: boolean) => {
 }
 
 const typesContent: string[] = inputFiles.map((file: string) => {
+    visited.clear()
     console.log("generation types for ", file)
     const content: string = build(file, true)
     return content

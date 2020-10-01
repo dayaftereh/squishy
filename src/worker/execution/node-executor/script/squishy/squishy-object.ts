@@ -2,13 +2,16 @@ import { Execution } from '../../../execution';
 import { clamp } from '../math/math-functions';
 import { SquishyIO } from './io/squishy-io';
 import { Squishy } from './squishy';
+import { View3D } from './view3d/view3d';
 
 export class SquishyObject implements Squishy {
 
     io: SquishyIO
+    view3d: View3D
 
     constructor(private readonly execution: Execution) {
         this.io = new SquishyIO()
+        this.view3d = new View3D()
     }
 
     get context(): any {

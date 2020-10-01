@@ -1,13 +1,12 @@
-import { PropertiesDialogChild } from './properties-dialog-child';
+import { EventEmitter, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ProjectsService } from 'src/app/projects-service/projects.service';
-import { OnInit, OnDestroy, EventEmitter, Component, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SquishyProjects } from 'src/app/projects-service/squishy-projects';
-import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { Subscription } from 'rxjs';
-import { Utils } from 'src/app/utils/utils';
+import { ProjectsService } from 'src/app/projects-service/projects.service';
+import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { FormUtils } from 'src/app/utils/form-utils';
+import { Utils } from 'src/app/utils/utils';
+import { PropertiesDialogChild } from './properties-dialog-child';
 
 @Injectable()
 export abstract class AbstractPropertiesDialogChildComponent implements OnInit, OnDestroy, PropertiesDialogChild {
@@ -54,7 +53,11 @@ export abstract class AbstractPropertiesDialogChildComponent implements OnInit, 
         return value
     }
 
-    triggerSubmit(): void {     
+    protected setFromDisabled(name: string, disabled: boolean, emitEvent?: boolean): void {
+        FormUtils.setFromDisabled(this.formGroup, name, disabled, emitEvent)
+    }
+
+    triggerSubmit(): void {
         if (Utils.isNullOrUndefined(this.events) || Utils.isNullOrUndefined(this.events.submit)) {
             return
         }

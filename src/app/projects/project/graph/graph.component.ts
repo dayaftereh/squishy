@@ -16,6 +16,7 @@ import { FileInputComponent } from './components/file-input/file-input.component
 import { FileOutputComponent } from './components/file-output/file-output.component';
 import { ScriptComponent } from './components/script/script.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
+import { View3DComponent } from './components/view3d/view3d.component';
 import { GraphMouseEventManager } from './graph-mouse-event.manager';
 import { GraphNodesManager } from './graph-nodes.manager';
 import { ProjectGraphService } from './service/project-graph.service';
@@ -174,6 +175,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy {
         return [
             new ChartComponent(this.graphNodesManager),
             new ScriptComponent(this.graphNodesManager),
+            new View3DComponent(this.graphNodesManager),
             new TextInputComponent(this.graphNodesManager),
             new FileInputComponent(this.graphNodesManager),
             new FileOutputComponent(this.graphNodesManager),

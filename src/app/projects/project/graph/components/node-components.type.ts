@@ -3,5 +3,6 @@ export enum NodeComponentsType {
     FileOutput = 'FileOutput',
     Script = 'Script',
     TextInput = 'TextInput',
-    Chart = 'Chart'
+    Chart = 'Chart',
+    View3D = 'View3D'
 }
