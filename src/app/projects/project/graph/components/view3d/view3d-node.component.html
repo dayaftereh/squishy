@@ -11,10 +11,9 @@
     <div class="p-grid" *ngFor="let input of inputs">
         <div class="p-col">
             <rete-socket rete-socket [io]="input" [socket]="input.socket"></rete-socket>
-        </div>
+        </div>        
         <div class="p-col">
-            <button pButton type="button" icon="pi pi-cog" class="p-button-secondary"
-                (click)="editInput(input.key)"></button>
+            {{'projects.project.graph.components.view3d.node.input.lbl' | translate}}
         </div>
     </div>
 </p-panel>

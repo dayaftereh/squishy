@@ -2,11 +2,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NodeComponent, NodeService } from 'rete-angular-render-plugin';
 import { PropertiesDialogService } from 'src/app/properties-dialog/service/properties-dialog.service';
-import { Utils } from 'src/app/utils/utils';
-import { View3DInputComponent } from './input/view3d-input.component';
 import { View3DPropertiesComponent } from './properties/view3d-properties.component';
 import { View3DData } from './view3d.data';
-import { View3DInput } from './view3d.input';
 
 @Component({
     templateUrl: './view3d-node.component.html',
@@ -45,29 +42,6 @@ export class View3DNodeComponent extends NodeComponent implements OnInit {
                 component.setView3DData(this.nodeData)
             }
         })
-    }
-
-    async editInput(id: string): Promise<void> {
-        if (!this.nodeData || !this.nodeData.inputs) {
-            return
-        }
-
-        const view3DInput: View3DInput | undefined = this.nodeData.inputs[id]
-
-        if (Utils.isNullOrUndefined(view3DInput)) {
-            return
-        }
-
-        const title: string = await this.translateService.get('projects.project.graph.components.view3d.input.header').toPromise()
-
-        this.propertiesDialogService.open({
-            title,
-            component: View3DInputComponent,
-            onInit: (component: View3DInputComponent) => {
-                component.setView3DInput(view3DInput)
-            }
-        })
-
     }
 
 }
