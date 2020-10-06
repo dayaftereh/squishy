@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "generate-script-types": "tsc --project ./tsconfig.script.json && ts-node --project ./tsconfig.tools.json ./tools/generate-script-types.ts",
+    "generate-script-types": "tsc --project ./tsconfig.script.json && ts-node --project ./tsconfig.tools.json ./tools/generate-script-types.ts && rimraf ./dist/script",
     "build": "npm run generate-script-types && ng build --aot=true --baseHref=./ --prod=true"
   },
   "homepage": "https://github.com/dayaftereh/squishy#readme",
@@ -63,6 +63,7 @@
     "typescript": "~3.9.7",
     "babel-polyfill": "~6.26.0",
     "node-sass": "~4.14.1",
-    "html-webpack-plugin": "~4.5.0"
+    "html-webpack-plugin": "~4.5.0",
+    "rimraf": "~3.0.2"
   }
 }
