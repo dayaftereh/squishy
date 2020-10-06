@@ -1,5 +1,7 @@
+import * as buffer from 'buffer';
 import * as dayjs from "dayjs";
-import * as xmldom from 'xmldom'
+import * as pngjs from 'pngjs/browser';
+import * as xmldom from 'xmldom';
 
 export class Plugins {
     /**
@@ -13,4 +15,17 @@ export class Plugins {
      * @see https://github.com/jindw/xmldom
      */
     xmldom = xmldom
+
+    /**
+     * import from pngjs, which is a simple PNG encoder/decoder in javascript
+     * @see https://github.com/lukeapage/pngjs
+     */
+    pngjs = pngjs
+
+    /**
+     * import from buffer, which is the buffer module from node.js, for the browser.
+     * @see https://github.com/feross/buffer
+     * @see https://nodejs.org/api/buffer.html
+     */
+    buffer = buffer
 }

@@ -46,7 +46,9 @@
     "chart.js": "~2.9.3",
     "xmldom": "~0.3.0",
     "chartjs-plugin-zoom": "~0.7.7",
-    "three": "~0.120.1"
+    "three": "~0.120.1",
+    "pngjs": "~5.0.0",
+    "buffer": "~5.6.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.3",
