@@ -1,5 +1,3 @@
-import * as xmldom from 'xmldom'
-
 export class SquishyIO {
 
     static NEWLINE: string = "\n"
@@ -55,19 +53,6 @@ export class SquishyIO {
                 return value.trim()
             })
         })
-    }
-
-    xmlParse(content: string, options?: any, mimeType?: string): any {
-        // set default mime type if needed
-        if (!mimeType) {
-            mimeType = SquishyIO.XML_MIME_TYPE
-        }
-        // create the parser
-        const parser: any = new xmldom.DOMParser(options)
-        // parse the document
-        const document: any = parser.parseFromString(content, mimeType)
-
-        return document
     }
 
     /**
