@@ -11,6 +11,46 @@
     </div>
     <div class="p-grid">
         <div class="p-col">
+            {{'projects.project.graph.components.view3d.properties.fov.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" min="0" formControlName="fov" pInputText />
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.view3d.properties.near.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" formControlName="near" pInputText />
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.view3d.properties.far.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" formControlName="far" pInputText />
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.view3d.properties.antiAlias.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-checkbox formControlName="antiAlias" [binary]="true"></p-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
             {{'projects.project.graph.components.view3d.properties.viewOrigin.lbl' | translate}}
         </div>
         <div class="p-col">

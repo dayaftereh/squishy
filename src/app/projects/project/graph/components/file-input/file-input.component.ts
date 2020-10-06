@@ -19,7 +19,7 @@ export class FileInputComponent extends SquishyNodeComponent<FileInputData> {
         const n: number = this.graphNodesManager.size() + 1
 
         data.type = NodeComponentsType.FileInput
-        data.name = `File-Input${n}`
+        data.name = `File-Input_${n}`
         data.mode = FileInputMode.Text
         data.encoding = Encoding.UTF_8
         data.accept = "*"

@@ -1,8 +1,9 @@
-import { View3DVec3 } from 'dist/script/squishy/view3d/view3d-vec3';
 import { View3DType } from './view3d-type';
+import { View3DVec3 } from './view3d-vec3';
 
 export class View3DObject {
-    
+
+    type: View3DType | undefined
     position: View3DVec3 | undefined
     rotation: View3DVec3 | undefined
 
@@ -14,9 +15,9 @@ export class View3DObject {
         if (!rotation) {
             rotation = { x: 0.0, y: 0.0, z: 0.0 }
         }
+
+        this.position = position
+        this.rotation = rotation
     }
 
-    get type(): View3DType {
-        throw new Error('type not implemented')
-    }
 }

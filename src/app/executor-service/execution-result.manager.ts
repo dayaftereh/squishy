@@ -20,7 +20,8 @@ export class ExecutionResultManager {
         await this.handleFileOutputsFromResult(result)
         // handle the charts output result 
         await this.handleOutputsWithEvents(result, [
-            NodeComponentsType.Chart
+            NodeComponentsType.Chart,
+            NodeComponentsType.View3D
         ])
     }
 

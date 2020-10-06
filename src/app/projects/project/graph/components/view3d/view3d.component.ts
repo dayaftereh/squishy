@@ -17,8 +17,13 @@ export class View3DComponent extends SquishyNodeComponent<View3DData> {
     protected async nodeData(data: View3DData): Promise<View3DData> {
         const n: number = this.graphNodesManager.size() + 1
 
-        data.name = `View3D${n}`
+        data.name = `View3D_${n}`
         data.type = NodeComponentsType.View3D
+
+        data.fov = 50.0
+        data.near = 0.1
+        data.far = 2000.0
+        data.antiAlias = false
 
         data.control = View3DControl.Orbit
 

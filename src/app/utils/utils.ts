@@ -40,10 +40,21 @@ export class Utils {
         })
     }
 
-    static async readFileAsText(file: File, encoding?: string): Promise<string> {
+    static async readFileAsText(file: File, encoding?: string, progress?: (percent: number) => void): Promise<string> {
+        // check if no progress function given
+        if (Utils.isNullOrUndefined(progress)) {
+            progress = (_) => { }
+        }
+
         var completed: boolean = false
         const fileReader: FileReader = new FileReader()
         return new Promise((resolve, reject) => {
+            // wait for progress update
+            fileReader.onprogress = (event: ProgressEvent<FileReader>) => {
+                const percent: number = event.loaded / event.total
+                progress(percent)
+            }
+
             // if reader fails
             fileReader.onerror = (e) => {
                 if (!completed) {
@@ -69,10 +80,21 @@ export class Utils {
         })
     }
 
-    static async readFileAsArrayBuffer(file: File): Promise<ArrayBuffer> {
+    static async readFileAsArrayBuffer(file: File, progress?: (percent: number) => void): Promise<ArrayBuffer> {
+        // check if no progress function given
+        if (Utils.isNullOrUndefined(progress)) {
+            progress = (_) => { }
+        }
+
         var completed: boolean = false
         const fileReader: FileReader = new FileReader()
         return new Promise((resolve, reject) => {
+            // wait for progress update
+            fileReader.onprogress = (event: ProgressEvent<FileReader>) => {
+                const percent: number = event.loaded / event.total
+                progress(percent)
+            }
+
             // if reader fails
             fileReader.onerror = (e) => {
                 if (!completed) {

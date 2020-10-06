@@ -33,6 +33,10 @@ export class FormUtils {
             return
         }
 
+        if (Utils.isNullOrUndefined(emitEvent)) {
+            emitEvent = false
+        }
+
         if (disabled) {
             formControl.disable(
                 {

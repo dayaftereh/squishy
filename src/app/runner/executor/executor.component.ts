@@ -9,6 +9,7 @@ import { FileInputData } from 'src/app/projects/project/graph/components/file-in
 import { NodeComponentsType } from 'src/app/projects/project/graph/components/node-components.type';
 import { SquishyNodeData } from 'src/app/projects/project/graph/components/squishy-node.data';
 import { TextInputData } from 'src/app/projects/project/graph/components/text-input/text-input.data';
+import { View3DData } from 'src/app/projects/project/graph/components/view3d/view3d.data';
 import { Utils } from 'src/app/utils/utils';
 import { ExecutionResult } from 'src/worker/execution/execution-result';
 import { ExecutorService } from '../../executor-service/executor.service';
@@ -75,11 +76,20 @@ export class ExecutorComponent implements OnInit, OnDestroy {
         })
     }
 
+    view3Ds(): View3DData[] {
+        // get all view3Ds
+        return Utils.getSquishyNodesData(this.project).filter((nodeData: SquishyNodeData) => {
+            return nodeData.type === NodeComponentsType.View3D
+        }).map((nodeData: SquishyNodeData) => {
+            return nodeData as View3DData
+        })
+    }
+
     async execute(): Promise<void> {
         this.errorManagerService.clear()
 
         try {
-            const result: ExecutionResult = await this.executorService.execute()
+            const result: ExecutionResult = await this.executorService.execute()          
         } catch (e) {
             this.errorManagerService.error(e)
             // print the error to console

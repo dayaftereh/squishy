@@ -36,7 +36,11 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
             control: new FormControl(),
             grid: new FormControl(),
             gridSize: new FormControl(),
-            gridDivisions: new FormControl()
+            gridDivisions: new FormControl(),
+            fov: new FormControl(),
+            near: new FormControl(),
+            far: new FormControl(),
+            antiAlias: new FormControl(),
         })
     }
 
@@ -73,6 +77,11 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
         }
 
         this.view3dData.name = this.getFormValue('name', this.view3dData.name)
+
+        this.view3dData.fov = this.getFormValue('fov', this.view3dData.fov)
+        this.view3dData.near = this.getFormValue('near', this.view3dData.near)
+        this.view3dData.far = this.getFormValue('far', this.view3dData.far)
+        this.view3dData.antiAlias = this.getFormValue('antiAlias', this.view3dData.antiAlias)
 
         this.view3dData.grid = this.getFormValue('grid', this.view3dData.grid)
         this.view3dData.gridSize = this.getFormValue('gridSize', this.view3dData.gridSize)

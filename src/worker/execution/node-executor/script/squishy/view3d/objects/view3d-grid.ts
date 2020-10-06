@@ -1,6 +1,6 @@
-import { View3DVec3 } from 'dist/script/squishy/view3d/view3d-vec3';
 import { View3DObject } from '../view3d-object';
 import { View3DType } from '../view3d-type';
+import { View3DVec3 } from '../view3d-vec3';
 
 export class View3DGrid extends View3DObject {
 
@@ -13,10 +13,7 @@ export class View3DGrid extends View3DObject {
         this.size = size
         this.color = color
         this.divisions = divisions
-    }
-
-    get type(): View3DType {
-        return View3DType.Grid
+        this.type = View3DType.Grid
     }
 
 }

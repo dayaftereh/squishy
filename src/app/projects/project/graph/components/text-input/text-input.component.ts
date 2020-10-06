@@ -17,7 +17,7 @@ export class TextInputComponent extends SquishyNodeComponent<TextInputData> {
     protected async nodeData(data: TextInputData): Promise<TextInputData> {
         const n: number = this.graphNodesManager.size() + 1
 
-        data.name = `TextInput${n}`
+        data.name = `TextInput_${n}`
         data.type = NodeComponentsType.TextInput
 
         data.content = undefined

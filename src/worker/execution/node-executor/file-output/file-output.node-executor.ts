@@ -24,7 +24,7 @@ export class FileOutputNodeExecutor extends AbstractNodeExecutor {
 
         // check if the node executor is executed
         if (!nodeExecutor.isExecuted()) {
-            throw new Error(`dependet node executor [ ${nodeExecutor.id()} ] for node [ ${this.id()} ] are not executed`)
+            throw new Error(`dependent node executor [ ${nodeExecutor.id()} ] for node [ ${this.id()} ] are not executed`)
         }
 
         // get the content from the depended node executor

@@ -10,6 +10,7 @@ import { ExecutorComponent } from './executor.component';
 import { FileInputExecutorModule } from './file-input/file-input-executor.module';
 import { ExecutorMenuModule } from './menu/executor-menu.module';
 import { TextInputExecutorModule } from './text-input/text-input-executor.module';
+import { View3DExecutorModule } from './view3d/view3d-executor.module';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import { TextInputExecutorModule } from './text-input/text-input-executor.module
         // Custom
         ExecutorMenuModule,
         ChartExecutorModule,
+        View3DExecutorModule,
         ExecutorServiceModule,
         ProjectsServiceModule,
         TextInputExecutorModule,

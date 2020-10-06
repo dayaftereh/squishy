@@ -17,7 +17,7 @@ export class FileOutputComponent extends SquishyNodeComponent<FileOutputData> {
         const n: number = this.graphNodesManager.size() + 1
 
         data.type = NodeComponentsType.FileOutput
-        data.name = `File-Output${n}`
+        data.name = `File-Output_${n}`
         return data
     }
 

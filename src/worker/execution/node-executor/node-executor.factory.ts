@@ -9,6 +9,7 @@ import { FileOutputNodeExecutor } from './file-output/file-output.node-executor'
 import { NodeExecutor } from './node-executor';
 import { ScriptNodeExecutor } from './script/script.node-executor';
 import { TextInputNodeExecutor } from './text-input/text-input.node-executor';
+import { View3DNodeExecutor } from './view3d/view3d.node-executor';
 
 export class NodeExecutorFactory {
 
@@ -24,6 +25,7 @@ export class NodeExecutorFactory {
         // regster all factories function
         this.factoryFunction.set(NodeComponentsType.Chart, this.createChart)
         this.factoryFunction.set(NodeComponentsType.Script, this.createScript)
+        this.factoryFunction.set(NodeComponentsType.View3D, this.createView3D)
         this.factoryFunction.set(NodeComponentsType.FileInput, this.createFileInput)
         this.factoryFunction.set(NodeComponentsType.TextInput, this.createTextInput)
         this.factoryFunction.set(NodeComponentsType.FileOutput, this.createFileOutput)
@@ -75,6 +77,13 @@ export class NodeExecutorFactory {
     private async createChart(nodeData: NodeData, nodeExecutionData: any): Promise<ChartNodeExecutor> {
         // create the chart node executor
         const executor: ChartNodeExecutor = new ChartNodeExecutor(this.execution, nodeData, nodeExecutionData)
+
+        return executor
+    }
+
+    private async createView3D(nodeData: NodeData, nodeExecutionData: any): Promise<View3DNodeExecutor> {
+        // create the view3d node executor
+        const executor: View3DNodeExecutor = new View3DNodeExecutor(this.execution, nodeData, nodeExecutionData)
 
         return executor
     }

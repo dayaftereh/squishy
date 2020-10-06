@@ -26,7 +26,7 @@ export class ScriptComponent extends SquishyNodeComponent<ScriptData> {
 
         data.type = NodeComponentsType.Script
         data.variables = {}
-        data.name = `Script${n}`
+        data.name = `Script_${n}`
         return data
     }
 

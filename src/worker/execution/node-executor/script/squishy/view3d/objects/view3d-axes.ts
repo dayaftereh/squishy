@@ -6,9 +6,10 @@ export class View3DAxes extends View3DObject {
 
     size: number | undefined
 
-    constructor(position: View3DVec3, size?: number, rotation?: View3DVec3) {
-        super(position, rotation)
-        
+    constructor(position?: View3DVec3, size?: number, rotation?: View3DVec3) {
+        super(position, rotation)        
+        this.type = View3DType.Axes
+
         if (isNaN(size)) {
             size = 1.0
         }
@@ -20,7 +21,4 @@ export class View3DAxes extends View3DObject {
         return new View3DAxes({ x: 0.0, y: 0.0, z: 0.0 }, size)
     }
 
-    get type(): View3DType {
-        return View3DType.Axes
-    }
 }

@@ -31,7 +31,7 @@ export class ChartComponent extends SquishyNodeComponent<ChartData> {
         data.type = NodeComponentsType.Chart
         data.datasets = {}
         data.lineTension = 0.0
-        data.name = `Chart${n}`
+        data.name = `Chart_${n}`
         data.animation = true
         data.pan = ChartZoomPanAxis.None
         data.zoom = ChartZoomPanAxis.None
@@ -97,7 +97,7 @@ export class ChartComponent extends SquishyNodeComponent<ChartData> {
             color: color.toHex(),
             fill: false,
             lines: true,
-            name: `Dataset${n}`
+            name: `Dataset_${n}`
         } as ChartDatasetConfig
     }
 
