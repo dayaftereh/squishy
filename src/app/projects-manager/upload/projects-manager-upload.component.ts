@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as semver from 'semver';
 import { ErrorManagerService } from 'src/app/error-manager/service/error-manager.service';
 import { PackageJSON } from 'src/app/package-json';
+import { ProjectsExamplesService } from 'src/app/projects-service/projects-examples.service';
 import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { SquishyProject } from 'src/app/projects-service/squishy-project';
 import { GraphComponent } from 'src/app/projects/project/graph/graph.component';
@@ -18,7 +19,8 @@ export class ProjectsManagerUploadComponent {
 
     constructor(
         private readonly projectsService: ProjectsService,
-        private readonly errorManagerService: ErrorManagerService) {
+        private readonly errorManagerService: ErrorManagerService,
+        private readonly projectsExamplesService: ProjectsExamplesService) {
 
     }
 
@@ -38,7 +40,7 @@ export class ProjectsManagerUploadComponent {
         }
 
         const files: File[] = event.files
-        // check if files selcted
+        // check if files selected
         if (Utils.isNullOrUndefined(files) || !files) {
             return
         }
@@ -98,5 +100,24 @@ export class ProjectsManagerUploadComponent {
         return projects
     }
 
+    async uploadExamples(): Promise<void> {
+        try {
+            await this.fetchAndInjectExamples()
+        } catch (error) {
+            console.error(error)
+            this.errorManagerService.error(error)
+        }
+    }
+
+    private async fetchAndInjectExamples(): Promise<void> {
+        // fetch the example
+        const projects: SquishyProject[] = await this.projectsExamplesService.getExamples()
+        // verify the id
+        projects.forEach((project: SquishyProject) => {
+            this.verifyAndUpdateGraphVersion(project)
+        })
+        // load all projects
+        this.projectsService.updateAll(projects)
+    }
 
 }

@@ -251,7 +251,8 @@
         "btn": {
             "cancel": "Cancel",
             "choose": "Choose",
-            "upload": "Upload"
+            "upload": "Upload",
+            "examples": "Examples"
         }
     },
     "p-confirmDialog": {
