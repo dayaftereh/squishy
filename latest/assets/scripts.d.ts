@@ -49,6 +49,103 @@ declare namespace Mathf {
 
 
 
+/**
+ * This class represents an elliptical arc on a 2D plane.
+ * The class is based on `EllipseCurve2`.
+ */
+ class ArcCurve2 extends EllipseCurve2 {
+    /**
+     * creates a elliptical arc with the given values
+     * @param xCenter the x center position of the arc
+     * @param yCenter the y center position of the arc
+     * @param radius the radius of the arc
+     * @param startAngle the start angle in radians
+     * @param endAngle the end angle in radians
+     * @param clockwise if true, the arc is clockwise
+     */
+    constructor(xCenter: number, yCenter: number, radius: number, startAngle: number, endAngle: number, clockwise?: boolean);
+    /**
+     * creates a elliptical arc with the given values
+     * @param center the center position of the arc
+     * @param radius the radius of the arc
+     * @param startAngle the start angle in radians
+     * @param endAngle the end angle in radians
+     * @param clockwise if true, the arc is clockwise
+     * @see ArcCurve2()
+     */
+    static from(center: Vec3, radius: number, startAngle: number, endAngle: number, clockwise?: boolean): ArcCurve2;
+}
+
+
+/**
+ * Class representing a 3D vector. A 3D vector is an ordered triplet of numbers (labeled x, y, and z).
+ */
+ class Vec3 {
+    /**
+     * the x value of this vector. Default is 0.
+     */
+    x: number | undefined;
+    /**
+     * the y value of this vector. Default is 0.
+     */
+    y: number | undefined;
+    /**
+     * the z value of this vector. Default is 0.
+     */
+    z: number | undefined;
+    /**
+     * Creates a new 3D vector.
+     * @param x the x value of the vector.
+     * @param y the y value of the vector.
+     * @param z the z value of the vector.
+     */
+    constructor(x: number, y: number, z: number);
+    lengthSquared(): number;
+    length(): number;
+    dot(x: number, y: number, z: number): number;
+    dotWith(v: Vec3): number;
+    normalize(): Vec3;
+    cross(x: number, y: number, z: number): Vec3;
+    crossWith(v: Vec3): Vec3;
+    scale(s: number): Vec3;
+    add(x: number, y: number, z: number): Vec3;
+    addWith(v: Vec3): Vec3;
+    multiply(x: number, y: number, z: number): Vec3;
+    multiplyWith(v: Vec3): Vec3;
+    divide(x: number, y: number, z: number): Vec3;
+    divideWith(v: Vec3): Vec3;
+    subtract(x: number, y: number, z: number): Vec3;
+    subtractWith(v: Vec3): Vec3;
+    inverse(): Vec3;
+    clone(): Vec3;
+    static random(): Vec3;
+    applyMatrix3(m: Matrix3): Vec3;
+    applyMatrix4(m: Matrix4): Vec3;
+    applyQuaternion(q: Quaternion): Vec3;
+    distanceSquared(x: number, y: number, z: number): number;
+    distanceSquaredTo(p: Vec3): number;
+    distance(x: number, y: number, z: number): number;
+    distanceTo(p: Vec3): number;
+    /**
+     * Returns a unit vector for the x axis (1.0, 0.0, 0.0)
+     */
+    static xAxis(): Vec3;
+    /**
+     * Returns a unit vector for the y axis (0.0, 1.0, 0.0)
+     */
+    static yAxis(): Vec3;
+    /**
+     * Returns a unit vector for the z axis (0.0, 0.0, 1.0)
+     */
+    static zAxis(): Vec3;
+    /**
+     * Returns a new vector with 0.0 for x, y and z
+     */
+    static zero(): Vec3;
+    orthogonal(): Vec3;
+}
+
+
  class Matrix3 {
     private elements;
     /**
@@ -278,6 +375,10 @@ declare namespace Mathf {
      * Returns a unit vector for the y axis (0.0, 1.0)
      */
     static yAxis(): Vec2;
+    distanceSquared(x: number, y: number): number;
+    distanceSquaredTo(p: Vec2): number;
+    distance(x: number, y: number): number;
+    distanceTo(p: Vec2): number;
 }
 
 
@@ -340,6 +441,7 @@ declare namespace Mathf {
     static compose(position: Vec3, quaternion: Quaternion, scale: Vec3): Matrix4;
     static rotationFromQuaternion(q: Quaternion): Matrix4;
     maxScaleOnAxis(): number;
+    toEuler(): Vec3;
 }
 
 
@@ -376,68 +478,168 @@ declare namespace Mathf {
 }
 
 
+
 /**
- * Class representing a 3D vector. A 3D vector is an ordered triplet of numbers (labeled x, y, and z).
+ * Creates a 2D curve in the shape of an ellipse.
+ * Setting the xRadius equal to the yRadius will result in a circle.
  */
- class Vec3 {
+ class EllipseCurve2 extends Curve {
+    private readonly xCenter;
+    private readonly yCenter;
+    private readonly xRadius;
+    private readonly yRadius;
+    private readonly startAngle;
+    private readonly endAngle;
+    private readonly clockwise?;
+    private readonly rotation?;
     /**
-     * the x value of this vector. Default is 0.
+     *
+     * @param xCenter The X center of the ellipse. Default is 0.
+     * @param yCenter The Y center of the ellipse. Default is 0.
+     * @param xRadius The radius of the ellipse in the x direction. Default is 1.
+     * @param yRadius The radius of the ellipse in the y direction. Default is 1.
+     * @param startAngle The start angle of the curve in radians starting from the positive X axis. Default is 0.
+     * @param endAngle The end angle of the curve in radians starting from the positive X axis. Default is 2 x Math.PI.
+     * @param clockwise Whether the ellipse is drawn clockwise. Default is false.
+     * @param rotation The rotation angle of the ellipse in radians, counterclockwise from the positive X axis (optional). Default is 0.
      */
-    x: number | undefined;
+    constructor(xCenter: number, yCenter: number, xRadius: number, yRadius: number, startAngle: number, endAngle: number, clockwise?: boolean, rotation?: number);
+    static with(center: Vec2, radius: Vec2, startAngle: number, endAngle: number, clockwise?: boolean, rotation?: number): EllipseCurve2;
     /**
-     * the y value of this vector. Default is 0.
+     * Returns a vector for a given position on the curve.
+     * @param t A position on the curve
      */
-    y: number | undefined;
-    /**
-     * the z value of this vector. Default is 0.
-     */
-    z: number | undefined;
-    /**
-     * Creates a new 3D vector.
-     * @param x the x value of the vector.
-     * @param y the y value of the vector.
-     * @param z the z value of the vector.
-     */
-    constructor(x: number, y: number, z: number);
-    lengthSquared(): number;
-    length(): number;
-    dot(x: number, y: number, z: number): number;
-    dotWith(v: Vec3): number;
-    normalize(): Vec3;
-    cross(x: number, y: number, z: number): Vec3;
-    crossWith(v: Vec3): Vec3;
-    scale(s: number): Vec3;
-    add(x: number, y: number, z: number): Vec3;
-    addWith(v: Vec3): Vec3;
-    multiply(x: number, y: number, z: number): Vec3;
-    multiplyWith(v: Vec3): Vec3;
-    divide(x: number, y: number, z: number): Vec3;
-    divideWith(v: Vec3): Vec3;
-    subtract(x: number, y: number, z: number): Vec3;
-    subtractWith(v: Vec3): Vec3;
-    inverse(): Vec3;
-    clone(): Vec3;
-    static random(): Vec3;
-    applyMatrix3(m: Matrix3): Vec3;
-    applyMatrix4(m: Matrix4): Vec3;
-    applyQuaternion(q: Quaternion): Vec3;
-    distanceSquared(x: number, y: number, z: number): number;
-    distanceSquaredTo(p: Vec3): number;
-    distance(x: number, y: number, z: number): number;
-    distanceTo(p: Vec3): number;
-    /**
-     * Returns a unit vector for the x axis (1.0, 0.0, 0.0)
-     */
-    static xAxis(): Vec3;
-    /**
-     * Returns a unit vector for the y axis (0.0, 1.0, 0.0)
-     */
-    static yAxis(): Vec3;
-    /**
-     * Returns a unit vector for the z axis (0.0, 0.0, 1.0)
-     */
-    static zAxis(): Vec3;
+    getPoint(t: number): Vec2;
+    is3D(): boolean;
 }
+
+
+/**
+ * A base class for creating a Curve object that contains methods for interpolation.
+ */
+ class Curve {
+    private lengths;
+    private static APPROX_DELTA;
+    private static ARC_LENGTH_DIVISIONS;
+    /**
+     * This constructor creates a new Curve.
+     */
+    constructor();
+    /**
+     * Returns a vector for a given position on the curve.
+     * @param t  A position on the curve. Must be in the range [ 0, 1 ].
+     */
+    getPoint(t: number): Vec2 | Vec3;
+    /**
+     * Returns a vector for a given position on the curve according to the arc length.
+     * @param u  A position on the curve according to the arc length. Must be in the range [ 0, 1 ].
+     */
+    getPointAt(u: number): Vec2 | Vec3;
+    /**
+     * Get sequence of points using getPoint( t )
+     * @see Curve.getPoint()
+     * @param divisions number of pieces to divide the curve into. Default is 5.
+     */
+    getPoints(divisions?: number): (Vec2 | Vec3)[];
+    /**
+     * Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
+     * @param divisions number of pieces to divide the curve into. Default is 5.
+     */
+    getSpacedPoints(divisions: number): (Vec2 | Vec3)[];
+    /**
+     * Get total curve arc length.
+     */
+    getLength(): number;
+    /**
+     * Get list of cumulative segment lengths.
+     * @param divisions number of pieces to cumulative segment of the curve. Default is 200.
+     */
+    getLengths(divisions?: number): number[];
+    /**
+     * Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
+     * u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
+     * @param u u in the range [0, 1]
+     * @param distance
+     */
+    getUtoTmapping(u: number, distance?: number): number;
+    /**
+     * Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
+     * two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
+     * @param t A position on the curve. Must be in the range [ 0, 1 ].
+     */
+    getTangent(t: number): Vec2 | Vec3;
+    /**
+     * Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
+     * @param u A position on the curve according to the arc length. Must be in the range [ 0, 1 ].
+     */
+    getTangentAt(u: number): Vec2 | Vec3;
+    /**
+     * Generates the Frenet Frames. Requires a curve definition in 3D space.
+     * @param segments number of frames to compute
+     * @param closed true if the curve is closed
+     * @see http://www.cs.indiana.edu/pub/techreports/TR425.pdf
+     */
+    computeFrenetFrames(segments: number, closed?: boolean): CurveFrame3[];
+    /**
+     * checks if the curve is in 3D
+     */
+    is3D(): boolean;
+}
+
+
+ class CurveFrame3 {
+    /** the normal vector */
+    normal: Vec3;
+    /** direction vector of the curve */
+    tangent: Vec3;
+    /** position on the curve for the frame */
+    position: Vec3;
+    /** the cross vector from tangent and normal */
+    binormal: Vec3;
+    constructor(position: Vec3, tangent: Vec3);
+    /**
+     * Computes the three euler angles from binormal, tangent and normal
+     */
+    rotation(): Vec3;
+}
+
+
+/**
+ * Based on an optimized c++ solution in
+ * - http://stackoverflow.com/questions/9489736/catmull-rom-curve-with-no-cusps-and-no-self-intersections/
+ * - http://ideone.com/NoEbVM
+ *
+ * This CatmullCubicPolynomial class could be used for reusing some variables and calculations,
+ * but for squishy curve use, it could be possible inlined and flatten into a single function call.
+ */
+ class CatmullCubicPolynomial {
+    c0: number;
+    c1: number;
+    c2: number;
+    c3: number;
+    constructor();
+    init(x0: number, x1: number, t0: number, t1: number): void;
+    initCatmullRom(x0: number, x1: number, x2: number, x3: number, tension: number): void;
+    initNonuniformCatmullRom(x0: number, x1: number, x2: number, x3: number, dt0: number, dt1: number, dt2: number): void;
+    calculate(t: number): number;
+}
+
+
+
+/**
+ * Centripetal CatmullRom Curve - which is useful for avoiding
+ * cusps and self-intersections in non-uniform catmull rom curves.
+ * @see http://www.cemyuksel.com/research/catmullrom_param/catmullrom.pdf
+ */
+ class CatmullRomCurve3 extends Curve {
+    private readonly points;
+    private readonly closed?;
+    private readonly type?;
+    private readonly tension?;
+    constructor(points: Vec3[], closed?: boolean, type?: CatmullRomType, tension?: number);
+    getPoint(t: number): Vec3;
+}
+
 
 
 
@@ -524,6 +726,7 @@ declare namespace Mathf {
 
 
  const EPSILON: number
+ const TWO_PI: number
 
 
 /**
@@ -548,6 +751,12 @@ declare namespace Mathf {
  * @param deg an angle, in degrees
  */
  function toRadians(deg: number): number;
+
+/**
+ * The method normalize the given radians to be between [ 0.0, 2*PI ]
+ * @param rad the angle, in radians
+ */
+ function normalizeRadians(rad: number): number;
 
 /**
  * The method compares the given float point number with zero based on an epsilon
@@ -601,6 +810,7 @@ declare namespace SquishyTypes {
 class Squishy {
     context: any;
     io: SquishyIO;
+    view3d: View3D;
     progress(value: number): void;
 }
 
@@ -611,7 +821,6 @@ class Squishy {
     static NF: Intl.NumberFormat;
     csvStringify(data: (unknown[][]) | undefined, toString?: (x: unknown) => string, delimiter?: string, newline?: string): string;
     csvParse(content: string | undefined, delimiter?: string): string[][];
-    xmlParse(content: string, options?: any, mimeType?: string): any;
     /**
      * converts the given number to a string based on the local browser language formatting
      * @param x the number to format
@@ -620,12 +829,100 @@ class Squishy {
 }
 
 
+
+ class View3D {
+    View3DAxes: typeof View3DAxes;
+    View3DGrid: typeof View3DGrid;
+    View3DLines: typeof View3DLines;
+    View3DPoints: typeof View3DPoints;
+    View3DGeometry: typeof View3DGeometry;
+}
+
+
+ class View3DAxes extends View3DObject {
+    size: number | undefined;
+    constructor(position?: View3DVec3, size?: number, rotation?: View3DVec3);
+    static origin(size?: number): View3DAxes;
+}
+
+
+ class View3DObject {
+    type: View3DType | undefined;
+    position: View3DVec3 | undefined;
+    rotation: View3DVec3 | undefined;
+    constructor(position?: View3DVec3, rotation?: View3DVec3);
+}
+
+ const View3DTypes: View3DType[]
+
+
+class View3DVec3 {
+    x: number;
+    y: number;
+    z: number;
+}
+
+
+
+ class View3DGeometry extends View3DObject {
+    colors: number[] | undefined;
+    normals: number[] | undefined;
+    vertices: number[] | undefined;
+    constructor(vertices: number[], normals?: number[], colors?: number[], position?: View3DVec3, rotation?: View3DVec3);
+}
+
+
+
+ class View3DGrid extends View3DObject {
+    size: number | undefined;
+    color: string | undefined;
+    divisions: number | undefined;
+    constructor(size: number, divisions: number, color?: string, position?: View3DVec3, rotation?: View3DVec3);
+}
+
+
+
+ class View3DLines extends View3DObject {
+    color: string | undefined;
+    points: View3DVec3[] | undefined;
+    constructor(points: View3DVec3[], color?: string, position?: View3DVec3, rotation?: View3DVec3);
+}
+
+
+
+ class View3DPoints extends View3DObject {
+    color: string | undefined;
+    points: View3DVec3[] | undefined;
+    constructor(points: View3DVec3[], color?: string, position?: View3DVec3, rotation?: View3DVec3);
+}
+
+
 }
 declare namespace PluginsTypes {
 
 
  class Plugins {
+    /**
+     * import from dayjs to parses, validates, manipulates, and displays dates
+     * @see https://github.com/iamkun/dayjs
+     */
     dayjs: typeof dayjs;
+    /**
+     * import from xmldom, which allows to parse xml or dom files
+     * @see https://github.com/jindw/xmldom
+     */
+    xmldom: any;
+    /**
+     * import from pngjs, which is a simple PNG encoder/decoder in javascript
+     * @see https://github.com/lukeapage/pngjs
+     */
+    pngjs: any;
+    /**
+     * import from buffer, which is the buffer module from node.js, for the browser.
+     * @see https://github.com/feross/buffer
+     * @see https://nodejs.org/api/buffer.html
+     */
+    buffer: typeof buffer;
 }
 
 

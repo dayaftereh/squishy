@@ -141,6 +141,49 @@
                                 "lbl": "Fill"
                             }
                         }
+                    },
+                    "view3d": {
+                        "node": {
+                            "input": {
+                                "lbl": "3D-Objects"
+                            }
+                        },
+                        "properties": {
+                            "header": "3D-View Properties",
+                            "name": {
+                                "lbl": "Name"
+                            },
+                            "fov": {
+                                "lbl": "Field of view"
+                            },
+                            "near": {
+                                "lbl": "Near plane"
+                            },
+                            "far": {
+                                "lbl": "Far plane"
+                            },
+                            "antiAlias": {
+                                "lbl": "Anti Alias"
+                            },
+                            "viewOrigin": {
+                                "lbl": "View Origin"
+                            },
+                            "originSize": {
+                                "lbl": "Size of Origin Axes"
+                            },
+                            "control": {
+                                "lbl": "Control"
+                            },
+                            "grid": {
+                                "lbl": "Grid"
+                            },
+                            "gridSize": {
+                                "lbl": "Grid-Size"
+                            },
+                            "gridDivisions": {
+                                "lbl": "Grid-Divisions"
+                            }
+                        }
                     }
                 },
                 "context-menu": {
@@ -149,7 +192,8 @@
                         "file-input": "File-Input",
                         "file-output": "File-Output",
                         "text-input": "Text-Input",
-                        "chart": "Chart"
+                        "chart": "Chart",
+                        "view3d": "3D-View"
                     },
                     "btn": {
                         "delete": "Delete",
@@ -207,7 +251,8 @@
         "btn": {
             "cancel": "Cancel",
             "choose": "Choose",
-            "upload": "Upload"
+            "upload": "Upload",
+            "examples": "Examples"
         }
     },
     "p-confirmDialog": {

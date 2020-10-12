@@ -1,0 +1,918 @@
+[
+  {
+    "id": "372f1b46-88c2-481b-b889-a01bc95b4398",
+    "name": "Chart",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Chart",
+            "id": "8b4fb13d-2328-4ca8-9376-819f1bd96614",
+            "datasets": {
+              "30a274a4-b824-41d1-a5af-3a0917fdbf15": {
+                "color": "#ff0053",
+                "fill": false,
+                "lines": true,
+                "name": "Dataset1"
+              },
+              "ef851ec1-bd94-467f-8277-1b796795efab": {
+                "color": "#0fdb7c",
+                "fill": false,
+                "lines": true,
+                "name": "Dataset2"
+              },
+              "abd9c3ff-23e4-4ba7-80b4-40653d7eb0d5": {
+                "color": "#d1b519",
+                "fill": false,
+                "lines": true,
+                "name": "Dataset3"
+              }
+            },
+            "lineTension": 0,
+            "name": "ChartExample",
+            "animation": true,
+            "pan": "XY",
+            "zoom": "Y",
+            "tooltipFractionDigits": 3
+          },
+          "inputs": {
+            "30a274a4-b824-41d1-a5af-3a0917fdbf15": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "0c29ea5a-7ac3-4799-bc6b-0cf9db61fa93",
+                  "data": {}
+                }
+              ]
+            },
+            "ef851ec1-bd94-467f-8277-1b796795efab": {
+              "connections": [
+                {
+                  "node": 3,
+                  "output": "7f10cc13-f476-4043-b7fd-c342376dfe32",
+                  "data": {}
+                }
+              ]
+            },
+            "abd9c3ff-23e4-4ba7-80b4-40653d7eb0d5": {
+              "connections": []
+            }
+          },
+          "outputs": {},
+          "position": [
+            901.1424917917294,
+            167.25152451121326
+          ],
+          "name": "Chart"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "Script",
+            "id": "0c29ea5a-7ac3-4799-bc6b-0cf9db61fa93",
+            "variables": {},
+            "name": "Dataset1",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec2.random()\r\n    points.push(point.scale(100.0))\r\n}\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "c9a3dac9-bb84-4828-908b-a5c86275641d": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "0c29ea5a-7ac3-4799-bc6b-0cf9db61fa93": {
+              "connections": [
+                {
+                  "node": 1,
+                  "input": "30a274a4-b824-41d1-a5af-3a0917fdbf15",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            496.29757423610647,
+            39.78147511532409
+          ],
+          "name": "Script"
+        },
+        "3": {
+          "id": 3,
+          "data": {
+            "type": "Script",
+            "id": "7f10cc13-f476-4043-b7fd-c342376dfe32",
+            "variables": {},
+            "name": "Dataset2",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec2.random()\r\n    points.push(point.scale(100.0))\r\n}\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "98727792-5471-4ae3-881b-362fe5bd7d34": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "7f10cc13-f476-4043-b7fd-c342376dfe32": {
+              "connections": [
+                {
+                  "node": 1,
+                  "input": "ef851ec1-bd94-467f-8277-1b796795efab",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            495.56318287082576,
+            279.91751086846847
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "12ff76a7-e5ae-4fcb-bf86-b45fe6b308a5",
+    "name": "3D",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "7": {
+          "id": 7,
+          "data": {
+            "type": "View3D",
+            "id": "ef1bde6f-eebe-4b58-a935-26afe2b0bc71",
+            "name": "View3D",
+            "fov": 50,
+            "near": 0.1,
+            "far": 2000,
+            "antiAlias": false,
+            "control": "orbit",
+            "viewOrigin": true,
+            "originSize": 10,
+            "grid": false,
+            "gridSize": 10,
+            "gridDivisions": 10
+          },
+          "inputs": {
+            "ef1bde6f-eebe-4b58-a935-26afe2b0bc71": {
+              "connections": [
+                {
+                  "node": 8,
+                  "output": "4c1ee4ba-5f8e-4709-84bd-ff3f9d43a0d3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            1097.9428208386278,
+            190.2495235069886
+          ],
+          "name": "View3D"
+        },
+        "8": {
+          "id": 8,
+          "data": {
+            "type": "Script",
+            "id": "4c1ee4ba-5f8e-4709-84bd-ff3f9d43a0d3",
+            "variables": {
+              "0ed3668f-9c1f-463d-b755-2bf43f372e80": "view3DPoints",
+              "3d70bfa5-7a98-49c7-835f-a2036b2a61a7": "view3DLines",
+              "6255bd7a-ee74-4c72-9e4f-2edd9c45358a": "axesHelper",
+              "9b907afc-1afb-4850-ba84-95cc3c1185e2": "grid"
+            },
+            "name": "Join",
+            "script": "const objects3D = [\r\n    grid,\r\n    axesHelper,\r\n    view3DLines,\r\n    view3DPoints,\r\n]\r\n\r\nreturn objects3D"
+          },
+          "inputs": {
+            "0ed3668f-9c1f-463d-b755-2bf43f372e80": {
+              "connections": [
+                {
+                  "node": 9,
+                  "output": "72011c23-fa50-4c6f-8f3a-53349ba2384f",
+                  "data": {}
+                }
+              ]
+            },
+            "3d70bfa5-7a98-49c7-835f-a2036b2a61a7": {
+              "connections": [
+                {
+                  "node": 10,
+                  "output": "ab7bbd3d-9e24-495a-9f7c-1e22d478dd1a",
+                  "data": {}
+                }
+              ]
+            },
+            "6255bd7a-ee74-4c72-9e4f-2edd9c45358a": {
+              "connections": [
+                {
+                  "node": 11,
+                  "output": "7d146017-466c-42fe-928b-2aca639ee671",
+                  "data": {}
+                }
+              ]
+            },
+            "9b907afc-1afb-4850-ba84-95cc3c1185e2": {
+              "connections": [
+                {
+                  "node": 27,
+                  "output": "97542258-a8a2-4ba9-b3e5-7a1cb1eb38e1",
+                  "data": {}
+                }
+              ]
+            },
+            "c1edda2b-6be0-4319-8953-3de40ad7cdda": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "4c1ee4ba-5f8e-4709-84bd-ff3f9d43a0d3": {
+              "connections": [
+                {
+                  "node": 7,
+                  "input": "ef1bde6f-eebe-4b58-a935-26afe2b0bc71",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            714.3350309203347,
+            138.19593488541287
+          ],
+          "name": "Script"
+        },
+        "9": {
+          "id": 9,
+          "data": {
+            "type": "Script",
+            "id": "72011c23-fa50-4c6f-8f3a-53349ba2384f",
+            "variables": {},
+            "name": "Points",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec3.random()\r\n    points.push(point.scale(10.0))\r\n}\r\n\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dPoints = new Squishy.view3d.View3DPoints(points, color)\r\n\r\nreturn view3dPoints"
+          },
+          "inputs": {
+            "7cac22c7-fb12-449c-8a6c-aa445a24d618": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "72011c23-fa50-4c6f-8f3a-53349ba2384f": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "0ed3668f-9c1f-463d-b755-2bf43f372e80",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            319.9563482369968,
+            12.020243877166585
+          ],
+          "name": "Script"
+        },
+        "10": {
+          "id": 10,
+          "data": {
+            "type": "Script",
+            "id": "ab7bbd3d-9e24-495a-9f7c-1e22d478dd1a",
+            "variables": {},
+            "name": "Lines",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec3.random()\r\n    points.push(point.scale(10.0))\r\n}\r\n\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dLines = new Squishy.view3d.View3DLines(points, color)\r\n\r\nreturn view3dLines"
+          },
+          "inputs": {
+            "88cdbfc7-cf08-4940-9fe3-02c2bdfbc3de": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "ab7bbd3d-9e24-495a-9f7c-1e22d478dd1a": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "3d70bfa5-7a98-49c7-835f-a2036b2a61a7",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            320.90504607085416,
+            242.05842310715062
+          ],
+          "name": "Script"
+        },
+        "11": {
+          "id": 11,
+          "data": {
+            "type": "Script",
+            "id": "7d146017-466c-42fe-928b-2aca639ee671",
+            "variables": {},
+            "name": "AxesHelper",
+            "script": "const axesHelper = new Squishy.view3d.View3DAxes()\r\n\r\naxesHelper.position.x = 15.0\r\naxesHelper.position.z = -5.0\r\n\r\naxesHelper.rotation.y = Mathf.toRadians(35.0)\r\naxesHelper.rotation.z = Mathf.toRadians(-12.0)\r\n\r\nreturn axesHelper"
+          },
+          "inputs": {
+            "3681c726-df71-450e-b745-2d58fbcba504": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "7d146017-466c-42fe-928b-2aca639ee671": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "6255bd7a-ee74-4c72-9e4f-2edd9c45358a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            322.90942160785744,
+            464.0704347035285
+          ],
+          "name": "Script"
+        },
+        "27": {
+          "id": 27,
+          "data": {
+            "type": "Script",
+            "id": "97542258-a8a2-4ba9-b3e5-7a1cb1eb38e1",
+            "variables": {},
+            "name": "Grid",
+            "script": "const grid = new Squishy.view3d.View3DGrid(50.0, 10.0)\r\n\r\ngrid.color = Mathf.Color.random().toHex()\r\ngrid.position.y = -1.0\r\n\r\nreturn grid"
+          },
+          "inputs": {
+            "f0959c7a-258b-45ee-b852-644b1e89cbd8": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "97542258-a8a2-4ba9-b3e5-7a1cb1eb38e1": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "9b907afc-1afb-4850-ba84-95cc3c1185e2",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            317.62681391400685,
+            683.0944467531936
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "04939c76-8647-4425-9089-57b34cc33554",
+    "name": "Input & Output",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "28": {
+          "id": 28,
+          "data": {
+            "type": "FileInput",
+            "id": "fabea6c0-329a-4eea-9138-e427bb76a069",
+            "name": "Load",
+            "mode": "binary",
+            "encoding": "UTF-8",
+            "accept": "*"
+          },
+          "inputs": {},
+          "outputs": {
+            "fabea6c0-329a-4eea-9138-e427bb76a069": {
+              "connections": [
+                {
+                  "node": 29,
+                  "input": "5e56c8f8-4bc7-4026-89a6-87bdbbc4108f",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            263.73739130434785,
+            100.06760869565218
+          ],
+          "name": "File-Input"
+        },
+        "29": {
+          "id": 29,
+          "data": {
+            "type": "FileOutput",
+            "id": "5e56c8f8-4bc7-4026-89a6-87bdbbc4108f",
+            "name": "Output"
+          },
+          "inputs": {
+            "5e56c8f8-4bc7-4026-89a6-87bdbbc4108f": {
+              "connections": [
+                {
+                  "node": 28,
+                  "output": "fabea6c0-329a-4eea-9138-e427bb76a069",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            570.0103385895472,
+            186.13238389611794
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
+  },
+  {
+    "id": "e896c4e6-2916-4032-8baa-ab10883a5382",
+    "name": "Prime Number",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "30": {
+          "id": 30,
+          "data": {
+            "type": "TextInput",
+            "id": "465ed7d9-7d12-438e-898e-0dd154c2717c",
+            "name": "Config",
+            "content": "{\r\n    \"min\": 0,\r\n    \"max\": 100\r\n}",
+            "inputType": "json"
+          },
+          "inputs": {},
+          "outputs": {
+            "465ed7d9-7d12-438e-898e-0dd154c2717c": {
+              "connections": [
+                {
+                  "node": 31,
+                  "input": "8c465011-faf4-4fcf-92d4-31c3a7062aad",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            131.6997451744852,
+            6.659528114659423
+          ],
+          "name": "Text-Input"
+        },
+        "31": {
+          "id": 31,
+          "data": {
+            "type": "Script",
+            "id": "b723af1f-39e6-45fd-9a95-da7667c56366",
+            "variables": {
+              "8c465011-faf4-4fcf-92d4-31c3a7062aad": "config"
+            },
+            "name": "Find Primes",
+            "script": "function isPrime(p) {\r\n    if (p < 2) {\r\n        return false\r\n    }\r\n\r\n    for (let i = 2; i < p; i++) {\r\n        const m = p % i\r\n        if (m === 0) {\r\n            return false\r\n        }\r\n    }\r\n\r\n    return true\r\n}\r\n\r\nconst min = Math.round(Math.max(config.min, 1.0))\r\nif(isNaN(min)){\r\n    min = 1.0\r\n}\r\n\r\nconst max = Math.round(Math.max(config.max, min + 1.0))\r\nif(isNaN(max)){\r\n    max = min + 1.0\r\n}\r\nconst primes = []\r\n\r\nfor (let p = min; p <= max; p++) {\r\n    const progress = Mathf.clamp(0.0, (p - min) / (max - min), 1.0)\r\n    Squishy.progress(progress)\r\n\r\n    if (isPrime(p)) {\r\n        primes.push(p)\r\n    }\r\n}\r\n\r\nreturn primes"
+          },
+          "inputs": {
+            "8c465011-faf4-4fcf-92d4-31c3a7062aad": {
+              "connections": [
+                {
+                  "node": 30,
+                  "output": "465ed7d9-7d12-438e-898e-0dd154c2717c",
+                  "data": {}
+                }
+              ]
+            },
+            "de969163-d419-4c23-b254-8c53bacb5587": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "b723af1f-39e6-45fd-9a95-da7667c56366": {
+              "connections": [
+                {
+                  "node": 32,
+                  "input": "55560b2f-58bd-439f-92a6-c2cce57a2082",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            326.5678147571339,
+            51.819412172123165
+          ],
+          "name": "Script"
+        },
+        "32": {
+          "id": 32,
+          "data": {
+            "type": "Script",
+            "id": "0792c21a-510e-46bb-8981-2b827d865fe3",
+            "variables": {
+              "55560b2f-58bd-439f-92a6-c2cce57a2082": "primes"
+            },
+            "name": "Gen Output",
+            "script": "const lines = primes.map(function(p) {\r\n    return [p]\r\n})\r\n\r\nconst csv = Squishy.io.csvStringify(lines, Squishy.io.numberToLocal)\r\n\r\nreturn csv"
+          },
+          "inputs": {
+            "55560b2f-58bd-439f-92a6-c2cce57a2082": {
+              "connections": [
+                {
+                  "node": 31,
+                  "output": "b723af1f-39e6-45fd-9a95-da7667c56366",
+                  "data": {}
+                }
+              ]
+            },
+            "1adbf0fc-8ac7-4a0a-8671-edb8af91e34e": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "0792c21a-510e-46bb-8981-2b827d865fe3": {
+              "connections": [
+                {
+                  "node": 33,
+                  "input": "9b370d77-fad6-458a-8355-bc0c563e6c10",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            659.7719215654013,
+            192.95694125773738
+          ],
+          "name": "Script"
+        },
+        "33": {
+          "id": 33,
+          "data": {
+            "type": "FileOutput",
+            "id": "9b370d77-fad6-458a-8355-bc0c563e6c10",
+            "name": "Fileoutput",
+            "filename": "primes.csv"
+          },
+          "inputs": {
+            "9b370d77-fad6-458a-8355-bc0c563e6c10": {
+              "connections": [
+                {
+                  "node": 32,
+                  "output": "0792c21a-510e-46bb-8981-2b827d865fe3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            986.1148922794911,
+            336.7895734440766
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
+  },
+  {
+    "id": "b4e9f26f-0735-4b88-85f3-87427ecfe252",
+    "name": "BSpline3",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Script",
+            "id": "18baef39-07bc-4a7f-a471-0e7fcd95350f",
+            "variables": {
+              "e3b48665-d7ac-4f30-8a41-ab7a16be6aa5": "config"
+            },
+            "name": "BSpline",
+            "script": "const points = []\r\n\r\nif (config.random) {\r\n    for (var i = 0; i < 6; i++) {\r\n        const n = Mathf.Vec3.random().normalize()\r\n        const v = n.subtract(0.5, 0.5, 0.5).scale(50.0)\r\n        points.push(v)\r\n    }\r\n} else {\r\n    config.points.forEach(p => {\r\n        const v = new Mathf.Vec3(p.x, p.y, p.z)\r\n        points.push(v)\r\n    })\r\n}\r\n\r\nconst bspline = new Mathf.CatmullRomCurve3(points, config.closed)\r\nreturn bspline"
+          },
+          "inputs": {
+            "e3b48665-d7ac-4f30-8a41-ab7a16be6aa5": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "9e604647-3702-4693-84d0-5c8e34195d9f",
+                  "data": {}
+                }
+              ]
+            },
+            "aaf0df45-234c-49bd-9d63-e33bf23e70c1": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "18baef39-07bc-4a7f-a471-0e7fcd95350f": {
+              "connections": [
+                {
+                  "node": 6,
+                  "input": "68809b02-da6d-43b9-9361-6f10ae75ac8a",
+                  "data": {}
+                },
+                {
+                  "node": 14,
+                  "input": "0f4885ae-3b30-42bc-a720-fb319c3737a4",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            248.94328215536484,
+            181.7621105586806
+          ],
+          "name": "Script"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "TextInput",
+            "id": "9e604647-3702-4693-84d0-5c8e34195d9f",
+            "name": "Control Points",
+            "content": "{\r\n    \"closed\": false,\r\n    \"random\": false,\r\n    \"points\": [\r\n        {\r\n            \"x\": -12.3,\r\n            \"y\": 4.0,\r\n            \"z\": 0.0\r\n        },\r\n        {\r\n            \"x\": 23.7,\r\n            \"y\": 4.0,\r\n            \"z\": 4.0\r\n        },\r\n        {\r\n            \"x\": -2.3,\r\n            \"y\": 24.0,\r\n            \"z\": -2.0\r\n        },\r\n        {\r\n            \"x\": 0.0,\r\n            \"y\": 12.0,\r\n            \"z\": 3.0\r\n        },\r\n        {\r\n            \"x\": 1.3,\r\n            \"y\": -4.0,\r\n            \"z\": 23.0\r\n        },\r\n        {\r\n            \"x\": 12.3,\r\n            \"y\": 0.0,\r\n            \"z\": -10.0\r\n        }\r\n    ]\r\n}",
+            "inputType": "json"
+          },
+          "inputs": {},
+          "outputs": {
+            "9e604647-3702-4693-84d0-5c8e34195d9f": {
+              "connections": [
+                {
+                  "node": 1,
+                  "input": "e3b48665-d7ac-4f30-8a41-ab7a16be6aa5",
+                  "data": {}
+                },
+                {
+                  "node": 14,
+                  "input": "10bba49d-ccb8-4c30-8aef-442203e36db3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            3.0630709415767257,
+            337.03338819165504
+          ],
+          "name": "Text-Input"
+        },
+        "3": {
+          "id": 3,
+          "data": {
+            "type": "Script",
+            "id": "a103ed68-276e-4cb8-b0c1-af7497f7fb3f",
+            "variables": {
+              "7e58be83-6a53-4301-aa49-73c40fe6ea2b": "lines",
+              "7b519e4c-9516-4a3d-b36f-c7959520d1b9": "frames"
+            },
+            "name": "3DObjects",
+            "script": "const objects = [\r\n    lines,\r\n    ...frames\r\n]\r\n\r\nreturn objects"
+          },
+          "inputs": {
+            "7e58be83-6a53-4301-aa49-73c40fe6ea2b": {
+              "connections": [
+                {
+                  "node": 6,
+                  "output": "507b14f9-f85b-4957-94f0-9a11d6fe9529",
+                  "data": {}
+                }
+              ]
+            },
+            "7b519e4c-9516-4a3d-b36f-c7959520d1b9": {
+              "connections": [
+                {
+                  "node": 14,
+                  "output": "cc52ff3c-8a4b-487b-85c6-46b828b23ac8",
+                  "data": {}
+                }
+              ]
+            },
+            "4e48c9cd-4eea-48be-a1a8-bd3f0363292e": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "a103ed68-276e-4cb8-b0c1-af7497f7fb3f": {
+              "connections": [
+                {
+                  "node": 4,
+                  "input": "c230773a-28da-427b-9086-480076b74c2a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            981.9868721451211,
+            228.55021187915315
+          ],
+          "name": "Script"
+        },
+        "4": {
+          "id": 4,
+          "data": {
+            "type": "View3D",
+            "id": "c230773a-28da-427b-9086-480076b74c2a",
+            "name": "View3D",
+            "fov": 50,
+            "near": 0.1,
+            "far": 2000,
+            "antiAlias": false,
+            "control": "orbit",
+            "viewOrigin": true,
+            "originSize": 10,
+            "grid": true,
+            "gridSize": 25,
+            "gridDivisions": 5
+          },
+          "inputs": {
+            "c230773a-28da-427b-9086-480076b74c2a": {
+              "connections": [
+                {
+                  "node": 3,
+                  "output": "a103ed68-276e-4cb8-b0c1-af7497f7fb3f",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            1361.0784248163282,
+            219.44996369781154
+          ],
+          "name": "View3D"
+        },
+        "6": {
+          "id": 6,
+          "data": {
+            "type": "Script",
+            "id": "507b14f9-f85b-4957-94f0-9a11d6fe9529",
+            "variables": {
+              "68809b02-da6d-43b9-9361-6f10ae75ac8a": "curve"
+            },
+            "name": "Lines",
+            "script": "const points = curve.getSpacedPoints(200)\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dLines = new Squishy.view3d.View3DLines(points, color)\r\n\r\nreturn view3dLines"
+          },
+          "inputs": {
+            "68809b02-da6d-43b9-9361-6f10ae75ac8a": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "18baef39-07bc-4a7f-a471-0e7fcd95350f",
+                  "data": {}
+                }
+              ]
+            },
+            "6993d5e2-a40c-450e-a932-41db4371cb9e": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "507b14f9-f85b-4957-94f0-9a11d6fe9529": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "7e58be83-6a53-4301-aa49-73c40fe6ea2b",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            609.804026814274,
+            42.78439497468861
+          ],
+          "name": "Script"
+        },
+        "14": {
+          "id": 14,
+          "data": {
+            "type": "Script",
+            "id": "cc52ff3c-8a4b-487b-85c6-46b828b23ac8",
+            "variables": {
+              "0f4885ae-3b30-42bc-a720-fb319c3737a4": "curve",
+              "10bba49d-ccb8-4c30-8aef-442203e36db3": "config"
+            },
+            "name": "Frames",
+            "script": "const frames = curve.computeFrenetFrames(10, config.closed)\r\n\r\nconst helpers = []\r\n\r\nframes.forEach(frame => {\r\n    const rotation = frame.rotation()\r\n    const axes = new Squishy.view3d.View3DAxes(frame.position, 4, rotation)\r\n    helpers.push(axes)\r\n})\r\n\r\nreturn helpers"
+          },
+          "inputs": {
+            "0f4885ae-3b30-42bc-a720-fb319c3737a4": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "18baef39-07bc-4a7f-a471-0e7fcd95350f",
+                  "data": {}
+                }
+              ]
+            },
+            "10bba49d-ccb8-4c30-8aef-442203e36db3": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "9e604647-3702-4693-84d0-5c8e34195d9f",
+                  "data": {}
+                }
+              ]
+            },
+            "079a898c-7d94-496a-939e-644dba4e873c": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "cc52ff3c-8a4b-487b-85c6-46b828b23ac8": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "7b519e4c-9516-4a3d-b36f-c7959520d1b9",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            610.7103369415803,
+            354.68205645582384
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "65dcba91-b5ee-4a50-b894-40e2b02f3f8d",
+    "name": "PNG",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Script",
+            "id": "5567a883-45b2-4c89-b324-2d64deaa672b",
+            "variables": {},
+            "name": "PNG",
+            "script": "const png = new Plugins.pngjs.PNG({ width: 256, height: 256 })\r\n\r\nfor (var x = 0; x < png.width; x++) {\r\n    for (var y = 0; y < png.height; y++) {\r\n        const h = x / png.width\r\n        const s = y / png.height\r\n        const l = 1.0 - s\r\n        const color = Mathf.Color.fromHSL(h, s, l)\r\n\r\n        const i = (png.width * y + x) << 2;\r\n\r\n        png.data[i] = color.r * 255.0\r\n        png.data[i + 1] = color.g * 255.0\r\n        png.data[i + 2] = color.b * 255.0\r\n        \r\n        if (color.isAlpha()) {\r\n            png.data[i + 3] = color.a * 255.0\r\n        }else {\r\n             png.data[i + 3] = 255\r\n        }\r\n    }\r\n}\r\n\r\nconst options = { colorType: 6 }\r\n\r\nconst buffer = Plugins.pngjs.PNG.sync.write(png, options)\r\nreturn buffer"
+          },
+          "inputs": {
+            "c031098f-e6cf-411c-8475-cfadc7808a69": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "5567a883-45b2-4c89-b324-2d64deaa672b": {
+              "connections": [
+                {
+                  "node": 2,
+                  "input": "384dd32f-113e-4844-9ce3-0f285282d3d3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            591.0021826118589,
+            126.125
+          ],
+          "name": "Script"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "FileOutput",
+            "id": "384dd32f-113e-4844-9ce3-0f285282d3d3",
+            "name": "Output",
+            "filename": "image.png"
+          },
+          "inputs": {
+            "384dd32f-113e-4844-9ce3-0f285282d3d3": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "5567a883-45b2-4c89-b324-2d64deaa672b",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            954.8505754891792,
+            268.11184248910126
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
+  }
+]
