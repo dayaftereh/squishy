@@ -848,5 +848,71 @@
         }
       }
     }
+  },
+  {
+    "id": "65dcba91-b5ee-4a50-b894-40e2b02f3f8d",
+    "name": "PNG",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Script",
+            "id": "5567a883-45b2-4c89-b324-2d64deaa672b",
+            "variables": {},
+            "name": "PNG",
+            "script": "const png = new Plugins.pngjs.PNG({ width: 256, height: 256 })\r\n\r\nfor (var x = 0; x < png.width; x++) {\r\n    for (var y = 0; y < png.height; y++) {\r\n        const h = x / png.width\r\n        const s = y / png.height\r\n        const l = 1.0 - s\r\n        const color = Mathf.Color.fromHSL(h, s, l)\r\n\r\n        const i = (png.width * y + x) << 2;\r\n\r\n        png.data[i] = color.r * 255.0\r\n        png.data[i + 1] = color.g * 255.0\r\n        png.data[i + 2] = color.b * 255.0\r\n        \r\n        if (color.isAlpha()) {\r\n            png.data[i + 3] = color.a * 255.0\r\n        }else {\r\n             png.data[i + 3] = 255\r\n        }\r\n    }\r\n}\r\n\r\nconst options = { colorType: 6 }\r\n\r\nconst buffer = Plugins.pngjs.PNG.sync.write(png, options)\r\nreturn buffer"
+          },
+          "inputs": {
+            "c031098f-e6cf-411c-8475-cfadc7808a69": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "5567a883-45b2-4c89-b324-2d64deaa672b": {
+              "connections": [
+                {
+                  "node": 2,
+                  "input": "384dd32f-113e-4844-9ce3-0f285282d3d3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            591.0021826118589,
+            126.125
+          ],
+          "name": "Script"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "FileOutput",
+            "id": "384dd32f-113e-4844-9ce3-0f285282d3d3",
+            "name": "Output",
+            "filename": "image.png"
+          },
+          "inputs": {
+            "384dd32f-113e-4844-9ce3-0f285282d3d3": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "5567a883-45b2-4c89-b324-2d64deaa672b",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            954.8505754891792,
+            268.11184248910126
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
   }
 ]

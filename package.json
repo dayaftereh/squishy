@@ -1,10 +1,10 @@
 {
   "name": "squishy",
-  "version": "0.1.5-rc.2",
+  "version": "0.1.5-rc.3",
   "graphVersion": ">=0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "generate-script-types": "tsc --project ./tsconfig.script.json && ts-node --project ./tsconfig.tools.json ./tools/generate-script-types.ts && rimraf ./dist/script",
     "build": "npm run generate-script-types && ng build --aot=true --baseHref=./ --prod=true"
   },

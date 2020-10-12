@@ -4,14 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] // 0.1.4
+## [Unreleased] // 0.1.5
 
 ### Added
 
  - `Color` class to `Mathf` to work with RGBA colors
  - `Chart` node to display output in `chart.js`
- - `SquishyIO.xmlParse` to parse xml with `xmldom`
+ - `Squishy.io.xmlParse` to parse xml with `xmldom`
  - `GlobalErrorHandle` to handle uncatched errors
+ - `View3D` node to display 3D output with `three.js` and add `Squishy.view3d` to created 3d objects
+ - examples for `View3D`, `Chart`, `Input & Output` and `BSpline3`
+ - example for `pngjs`
+ - `Curve`, `Spline` and `Ellipse` to script node
+ - `xmldom`, `pngjs` and `buffer` to `Plugins`
  
 ### Changed
 
@@ -19,6 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - updated some dependencies
 
 ### Removed
+
+ - `Squishy.io.xmlParse`, because `xmldom` now under `Plugins`
+
 ### Fixed
  
  - issue with upload old projects and version compare
