@@ -1,4 +1,4 @@
-import { closeEquals, closeZero } from '../math-functions'
+import { clamp, closeEquals, closeZero } from '../math-functions'
 import { Point3 } from './point3'
 import { Quaternion } from './quaternion'
 import { Vec3 } from './vec3'
@@ -468,7 +468,7 @@ export class Matrix4 {
         const dy: number = (e[1] * x + e[5] * y + e[9] * z + e[13]) * w;
         const dz: number = (e[2] * x + e[6] * y + e[10] * z + e[14]) * w;
 
-        return new Vec3(x, y, z)
+        return new Vec3(dx, dy, dz)
     }
 
     applyPoint3(p: Point3): Point3 {
@@ -538,4 +538,25 @@ export class Matrix4 {
         return Math.sqrt(Math.max(scaleXSq, scaleYSq, scaleZSq));
     }
 
+    toEuler(): Vec3 {
+        const te = this.elements;
+
+        const m11: number = te[0], m12: number = te[4], m13: number = te[8];
+        const m21: number = te[1], m22: number = te[5], m23: number = te[9];
+        const m31: number = te[2], m32: number = te[6], m33: number = te[10];
+
+        const euler: Vec3 = Vec3.zero()
+        // XYZ order
+        euler.y = Math.asin(clamp(-1.0, m13, 1.0))
+
+        if (Math.abs(m13) < 0.9999999) {
+            euler.x = Math.atan2(-m23, m33)
+            euler.z = Math.atan2(-m12, m11)
+        } else {
+            euler.x = Math.atan2(m32, m22)
+            euler.z = 0.0
+        }
+
+        return euler
+    }
 }

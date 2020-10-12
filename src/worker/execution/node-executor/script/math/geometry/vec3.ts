@@ -203,4 +203,22 @@ export class Vec3 {
         return v
     }
 
+    /**
+     * Returns a new vector with 0.0 for x, y and z
+     */
+    static zero(): Vec3 {
+        return new Vec3(0.0, 0.0, 0.0)
+    }
+
+    orthogonal(): Vec3 {
+        const n: Vec3 = this.normalize()
+
+        if ((Math.abs(n.y) >= 0.9 * Math.abs(n.x)) && (Math.abs(n.z) >= 0.9 * Math.abs(n.x))) {
+            return new Vec3(0.0, -n.z, n.y)
+        } else if ((Math.abs(n.x) >= 0.9 * Math.abs(n.y)) && (Math.abs(n.z) >= 0.9 * Math.abs(n.y))) {
+            return new Vec3(-n.z, 0.0, n.x);
+        }
+        return new Vec3(-n.y, n.x, 0.0);
+    }
+
 }

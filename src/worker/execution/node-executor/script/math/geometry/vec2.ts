@@ -298,4 +298,23 @@ export class Vec2 {
         return v
     }
 
+    distanceSquared(x: number, y: number): number {
+        const dx: number = this.x - x
+        const dy: number = this.y - y
+        return dx * dx + dy * dy
+    }
+
+    distanceSquaredTo(p: Vec2): number {
+        return this.distanceSquared(p.x, p.y)
+    }
+
+    distance(x: number, y: number): number {
+        const distanceSquared: number = this.distanceSquared(x, y)
+        return Math.sqrt(distanceSquared)
+    }
+
+    distanceTo(p: Vec2): number {
+        return this.distance(p.x, p.y)
+    }
+
 }

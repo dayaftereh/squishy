@@ -1,4 +1,4 @@
-import { EPSILON } from './math-constants'
+import { EPSILON, TWO_PI } from './math-constants'
 
 /**
  * Clamps the given value between the given minimum float and maximum float values. 
@@ -27,6 +27,22 @@ export function toDegrees(rad: number): number {
  */
 export function toRadians(deg: number): number {
     return deg * Math.PI / 180.0
+}
+
+/**
+ * The method normalize the given radians to be between [ 0.0, 2*PI ]
+ * @param rad the angle, in radians
+ */
+export function normalizeRadians(rad: number): number {
+    while (rad < 0.0) {
+        rad += TWO_PI
+    }
+
+    while (rad > TWO_PI) {
+        rad -= TWO_PI
+    }
+
+    return rad
 }
 
 /**
