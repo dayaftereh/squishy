@@ -46,6 +46,22 @@ export function normalizeRadians(rad: number): number {
 }
 
 /**
+ * The method normalize the given degrees to be between [ 0.0, 360.0 ]
+ * @param deg the angle, in degrees
+ */
+export function normalizeDegrees(deg: number): number {
+    while (deg < 0.0) {
+        deg += 360.0
+    }
+
+    while (deg > 360.0) {
+        deg -= 360.0
+    }
+
+    return deg
+}
+
+/**
  * The method compares the given float point number with zero based on an epsilon
  * @param x the float point number to compare
  */
@@ -60,4 +76,21 @@ export function closeZero(x: number): boolean {
  */
 export function closeEquals(a: number, b: number): boolean {
     return Math.abs(a - b) < EPSILON
+}
+
+/**
+ * Perform the cubic Catmull-Rom-interpolation
+ * @param t interpolation weight.
+ * @param p0 The first point
+ * @param p1 The second point
+ * @param p2 The third point
+ * @param p3 The fourth point
+ */
+export function catmullRom(t: number, p0: number, p1: number, p2: number, p3: number): number {
+    const v0: number = (p2 - p0) * 0.5;
+    const v1: number = (p3 - p1) * 0.5;
+    const t2: number = t * t;
+    const t3: number = t * t2;
+
+    return (2.0 * p1 - 2.0 * p2 + v0 + v1) * t3 + (- 3.0 * p1 + 3.0 * p2 - 2.0 * v0 - v1) * t2 + v0 * t + p1;
 }

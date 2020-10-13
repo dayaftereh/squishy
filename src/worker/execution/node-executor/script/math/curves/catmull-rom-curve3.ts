@@ -2,14 +2,14 @@ import { Vec3 } from '../geometry/vec3';
 import { clamp } from '../math-functions';
 import { CatmullCubicPolynomial } from './catmull-cubic-polynomial';
 import { CatmullRomType } from './catmull-rom-type';
-import { Curve } from './curve';
+import { Curve3 } from './curve3';
 
 /**
  * Centripetal CatmullRom Curve - which is useful for avoiding
  * cusps and self-intersections in non-uniform catmull rom curves.
  * @see http://www.cemyuksel.com/research/catmullrom_param/catmullrom.pdf
  */
-export class CatmullRomCurve3 extends Curve {
+export class CatmullRomCurve3 extends Curve3 {
 
     constructor(
         private readonly points: Vec3[],
@@ -32,7 +32,7 @@ export class CatmullRomCurve3 extends Curve {
     getPoint(t: number): Vec3 {
         // make t between 0 and 1
         t = clamp(0.0, t, 1.0)
-      
+
         // get the length of the points
         const l: number = this.points.length
 

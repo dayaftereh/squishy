@@ -4,8 +4,12 @@ export { CatmullCubicPolynomial } from './curves/catmull-cubic-polynomial'
 export { CatmullRomCurve3 } from './curves/catmull-rom-curve3'
 export { CatmullRomType } from './curves/catmull-rom-type'
 export { Curve } from './curves/curve'
+export { CurveFrame2 } from './curves/curve-frame2'
 export { CurveFrame3 } from './curves/curve-frame3'
+export { Curve2 } from './curves/curve2'
+export { Curve3 } from './curves/curve3'
 export { EllipseCurve2 } from './curves/ellipse-curve2'
+export { SplineCurve2 } from './curves/spline-curve2'
 export { Matrix3 } from './geometry/matrix3'
 export { Matrix4 } from './geometry/matrix4'
 export { Plane } from './geometry/plane'
@@ -20,6 +24,8 @@ export { Vec3 } from './geometry/vec3'
 export * from './math-constants'
 export * from './math-functions'
 export { Random } from './random'
+
+
 
 
 

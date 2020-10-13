@@ -1,3 +1,5 @@
+import { clamp } from './math-functions'
+
 /**
  * The class is used to encapsulate colors in the default sRGBA color space.
  * Every color has an implicit alpha value of 1.0 or an explicit undefined provided in the constructor. 
@@ -86,6 +88,9 @@ export class Color {
         return Color.fromHSL(h, 1.0, 0.5)
     }
 
+    /**
+     * converts the color to an html hexadecimal triplet string like #ffff00 or with alpha #ffff00ff
+     */
     toHex(): string {
         const _toHex = (x: number) => {
             let hex: string = Math.round(x * 255.0).toString(16)
@@ -107,6 +112,9 @@ export class Color {
         return `#${hexR}${hexG}${hexB}${hexA}`
     }
 
+    /**
+     * converts the color to a css color string like rgb(0, 0, 0) or rgba(0, 0, 0)
+     */
     toString(): string {
         const r: number = Math.round(this.r * 255.0)
         const g: number = Math.round(this.g * 255.0)
@@ -119,7 +127,93 @@ export class Color {
         return `rgba(${r}, ${g}, ${b}, ${this.a})`
     }
 
+    /**
+     * checks if the color has a alpha value
+     */
     isAlpha(): boolean {
-        return this.a !== undefined && this.a !== null
+        return this.a !== undefined && this.a !== null && !isNaN(this.a)
     }
+
+    /**
+     * Adds the RGB/A values of color to the RGB/A values of this color and returns a new color as result.
+     * @param r Red channel value between [0, 1] to add
+     * @param g Green channel value between [0, 1] to add
+     * @param b Blue channel value between [0, 1] to add
+     * @param a Alpha channel value between [0, 1] to add
+     */
+    add(r: number, g: number, b: number, a?: number): Color {
+        const dr: number = clamp(0.0, this.r + r, 1.0)
+        const dg: number = clamp(0.0, this.g + g, 1.0)
+        const db: number = clamp(0.0, this.b + b, 1.0)
+
+        let da: number = a
+        if (a !== undefined && a !== null && this.isAlpha()) {
+            da = clamp(0.0, this.a + a, 1.0)
+        }
+
+        const color: Color = new Color(dr, dg, db, da)
+        return color
+    }
+
+    /**
+     * Adds the given color to this color and and returns a new color as result.
+     * @param color the color to add
+     */
+    addWith(color: Color): Color {
+        return this.add(color.r, color.g, color.b, color.a)
+    }
+
+    /**
+     * Returns the red channel value between [0, 255]
+     */
+    getR(): number {
+        return Math.round(this.r * 255.0)
+    }
+
+    /**
+    * Returns the green channel value between [0, 255]
+    */
+    getG(): number {
+        return Math.round(this.g * 255.0)
+    }
+
+    /**
+    * Returns the blue channel value between [0, 255]
+    */
+    getB(): number {
+        return Math.round(this.b * 255.0)
+    }
+
+    /**
+    * Returns the alpha channel value between [0, 1].
+    * If the color has no alpha the return is always 1.0
+    * @see Color.isAlpha()
+    */
+    getAlpha(): number {
+        if (!this.isAlpha()) {
+            return 1.0
+        }
+        return this.a
+    }
+
+    /**
+     * Linearly interpolates this color's RGB values toward the RGB values of the passed argument. 
+     * The t argument can be thought of as the ratio between the two colors, where 0.0 is this color and 1.0 is the first argument.
+     * @param other color to converge on.
+     * @param t interpolation factor in the closed interval [0, 1].
+     */
+    lerp(other: Color, t: number): Color {
+        const r: number = this.r + (other.r - this.r) * t
+        const g: number = this.g + (other.g - this.g) * t
+        const b: number = this.b + (other.b - this.b) * t
+
+        const color: Color = new Color(
+            clamp(0.0, r, 1.0),
+            clamp(0.0, g, 1.0),
+            clamp(0.0, b, 1.0),
+            this.a
+        )
+        return color
+    }
+
 }

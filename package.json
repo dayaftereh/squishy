@@ -4,9 +4,10 @@
   "graphVersion": ">=0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
-    "generate-script-types": "tsc --project ./tsconfig.script.json && ts-node --project ./tsconfig.tools.json ./tools/generate-script-types.ts && rimraf ./dist/script",
-    "build": "npm run generate-script-types && ng build --aot=true --baseHref=./ --prod=true"
+    "gulp": "cross-env TS_NODE_PROJECT=./tsconfig.tools.json gulp",
+    "start": "ng serve",
+    "build": "npm run gulp -- build",
+    "gen-script-types": "npm run gulp -- build-script-types"
   },
   "homepage": "https://github.com/dayaftereh/squishy#readme",
   "private": true,
@@ -64,6 +65,14 @@
     "babel-polyfill": "~6.26.0",
     "node-sass": "~4.14.1",
     "html-webpack-plugin": "~4.5.0",
-    "rimraf": "~3.0.2"
+    "rimraf": "~3.0.2",
+    "gulp": "~4.0.2",
+    "gulp-shell": "~0.8.0",
+    "typedoc": "~0.19.2",
+    "gulp-clean": "~0.4.0",
+    "concat-md": "~0.3.5",
+    "typedoc-plugin-markdown": "~3.0.3",
+    "cross-env": "~7.0.2",
+    "gulp-zip": "~5.0.2"
   }
 }

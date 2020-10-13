@@ -1,16 +1,16 @@
 import { Vec2 } from '../geometry/vec2'
 import { EPSILON, TWO_PI } from '../math-constants'
 import { clamp, closeEquals, closeZero, normalizeRadians } from '../math-functions'
-import { Curve } from './curve'
+import { Curve2 } from './curve2'
 
 /**
  * Creates a 2D curve in the shape of an ellipse. 
  * Setting the xRadius equal to the yRadius will result in a circle.
  */
-export class EllipseCurve2 extends Curve {
+export class EllipseCurve2 extends Curve2 {
 
     /**
-     * 
+     * Creates the 2d curve in the shape of an ellipse
      * @param xCenter The X center of the ellipse. Default is 0.
      * @param yCenter The Y center of the ellipse. Default is 0.
      * @param xRadius The radius of the ellipse in the x direction. Default is 1.
@@ -44,7 +44,17 @@ export class EllipseCurve2 extends Curve {
         this.rotation = this.rotation || undefined
     }
 
-    static with(center: Vec2, radius: Vec2, startAngle: number, endAngle: number, clockwise?: boolean, rotation?: number): EllipseCurve2 {
+    /**
+     * Creates the 2d curve in the shape of an ellipse
+     * @param center the center of the ellipse
+     * @param radius the radius of the ellipse
+     * @param startAngle The start angle of the curve in radians starting from the positive X axis. Default is 0.
+     * @param endAngle The end angle of the curve in radians starting from the positive X axis. Default is 2 x Math.PI.
+     * @param clockwise Whether the ellipse is drawn clockwise. Default is false.
+     * @param rotation The rotation angle of the ellipse in radians, counterclockwise from the positive X axis. Default is 0.
+     * @see EllipseCurve2()
+     */
+    static ellipseWith(center: Vec2, radius: Vec2, startAngle: number, endAngle: number, clockwise?: boolean, rotation?: number): EllipseCurve2 {
         return new EllipseCurve2(center.x, center.x, radius.x, radius.y, startAngle, endAngle, clockwise, rotation)
     }
 
@@ -75,7 +85,7 @@ export class EllipseCurve2 extends Curve {
             }
         }
 
-        const angle: number = this.startAngle + deltaAngle
+        const angle: number = this.startAngle + t * deltaAngle
 
         let x: number = this.xCenter + this.xRadius * Math.cos(angle)
         let y: number = this.yCenter + this.yRadius * Math.sin(angle)
@@ -93,10 +103,6 @@ export class EllipseCurve2 extends Curve {
 
         const p: Vec2 = new Vec2(x, y)
         return p
-    }
-
-    is3D(): boolean {
-        return false
     }
 
 }

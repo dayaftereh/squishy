@@ -914,5 +914,259 @@
         }
       }
     }
+  },
+  {
+    "id": "2728b5a2-613d-4c64-9751-d347e5aa6c5d",
+    "name": "BSpline2",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "TextInput",
+            "id": "9c3a49f5-6936-4beb-a62e-b8453226415c",
+            "name": "Config",
+            "content": "{    \r\n    \"random\": false,\r\n    \"points\": [\r\n        {\r\n            \"x\": -12.3,\r\n            \"y\": 4.0            \r\n        },\r\n        {\r\n            \"x\": 23.7,\r\n            \"y\": 4.0\r\n        },\r\n        {\r\n            \"x\": -2.3,\r\n            \"y\": 24.0\r\n        },\r\n        {\r\n            \"x\": 0.0,\r\n            \"y\": 12.0\r\n        },\r\n        {\r\n            \"x\": 1.3,\r\n            \"y\": -4.0\r\n        },\r\n        {\r\n            \"x\": 12.3,\r\n            \"y\": 0.0\r\n        }\r\n    ]\r\n}",
+            "inputType": "json"
+          },
+          "inputs": {},
+          "outputs": {
+            "9c3a49f5-6936-4beb-a62e-b8453226415c": {
+              "connections": [
+                {
+                  "node": 16,
+                  "input": "f30dfe8d-3f8f-4a0a-a91b-e49cee171602",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            38.54522800897084,
+            256.79781335659106
+          ],
+          "name": "Text-Input"
+        },
+        "16": {
+          "id": 16,
+          "data": {
+            "type": "Script",
+            "id": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+            "variables": {
+              "f30dfe8d-3f8f-4a0a-a91b-e49cee171602": "config"
+            },
+            "name": "BSpline",
+            "script": "const points = []\r\n\r\nif (config.random) {\r\n    for (var i = 0; i < 6; i++) {\r\n        const v = Mathf.Vec2.random().scale(50)\r\n        points.push(v)\r\n    }\r\n} else {\r\n    config.points.forEach(p => {\r\n        const v = new Mathf.Vec2(p.x, p.y)\r\n        points.push(v)\r\n    })\r\n}\r\n\r\nconst curve = new Mathf.SplineCurve2(points)\r\nreturn curve"
+          },
+          "inputs": {
+            "f30dfe8d-3f8f-4a0a-a91b-e49cee171602": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "9c3a49f5-6936-4beb-a62e-b8453226415c",
+                  "data": {}
+                }
+              ]
+            },
+            "74dd4b7d-3d85-4e55-8419-92babdbf0a27": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b": {
+              "connections": [
+                {
+                  "node": 17,
+                  "input": "41b6b36e-4881-4bff-b195-bbe4db36a680",
+                  "data": {}
+                },
+                {
+                  "node": 25,
+                  "input": "ee9e864d-e36c-45cd-8353-3f92b46e5d95",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            320.52419061476905,
+            102.99949981811568
+          ],
+          "name": "Script"
+        },
+        "17": {
+          "id": 17,
+          "data": {
+            "type": "Script",
+            "id": "ef3db055-0134-48f5-831c-85c90d5b2eb9",
+            "variables": {
+              "41b6b36e-4881-4bff-b195-bbe4db36a680": "curve"
+            },
+            "name": "Lines",
+            "script": "const points = curve.getSpacedPoints(200)\r\n\r\nconst points3d = points.map(p => {\r\n    const v = new Mathf.Vec3(p.x, 0.0, p.y)\r\n    return v\r\n})\r\n\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dLines = new Squishy.view3d.View3DLines(points3d, color)\r\n\r\nreturn view3dLines"
+          },
+          "inputs": {
+            "41b6b36e-4881-4bff-b195-bbe4db36a680": {
+              "connections": [
+                {
+                  "node": 16,
+                  "output": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+                  "data": {}
+                }
+              ]
+            },
+            "aec2a190-ef12-47f5-a692-0992934a35dd": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "ef3db055-0134-48f5-831c-85c90d5b2eb9": {
+              "connections": [
+                {
+                  "node": 18,
+                  "input": "34619105-8a3e-44ab-b6c2-8b59e44570a7",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            705.5646149290242,
+            27.026805700871527
+          ],
+          "name": "Script"
+        },
+        "18": {
+          "id": 18,
+          "data": {
+            "type": "Script",
+            "id": "12423cb3-3f1c-493a-8bdb-6d95e5d5fd6d",
+            "variables": {
+              "34619105-8a3e-44ab-b6c2-8b59e44570a7": "lines",
+              "ea1793db-2252-486e-8ec2-4f9bb1012b38": "frames"
+            },
+            "name": "3DObjects",
+            "script": "const objects = [\r\n    lines,\r\n    ...frames\r\n]\r\n\r\nreturn objects"
+          },
+          "inputs": {
+            "34619105-8a3e-44ab-b6c2-8b59e44570a7": {
+              "connections": [
+                {
+                  "node": 17,
+                  "output": "ef3db055-0134-48f5-831c-85c90d5b2eb9",
+                  "data": {}
+                }
+              ]
+            },
+            "ea1793db-2252-486e-8ec2-4f9bb1012b38": {
+              "connections": [
+                {
+                  "node": 25,
+                  "output": "7430acde-04a6-441c-a08a-86cd839facce",
+                  "data": {}
+                }
+              ]
+            },
+            "2faa64b9-6900-4e17-8606-82bb3ad36426": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "12423cb3-3f1c-493a-8bdb-6d95e5d5fd6d": {
+              "connections": [
+                {
+                  "node": 19,
+                  "input": "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            1113.7599126955256,
+            235.14464350672972
+          ],
+          "name": "Script"
+        },
+        "19": {
+          "id": 19,
+          "data": {
+            "type": "View3D",
+            "id": "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5",
+            "name": "View3D",
+            "fov": 50,
+            "near": 0.1,
+            "far": 2000,
+            "antiAlias": false,
+            "control": "orbit",
+            "viewOrigin": true,
+            "originSize": 10,
+            "grid": false,
+            "gridSize": 10,
+            "gridDivisions": 10
+          },
+          "inputs": {
+            "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5": {
+              "connections": [
+                {
+                  "node": 18,
+                  "output": "12423cb3-3f1c-493a-8bdb-6d95e5d5fd6d",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            1480.7835662854723,
+            380.9352498941127
+          ],
+          "name": "View3D"
+        },
+        "25": {
+          "id": 25,
+          "data": {
+            "type": "Script",
+            "id": "7430acde-04a6-441c-a08a-86cd839facce",
+            "variables": {
+              "ee9e864d-e36c-45cd-8353-3f92b46e5d95": "curve"
+            },
+            "name": "Frames",
+            "script": "const frames = curve.computeFrames(20)\r\n\r\nconst helpers = []\r\n\r\nframes.forEach(frame => {\r\n    const theta = frame.rotation()\r\n\r\n    const position = new Mathf.Vec3(frame.position.x, 0.0, frame.position.y)\r\n\r\n    const rotation = new Mathf.Vec3(0.0, theta, 0.0)\r\n    const axes = new Squishy.view3d.View3DAxes(position, 4, rotation)\r\n    helpers.push(axes)\r\n})\r\n\r\nreturn helpers"
+          },
+          "inputs": {
+            "ee9e864d-e36c-45cd-8353-3f92b46e5d95": {
+              "connections": [
+                {
+                  "node": 16,
+                  "output": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+                  "data": {}
+                }
+              ]
+            },
+            "d42439c2-71bd-416a-8940-c70b6a5eca2b": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "7430acde-04a6-441c-a08a-86cd839facce": {
+              "connections": [
+                {
+                  "node": 18,
+                  "input": "ea1793db-2252-486e-8ec2-4f9bb1012b38",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            707.9072389959986,
+            320.0245998544925
+          ],
+          "name": "Script"
+        }
+      }
+    }
   }
 ]
