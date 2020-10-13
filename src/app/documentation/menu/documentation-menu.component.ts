@@ -25,8 +25,16 @@ export class DocumentationMenuComponent implements OnInit {
                 routerLink: ["/documentation/script"],
                 items: [
                     {
-                        label: 'Context',
-                        routerLink: ["/documentation/script/context"],
+                        label: 'Squishy',
+                        routerLink: ["/documentation/script/squishy"],
+                    },
+                    {
+                        label: 'Mathf',
+                        routerLink: ["/documentation/script/mathf"],
+                    },
+                    {
+                        label: 'Plugins',
+                        routerLink: ["/documentation/script/plugins"],
                     }
                 ]
             },

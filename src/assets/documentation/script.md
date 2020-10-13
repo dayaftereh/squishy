@@ -21,8 +21,3 @@ Following `script` properties can be set:
 </dl>
 
 However this script blocks are the main feature of `squishy`, because with the custom code the inputs and the outputs are getting connected.
-
-## Context
-
-Additionally the script block is executed with a `context`. The `context` can be access via `this.*` anf gives many already implemented tools and plugins.
-For more information checkout the `context` documentation.

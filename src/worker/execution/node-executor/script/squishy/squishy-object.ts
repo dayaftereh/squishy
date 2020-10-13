@@ -18,6 +18,10 @@ export class SquishyObject implements Squishy {
         return this.execution.context()
     }
 
+    /**
+     * Update the progress for the current execution
+     * @param value progress value of the current execution, between [0, 1]
+     */
     progress(value: number): void {
         // limit the value to 0 -> 1
         value = clamp(0.0, value, 1.0)
