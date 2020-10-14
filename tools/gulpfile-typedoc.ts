@@ -18,6 +18,11 @@ gulp.task(`clean-typedoc`, (cb) => {
     rimraf(typedocDir, cb)
 })
 
+gulp.task(`created-documentation-script-dir`, () => {
+    return gulp.src('*.*', { read: false })
+        .pipe(gulp.dest(documentationScriptDir))
+})
+
 const registerTypeDocTasks = (file: string) => {
     const filename: string = path.basename(file)
     const lowerFilename = filename.toLowerCase()
@@ -51,7 +56,13 @@ const registerTypeDocTasks = (file: string) => {
 
     gulp.task(`concat-typedoc-files-${name}`, shell.task(`concat-md --decrease-title-levels ${typedocDir} > ${outputFile}`))
 
-    gulp.task(`build-typedoc-${name}`, gulp.series(`clean-typedoc`, `gen-typedoc-${name}`, `drop-typedoc-files-${name}`, `concat-typedoc-files-${name}`))
+    gulp.task(`build-typedoc-${name}`, gulp.series(
+        `clean-typedoc`,
+        `gen-typedoc-${name}`,
+        `drop-typedoc-files-${name}`,
+        `created-documentation-script-dir`,
+        `concat-typedoc-files-${name}`
+    ))
 
     return `build-typedoc-${name}`
 }
