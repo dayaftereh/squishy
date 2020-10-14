@@ -1,9 +1,12 @@
 <div class="p-grid">
     <div class="p-col">
         <!-- static markdown -->
-        <markdown [src]="source" lineNumbers>
+        <markdown [src]="source" (error)="onError($event)" (ready)="onLoaded()" lineNumbers>
             # Markdown
             efrgeqwdfegre
         </markdown>
     </div>
 </div>
+<p-blockUI [blocked]="loading">
+    <p-progressSpinner></p-progressSpinner>
+</p-blockUI>

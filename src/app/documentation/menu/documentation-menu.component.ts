@@ -21,6 +21,10 @@ export class DocumentationMenuComponent implements OnInit {
                 icon: 'pi pi-th-large'
             },
             {
+                label: 'Get-Started',
+                routerLink: ["/documentation/get-started"],
+            },
+            {
                 label: 'Script',
                 routerLink: ["/documentation/script"],
                 items: [
@@ -45,6 +49,14 @@ export class DocumentationMenuComponent implements OnInit {
             {
                 label: 'File-Output',
                 routerLink: ["/documentation/file-output"],
+            },
+            {
+                label: 'Chart',
+                routerLink: ["/documentation/chart"],
+            },
+            {
+                label: 'View3D',
+                routerLink: ["/documentation/view3d"],
             },
             {
                 label: 'Changelog',

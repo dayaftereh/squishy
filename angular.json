@@ -39,7 +39,7 @@
               },
               {
                 "glob": "CHANGELOG.md",
-                "input": "",
+                "input": ".github/",
                 "output": "./assets/documentation/"
               }
             ],

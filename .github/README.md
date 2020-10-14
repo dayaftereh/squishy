@@ -1,13 +1,14 @@
-# Squishy
+<h1 align="center">Squishy</h1>
 
-Squishy is an in browser data **transformer** and **visualizer**. 
-
+<p align="center">
+    Squishy is an in browser data <b>transformer</b> and <b>visualizer</b>. 
+</p>
 <p align="center">
     <img alt="Squishy" src="https://raw.githubusercontent.com/dayaftereh/squishy/master/src/assets/documentation/png/squishy-editor.png">
 </p>
 
 It's allows to load, transform, visualize and export any type of data, by writing **glue code** with [Javascript](https://en.wikipedia.org/wiki/JavaScript).
-Thanks to the additional **visual programming editor** script, load, transform, visualize and export nodes can be connect to build complex transformation pipelines or visualizations.
+Thanks to the **visual programming editor**, which allows to connect **script**, **load**, **transform**, **visualize** and **export** *nodes* to a complex transformation or visualization pipeline.
 However, squishy runs in all modern browser and doesn't require any installation.
 
 ## Playground
@@ -18,13 +19,14 @@ For experimental usage or more advanced users the [Unstable Playground](https://
 
 ## Supported Browser
 
-The following browsers are supported and tested by *Squishy*.
+The following browsers are supported and tested:
 
-| Browser       | Version |  Editor | Runner | File Size |
-|---------------|---------|---------|--------|-----------|
-| Safari        | 13.1+   | Yes     | Yes    | -         |
-| Firefox       | 64+     | Yes     | Yes    | 1GB       |
-| Google Chrome | 81+     | Yes     | Yes    | 500MB     |
+| Browser        | Version |  Editor | Runner | File Size |
+|----------------|---------|---------|--------|-----------|
+| Safari         | 13.1+   | Yes     | Yes    | -         |
+| Firefox        | 64+     | Yes     | Yes    | 1GB       |
+| Google Chrome  | 81+     | Yes     | Yes    | 500MB     |
+| Microsoft Edge | 86+     | Yes     | Yes    | -         |
 
 ## Release
 
@@ -48,4 +50,12 @@ npm run build
 ```
 
 Open the `./dist` directory and there should be a archive with the name like `squishy-x.x.x*.zip`.
+
+## Changelog
+
+All notable changes to *squishy* will be documented in [Changelog.md](https://github.com/dayaftereh/squishy/blob/master/CHANGELOG.md).
+
+## License
+
+[MIT License](https://github.com/dayaftereh/squishy/blob/master/LICENSE)
 

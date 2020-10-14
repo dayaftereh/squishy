@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ErrorManagerService } from 'src/app/error-manager/service/error-manager.service';
 
 @Component({
     selector: 'app-documentation-content',
@@ -10,13 +11,17 @@ import { Observable, Subscription } from 'rxjs';
 export class DocumentationContentComponent implements OnInit, OnDestroy {
 
     source: string | undefined
+    loading: boolean
+
     private subscription: Subscription | undefined
 
-    constructor(private readonly activatedRoute: ActivatedRoute) {
-
+    constructor(
+        private readonly activatedRoute: ActivatedRoute,
+        private readonly errorManagerService: ErrorManagerService) {
+        this.loading = false
     }
 
-    ngOnInit(): void {       
+    ngOnInit(): void {
         const url: Observable<string> = this.activatedRoute.url.pipe(
             map((values: UrlSegment[]) => {
                 return values.join('/')
@@ -24,6 +29,7 @@ export class DocumentationContentComponent implements OnInit, OnDestroy {
         )
 
         this.subscription = url.subscribe((url: string) => {
+            this.loading = true
             this.loadMarkdown(url)
         })
     }
@@ -34,6 +40,21 @@ export class DocumentationContentComponent implements OnInit, OnDestroy {
         }
         const url: string = `./assets/documentation/${path}.md`
         this.source = url
+    }
+
+    onError(error: any): void {
+        this.delayLoaded()
+        this.errorManagerService.error(error)
+    }
+
+    onLoaded(): void {
+        this.delayLoaded()
+    }
+
+    private delayLoaded(): void {
+        setTimeout(() => {
+            this.loading = false
+        }, 250)
     }
 
     ngOnDestroy(): void {
