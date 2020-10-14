@@ -42,9 +42,56 @@ declare namespace Mathf {
      * Creates a random RGB color using Color.fromHSL() with a random hue
      */
     static random(): Color;
+    /**
+     * converts the color to an html hexadecimal triplet string like #ffff00 or with alpha #ffff00ff
+     */
     toHex(): string;
+    /**
+     * converts the color to a css color string like rgb(0, 0, 0) or rgba(0, 0, 0)
+     */
     toString(): string;
+    /**
+     * checks if the color has a alpha value
+     */
     isAlpha(): boolean;
+    /**
+     * Adds the RGB/A values of color to the RGB/A values of this color and returns a new color as result.
+     * @param r Red channel value between [0, 1] to add
+     * @param g Green channel value between [0, 1] to add
+     * @param b Blue channel value between [0, 1] to add
+     * @param a Alpha channel value between [0, 1] to add
+     */
+    add(r: number, g: number, b: number, a?: number): Color;
+    /**
+     * Adds the given color to this color and and returns a new color as result.
+     * @param color the color to add
+     */
+    addWith(color: Color): Color;
+    /**
+     * Returns the red channel value between [0, 255]
+     */
+    getR(): number;
+    /**
+    * Returns the green channel value between [0, 255]
+    */
+    getG(): number;
+    /**
+    * Returns the blue channel value between [0, 255]
+    */
+    getB(): number;
+    /**
+    * Returns the alpha channel value between [0, 1].
+    * If the color has no alpha the return is always 1.0
+    * @see Color.isAlpha()
+    */
+    getAlpha(): number;
+    /**
+     * Linearly interpolates this color's RGB values toward the RGB values of the passed argument.
+     * The t argument can be thought of as the ratio between the two colors, where 0.0 is this color and 1.0 is the first argument.
+     * @param other color to converge on.
+     * @param t interpolation factor in the closed interval [0, 1].
+     */
+    lerp(other: Color, t: number): Color;
 }
 
 
@@ -483,7 +530,7 @@ declare namespace Mathf {
  * Creates a 2D curve in the shape of an ellipse.
  * Setting the xRadius equal to the yRadius will result in a circle.
  */
- class EllipseCurve2 extends Curve {
+ class EllipseCurve2 extends Curve2 {
     private readonly xCenter;
     private readonly yCenter;
     private readonly xRadius;
@@ -493,7 +540,7 @@ declare namespace Mathf {
     private readonly clockwise?;
     private readonly rotation?;
     /**
-     *
+     * Creates the 2d curve in the shape of an ellipse
      * @param xCenter The X center of the ellipse. Default is 0.
      * @param yCenter The Y center of the ellipse. Default is 0.
      * @param xRadius The radius of the ellipse in the x direction. Default is 1.
@@ -504,13 +551,31 @@ declare namespace Mathf {
      * @param rotation The rotation angle of the ellipse in radians, counterclockwise from the positive X axis (optional). Default is 0.
      */
     constructor(xCenter: number, yCenter: number, xRadius: number, yRadius: number, startAngle: number, endAngle: number, clockwise?: boolean, rotation?: number);
-    static with(center: Vec2, radius: Vec2, startAngle: number, endAngle: number, clockwise?: boolean, rotation?: number): EllipseCurve2;
+    /**
+     * Creates the 2d curve in the shape of an ellipse
+     * @param center the center of the ellipse
+     * @param radius the radius of the ellipse
+     * @param startAngle The start angle of the curve in radians starting from the positive X axis. Default is 0.
+     * @param endAngle The end angle of the curve in radians starting from the positive X axis. Default is 2 x Math.PI.
+     * @param clockwise Whether the ellipse is drawn clockwise. Default is false.
+     * @param rotation The rotation angle of the ellipse in radians, counterclockwise from the positive X axis. Default is 0.
+     * @see EllipseCurve2()
+     */
+    static ellipseWith(center: Vec2, radius: Vec2, startAngle: number, endAngle: number, clockwise?: boolean, rotation?: number): EllipseCurve2;
     /**
      * Returns a vector for a given position on the curve.
      * @param t A position on the curve
      */
     getPoint(t: number): Vec2;
-    is3D(): boolean;
+}
+
+
+/**
+ * Extension class for a curve with additional interpolation function for the 2d space.
+ */
+ class Curve2 extends Curve {
+    constructor();
+    computeFrames(segments: number): CurveFrame2[];
 }
 
 
@@ -573,34 +638,17 @@ declare namespace Mathf {
      * @param u A position on the curve according to the arc length. Must be in the range [ 0, 1 ].
      */
     getTangentAt(u: number): Vec2 | Vec3;
-    /**
-     * Generates the Frenet Frames. Requires a curve definition in 3D space.
-     * @param segments number of frames to compute
-     * @param closed true if the curve is closed
-     * @see http://www.cs.indiana.edu/pub/techreports/TR425.pdf
-     */
-    computeFrenetFrames(segments: number, closed?: boolean): CurveFrame3[];
-    /**
-     * checks if the curve is in 3D
-     */
-    is3D(): boolean;
 }
 
 
- class CurveFrame3 {
-    /** the normal vector */
-    normal: Vec3;
+
+ class CurveFrame2 {
     /** direction vector of the curve */
-    tangent: Vec3;
+    tangent: Vec2;
     /** position on the curve for the frame */
-    position: Vec3;
-    /** the cross vector from tangent and normal */
-    binormal: Vec3;
-    constructor(position: Vec3, tangent: Vec3);
-    /**
-     * Computes the three euler angles from binormal, tangent and normal
-     */
-    rotation(): Vec3;
+    position: Vec2;
+    constructor(position: Vec2, tangent: Vec2);
+    rotation(): number;
 }
 
 
@@ -631,7 +679,7 @@ declare namespace Mathf {
  * cusps and self-intersections in non-uniform catmull rom curves.
  * @see http://www.cemyuksel.com/research/catmullrom_param/catmullrom.pdf
  */
- class CatmullRomCurve3 extends Curve {
+ class CatmullRomCurve3 extends Curve3 {
     private readonly points;
     private readonly closed?;
     private readonly type?;
@@ -640,6 +688,55 @@ declare namespace Mathf {
     getPoint(t: number): Vec3;
 }
 
+
+
+
+/**
+ * Extension class for a curve with additional interpolation function for the 3d space.
+ */
+ class Curve3 extends Curve {
+    constructor();
+    /**
+     * Generates the Frenet Frames. Requires a curve definition in 3D space.
+     * @param segments number of frames to compute
+     * @param closed true if the curve is closed
+     * @see http://www.cs.indiana.edu/pub/techreports/TR425.pdf
+     */
+    computeFrenetFrames(segments: number, closed?: boolean): CurveFrame3[];
+}
+
+
+ class CurveFrame3 {
+    /** the normal vector */
+    normal: Vec3;
+    /** direction vector of the curve */
+    tangent: Vec3;
+    /** position on the curve for the frame */
+    position: Vec3;
+    /** the cross vector from tangent and normal */
+    binormal: Vec3;
+    constructor(position: Vec3, tangent: Vec3);
+    /**
+     * Computes the three euler angles from binormal, tangent and normal
+     */
+    rotation(): Vec3;
+}
+
+
+
+/**
+ * Create a smooth 2d spline curve from a series of points.
+ * Internally this uses Mathf.catmullRom() to create the curve.
+ */
+ class SplineCurve2 extends Curve2 {
+    private readonly points;
+    /**
+     * Creates the spline curve for 2d
+     * @param points An array of Vec2 points that define the curve.
+     */
+    constructor(points: Vec2[]);
+    getPoint(t: number): Vec2;
+}
 
 
 
@@ -759,6 +856,12 @@ declare namespace Mathf {
  function normalizeRadians(rad: number): number;
 
 /**
+ * The method normalize the given degrees to be between [ 0.0, 360.0 ]
+ * @param deg the angle, in degrees
+ */
+ function normalizeDegrees(deg: number): number;
+
+/**
  * The method compares the given float point number with zero based on an epsilon
  * @param x the float point number to compare
  */
@@ -770,6 +873,16 @@ declare namespace Mathf {
  * @param b the second float point number to compare
  */
  function closeEquals(a: number, b: number): boolean;
+
+/**
+ * Perform the cubic Catmull-Rom-interpolation
+ * @param t interpolation weight.
+ * @param p0 The first point
+ * @param p1 The second point
+ * @param p2 The third point
+ * @param p3 The fourth point
+ */
+ function catmullRom(t: number, p0: number, p1: number, p2: number, p3: number): number;
 
 
 /**
