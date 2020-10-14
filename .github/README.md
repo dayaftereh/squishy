@@ -53,7 +53,7 @@ Open the `./dist` directory and there should be a archive with the name like `sq
 
 ## Changelog
 
-All notable changes to *squishy* will be documented in [Changelog.md](https://github.com/dayaftereh/squishy/blob/master/CHANGELOG.md).
+All notable changes to *squishy* will be documented in [Changelog.md](https://github.com/dayaftereh/squishy/blob/master/.github/CHANGELOG.md).
 
 ## License
 
