@@ -49,7 +49,7 @@ const registerTypeDocTasks = (file: string) => {
         return gulp.src([readme, globals]).pipe(clean())
     })
 
-    gulp.task(`concat-typedoc-files-${name}`, shell.task(`concat-md --toc --decrease-title-levels --dir-name-as-title ${typedocDir} > ${outputFile}`))
+    gulp.task(`concat-typedoc-files-${name}`, shell.task(`concat-md --decrease-title-levels ${typedocDir} > ${outputFile}`))
 
     gulp.task(`build-typedoc-${name}`, gulp.series(`clean-typedoc`, `gen-typedoc-${name}`, `drop-typedoc-files-${name}`, `concat-typedoc-files-${name}`))
 

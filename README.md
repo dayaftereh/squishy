@@ -1,20 +1,22 @@
 # Squishy
 
-Squishy is a browser based data transform pipeline, which can be programmed with [Javascript](https://en.wikipedia.org/wiki/JavaScript).
-It allows to load file from local file-system, transform the content and export the output via download.
+Squishy is an in browser data **transformer** and **visualizer**. 
 
-## Demo
+![Squishy](./src/assets/documentation/png/squishy.png)
 
-[Squishy Editor](https://dayaftereh.github.io/squishy) is the last release and published on [Github Pages](https://pages.github.com/).
-Or use the [Unstable Version](https://dayaftereh.github.io/squishy/latest) from the last build.
+It's allows to load, transform, visualize and export any type of data, by writing **glue code** with [Javascript](https://en.wikipedia.org/wiki/JavaScript).
+Thanks to the additional **visual programming editor** script, load, transform, visualize and export nodes can be connect to build complex transformation pipelines or visualizations.
+However, squishy runs in all modern browser and doesn't require any installation.
 
-## Documentation
+## Playground
 
-The documentation is included into squishy and can be found at the [Squishy Documentation](https://dayaftereh.github.io/squishy/#/documentation).
+The [Squishy Playground](https://dayaftereh.github.io/squishy) is the **last** released version of Squishy and can be used right away.
+Additionally the playground comes with a deeper documentation and a set of examples to get started.
+For experimental usage or more advanced users the [Unstable Playground](https://dayaftereh.github.io/squishy/latest) from the last commit can be used.
 
 ## Supported Browser
 
-The following browsers are supported by *Squishy*.
+The following browsers are supported and tested by *Squishy*.
 
 | Browser       | Version |  Editor | Runner | File Size |
 |---------------|---------|---------|--------|-----------|
@@ -22,18 +24,26 @@ The following browsers are supported by *Squishy*.
 | Firefox       | 64+     | Yes     | Yes    | 1GB       |
 | Google Chrome | 81+     | Yes     | Yes    | 500MB     |
 
-# Build
+## Release
 
-Install the npm packages described in the package.json and verify that it works:
+The last release of the playground can be found as a archive under [Releases](https://github.com/dayaftereh/squishy/releases).
+The release archive contains the **web-content** for a static web-server.
+Remember squishy needs to be served from a web-server to run properly.
+For everyone how wants to build squishy by it's own, checkout the **build** section.
+
+## Build
+
+Install the npm packages described in the `package.json` and verify that it works:
 
 ```bash
 npm install
 ```
 
-Use the `build` command to build (compiles TypeScript and copies assets) the application into `./dist` directory.
+Use the `build` command to build the application into `./dist` directory.
 
 ```bash
 npm run build
 ```
 
-Copy the content of the `./dist` directory to the web-server.
+Open the `./dist` directory and there should be a archive with the name like `squishy-x.x.x*.zip`.
+
