@@ -17,19 +17,19 @@ Following `chart` properties can be set:
   <dd>The name of the <code>Chart</code> node.</dd>
 
   <dt><b>Animation</b></dt>
-  <dd>if check, the chart is animated, uncheck to improve the performance.</dd>
+  <dd>if check, the chart is animated, uncheck to improve the performance. Default is <code>true</code>.</dd>
 
   <dt><b>Pan</b></dt>
-  <dd>enables or disables the <b>pan</b> option for the chart.</dd>
+  <dd>enables or disables the <b>pan</b> option for the chart. Default is <code>None</code>.</dd>
 
   <dt><b>Zoom</b></dt>
-  <dd>enables or disables the <b>zoom</b> option for the chart.</dd>
+  <dd>enables or disables the <b>zoom</b> option for the chart. Default is <code>None</code>.</dd>
 
   <dt><b>Tooltip Fraction</b></dt>
-  <dd>the <b>precision</b> of the tooltip values [0, 20].</dd>
+  <dd>the <b>precision</b> of the tooltip values [0, 20]. Default is <code>3</code>.</dd>
 
   <dt><b>Line Tension</b></dt>
-  <dd>The <i>bezier curve</i> tension of the line. Set to <code>0</code> to draw straightlines.</dd>
+  <dd>The <i>bezier curve</i> tension of the line. Set to <code>0</code> to draw straightlines. Default is <code>0</code>.</dd>
 </dl>
 
 ## Dataset-Properties
@@ -44,10 +44,16 @@ Following `dataset` properties can be set:
   <dd>The color of the <i>points</i> and <i>lines</i> for the dataset.</dd>
 
   <dt><b>Show Lines</b></dt>
-  <dd>If false, the line is not drawn for this dataset.</dd>
+  <dd>If false, the line is not drawn for this dataset. Default is <code>true</code>.</dd>
 
   <dt><b>Fill</b></dt>
-  <dd>If true, a area between two datasets or a dataset and a boundary is created.</dd>
+  <dd>If true, a area between two datasets or a dataset and a boundary is created. Default is <code>false</code>.</dd>
+
+  <dt><b>Line-Width</b></dt>
+  <dd>The line width (in pixels). Default is <code>3</code>.</dd>
+
+  <dt><b>Point-Radius</b></dt>
+  <dd>The radius of the point shape. If set to 0, the point is not rendered. Default is <code>3</code>.</dd>
 
 </dl>
 

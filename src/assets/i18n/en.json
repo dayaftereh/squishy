@@ -139,6 +139,12 @@
                             },
                             "fill": {
                                 "lbl": "Fill"
+                            },
+                            "line-width": {
+                                "lbl": "Line-Width"
+                            },
+                            "point-radius": {
+                                "lbl": "Point-Radius"
                             }
                         }
                     },
@@ -173,6 +179,9 @@
                             },
                             "control": {
                                 "lbl": "Control"
+                            },
+                            "camera-up": {
+                                "lbl": "Camera-UP"
                             },
                             "grid": {
                                 "lbl": "Grid"

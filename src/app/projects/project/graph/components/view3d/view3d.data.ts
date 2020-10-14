@@ -1,4 +1,5 @@
 import { SquishyNodeData } from '../squishy-node.data';
+import { View3DUpVector } from './view3d-up.vector';
 import { View3DControl } from './view3d.control';
 
 export interface View3DData extends SquishyNodeData {
@@ -6,6 +7,7 @@ export interface View3DData extends SquishyNodeData {
     near: number
     far: number
     antiAlias: boolean
+    up: View3DUpVector
     grid: boolean
     gridSize: number
     gridDivisions: number

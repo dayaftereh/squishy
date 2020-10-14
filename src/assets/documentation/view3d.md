@@ -32,6 +32,9 @@ Following `chart` properties can be set:
   <dt><b>Size of Origin Axes</b></dt>
   <dd>The length of the three axes at the origin. Default is <code>10</code>.</dd>
 
+  <dt><b>Camera-UP</b></dt>
+  <dd>The camera up vector. Default is <code>Y</code>.</dd>
+
   <dt><b>Control</b></dt>
   <dd>
     Defines the camera control. Default is <code>Orbit</code>.

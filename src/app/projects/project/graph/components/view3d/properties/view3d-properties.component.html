@@ -81,6 +81,16 @@
     </div>
     <div class="p-grid">
         <div class="p-col">
+            {{'projects.project.graph.components.view3d.properties.camera-up.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-selectButton [options]="upVectorOptions" formControlName="up"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
             {{'projects.project.graph.components.view3d.properties.grid.lbl' | translate}}
         </div>
         <div class="p-col">

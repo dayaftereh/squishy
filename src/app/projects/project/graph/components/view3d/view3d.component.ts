@@ -5,6 +5,7 @@ import { anyTypeSocket } from '../../sockets/any-type.socket';
 import { NodeComponentsType } from '../node-components.type';
 import { SquishyNodeComponent } from '../squishy-node.component';
 import { View3DNodeComponent } from './view3d-node.component';
+import { View3DUpVector } from './view3d-up.vector';
 import { View3DControl } from './view3d.control';
 import { View3DData } from './view3d.data';
 
@@ -25,6 +26,7 @@ export class View3DComponent extends SquishyNodeComponent<View3DData> {
         data.far = 2000.0
         data.antiAlias = false
 
+        data.up = View3DUpVector.Y
         data.control = View3DControl.Orbit
 
         data.viewOrigin = false

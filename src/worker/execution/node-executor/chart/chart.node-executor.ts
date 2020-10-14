@@ -74,6 +74,9 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
 
     private async createDataset(data: any, chartData: ChartData, datasetConfig: ChartDatasetConfig): Promise<any> {
         const lineTension: number = chartData.lineTension || 0.0
+        const lineWidth: number = isNaN(datasetConfig.lineWidth) ? 3.0 : datasetConfig.lineWidth
+        const pointRadius: number = isNaN(datasetConfig.pointRadius) ? 3.0 : datasetConfig.pointRadius
+
         return {
             data,
             lineTension,
@@ -82,6 +85,8 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
             showLine: datasetConfig.lines,
             borderColor: datasetConfig.color,
             pointBackgroundColor: datasetConfig.color,
+            pointRadius: Math.max(pointRadius, 0.0),
+            borderWidth: Math.max(lineWidth, 0.0),
         }
     }
 

@@ -3,4 +3,6 @@ export class ChartDatasetConfig {
     color: string;
     fill: boolean;
     lines: boolean;
+    lineWidth: number;
+    pointRadius: number;
 }

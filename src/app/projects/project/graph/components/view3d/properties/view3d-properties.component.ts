@@ -7,6 +7,7 @@ import { ProjectsService } from 'src/app/projects-service/projects.service';
 import { AbstractPropertiesDialogChildComponent } from 'src/app/properties-dialog/service/abstract-properties-dialog-child.component';
 import { Utils } from 'src/app/utils/utils';
 import { ProjectGraphService } from '../../../service/project-graph.service';
+import { View3DUpVector, View3DUpVectors } from '../view3d-up.vector';
 import { View3DControl, View3DControls } from '../view3d.control';
 import { View3DData } from '../view3d.data';
 
@@ -19,6 +20,8 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
 
     controlOptions: SelectItem[]
 
+    upVectorOptions: SelectItem[]
+
     constructor(
         protected readonly activatedRoute: ActivatedRoute,
         protected readonly projectsService: ProjectsService,
@@ -26,6 +29,7 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
     ) {
         super(activatedRoute, projectsService)
         this.controlOptions = []
+        this.upVectorOptions = []
     }
 
     createFormGroup(): FormGroup {
@@ -41,6 +45,7 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
             near: new FormControl(),
             far: new FormControl(),
             antiAlias: new FormControl(),
+            up: new FormControl(),
         })
     }
 
@@ -51,6 +56,13 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
             return {
                 value: option,
                 label: `${option}`
+            } as SelectItem
+        }))
+
+        this.upVectorOptions.push(...View3DUpVectors.map((upVector: View3DUpVector) => {
+            return {
+                value: upVector,
+                label: `${upVector}`
             } as SelectItem
         }))
 
@@ -87,6 +99,7 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
         this.view3dData.gridSize = this.getFormValue('gridSize', this.view3dData.gridSize)
         this.view3dData.gridDivisions = this.getFormValue('gridDivisions', this.view3dData.gridDivisions)
 
+        this.view3dData.up = this.getFormValue('up', this.view3dData.up)
         this.view3dData.control = this.getFormValue('control', this.view3dData.control)
 
         this.view3dData.viewOrigin = this.getFormValue('viewOrigin', this.view3dData.viewOrigin)
@@ -101,6 +114,7 @@ export class View3DPropertiesComponent extends AbstractPropertiesDialogChildComp
 
         if (!Utils.isNullOrUndefined(this.formGroup)) {
             this.formGroup.patchValue(view3dData)
+            this.onFormChanged()
         }
     }
 

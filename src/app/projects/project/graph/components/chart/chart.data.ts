@@ -6,7 +6,7 @@ export interface ChartData extends SquishyNodeData {
     animation: boolean
     lineTension: number
     pan: ChartZoomPanAxis
-    zoom: ChartZoomPanAxis
+    zoom: ChartZoomPanAxis    
     tooltipFractionDigits: number
     datasets: { [key: string]: ChartDatasetConfig }
 }

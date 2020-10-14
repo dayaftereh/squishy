@@ -1,8 +1,9 @@
 import { NgZone } from '@angular/core';
+import { View3DUpVector } from 'src/app/projects/project/graph/components/view3d/view3d-up.vector';
 import { View3DData } from 'src/app/projects/project/graph/components/view3d/view3d.data';
 import { DomHandler } from 'src/app/utils/dom-handler';
 import { Utils } from 'src/app/utils/utils';
-import { AxesHelper, Clock, GridHelper, Object3D } from 'three';
+import { AxesHelper, Clock, GridHelper, Object3D, Vector3 } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera';
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer';
 import { Scene } from 'three/src/scenes/Scene';
@@ -54,6 +55,10 @@ export class View3DEngine {
             this.near,
             this.far
         )
+
+        // set the camera up vector
+        const up: Vector3 = this.cameraUp
+        this.camera.up.copy(up)
 
         this.clock = new Clock(true)
 
@@ -164,6 +169,20 @@ export class View3DEngine {
             return false
         }
         return this.view3DData.antiAlias
+    }
+
+    private get cameraUp(): Vector3 {
+        if (Utils.isNullOrUndefined(this.view3DData) || Utils.isNullOrUndefined(this.view3DData.up)) {
+            return new Vector3(0.0, 1.0, 0.0)
+        }
+
+        if (this.view3DData.up === View3DUpVector.X) {
+            return new Vector3(1.0, 0.0, 0.0)
+        } else if (this.view3DData.up === View3DUpVector.Y) {
+            return new Vector3(0.0, 1.0, 0.0)
+        }
+
+        return new Vector3(0.0, 0.0, 1.0)
     }
 
     private onResize(): void {

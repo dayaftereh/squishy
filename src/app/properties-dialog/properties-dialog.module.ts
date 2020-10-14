@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PropertiesDialogComponent } from './properties-dialog.component';
 import { PropertiesDialogServiceModule } from './service/properties-dialog-service.module';
 
@@ -13,6 +14,7 @@ import { PropertiesDialogServiceModule } from './service/properties-dialog-servi
         // PrimeNG
         DialogModule,
         ButtonModule,
+        ScrollPanelModule,
         // ngx-translate,
         TranslateModule,
         // custom

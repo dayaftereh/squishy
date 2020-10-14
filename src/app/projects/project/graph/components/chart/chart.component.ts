@@ -97,6 +97,8 @@ export class ChartComponent extends SquishyNodeComponent<ChartData> {
             color: color.toHex(),
             fill: false,
             lines: true,
+            lineWidth: 3.0,
+            pointRadius: 3.0,
             name: `Dataset_${n}`
         } as ChartDatasetConfig
     }

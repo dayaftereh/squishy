@@ -13,10 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - `Squishy.io.xmlParse` to parse xml with `xmldom`
  - `GlobalErrorHandle` to handle uncatched errors
  - `View3D` node to display 3D output with `three.js` and add `Squishy.view3d` to created 3d objects
- - examples for `View3D`, `Chart`, `Input & Output` and `BSpline3`
+ - examples for `View3D`, `Chart`, `Input & Output`, `BSpline2` and `BSpline3`
  - example for `pngjs`
  - `Curve`, `Spline` and `Ellipse` to script node
  - `xmldom`, `pngjs` and `buffer` to `Plugins`
+ - `typedoc` generation for script classes
  
 ### Changed
 

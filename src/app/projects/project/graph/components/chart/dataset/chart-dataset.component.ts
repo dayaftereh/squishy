@@ -27,7 +27,9 @@ export class ChartDatasetComponent extends AbstractPropertiesDialogChildComponen
             name: new FormControl(),
             fill: new FormControl(),
             color: new FormControl(),
-            lines: new FormControl()
+            lines: new FormControl(),
+            lineWidth: new FormControl(),
+            pointRadius: new FormControl()
         })
     }
 
@@ -40,6 +42,8 @@ export class ChartDatasetComponent extends AbstractPropertiesDialogChildComponen
         this.datasetConfig.fill = this.getFormValue('fill', this.datasetConfig.fill)
         this.datasetConfig.color = this.getFormValue('color', this.datasetConfig.color)
         this.datasetConfig.lines = this.getFormValue('lines', this.datasetConfig.lines)
+        this.datasetConfig.lineWidth = this.getFormValue('lineWidth', this.datasetConfig.lineWidth)
+        this.datasetConfig.pointRadius = this.getFormValue('pointRadius', this.datasetConfig.pointRadius)
 
         this.emitProjectChanged()
         this.projectGraphService.emitDataChanged()
