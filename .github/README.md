@@ -3,7 +3,7 @@
 Squishy is an in browser data **transformer** and **visualizer**. 
 
 <p align="center">
-    <img alt="Squishy" src="./src/assets/documentation/png/squishy-editor.png">
+    <img alt="Squishy" src="https://raw.githubusercontent.com/dayaftereh/squishy/master/src/assets/documentation/png/squishy-editor.png">
 </p>
 
 It's allows to load, transform, visualize and export any type of data, by writing **glue code** with [Javascript](https://en.wikipedia.org/wiki/JavaScript).
