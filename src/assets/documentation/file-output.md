@@ -12,7 +12,7 @@ Following `file-output` properties can be set:
 
 <dl>
   <dt><b>Name</b></dt>
-  <dd>The name of the <code>File-Output</code> block.</dd>
+  <dd>The name of the <code>File-Output</code> node.</dd>
 
   <dt><b>Filename</b></dt>
   <dd>The name of the download file from the local page.</dd>

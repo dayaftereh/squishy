@@ -6,7 +6,10 @@ import { ErrorManagerService } from 'src/app/error-manager/service/error-manager
 
 @Component({
     selector: 'app-documentation-content',
-    templateUrl: './documentation-content.component.html'
+    templateUrl: './documentation-content.component.html',
+    styleUrls: [
+        './documentation-content.component.scss'
+    ]
 })
 export class DocumentationContentComponent implements OnInit, OnDestroy {
 

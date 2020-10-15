@@ -51,6 +51,10 @@ export class DocumentationMenuComponent implements OnInit {
                 routerLink: ["/documentation/file-output"],
             },
             {
+                label: 'Text-Input',
+                routerLink: ["/documentation/text-input"],
+            },
+            {
                 label: 'Chart',
                 routerLink: ["/documentation/chart"],
             },
