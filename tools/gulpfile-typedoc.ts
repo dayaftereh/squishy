@@ -4,7 +4,7 @@ import * as clean from 'gulp-clean';
 import * as shell from 'gulp-shell';
 import * as path from 'path';
 import * as rimraf from 'rimraf';
-import { documentationScriptDir, scriptTSConfig, typedocDir } from './gulpfile-directories';
+import { documentationScriptDir, scriptTSConfig, toolsDir, typedocDir } from './gulpfile-directories';
 
 const tsConfig: any = require(scriptTSConfig)
 
@@ -68,7 +68,8 @@ const registerTypeDocTasks = (file: string) => {
 }
 
 const typeDocTasks: string[] = tsConfig.include.map((file: string) => {
-    return registerTypeDocTasks(file)
+    const filePath: string = path.join(toolsDir, file)
+    return registerTypeDocTasks(filePath)
 });
 
 gulp.task('build-typedoc', gulp.series(...typeDocTasks, `clean-typedoc`))

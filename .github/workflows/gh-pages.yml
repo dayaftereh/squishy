@@ -29,3 +29,8 @@ jobs:
           publish_dir: ./dist/squishy
           destination_dir: latest
           full_commit_message: ${{ github.event.head_commit.message }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: squishy-dist
+          path: ./dist/squishy
