@@ -28,8 +28,6 @@ export function markedOptionsFactory(documentationMarkdownService: Documentation
         return result
     }
 
-    console.log(renderer)
-
     return options
 }
 
