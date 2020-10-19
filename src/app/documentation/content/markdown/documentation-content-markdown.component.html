@@ -1,0 +1,7 @@
+<markdown #markdown [src]="source" (error)="onError($event)" (ready)="onLoaded()" lineNumbers>
+    Loading
+</markdown>
+
+<p-blockUI [blocked]="loading">
+    <p-progressSpinner></p-progressSpinner>
+</p-blockUI>

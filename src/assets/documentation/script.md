@@ -38,9 +38,9 @@ The script node is the main feature of *squishy*, because it is so powerful for 
 However, the script node comes with same additional extensions and libraries to make *squishy* more flexible.
 Currently there are three additional variables passed to the **javascript** code execution:
 
-  * [Mathf]() a extended math library
-  * [Squishy]() access to internal execution and *squishy* types
-  * [Plugins]() additional **javascript** libraries
+  * [Mathf](/documentation/script/mathf) a extended math library
+  * [Squishy](/documentation/script/squishy) access to internal execution and *squishy* types
+  * [Plugins](/documentation/script/plugins) additional **javascript** libraries
 
 Each additional variable can be explored directly inside the **javascript** editor via the autocomplete (*STRG*+*Space*).
 If more **javascript** libraries required, checkout the option to use `importScripts()` inside the [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).

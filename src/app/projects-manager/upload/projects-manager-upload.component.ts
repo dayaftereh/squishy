@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfirmationService } from 'primeng/api';
 import * as semver from 'semver';
 import { ErrorManagerService } from 'src/app/error-manager/service/error-manager.service';
 import { PackageJSON } from 'src/app/package-json';
@@ -19,7 +21,9 @@ export class ProjectsManagerUploadComponent {
 
     constructor(
         private readonly projectsService: ProjectsService,
+        private readonly translateService: TranslateService,
         private readonly errorManagerService: ErrorManagerService,
+        private readonly confirmationService: ConfirmationService,
         private readonly projectsExamplesService: ProjectsExamplesService) {
 
     }
@@ -76,26 +80,36 @@ export class ProjectsManagerUploadComponent {
         return version
     }
 
-    private verifyAndUpdateGraphVersion(project: SquishyProject): void {
+    private async verifyAndUpdateGraphVersion(project: SquishyProject): Promise<void> {
         const graphVersion: string = this.graphVersion()
         const projectVersion: string = this.projectVersion(project)
         // check if the version is allowed
         const satisfies: boolean = semver.satisfies(projectVersion, graphVersion)
 
-        if (!satisfies) {
-            throw new Error(`unable to load project, because version [ ${projectVersion} ${graphVersion} ] not match`)
+        if (satisfies) {
+            // update project to current id
+            project.data.id = GraphComponent.id()
+            return
         }
-        // update project to current id
-        project.data.id = GraphComponent.id()
+
+        // ask to overwrite the graph id
+        const overwrite: boolean = await this.confirmOverwrite(project, projectVersion, graphVersion)
+        if (overwrite) {
+            // update project to current id
+            project.data.id = GraphComponent.id()
+            return
+        }
+
+        throw new Error(`unable to load project, because version [ ${projectVersion} ${graphVersion} ] not match`)
     }
 
     private async readProjects(file: File): Promise<SquishyProject[]> {
         const content: string = await Utils.readFileAsText(file)
         const projects: SquishyProject[] = JSON.parse(content)
 
-        projects.forEach((project: SquishyProject) => {
-            this.verifyAndUpdateGraphVersion(project)
-        })
+        await Promise.all(projects.map((project: SquishyProject) => {
+            return this.verifyAndUpdateGraphVersion(project)
+        }))
 
         return projects
     }
@@ -118,6 +132,33 @@ export class ProjectsManagerUploadComponent {
         })
         // load all projects
         this.projectsService.updateAll(projects)
+    }
+
+    private async confirmOverwrite(project: SquishyProject, projectVersion: string, graphVersion: string): Promise<boolean> {
+        // get header and message for confirmation dialog
+        const header: string = await this.translateService.get('project-manager.upload.overwrite-dialog.header').toPromise()
+        const message: string = await this.translateService.get('project-manager.upload.overwrite-dialog.message', {
+            graphVersion,
+            projectVersion,
+            name: project.name,
+
+        }).toPromise()
+
+        return new Promise((resolve) => {
+            // open confirm dialog
+            this.confirmationService.confirm({
+                header,
+                message,
+                icon: 'pi pi-exclamation-triangle',
+                accept: () => {
+                    resolve(true)
+                },
+                reject: () => {
+                    resolve(false)
+                }
+            })
+        })
+
     }
 
 }

@@ -26,7 +26,7 @@ const routes: Routes = [
     imports: [
         // Angular
         RouterModule.forRoot(routes, {
-            useHash: true,
+            useHash: true
         })
     ],
     exports: [
