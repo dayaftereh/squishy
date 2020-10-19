@@ -147,31 +147,161 @@ declare namespace Mathf {
      * @param z the z value of the vector.
      */
     constructor(x: number, y: number, z: number);
+    /**
+     * Computes the square of the Euclidean length (straight-line length) from (0, 0, 0) to (x, y, z).
+     */
     lengthSquared(): number;
+    /**
+     * Computes the Euclidean length (straight-line length) from (0, 0, 0) to (x, y, z).
+     */
     length(): number;
+    /**
+     * Calculate the dot product of this vector and the given parameters.
+     * @param x the x coordination
+     * @param y the y coordination
+     * @param z the z coordination
+     */
     dot(x: number, y: number, z: number): number;
+    /**
+     * Calculate the dot product of this vector and v.
+     * @param v the other vector
+     * @see Vec3.dot()
+     */
     dotWith(v: Vec3): number;
+    /**
+     * Convert this vector to a unit vector - that is, sets it equal to a vector with the same direction as this one, but length 1.
+     */
     normalize(): Vec3;
+    /**
+     * returns the cross product of this vec3 and the given parameters.
+     * @param x the x coordination
+     * @param y the y coordination
+     * @param z the z coordination
+     */
     cross(x: number, y: number, z: number): Vec3;
+    /**
+     * returns the cross product of this vec3 and v.
+     * @param v the other vector
+     * @see Vec3.cross()
+     */
     crossWith(v: Vec3): Vec3;
+    /**
+     * Multiplies this vector and the scalar s to a new vector vector.
+     * @param s the scalar
+     */
     scale(s: number): Vec3;
+    /**
+     * adds this vector and the given parameters to a new vector vector.
+     * @param x the x coordination
+     * @param y the y coordination
+     * @param z the z coordination
+     */
     add(x: number, y: number, z: number): Vec3;
+    /**
+     * adds this vector and v to a new vector vector.
+     * @param v the other vector
+     * @see Vec3.add()
+     */
     addWith(v: Vec3): Vec3;
+    /**
+     * Adds this vector and the multiple of v and s to a new vector vector.
+     * @param v the vector to scale
+     * @param s the scale factor
+     * @see Vec3.scale()
+     * @see Vec3.addWith()
+     */
+    addScaledVector(v: Vec3, s: number): Vec3;
+    /**
+     * multiply this vector and the given parameters to a new vector vector.
+     * @param x the x coordination
+     * @param y the y coordination
+     * @param z the z coordination
+     */
     multiply(x: number, y: number, z: number): Vec3;
+    /**
+    * multiply this vector and v to a new vector vector.
+    * @param v the other vector
+    * @see Vec3.multiply()
+    */
     multiplyWith(v: Vec3): Vec3;
+    /**
+     * divide this vector and the given parameters to a new vector vector.
+     * @param x the x coordination
+     * @param y the y coordination
+     * @param z the z coordination
+     */
     divide(x: number, y: number, z: number): Vec3;
+    /**
+    * divide this vector and v to a new vector vector.
+    * @param v the other vector
+    * @see Vec3.divide()
+    */
     divideWith(v: Vec3): Vec3;
+    /**
+    * subtract this vector and the given parameters to a new vector vector.
+    * @param x the x coordination
+    * @param y the y coordination
+    * @param z the z coordination
+    */
     subtract(x: number, y: number, z: number): Vec3;
+    /**
+    * subtract this vector and v to a new vector vector.
+    * @param v the other vector
+    * @see Vec3.subtract()
+    */
     subtractWith(v: Vec3): Vec3;
+    /**
+     * Inverts this vector - i.e. sets x = -x, y = -y and z = -z.
+     */
     inverse(): Vec3;
+    /**
+     * Returns a new vector3 with the same x, y and z values as this one.
+     */
     clone(): Vec3;
+    /**
+     * Creates a new vector with each component of this vector to a pseudo-random value between 0 and 1, excluding 1.
+     */
     static random(): Vec3;
+    /**
+     * Multiplies this vector and m to a new vector vector.
+     * @param m the matrix to multiply
+     */
     applyMatrix3(m: Matrix3): Vec3;
+    /**
+     * Multiplies this vector and m to a new vector vector.
+     * @param m the matrix to multiply
+     */
     applyMatrix4(m: Matrix4): Vec3;
+    /**
+     * Multiplies this vector and q to a new vector vector.
+     * @param q the quaternion to multiply
+     */
     applyQuaternion(q: Quaternion): Vec3;
+    /**
+     * Computes the squared distance from this vector to the given parameters.
+     * @param x the x coordination
+     * @param y the y coordination
+     * @param z the z coordination
+     */
     distanceSquared(x: number, y: number, z: number): number;
+    /**
+     * Computes the squared distance from this vector to the given vector p.
+     * @param p the other vector
+     * @see Vec3.distanceSquared()
+     */
     distanceSquaredTo(p: Vec3): number;
+    /**
+     * Computes the distance from this vector to the given parameters.
+     * @param x the x coordination
+     * @param y the y coordination
+     * @param z the z coordination
+     */
     distance(x: number, y: number, z: number): number;
+    /**
+    * Computes the distance from this vector to the given vector p.
+    * @param p the other vector
+    * @see Vec3.distance()
+    */
     distanceTo(p: Vec3): number;
     /**
      * Returns a unit vector for the x axis (1.0, 0.0, 0.0)
@@ -189,7 +319,15 @@ declare namespace Mathf {
      * Returns a new vector with 0.0 for x, y and z
      */
     static zero(): Vec3;
+    /**
+     * creates new orthogonal vector to this vector
+     */
     orthogonal(): Vec3;
+    /**
+     * Reflect this vector off of plane orthogonal to normal. Normal is assumed to have unit length.
+     * @param normal the normal to the reflecting plane
+     */
+    reflect(normal: Vec3): Vec3;
 }
 
 
@@ -217,15 +355,59 @@ declare namespace Mathf {
      * Creates and initializes the 3D Matrix to the 3x3 identity matrix.
      */
     static identity(): Matrix3;
+    /**
+     * Creates a new Matrix3 and with identical elements to this one.
+     */
     clone(): Matrix3;
+    /**
+     * Post-multiplies this matrix by m and returns the result in a new matrix.
+     * @param m the matrix to multiply
+     */
     multiplyWith(m: Matrix3): Matrix3;
+    /**
+     * Pre-multiplies this matrix by m and returns the result in a new matrix.
+     * @param m the matrix to multiply
+     */
     premultiplyWith(m: Matrix3): Matrix3;
+    /**
+     * multiplies both matrices with each other
+     * @param a the first matrix
+     * @param b the second matrix
+     */
     static multiplyMatrices(a: Matrix3, b: Matrix3): Matrix3;
+    /**
+     * Multiplies every component of the matrix by the scalar value s and returns the result in a new matrix.
+     * @param s the scalar to multiply
+     */
     multiplyScalar(s: number): Matrix3;
+    /**
+     * Computes the determinant of this matrix.
+     */
     determinant(): number;
+    /**
+     * Returns the inverse of the this matrix using the analytic method.
+     * You can not invert a matrix with a determinant of zero.
+     * If you attempt this, the method returns a zero matrix instead.
+     */
     inverse(): Matrix3;
+    /**
+     * Transposes this matrix and returns the result in a new matrix.
+     */
     transpose(): Matrix3;
+    /**
+     * Returns the normal matrix, which is the inverse transpose matrix of this.
+     */
     normalMatrix(): Matrix3;
+    /**
+     * Creates a new UV transform matrix from offset, repeat, rotation, and center.
+     * @param tx offset x
+     * @param ty offset y
+     * @param sx repeat x
+     * @param sy repeat y
+     * @param rotation rotation (in radians)
+     * @param cx center x of rotation
+     * @param cy center y of rotation
+     */
     static transform(tx: number, ty: number, sx: number, sy: number, rotation: number, cx: number, cy: number): Matrix3;
     scale(sx: number, sy: number): Matrix3;
     rotate(theta: number): Matrix3;
@@ -422,9 +604,29 @@ declare namespace Mathf {
      * Returns a unit vector for the y axis (0.0, 1.0)
      */
     static yAxis(): Vec2;
+    /**
+     * Computes the squared distance from this vector to the given parameters.
+     * @param x the x coordination
+     * @param y the y coordination
+     */
     distanceSquared(x: number, y: number): number;
+    /**
+     * Computes the squared distance from this vector to the given vector p.
+     * @param p the other vector
+     * @see Vec2.distanceSquared()
+     */
     distanceSquaredTo(p: Vec2): number;
+    /**
+     * Computes the distance from this vector to the given parameters.
+     * @param x the x coordination
+     * @param y the y coordination
+     */
     distance(x: number, y: number): number;
+    /**
+     * Computes the distance from this vector to the given vector p.
+     * @param p the other vector
+     * @see Vec2.distance()
+     */
     distanceTo(p: Vec2): number;
 }
 
@@ -453,74 +655,371 @@ declare namespace Mathf {
 }
 
 
+/**
+ * A class representing a 4x4 matrix.
+ * The most common use of a 4x4 matrix in 3D computer graphics is as a Transformation Matrix.
+ * For an introduction to transformation matrices as used in WebGL.
+ * @see https://en.wikipedia.org/wiki/Transformation_matrix
+ * @see http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
+ */
  class Matrix4 {
     private elements;
+    /**
+     * Creates a new 4x4 matrix
+     * @param n11
+     * @param n12
+     * @param n13
+     * @param n14
+     * @param n21
+     * @param n22
+     * @param n23
+     * @param n24
+     * @param n31
+     * @param n32
+     * @param n33
+     * @param n34
+     * @param n41
+     * @param n42
+     * @param n43
+     * @param n44
+     */
     constructor(n11: number, n12: number, n13: number, n14: number, n21: number, n22: number, n23: number, n24: number, n31: number, n32: number, n33: number, n34: number, n41: number, n42: number, n43: number, n44: number);
+    /**
+     * creates a new matrix as the 4x4 identity matrix.
+     */
     static identity(): Matrix4;
+    /**
+     * creates a new matrix where all elements are zero.
+     */
     static zero(): Matrix4;
+    /**
+     * Creates a new Matrix4 with identical elements to this one.
+     */
     clone(): Matrix4;
+    /**
+     * creates a new matrix with the rotation specified by the given Euler Angle.
+     * @param x the x axis angle in radians
+     * @param y the y axis angle in radians
+     * @param z the z axis angle in radians
+     */
     static rotationFromEuler(x: number, y: number, z: number): Matrix4;
+    /**
+     * Constructs a new rotation matrix, looking from eye towards target oriented by the up vector.
+     * @param eye the eye vector
+     * @param target the target vector
+     * @param up the up vector
+     */
     static lookAt(eye: Vec3, target: Vec3, up: Vec3): Matrix4;
+    /**
+     * Post-multiplies this matrix by m and returns a new matrix.
+     * @param m the matrix to multiply
+     */
     multiply(m: Matrix4): Matrix4;
+    /**
+     * Pre-multiplies this matrix by m and returns a new matrix.
+     * @param m the matrix to multiply
+     */
     premultiply(m: Matrix4): Matrix4;
+    /**
+     * multiplies both matrices with each other
+     * @param a the first matrix
+     * @param b the second matrix
+     */
     static multiplyMatrices(a: Matrix4, b: Matrix4): Matrix4;
+    /**
+     * Multiplies every element of the matrix by the scalar value s and returns the result in a new matrix.
+     * @param s the scalar to multiply
+     */
     multiplyScalar(s: number): Matrix4;
+    /**
+    * Computes the determinant of this matrix.
+    * @see http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm
+    */
     determinant(): number;
+    /**
+    * Transposes this matrix and returns the result in a new matrix.
+    */
     transpose(): Matrix4;
+    /**
+     * Returns the inverse matrix for this matrix.
+     * You can not invert a matrix with a determinant of zero.
+     * If you attempt this, the method returns a zero matrix instead.
+     * @see http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm
+     */
     inverse(): Matrix4;
     multiplyScale(x: number, y: number, z: number): Matrix4;
     multiplyScaleWith(v: Vec3): Matrix4;
+    /**
+     * creates a new matrix as a translation transform:
+     * @param x the amount to translate in the X axis.
+     * @param y the amount to translate in the Y axis.
+     * @param z the amount to translate in the Z axis.
+     */
     static translation(x: number, y: number, z: number): Matrix4;
+    /**
+     * creates a new matrix as a rotational transformation around the X axis by theta (θ) radians.
+     * @param theta the x axis rotation in radians
+     */
     static rotationX(theta: number): Matrix4;
+    /**
+    * creates a new matrix as a rotational transformation around the Y axis by theta (θ) radians.
+    * @param theta the y axis rotation in radians
+    */
     static rotationY(theta: number): Matrix4;
+    /**
+    * creates a new matrix as a rotational transformation around the Z axis by theta (θ) radians.
+    * @param theta the z axis rotation in radians
+    */
     static rotationZ(theta: number): Matrix4;
+    /**
+     * creates a new matrix as rotation transform around axis by theta radians.
+     * @param x the x coordination of the rotation axis
+     * @param y the y coordination of the rotation axis
+     * @param z the z coordination of the rotation axis
+     * @param angle Rotation angle in radians.
+     */
     static rotationAxis(x: number, y: number, z: number, angle: number): Matrix4;
+    /**
+     * creates a new matrix as rotation transform around axis by theta radians.
+     * @param axis Rotation axis, should be normalized.
+     * @param angle Rotation angle in radians.
+     * @see Matrix4.rotationAxis()
+     */
     static rotationAxisWith(axis: Vec3, angle: number): Matrix4;
+    /**
+     * create a new matrix as scale transform
+     * @param x the amount to scale in the X axis.
+     * @param y the amount to scale in the Y axis.
+     * @param z the amount to scale in the Z axis.
+     */
     static scale(x: number, y: number, z: number): Matrix4;
+    /**
+     * create a new matrix as scale transform
+     * @param v the scale vector
+     * @see Matrix4.scale()
+     */
     static scaleWith(v: Vec3): Matrix4;
+    /**
+     * create a new matrix as a shear transform
+     * @param x the amount to shear in the X axis.
+     * @param y the amount to shear in the Y axis.
+     * @param z the amount to shear in the Z axis.
+     */
     static shear(x: number, y: number, z: number): Matrix4;
+    /**
+     * create a new matrix as a shear transform
+     * @param v the shear vector
+     * @see Matrix4.shear()
+     */
     static shearWith(v: Vec3): Matrix4;
+    /**
+     * Creates a new perspective projection matrix.
+     * @param left
+     * @param right
+     * @param top
+     * @param bottom
+     * @param near
+     * @param far
+     */
     static perspective(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4;
+    /**
+     * Creates a new orthographic projection matrix.
+     * @param left
+     * @param right
+     * @param top
+     * @param bottom
+     * @param near
+     * @param far
+     */
     static orthographic(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4;
+    /**
+    * Applies this Matrix transform to the given vector v.
+    * @param v the vector to apply
+    */
     applyVec3(v: Vec3): Vec3;
+    /**
+    * Applies this Matrix transform to the given point p.
+    * @param p the point to apply
+    */
     applyPoint3(p: Point3): Point3;
+    /**
+     * returns the element value at given index
+     * @param index the index for the element
+     */
     at(index: number): number;
+    /**
+     * creates a new matrix to the transformation composed of position, quaternion and scale.
+     * @param position the position
+     * @param quaternion the quaternion
+     * @param scale the scale
+     */
     static compose(position: Vec3, quaternion: Quaternion, scale: Vec3): Matrix4;
+    /**
+     * creates a new rotation matrix from the the rotation specified by the given quaternion q.
+     * The rest of the matrix is set to the identity.
+     * @param q the quaternion for the rotation
+     * @see https://en.wikipedia.org/wiki/Rotation_matrix#Quaternion
+     */
     static rotationFromQuaternion(q: Quaternion): Matrix4;
+    /**
+     * Gets the maximum scale value of the 3 axes.
+     */
     maxScaleOnAxis(): number;
+    /**
+     * Returns the euler angles represented by this matrix rotation for the three axes in radians. (Order: XYZ)
+     */
     toEuler(): Vec3;
 }
 
 
+/**
+ * Implementation of a quaternion (Hamilton's hypercomplex numbers).
+ * Quaternions are used to represent rotations.
+ * Quaternions are generally represented in the form:
+ * <code>x + y*i + z*j + w*k</code>
+ * @see http://mathworld.wolfram.com/Quaternion.html
+ */
  class Quaternion {
+    /** x coordinate */
     x: number | undefined;
+    /** y coordinate */
     y: number | undefined;
+    /** z coordinate */
     z: number | undefined;
+    /** w coordinate */
     w: number | undefined;
+    /**
+     * creates a new quaternion
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate
+     * @param w w coordinate
+     */
     constructor(x: number, y: number, z: number, w: number);
+    /**
+     * creates a new quaternion (0.0, 0.0, 0.0, 1.0)
+     */
     static zero(): Quaternion;
+    /**
+     * Creates a new Quaternion with identical x, y, z and w properties to this one.
+     */
     clone(): Quaternion;
+    /**
+     * creates a new quaternion from the rotation specified by the given euler angle in order (XYZ).
+     * @param x the angle of the x axis in radians
+     * @param y the angle of the y axis in radians
+     * @param z the angle of the z axis in radians
+     */
     static fromEuler(x: number, y: number, z: number): Quaternion;
+    /**
+     * create a new quaternion from the rotation specified by the given euler angle from v.
+     * @param v the angles in radians
+     * @see Quaternion.fromEuler()
+     */
     static fromEulerWith(v: Vec3): Quaternion;
+    /**
+     * create a new quaternion from rotation specified by axis and angle.
+     * @param x the x coordination of the axis
+     * @param y the y coordination of the axis
+     * @param z the z coordination of the axis
+     * @param angle the angle in radians
+     */
     static fromAxisAngle(x: number, y: number, z: number, angle: number): Quaternion;
+    /**
+     * create a new quaternion from rotation specified by axis and angle.
+     * @param v the axis is assumed to be normalized
+     * @param angle the angle in radians
+     * @see Quaternion.fromAxisAngle()
+     */
     static fromAxisAngleWith(v: Vec3, angle: number): Quaternion;
     private static fromMatrix;
+    /**
+     * creates a new quaternion from the given matrix
+     * @param m the matrix to create the quaternion
+     */
     static fromMatrix3(m: Matrix3): Quaternion;
+    /**
+     * creates a new quaternion from the given matrix
+     * @param m the matrix to create the quaternion
+     */
     static fromMatrix4(m: Matrix4): Quaternion;
+    /**
+     * creates a new quaternion with a rotation to rotate a vector from the direction vector vFrom to direction vector vTo
+     * @param vFrom the from vector is assumed to be normalized
+     * @param vTo  the to vector is assumed to be normalized
+     */
     static fromUnitVectors(vFrom: Vec3, vTo: Vec3): Quaternion;
+    /**
+     * Returns the angle between this quaternion and quaternion q in radians.
+     * @param q the other quaternion
+     */
     angleTo(q: Quaternion): number;
+    /**
+     * creates a new quaternion to the identity quaternion.
+     * the quaternion represents <b>no rotation</b>.
+     */
     static identity(): Quaternion;
+    /**
+     * Inverts this quaternion - calculates the conjugate. The quaternion is assumed to have unit length.
+     */
     inverse(): Quaternion;
+    /**
+     * Returns the rotational conjugate of this quaternion.
+     * The conjugate of a quaternion represents the same rotation in the opposite direction about the rotational axis.
+     */
     conjugate(): Quaternion;
+    /**
+     * Calculates the dot product of quaternions q and this one.
+     * @param q the other quaternion
+     */
     dot(q: Quaternion): number;
+    /**
+     * Computes the squared Euclidean length (straight-line length) of this quaternion, considered as a 4 dimensional vector.
+     */
     lengthSquared(): number;
+    /**
+     * Computes the Euclidean length (straight-line length) of this quaternion, considered as a 4 dimensional vector.
+     */
     length(): number;
+    /**
+     * Normalizes this quaternion - that is,
+     * calculated the quaternion that performs the same rotation as this one,
+     * but has length equal to 1.
+     */
     normalize(): Quaternion;
+    /**
+     * Multiplies this quaternion by q and returns a new quaternion.
+     * @param q the other quaternion
+     */
     multiply(q: Quaternion): Quaternion;
+    /**
+     * Pre-multiplies this quaternion by q and returns a new quaternion.
+     * @param q the other quaternion
+     */
     premultiply(q: Quaternion): Quaternion;
+    /**
+     * Multiplies both quaternions and returns a new quaternion.
+     * @param a first quaternion
+     * @param b second quaternion
+     */
     static multiplyQuaternions(a: Quaternion, b: Quaternion): Quaternion;
+    /**
+     * Handles the spherical linear interpolation between quaternions.
+     * t represents the amount of rotation between this quaternion (where t is 0) and q (where t is 1).
+     * The result is return as a new quaternion.
+     * @param q The other quaternion rotation
+     * @param t interpolation factor in the closed interval [0, 1].
+     */
     slerp(q: Quaternion, t: number): Quaternion;
+    /**
+     * Applies this Quaternion transform to the given vector v.
+     * @param v the vector to apply
+     */
     applyVec3(v: Vec3): Vec3;
+    /**
+    * Applies this Quaternion transform to the given point p.
+    * @param p the point to apply
+    */
     applyPoint3(p: Point3): Point3;
 }
 
@@ -740,51 +1239,320 @@ declare namespace Mathf {
 
 
 
+/**
+ * A two dimensional surface that extends infinitely in 3d space,
+ * represented in Hessian normal form by a unit length normal vector and a constant.
+ */
  class Plane {
+    /** a unit length Vec3 defining the normal of the plane */
     normal: Vec3 | undefined;
+    /** the signed distance from the origin to the plane */
     constant: number | undefined;
+    /**
+     * Creates a new Plane
+     * @param normal the unit length Vec3 defining the normal of the plane
+     * @param constant the signed distance from the origin to the plane
+     */
     constructor(normal: Vec3, constant: number);
+    /**
+     * Returns a new plane with the same normal and constant as this one.
+     */
     clone(): Plane;
+    /**
+     * Negates both the normal vector and the constant.
+     */
     negate(): Plane;
+    /**
+     * Returns the signed distance from the point to the plane.
+     * @param point the point to get the distance to
+     */
     distanceToPoint(point: Vec3): number;
+    /**
+     * Projects a point onto the plane.
+     * @param point the Vec3 to project onto the plane.
+     */
     projectPoint(point: Vec3): Vec3;
+    /**
+     * Translates the plane by the distance defined by the offset vector.
+     * Note that this only affects the plane constant and will not affect the normal vector.
+     * @param offset the offset to translate
+     */
     translate(offset: Vec3): Plane;
+    /**
+     * Returns a Vector3 coplanar to the plane, by calculating the projection of the normal vector at the origin onto the plane.
+     */
     coplanarPoint(): Vec3;
+    /**
+     * returns the normal for the given point
+     * @param point the point to get the normal at
+     */
     normalAt(point: Vec3): Vec3;
-}
-
-
-
- class Ray {
-    origin: Vec3 | undefined;
-    direction: Vec3 | undefined;
-    constructor(origin: Vec3, direction: Vec3);
-    clone(): Ray;
-    at(t: number): Vec3;
-    lookAt(v: Vec3): Ray;
-    recast(t: number): Ray;
-    closestPointToPoint(point: Vec3): Vec3;
-    distanceSquaredToPoint(point: Vec3): number;
-    applyMatrix4(m: Matrix4): Ray;
-    applyQuaternion(q: Quaternion): Ray;
-    distanceToPlane(plane: Plane): number | undefined;
-    intersectPlane(plane: Plane): Vec3 | undefined;
-    intersectsPlane(plane: Plane): boolean;
-    intersectSphere(sphere: Sphere): Vec3 | undefined;
+    /**
+     * Returns the signed distance from the sphere to the plane.
+     * @param sphere the sphere to get the distance to
+     */
+    distanceToSphere(sphere: Sphere): number;
+    /**
+     * checks if the sphere intersects with the plane
+     * @param sphere the sphere to check
+     */
     intersectsSphere(sphere: Sphere): boolean;
+    /**
+     * Intersect this Ray with this Plane, returning the intersection point or undefined if there is no intersection.
+     * @param ray the ray to intersect with this plane
+     */
+    intersectRay(ray: Ray): Vec3 | undefined;
+    /**
+     * Creates a new plane as defined by a normal and an arbitrary coplanar point.
+     * @param n a unit length Vec3 defining the normal of the plane.
+     * @param point the coplanar point
+     */
+    static fromNormalAndCoplanarPoint(n: Vec3, point: Vec3): Plane;
+    /**
+     * Defines the plane based on the 3 provided points.
+     * The winding order is assumed to be counter-clockwise, and determines the direction of the normal.
+     * @param a first point on the plane.
+     * @param b second point on the plane.
+     * @param c third point on the plane.
+     */
+    static fromCoplanarPoints(a: Vec3, b: Vec3, c: Vec3): Plane;
+    /**
+     * Apply a Matrix4 to the plane.
+     * The matrix must be an affine, homogeneous transform.
+     * @param m the Matrix4 to apply.
+     * @param optionalNormalMatrix pre-computed normal Matrix3 of the Matrix4 being applied.
+     */
+    applyMatrix4(m: Matrix4, optionalNormalMatrix?: Matrix3): Plane;
 }
 
 
- class Sphere {
-    center: Vec3 | undefined;
-    radius: number | undefined;
-    constructor(center: Vec3, radius: number);
-    containsPoint(point: Vec3): boolean;
-    distanceToPoint(point: Vec3): number;
+/**
+ * A ray that emits from an origin in a certain direction.
+ * This is used by the Raycaster to assist with raycasting.
+ */
+ class Ray {
+    /** the origin of the Ray */
+    origin: Vec3 | undefined;
+    /** The direction of the Ray */
+    direction: Vec3 | undefined;
+    /**
+     * Creates a new Ray.
+     * @param origin the origin of the Ray
+     * @param direction The direction of the Ray
+     */
+    constructor(origin: Vec3, direction: Vec3);
+    /**
+     * Creates a new Ray with identical origin and direction to this one.
+     */
+    clone(): Ray;
+    /**
+     * Get a Vec3 that is a given distance along this Ray.
+     * @param t the distance along the Ray to retrieve a position for.
+     */
+    at(t: number): Vec3;
+    /**
+     * The Vec3 to look at.
+     * @param v Adjusts the direction of the ray to point at the vector in world coordinates.
+     */
+    lookAt(v: Vec3): Ray;
+    /**
+     * Shift the origin of this Ray along its direction by the distance given.
+     * @param t The distance along the Ray to interpolate.
+     */
+    recast(t: number): Ray;
+    /**
+     * Get the point along this Ray that is closest to the Vec3 provided.
+     * @param point  the point to get the closest approach to.
+     */
+    closestPointToPoint(point: Vec3): Vec3;
+    /**
+     * Get the squared distance of the closest approach between the Ray and the Vec3.
+     * @param point the Vec3 to compute a distance to.
+     */
+    distanceSquaredToPoint(point: Vec3): number;
+    /**
+     * Transform this Ray by the Matrix4.
+     * @param m the Matrix4 to apply to this Ray.
+     */
+    applyMatrix4(m: Matrix4): Ray;
+    /**
+     * Transform this Ray by the Quaternion.
+     * @param q the Quaternion to apply to this Ray.
+     */
+    applyQuaternion(q: Quaternion): Ray;
+    /**
+     * Get the distance from origin to the Plane, or undefined if the Ray doesn't intersect the Plane.
+     * @param plane the Plane to get the distance to.
+     */
+    distanceToPlane(plane: Plane): number | undefined;
+    /**
+     * Intersect this Ray with a Plane, returning the intersection point or undefined if there is no intersection.
+     * @param plane the Plane to intersect with.
+     */
+    intersectPlane(plane: Plane): Vec3 | undefined;
+    /**
+     * Return true if this Ray intersects with the Plane.
+     * @param plane  the Plane to intersect with.
+     */
     intersectsPlane(plane: Plane): boolean;
+    /**
+     * Intersect this Ray with a Sphere, returning the intersection point or undefined if there is no intersection.
+     * @param sphere the Sphere to intersect with.
+     */
+    intersectSphere(sphere: Sphere): Vec3 | undefined;
+    /**
+     * Return true if this Ray intersects with the Sphere.
+     * @param sphere  the Sphere to intersect with.
+     */
+    intersectsSphere(sphere: Sphere): boolean;
+    /**
+     * Intersect this Ray with a triangle, returning the intersection point or undefined if there is no intersection.
+     * @param triangle the triangle to check
+     * @param backfaceCulling whether to use backface culling
+     * @see http://www.geometrictools.com/GTEngine/Include/Mathematics/GteIntrRay3Triangle3.h
+     */
+    intersectTriangle(triangle: Triangle, backfaceCulling?: boolean): Vec3 | undefined;
+    /**
+     * Creates a new ray from the point as reflect of this direction vector off of plane orthogonal to normal.
+     * Normal is assumed to have unit length.
+     * @param point the point for the origin
+     * @param normal the normal to the reflecting plane
+     */
+    reflect(point: Vec3, normal: Vec3): Ray;
+}
+
+
+/**
+ * A sphere defined by a center and radius.
+ */
+ class Sphere {
+    /** A Vec3 defining the center of the sphere */
+    center: Vec3 | undefined;
+    /** The radius of the sphere. */
+    radius: number | undefined;
+    /**
+     * Creates a new Sphere.
+     * @param center the center of the sphere.
+     * @param radius the radius of the sphere
+     */
+    constructor(center: Vec3, radius: number);
+    /**
+     * Checks to see if the sphere contains the provided point inclusive of the surface of the sphere.
+     * @param point the Vec3 to be checked
+     */
+    containsPoint(point: Vec3): boolean;
+    /**
+     * Returns the closest distance from the boundary of the sphere to the point.
+     * If the sphere contains the point, the distance will be negative.
+     * @param point the Vec3 to get the distance to
+     */
+    distanceToPoint(point: Vec3): number;
+    /**
+     * Determines whether or not this sphere intersects a given plane.
+     * @param plane Plane to check for intersection against.
+     */
+    intersectsPlane(plane: Plane): boolean;
+    /**
+     * Intersect this Ray with this Sphere, returning the intersection point or undefined if there is no intersection.
+     * @param ray the ray to intersect with this sphere
+     */
+    intersectRay(ray: Ray): Vec3 | undefined;
+    /**
+     * Translate the sphere's center by the provided offset Vec3.
+     * @param offset the offset to translate the center
+     */
     translate(offset: Vec3): Sphere;
+    /**
+     * Transforms this sphere with the provided Matrix4.
+     * @param m the Matrix4 to apply
+     */
     applyMatrix4(m: Matrix4): Sphere;
+    /**
+     * Returns the normal for the given point
+     * @param point the point to get the normal for
+     */
     normalAt(point: Vec3): Vec3;
+}
+
+
+
+/**
+ * A geometric triangle as defined by three Vec3s representing its three corners.
+ */
+ class Triangle {
+    /** the first corner of the triangle */
+    a: Vec3 | undefined;
+    /** the second corner of the triangle */
+    b: Vec3 | undefined;
+    /**  the final corner of the triangle */
+    c: Vec3 | undefined;
+    /**
+     * Creates a new Triangle.
+     * @param a the first corner of the triangle
+     * @param b the second corner of the triangle
+     * @param c the final corner of the triangle
+     */
+    constructor(a: Vec3, b: Vec3, c: Vec3);
+    /**
+     * Returns a new triangle with the same a, b and c properties as this one.
+     */
+    clone(): Triangle;
+    static calculateNormal(a: Vec3, b: Vec3, c: Vec3): Vec3;
+    /**
+     * the method to calculate barycentric coordinates
+     * @param point
+     * @param a
+     * @param b
+     * @param c
+     * @see http://www.blackpawn.com/texts/pointinpoly/default.html
+     */
+    static calculateBarycoord(point: Vec3, a: Vec3, b: Vec3, c: Vec3): Vec3;
+    static isContainsPoint(point: Vec3, a: Vec3, b: Vec3, c: Vec3): boolean;
+    static calculateUV(point: Vec3, a: Vec3, b: Vec3, c: Vec3, uv1: Vec3, uv2: Vec3, uv3: Vec3): Vec3;
+    static frontFacing(a: Vec3, b: Vec3, c: Vec3, direction: Vec3): boolean;
+    /**
+     * Return the area of the triangle.
+     */
+    getArea(): number;
+    /**
+     * Calculate the midpoint of the triangle.
+     */
+    getMidpoint(): Vec3;
+    /**
+     * Calculate the normal vector of the triangle at the given point
+     * @param point the point to calculate the normal
+     */
+    normalAt(point: Vec3): Vec3;
+    /**
+     * Calculate a plane based on the triangle.
+     */
+    getPlane(): Plane;
+    /**
+     * Return a barycentric coordinate from the given vector.
+     * @param point the point for the barycentric coordinate
+     */
+    getBarycoord(point: Vec3): Vec3;
+    getUV(point: Vec3, uv1: Vec3, uv2: Vec3, uv3: Vec3): Vec3;
+    /**
+     * Returns true if the passed point, when projected onto the plane of the triangle, lies within the triangle.
+     * @param point the point to check
+     */
+    containsPoint(point: Vec3): boolean;
+    /**
+     * checks if the triangle is front facing
+     * @param direction the direction to check
+     */
+    isFrontFacing(direction: Vec3): boolean;
+    /**
+     * Returns the closest point on the triangle to point.
+     * @param point the point to get the closest to
+     */
+    closestPointToPoint(point: Vec3): Vec3;
+    /**
+     * Intersect this Ray with this Triangle, returning the intersection point or undefined if there is no intersection.
+     * @param ray the ray to intersect with this triangle
+     */
+    intersectRay(ray: Ray): Vec3 | undefined;
 }
 
 

@@ -231,6 +231,12 @@
                 "message": "Are you sure that you want to delete all selected projects ?"
             },
             "header": "Projects"
+        },
+        "upload": {
+            "overwrite-dialog": {
+                "header": "Incompatible version",
+                "message": "The project {{name}} has a incompatible version {{projectVersion}},<br>because squishy requires version {{graphVersion}}.<br>Do you want to overwrite the project version<br>and use the project anyway ?"
+            }
         }
     },
     "properties-dialog": {

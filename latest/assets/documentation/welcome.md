@@ -15,13 +15,14 @@ It's designed to be used without any installation.
 The main concept of squishy is to combine different types of nodes to build up the required transformation pipeline.
 The **visual programming editor** allows to simple connect the nodes in the correct order and tells squishy how to execute the pipeline from start to the end.
 
-So far squishy comes with five nodes:
+So far squishy comes with six nodes:
 
- * [File-Input]() allows to load data from local *file-system*.
- * [File-Output]() allows to export generated data.
- * [Script]() allows to write [Javascript](https://en.wikipedia.org/wiki/JavaScript) code, which is then executed inside the pipeline.
- * [Chart]() allows to visualized **2D** data with a *chart*.
- * [View3D]() allows to visualized **3D** data with a *3D-Scene*.
+ * [File-Input](/documentation/file-input) allows to load data from local *file-system*.
+ * [Text-Input](/documentation/text-input) allows to define a textarea for text or `json` input.
+ * [File-Output](/documentation/file-output) allows to export generated data.
+ * [Script](/documentation/script) allows to write [Javascript](https://en.wikipedia.org/wiki/JavaScript) code, which is then executed inside the pipeline.
+ * [Chart](/documentation/chart) allows to visualized **2D** data with a *chart*.
+ * [View3D](/documentation/view3d) allows to visualized **3D** data with a *3D-Scene*.
 
 Checkout the documentation for each node to find out how it works.
 
@@ -34,4 +35,4 @@ This decapsulate the execution from the `main` line allows to cancel the executi
 
 ## Get-Started
 
-To get started checkout the example projects and the [Get-Started]() tutorial.
+To get started checkout the example projects and the [Get-Started](/documentation/get-started) tutorial.
