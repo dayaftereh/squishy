@@ -1,0 +1,15 @@
+{
+    "include": [
+        "../src/worker/execution/node-executor/script/math/mathf.ts",
+        "../src/worker/execution/node-executor/script/plugins/plugins-types.ts",
+        "../src/worker/execution/node-executor/script/squishy/squishy-types.ts"
+    ],
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES5",
+        "emitDeclarationOnly": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "outDir": "../dist/script"
+    }
+}

@@ -11,4 +11,4 @@ gulp.task('clean-script', (cb) => {
 gulp.task('ts-script-types', shell.task(`tsc --project ${scriptTSConfig}`))
 gulp.task('gen-script-types', shell.task(`ts-node --project ${toolsTSConfig} ./tools/generate-script-types.ts`))
 
-gulp.task('build-script-types', gulp.series('clean-script', 'ts-script-types', 'gen-script-types'))
+gulp.task('build-script-types', gulp.series('clean-script', 'ts-script-types', 'gen-script-types', 'clean-script'))

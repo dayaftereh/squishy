@@ -56,6 +56,9 @@ export class Matrix3 {
         return m
     }
 
+    /**
+     * Creates a new Matrix3 and with identical elements to this one.
+     */
     clone(): Matrix3 {
         const te: number[] = this.elements
         const m: Matrix3 = new Matrix3(
@@ -66,14 +69,27 @@ export class Matrix3 {
         return m
     }
 
+    /**
+     * Post-multiplies this matrix by m and returns the result in a new matrix.
+     * @param m the matrix to multiply
+     */
     multiplyWith(m: Matrix3): Matrix3 {
         return Matrix3.multiplyMatrices(this, m)
     }
 
+    /**
+     * Pre-multiplies this matrix by m and returns the result in a new matrix.
+     * @param m the matrix to multiply
+     */
     premultiplyWith(m: Matrix3): Matrix3 {
         return Matrix3.multiplyMatrices(m, this)
     }
 
+    /**
+     * multiplies both matrices with each other
+     * @param a the first matrix
+     * @param b the second matrix
+     */
     static multiplyMatrices(a: Matrix3, b: Matrix3): Matrix3 {
         const ae: number[] = a.elements
         const be: number[] = b.elements
@@ -104,6 +120,10 @@ export class Matrix3 {
         return result
     }
 
+    /**
+     * Multiplies every component of the matrix by the scalar value s and returns the result in a new matrix.
+     * @param s the scalar to multiply
+     */
     multiplyScalar(s: number): Matrix3 {
         const result: Matrix3 = this.clone()
         const te: number[] = result.elements
@@ -115,6 +135,9 @@ export class Matrix3 {
         return result
     }
 
+    /**
+     * Computes the determinant of this matrix.
+     */
     determinant(): number {
         const te: number[] = this.elements;
 
@@ -131,6 +154,11 @@ export class Matrix3 {
         return a * e * i - a * f * h - b * d * i + b * f * g + c * d * h - c * e * g;
     }
 
+    /**
+     * Returns the inverse of the this matrix using the analytic method.
+     * You can not invert a matrix with a determinant of zero.
+     * If you attempt this, the method returns a zero matrix instead.
+     */
     inverse(): Matrix3 {
         const result: Matrix3 = Matrix3.zero()
         const me: number[] = result.elements
@@ -168,6 +196,9 @@ export class Matrix3 {
 
     }
 
+    /**
+     * Transposes this matrix and returns the result in a new matrix.
+     */
     transpose(): Matrix3 {
         const result: Matrix3 = this.clone()
         const m: number[] = result.elements
@@ -181,6 +212,9 @@ export class Matrix3 {
         return result
     }
 
+    /**
+     * Returns the normal matrix, which is the inverse transpose matrix of this.
+     */
     normalMatrix(): Matrix3 {
         const inverse: Matrix3 = this.inverse()
         const transpose: Matrix3 = inverse.transpose()
@@ -188,6 +222,16 @@ export class Matrix3 {
         return transpose
     }
 
+    /**
+     * Creates a new UV transform matrix from offset, repeat, rotation, and center.
+     * @param tx offset x
+     * @param ty offset y
+     * @param sx repeat x
+     * @param sy repeat y
+     * @param rotation rotation (in radians)
+     * @param cx center x of rotation
+     * @param cy center y of rotation
+     */
     static transform(tx: number, ty: number, sx: number, sy: number, rotation: number, cx: number, cy: number): Matrix3 {
         const c: number = Math.cos(rotation);
         const s: number = Math.sin(rotation);

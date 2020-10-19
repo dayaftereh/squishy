@@ -298,21 +298,41 @@ export class Vec2 {
         return v
     }
 
+    /**
+     * Computes the squared distance from this vector to the given parameters.
+     * @param x the x coordination 
+     * @param y the y coordination 
+     */
     distanceSquared(x: number, y: number): number {
         const dx: number = this.x - x
         const dy: number = this.y - y
         return dx * dx + dy * dy
     }
 
+    /**
+     * Computes the squared distance from this vector to the given vector p.
+     * @param p the other vector
+     * @see Vec2.distanceSquared()
+     */
     distanceSquaredTo(p: Vec2): number {
         return this.distanceSquared(p.x, p.y)
     }
 
+    /**
+     * Computes the distance from this vector to the given parameters.
+     * @param x the x coordination 
+     * @param y the y coordination 
+     */
     distance(x: number, y: number): number {
         const distanceSquared: number = this.distanceSquared(x, y)
         return Math.sqrt(distanceSquared)
     }
 
+    /**
+     * Computes the distance from this vector to the given vector p.
+     * @param p the other vector
+     * @see Vec2.distance()
+     */
     distanceTo(p: Vec2): number {
         return this.distance(p.x, p.y)
     }

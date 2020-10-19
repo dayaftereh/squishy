@@ -13,8 +13,10 @@ interface TypesFile {
     content: string | undefined
 }
 
+export const currentWorkingDir: string = process.cwd()
+
 const newline: string = `\n`
-const distDir: string = './dist'
+const distDir: string = path.join(currentWorkingDir, './dist')
 const scriptDir: string = path.join(distDir, 'script');
 
 const inputFiles: string[] = [
@@ -23,7 +25,7 @@ const inputFiles: string[] = [
     path.join(scriptDir, 'plugins/plugins-types.d.ts'),
 ]
 
-const srcDir: string = './src'
+const srcDir: string = path.join(currentWorkingDir, './src')
 const assetsDir: string = path.join(srcDir, 'assets')
 const outputFile: string = path.join(assetsDir, 'scripts.d.ts')
 

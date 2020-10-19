@@ -1,10 +1,11 @@
 import * as path from 'path'
 
-const currentWorkingDir: string = process.cwd()
+export const currentWorkingDir: string = process.cwd()
 
 // directories and files
 export const srcDir: string = path.join(currentWorkingDir, './src')
 export const distDir: string = path.join(currentWorkingDir, './dist')
+export const toolsDir: string = path.join(currentWorkingDir, './tools')
 
 export const assetsDir: string = path.join(srcDir, 'assets')
 export const scriptDir: string = path.join(distDir, 'script')
@@ -17,6 +18,6 @@ export const documentationScriptDir: string = path.join(documentationDir, 'scrip
 export const packageJsonFile: string = path.join(currentWorkingDir, './package.json')
 
 // Typescript Configs
-export const toolsTSConfig: string = path.join(currentWorkingDir, './tsconfig.tools.json')
-export const scriptTSConfig: string = path.join(currentWorkingDir, './tsconfig.script.json')
+export const toolsTSConfig: string = path.join(toolsDir, './tsconfig.tools.json')
+export const scriptTSConfig: string = path.join(toolsDir, './tsconfig.script.json')
 

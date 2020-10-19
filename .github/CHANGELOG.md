@@ -18,11 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - `Curve`, `Spline` and `Ellipse` to script node
  - `xmldom`, `pngjs` and `buffer` to `Plugins`
  - `typedoc` generation for script classes
+ - `Triangle` to `Mathf`
+ - confirm dialog for incompatible project version while importing
+ - build scripts
  
 ### Changed
 
  - `SquishyIO.csvStringify` to pass a `toString` function 
  - updated some dependencies
+ - updated documentation
 
 ### Removed
 

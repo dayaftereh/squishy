@@ -19,13 +19,9 @@ export { Quaternion } from './geometry/quaternion'
 export { Ray } from './geometry/ray'
 export { Sphere } from './geometry/sphere'
 export { Transform2 } from './geometry/transform2'
+export { Triangle } from './geometry/triangle'
 export { Vec2 } from './geometry/vec2'
 export { Vec3 } from './geometry/vec3'
 export * from './math-constants'
 export * from './math-functions'
 export { Random } from './random'
-
-
-
-
-

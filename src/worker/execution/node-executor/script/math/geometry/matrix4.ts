@@ -3,10 +3,36 @@ import { Point3 } from './point3'
 import { Quaternion } from './quaternion'
 import { Vec3 } from './vec3'
 
+/**
+ * A class representing a 4x4 matrix.
+ * The most common use of a 4x4 matrix in 3D computer graphics is as a Transformation Matrix. 
+ * For an introduction to transformation matrices as used in WebGL.
+ * @see https://en.wikipedia.org/wiki/Transformation_matrix
+ * @see http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
+ */
 export class Matrix4 {
 
     private elements: number[]
 
+    /**
+     * Creates a new 4x4 matrix
+     * @param n11 
+     * @param n12 
+     * @param n13 
+     * @param n14 
+     * @param n21 
+     * @param n22 
+     * @param n23 
+     * @param n24 
+     * @param n31 
+     * @param n32 
+     * @param n33 
+     * @param n34 
+     * @param n41 
+     * @param n42 
+     * @param n43 
+     * @param n44 
+     */
     constructor(
         n11: number, n12: number, n13: number, n14: number,
         n21: number, n22: number, n23: number, n24: number,
@@ -20,6 +46,9 @@ export class Matrix4 {
         ]
     }
 
+    /**
+     * creates a new matrix as the 4x4 identity matrix.
+     */
     static identity(): Matrix4 {
         const m: Matrix4 = new Matrix4(
             1.0, 0.0, 0.0, 0.0,
@@ -30,6 +59,9 @@ export class Matrix4 {
         return m
     }
 
+    /**
+     * creates a new matrix where all elements are zero.
+     */
     static zero(): Matrix4 {
         const m: Matrix4 = new Matrix4(
             0.0, 0.0, 0.0, 0.0,
@@ -40,7 +72,9 @@ export class Matrix4 {
         return m
     }
 
-
+    /**
+     * Creates a new Matrix4 with identical elements to this one.
+     */
     clone(): Matrix4 {
         const e: number[] = this.elements
         const m: Matrix4 = new Matrix4(
@@ -52,6 +86,12 @@ export class Matrix4 {
         return m
     }
 
+    /**
+     * creates a new matrix with the rotation specified by the given Euler Angle.      
+     * @param x the x axis angle in radians
+     * @param y the y axis angle in radians
+     * @param z the z axis angle in radians
+     */
     static rotationFromEuler(x: number, y: number, z: number): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
@@ -96,6 +136,12 @@ export class Matrix4 {
         return result
     }
 
+    /**
+     * Constructs a new rotation matrix, looking from eye towards target oriented by the up vector.
+     * @param eye the eye vector
+     * @param target the target vector
+     * @param up the up vector
+     */
     static lookAt(eye: Vec3, target: Vec3, up: Vec3): Matrix4 {
         const result: Matrix4 = Matrix4.identity()
         const te: number[] = result.elements
@@ -133,14 +179,27 @@ export class Matrix4 {
         return result
     }
 
+    /**
+     * Post-multiplies this matrix by m and returns a new matrix.
+     * @param m the matrix to multiply
+     */
     multiply(m: Matrix4): Matrix4 {
         return Matrix4.multiplyMatrices(this, m)
     }
 
+    /**
+     * Pre-multiplies this matrix by m and returns a new matrix.
+     * @param m the matrix to multiply
+     */
     premultiply(m: Matrix4): Matrix4 {
         return Matrix4.multiplyMatrices(m, this)
     }
 
+    /**
+     * multiplies both matrices with each other
+     * @param a the first matrix
+     * @param b the second matrix
+     */
     static multiplyMatrices(a: Matrix4, b: Matrix4): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
 
@@ -181,6 +240,10 @@ export class Matrix4 {
         return result
     }
 
+    /**
+     * Multiplies every element of the matrix by the scalar value s and returns the result in a new matrix.
+     * @param s the scalar to multiply
+     */
     multiplyScalar(s: number): Matrix4 {
         const result: Matrix4 = this.clone()
         const te: number[] = result.elements
@@ -193,6 +256,10 @@ export class Matrix4 {
         return result
     }
 
+    /**
+    * Computes the determinant of this matrix.
+    * @see http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm
+    */
     determinant(): number {
         const te: number[] = this.elements
 
@@ -237,7 +304,9 @@ export class Matrix4 {
 
         )
     }
-
+    /**
+    * Transposes this matrix and returns the result in a new matrix.
+    */
     transpose(): Matrix4 {
         const result: Matrix4 = this.clone()
         const te: number[] = result.elements
@@ -255,6 +324,12 @@ export class Matrix4 {
         return result
     }
 
+    /**
+     * Returns the inverse matrix for this matrix.
+     * You can not invert a matrix with a determinant of zero. 
+     * If you attempt this, the method returns a zero matrix instead.
+     * @see http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm
+     */
     inverse(): Matrix4 {
         const te: number[] = this.elements
         const result: Matrix4 = Matrix4.zero()
@@ -317,6 +392,12 @@ export class Matrix4 {
         return this.multiplyScale(v.x, v.y, v.z)
     }
 
+    /**
+     * creates a new matrix as a translation transform:
+     * @param x the amount to translate in the X axis.
+     * @param y the amount to translate in the Y axis.
+     * @param z the amount to translate in the Z axis.
+     */
     static translation(x: number, y: number, z: number): Matrix4 {
         const m: Matrix4 = new Matrix4(
             1.0, 0.0, 0.0, x,
@@ -327,6 +408,10 @@ export class Matrix4 {
         return m
     }
 
+    /**
+     * creates a new matrix as a rotational transformation around the X axis by theta (θ) radians. 
+     * @param theta the x axis rotation in radians
+     */
     static rotationX(theta: number): Matrix4 {
         const c: number = Math.cos(theta)
         const s: number = Math.sin(theta)
@@ -340,6 +425,10 @@ export class Matrix4 {
         return m
     }
 
+    /**
+    * creates a new matrix as a rotational transformation around the Y axis by theta (θ) radians. 
+    * @param theta the y axis rotation in radians
+    */
     static rotationY(theta: number): Matrix4 {
         const c: number = Math.cos(theta)
         const s: number = Math.sin(theta)
@@ -353,6 +442,10 @@ export class Matrix4 {
         return m
     }
 
+    /**
+    * creates a new matrix as a rotational transformation around the Z axis by theta (θ) radians. 
+    * @param theta the z axis rotation in radians
+    */
     static rotationZ(theta: number): Matrix4 {
         const c: number = Math.cos(theta)
         const s: number = Math.sin(theta)
@@ -366,6 +459,13 @@ export class Matrix4 {
         return m
     }
 
+    /**
+     * creates a new matrix as rotation transform around axis by theta radians.
+     * @param x the x coordination of the rotation axis
+     * @param y the y coordination of the rotation axis
+     * @param z the z coordination of the rotation axis
+     * @param angle Rotation angle in radians.
+     */
     static rotationAxis(x: number, y: number, z: number, angle: number): Matrix4 {
         const c: number = Math.cos(angle)
         const s: number = Math.sin(angle)
@@ -383,10 +483,22 @@ export class Matrix4 {
         return m
     }
 
+    /**
+     * creates a new matrix as rotation transform around axis by theta radians.
+     * @param axis Rotation axis, should be normalized.
+     * @param angle Rotation angle in radians.
+     * @see Matrix4.rotationAxis()
+     */
     static rotationAxisWith(axis: Vec3, angle: number): Matrix4 {
         return Matrix4.rotationAxis(axis.x, axis.y, axis.z, angle)
     }
 
+    /**
+     * create a new matrix as scale transform
+     * @param x the amount to scale in the X axis.
+     * @param y the amount to scale in the Y axis.
+     * @param z the amount to scale in the Z axis.
+     */
     static scale(x: number, y: number, z: number): Matrix4 {
         const m: Matrix4 = new Matrix4(
             x, 0.0, 0.0, 0.0,
@@ -397,10 +509,21 @@ export class Matrix4 {
         return m
     }
 
+    /**
+     * create a new matrix as scale transform
+     * @param v the scale vector
+     * @see Matrix4.scale()
+     */
     static scaleWith(v: Vec3): Matrix4 {
         return Matrix4.scale(v.x, v.y, v.z)
     }
 
+    /**
+     * create a new matrix as a shear transform
+     * @param x the amount to shear in the X axis.
+     * @param y the amount to shear in the Y axis.
+     * @param z the amount to shear in the Z axis.
+     */
     static shear(x: number, y: number, z: number): Matrix4 {
         const m: Matrix4 = new Matrix4(
             1.0, y, z, 0.0,
@@ -411,10 +534,24 @@ export class Matrix4 {
         return m
     }
 
+    /**
+     * create a new matrix as a shear transform
+     * @param v the shear vector
+     * @see Matrix4.shear()
+     */
     static shearWith(v: Vec3): Matrix4 {
         return Matrix4.shear(v.x, v.y, v.z)
     }
 
+    /**
+     * Creates a new perspective projection matrix.
+     * @param left 
+     * @param right 
+     * @param top 
+     * @param bottom 
+     * @param near 
+     * @param far 
+     */
     static perspective(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
@@ -435,6 +572,15 @@ export class Matrix4 {
         return result
     }
 
+    /**
+     * Creates a new orthographic projection matrix.
+     * @param left 
+     * @param right 
+     * @param top 
+     * @param bottom 
+     * @param near 
+     * @param far 
+     */
     static orthographic(left: number, right: number, top: number, bottom: number, near: number, far: number): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
@@ -455,6 +601,10 @@ export class Matrix4 {
         return result
     }
 
+    /**
+    * Applies this Matrix transform to the given vector v.
+    * @param v the vector to apply
+    */
     applyVec3(v: Vec3): Vec3 {
         const e: number[] = this.elements
 
@@ -471,16 +621,30 @@ export class Matrix4 {
         return new Vec3(dx, dy, dz)
     }
 
+    /**
+    * Applies this Matrix transform to the given point p.
+    * @param p the point to apply
+    */
     applyPoint3(p: Point3): Point3 {
         const v: Vec3 = new Vec3(p.x, p.y, p.z)
         const r: Vec3 = this.applyVec3(v)
         return new Point3(r.x, r.y, r.z)
     }
 
+    /**
+     * returns the element value at given index
+     * @param index the index for the element
+     */
     at(index: number): number {
         return this.elements[index]
     }
 
+    /**
+     * creates a new matrix to the transformation composed of position, quaternion and scale.
+     * @param position the position
+     * @param quaternion the quaternion
+     * @param scale the scale
+     */
     static compose(position: Vec3, quaternion: Quaternion, scale: Vec3): Matrix4 {
         const result: Matrix4 = Matrix4.zero()
         const te: number[] = result.elements
@@ -521,13 +685,22 @@ export class Matrix4 {
 
         return result
     }
-
+    
+    /**
+     * creates a new rotation matrix from the the rotation specified by the given quaternion q.
+     * The rest of the matrix is set to the identity.
+     * @param q the quaternion for the rotation
+     * @see https://en.wikipedia.org/wiki/Rotation_matrix#Quaternion
+     */
     static rotationFromQuaternion(q: Quaternion): Matrix4 {
         const scale: Vec3 = new Vec3(1.0, 1.0, 1.0)
         const position: Vec3 = new Vec3(0.0, 0.0, 0.0)
         return Matrix4.compose(position, q, scale)
     }
 
+    /**
+     * Gets the maximum scale value of the 3 axes.
+     */
     maxScaleOnAxis(): number {
         const te: number[] = this.elements
 
@@ -538,6 +711,9 @@ export class Matrix4 {
         return Math.sqrt(Math.max(scaleXSq, scaleYSq, scaleZSq));
     }
 
+    /**
+     * Returns the euler angles represented by this matrix rotation for the three axes in radians. (Order: XYZ)
+     */
     toEuler(): Vec3 {
         const te = this.elements;
 
@@ -559,4 +735,5 @@ export class Matrix4 {
 
         return euler
     }
+
 }

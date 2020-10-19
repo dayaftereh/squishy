@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationService } from 'primeng/api';
-import * as semver from 'semver';
+import * as semverCoerce from 'semver/functions/coerce';
+import * as semverSatisfies from 'semver/functions/satisfies';
 import { ErrorManagerService } from 'src/app/error-manager/service/error-manager.service';
 import { PackageJSON } from 'src/app/package-json';
 import { ProjectsExamplesService } from 'src/app/projects-service/projects-examples.service';
@@ -76,7 +77,7 @@ export class ProjectsManagerUploadComponent {
             throw new Error(`unable to path project version [ ${id} ]`)
         }
 
-        const version: string = semver.coerce(values[1])
+        const version: string = semverCoerce(values[1])
         return version
     }
 
@@ -84,7 +85,7 @@ export class ProjectsManagerUploadComponent {
         const graphVersion: string = this.graphVersion()
         const projectVersion: string = this.projectVersion(project)
         // check if the version is allowed
-        const satisfies: boolean = semver.satisfies(projectVersion, graphVersion)
+        const satisfies: boolean = semverSatisfies(projectVersion, graphVersion)
 
         if (satisfies) {
             // update project to current id

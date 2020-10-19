@@ -71,6 +71,6 @@ const typeDocTasks: string[] = tsConfig.include.map((file: string) => {
     return registerTypeDocTasks(file)
 });
 
-gulp.task('build-typedoc', gulp.series(...typeDocTasks))
+gulp.task('build-typedoc', gulp.series(...typeDocTasks, `clean-typedoc`))
 
 
