@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - `Triangle` to `Mathf`
  - confirm dialog for incompatible project version while importing
  - build scripts
+ - added `upload-artifact` to github actions
  
 ### Changed
 
@@ -35,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
  
  - issue with upload old projects and version compare
+ - issue with new ts config location for scripts
 
 ## 0.1.3 - 24.09.2020
 
