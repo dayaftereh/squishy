@@ -943,8 +943,8 @@
             }
           },
           "position": [
-            38.54522800897084,
-            256.79781335659106
+            95.3605781211064,
+            176.06021056566158
           ],
           "name": "Text-Input"
         },
@@ -985,13 +985,18 @@
                   "node": 25,
                   "input": "ee9e864d-e36c-45cd-8353-3f92b46e5d95",
                   "data": {}
+                },
+                {
+                  "node": 51,
+                  "input": "33d7069d-2476-4107-ade6-27b3f74776ae",
+                  "data": {}
                 }
               ]
             }
           },
           "position": [
-            320.52419061476905,
-            102.99949981811568
+            319.5230987161221,
+            273.1850278718377
           ],
           "name": "Script"
         },
@@ -1032,8 +1037,8 @@
             }
           },
           "position": [
-            705.5646149290242,
-            27.026805700871527
+            701.0530508987899,
+            213.61723064633088
           ],
           "name": "Script"
         },
@@ -1084,8 +1089,8 @@
             }
           },
           "position": [
-            1113.7599126955256,
-            235.14464350672972
+            1098.7435431065842,
+            379.3017915605675
           ],
           "name": "Script"
         },
@@ -1104,7 +1109,8 @@
             "originSize": 10,
             "grid": false,
             "gridSize": 10,
-            "gridDivisions": 10
+            "gridDivisions": 10,
+            "up": "Y"
           },
           "inputs": {
             "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5": {
@@ -1161,8 +1167,101 @@
             }
           },
           "position": [
-            707.9072389959986,
-            320.0245998544925
+            700.8995998544925,
+            464.1817479083303
+          ],
+          "name": "Script"
+        },
+        "50": {
+          "id": 50,
+          "data": {
+            "type": "Chart",
+            "id": "cac86693-400c-404a-a388-5ff638fb0380",
+            "datasets": {
+              "77ad1a1d-bbb7-400e-8e17-6c3628b05121": {
+                "color": "#a3ff00",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "Spline"
+              },
+              "343ef257-ac8c-493d-a1c0-067707c787d7": {
+                "color": "#a300ff",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "Dataset_2"
+              }
+            },
+            "lineTension": 0,
+            "name": "Chart",
+            "animation": true,
+            "pan": "XY",
+            "zoom": "XY",
+            "tooltipFractionDigits": 3
+          },
+          "inputs": {
+            "77ad1a1d-bbb7-400e-8e17-6c3628b05121": {
+              "connections": [
+                {
+                  "node": 51,
+                  "output": "af708f71-7797-4034-831a-eb2347ef09c0",
+                  "data": {}
+                }
+              ]
+            },
+            "343ef257-ac8c-493d-a1c0-067707c787d7": {
+              "connections": []
+            }
+          },
+          "outputs": {},
+          "position": [
+            1101.651110524371,
+            158.55226237461164
+          ],
+          "name": "Chart"
+        },
+        "51": {
+          "id": 51,
+          "data": {
+            "type": "Script",
+            "id": "af708f71-7797-4034-831a-eb2347ef09c0",
+            "variables": {
+              "33d7069d-2476-4107-ade6-27b3f74776ae": "curve"
+            },
+            "name": "Points",
+            "script": "const points = curve.getSpacedPoints(200)\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "33d7069d-2476-4107-ade6-27b3f74776ae": {
+              "connections": [
+                {
+                  "node": 16,
+                  "output": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+                  "data": {}
+                }
+              ]
+            },
+            "2f2381b6-cb27-4fa4-bd77-04ae90484c5a": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "af708f71-7797-4034-831a-eb2347ef09c0": {
+              "connections": [
+                {
+                  "node": 50,
+                  "input": "77ad1a1d-bbb7-400e-8e17-6c3628b05121",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            703.3301966099986,
+            -40.72213855997023
           ],
           "name": "Script"
         }

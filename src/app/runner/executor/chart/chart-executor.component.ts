@@ -77,6 +77,7 @@ export class ChartExecutorComponent implements OnInit, OnDestroy {
         })
 
         return {
+            responsive: true,
             tooltips: {
                 callbacks: {
                     label: (item: any, data: any) => {

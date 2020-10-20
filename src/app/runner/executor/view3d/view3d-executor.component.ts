@@ -93,6 +93,10 @@ export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy
 
     private onFullscreenChanged(): void {
         this.fullscreen = !Utils.isNullOrUndefined(this.document.fullscreenElement)
+        setTimeout(() => {
+            // fire a resized event
+            window.dispatchEvent(new Event('resize'))
+        })
     }
 
     toggleFullscreen(): void {
