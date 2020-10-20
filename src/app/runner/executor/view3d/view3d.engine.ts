@@ -3,7 +3,7 @@ import { View3DUpVector } from 'src/app/projects/project/graph/components/view3d
 import { View3DData } from 'src/app/projects/project/graph/components/view3d/view3d.data';
 import { DomHandler } from 'src/app/utils/dom-handler';
 import { Utils } from 'src/app/utils/utils';
-import { AxesHelper, Clock, GridHelper, Object3D, Vector3 } from 'three';
+import { AmbientLight, AxesHelper, Clock, GridHelper, Object3D, Vector3 } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera';
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer';
 import { Scene } from 'three/src/scenes/Scene';
@@ -27,6 +27,8 @@ export class View3DEngine {
     private renderer: WebGLRenderer | undefined
 
     private rootObject: Object3D | undefined
+
+    private ambientLight: AmbientLight | undefined
 
     private requestAnimationFrameId: number | undefined
 
@@ -62,6 +64,9 @@ export class View3DEngine {
 
         this.clock = new Clock(true)
 
+        // Create the light
+        this.ambientLight = new AmbientLight(0xffffff);
+
         // initialize the scene
         this.initScene()
 
@@ -75,6 +80,8 @@ export class View3DEngine {
         if (Utils.isNullOrUndefined(this.view3DData)) {
             return
         }
+
+        this.scene.add(this.ambientLight)
 
         if (this.view3DData.grid) {
             const gridHelper: GridHelper = new GridHelper(this.view3DData.gridSize, this.view3DData.gridDivisions)

@@ -1,3 +1,6 @@
+import { STLLoader } from './stl/stl-loader'
+import { STLResult } from './stl/stl-result'
+
 export class SquishyIO {
 
     static NEWLINE: string = "\n"
@@ -53,6 +56,18 @@ export class SquishyIO {
                 return value.trim()
             })
         })
+    }
+
+    /**
+     * parse the given data as stl ascii or binary file
+     * @param data the data to parse
+     * @param onProgress (optional) the callback for the progress completed
+     * @see https://en.wikipedia.org/wiki/STL_(file_format)
+     */
+    stlParse(data: ArrayBuffer, onProgress?: (p: number) => void): STLResult {
+        const stlLoader: STLLoader = new STLLoader(onProgress)
+        const result: STLResult = stlLoader.parse(data)
+        return result
     }
 
     /**

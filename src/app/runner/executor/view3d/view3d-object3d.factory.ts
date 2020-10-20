@@ -7,7 +7,7 @@ import { View3DPoints } from 'src/worker/execution/node-executor/script/squishy/
 import { View3DObject } from 'src/worker/execution/node-executor/script/squishy/view3d/view3d-object';
 import { View3DType } from 'src/worker/execution/node-executor/script/squishy/view3d/view3d-type';
 import { View3DVec3 } from 'src/worker/execution/node-executor/script/squishy/view3d/view3d-vec3';
-import { AxesHelper, BufferAttribute, BufferGeometry, GridHelper, Line, LineBasicMaterial, Mesh, MeshPhongMaterial, Object3D, Points, PointsMaterial, Vector3 } from 'three';
+import { AxesHelper, BufferAttribute, BufferGeometry, Color, DoubleSide, GridHelper, Line, LineBasicMaterial, Mesh, MeshPhongMaterial, Object3D, Points, PointsMaterial, Vector3 } from 'three';
 
 export class View3DObject3DFactory {
 
@@ -115,8 +115,19 @@ export class View3DObject3DFactory {
 
         // create the color
         const material: MeshPhongMaterial = new MeshPhongMaterial({
-            color: '#ddddd'
+            color: '#ffdd08',           
+            side: DoubleSide            
         })
+
+        // set the color if given
+        if (view3dGeometry.color) {
+            material.color = new Color(view3dGeometry.color)
+        }
+
+        // set if wireframe
+        if(view3dGeometry.wireframe){
+            material.wireframe = true
+        }
 
         // create the geometry
         const geometry: BufferGeometry = new BufferGeometry()
@@ -163,6 +174,12 @@ export class View3DObject3DFactory {
             view3dObject.rotation.x,
             view3dObject.rotation.y,
             view3dObject.rotation.z
+        )
+
+        object3D.scale.set(
+            view3dObject.scale.x,
+            view3dObject.scale.y,
+            view3dObject.scale.z
         )
     }
 

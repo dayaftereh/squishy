@@ -57,7 +57,7 @@ export class View3DNodeExecutor extends AbstractNodeExecutor {
 
         // check if an array was given
         if (!Array.isArray(result)) {
-            throw new Error(`vew3d only accepts an array of 3d objects`)
+            throw new Error(`view3d only accepts an array of 3d objects`)
         }
 
         // only pass 3d objects
