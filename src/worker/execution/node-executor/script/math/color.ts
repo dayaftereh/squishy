@@ -197,6 +197,25 @@ export class Color {
     }
 
     /**
+     * returns a new color with the components multiplied with the given scale
+     * @param s the scale factor
+     */
+    scale(s: number): Color {
+        const r: number = this.r * s
+        const g: number = this.g * s
+        const b: number = this.b * s
+
+        const color: Color = new Color(
+            clamp(0.0, r, 1.0),
+            clamp(0.0, g, 1.0),
+            clamp(0.0, b, 1.0),
+            this.a
+        )
+
+        return color
+    }
+
+    /**
      * Linearly interpolates this color's RGB values toward the RGB values of the passed argument. 
      * The t argument can be thought of as the ratio between the two colors, where 0.0 is this color and 1.0 is the first argument.
      * @param other color to converge on.
@@ -214,6 +233,13 @@ export class Color {
             this.a
         )
         return color
+    }
+
+    /**
+     * creates a new color with the same components from this color
+     */
+    clone(): Color {
+        return new Color(this.r, this.g, this.b, this.a)
     }
 
 }
