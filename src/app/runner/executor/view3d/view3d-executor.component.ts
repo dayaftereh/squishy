@@ -1,5 +1,7 @@
-import { AfterViewInit, Component, ElementRef, Input, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, Inject, Input, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Card } from 'primeng/card';
+import { fromEvent, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ExecutionResultEvent } from 'src/app/executor-service/execution-result.event';
 import { ExecutorService } from 'src/app/executor-service/executor.service';
@@ -19,11 +21,16 @@ import { View3DEngine } from './view3d.engine';
 })
 export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy {
 
+    fullscreen: boolean | undefined
+
     @Input()
     view3DData: View3DData | undefined
 
     @ViewChild("container")
     container: ElementRef<HTMLElement> | undefined
+
+    @ViewChild("card")
+    card: Card | undefined
 
     private engine: View3DEngine
 
@@ -31,7 +38,12 @@ export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy
 
     private view3dObjectFactory: View3DObject3DFactory | undefined
 
-    constructor(private readonly executorService: ExecutorService, private readonly ngZone: NgZone) {
+    constructor(
+        private readonly ngZone: NgZone,
+        private readonly executorService: ExecutorService,
+        @Inject(DOCUMENT) private readonly document: Document
+    ) {
+        this.fullscreen = false
         this.engine = new View3DEngine(ngZone)
     }
 
@@ -44,7 +56,7 @@ export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy
         }
 
         this.subscription = this.executorService.executionResult(this.view3DData.id).pipe(
-            map((event: ExecutionResultEvent) => {                
+            map((event: ExecutionResultEvent) => {
                 return event.result as View3DObject[]
             }),
             map((objects: View3DObject[]) => {
@@ -52,7 +64,7 @@ export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy
                     return this.view3dObjectFactory.create(object)
                 })
             }),
-            map((objects: Object3D[]) => {                
+            map((objects: Object3D[]) => {
                 // create a group
                 const group: Group = new Group()
                 // add all object 3d to one group
@@ -63,6 +75,10 @@ export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy
         ).subscribe((group: Group) => {
             // update the group ass the root of the engine
             this.engine.root(group)
+        })
+
+        fromEvent(this.document, 'fullscreenchange').subscribe(() => {
+            this.onFullscreenChanged()
         })
     }
 
@@ -75,6 +91,31 @@ export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy
         this.engine.init(element, this.view3DData)
     }
 
+    private onFullscreenChanged(): void {
+        this.fullscreen = !Utils.isNullOrUndefined(this.document.fullscreenElement)
+    }
+
+    toggleFullscreen(): void {
+        if (!this.card || !(this.card as any).el) {
+            return
+        }
+        const elementRef: ElementRef<HTMLElement> = (this.card as any).el
+        const element: HTMLElement = elementRef.nativeElement
+        if (!element) {
+            return
+        }
+
+        if (this.fullscreen) {
+            this.document.exitFullscreen()
+        } else {
+            element.requestFullscreen()
+        }
+    }
+
+    private emitRequestFullscreen(element: HTMLElement): void {
+
+    }
+
     ngOnDestroy(): void {
         if (this.engine) {
             this.engine.destroy()
@@ -83,4 +124,6 @@ export class View3DExecutorComponent implements OnInit, AfterViewInit, OnDestroy
             this.subscription.unsubscribe()
         }
     }
+
+
 }
