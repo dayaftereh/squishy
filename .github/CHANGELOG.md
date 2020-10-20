@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - confirm dialog for incompatible project version while importing
  - build scripts
  - added `upload-artifact` to github actions
+ - `STLLoader` to load ascii or binary stl files
  
 ### Changed
 
