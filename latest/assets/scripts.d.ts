@@ -1695,6 +1695,7 @@ class Squishy {
     progress(value: number): void;
 }
 
+
  class SquishyIO {
     static NEWLINE: string;
     static DELIMITER: string;
@@ -1703,10 +1704,23 @@ class Squishy {
     csvStringify(data: (unknown[][]) | undefined, toString?: (x: unknown) => string, delimiter?: string, newline?: string): string;
     csvParse(content: string | undefined, delimiter?: string): string[][];
     /**
+     * parse the given data as stl ascii or binary file
+     * @param data the data to parse
+     * @param onProgress (optional) the callback for the progress completed
+     * @see https://en.wikipedia.org/wiki/STL_(file_format)
+     */
+    stlParse(data: ArrayBuffer, onProgress?: (p: number) => void): STLResult;
+    /**
      * converts the given number to a string based on the local browser language formatting
      * @param x the number to format
      */
     numberToLocal(x: number): string;
+}
+
+class STLResult {
+    normals: number[];
+    vertices: number[];
+    colors: number[] | undefined;
 }
 
 
@@ -1729,9 +1743,10 @@ class Squishy {
 
  class View3DObject {
     type: View3DType | undefined;
+    scale: View3DVec3 | undefined;
     position: View3DVec3 | undefined;
     rotation: View3DVec3 | undefined;
-    constructor(position?: View3DVec3, rotation?: View3DVec3);
+    constructor(position?: View3DVec3, rotation?: View3DVec3, scale?: View3DVec3);
 }
 
  const View3DTypes: View3DType[]
@@ -1746,10 +1761,17 @@ class View3DVec3 {
 
 
  class View3DGeometry extends View3DObject {
+    /** the the color for the material */
+    color: string | undefined;
+    /** the the color for each face */
     colors: number[] | undefined;
+    /** if true, the object is shown as wireframe */
+    wireframe: boolean | undefined;
+    /** the normals */
     normals: number[] | undefined;
+    /** the vertices */
     vertices: number[] | undefined;
-    constructor(vertices: number[], normals?: number[], colors?: number[], position?: View3DVec3, rotation?: View3DVec3);
+    constructor(vertices: number[], normals?: number[], position?: View3DVec3, rotation?: View3DVec3);
 }
 
 

@@ -21,6 +21,7 @@
 * [csvParse](#csvparse)
 * [csvStringify](#csvstringify)
 * [numberToLocal](#numbertolocal)
+* [stlParse](#stlparse)
 
 ## Properties
 
@@ -28,7 +29,7 @@
 
 ▪ `Static` **DELIMITER**: string = ";"
 
-*Defined in [io/squishy-io.ts:4](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L4)*
+*Defined in [io/squishy-io.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L7)*
 
 ___
 
@@ -36,7 +37,7 @@ ___
 
 ▪ `Static` **NEWLINE**: string = ""
 
-*Defined in [io/squishy-io.ts:3](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L3)*
+*Defined in [io/squishy-io.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L6)*
 
 ___
 
@@ -44,7 +45,7 @@ ___
 
 ▪ `Static` **NF**: NumberFormat = new Intl.NumberFormat(undefined, { maximumFractionDigits: 20 })
 
-*Defined in [io/squishy-io.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L6)*
+*Defined in [io/squishy-io.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L9)*
 
 ___
 
@@ -52,7 +53,7 @@ ___
 
 ▪ `Static` **XML\_MIME\_TYPE**: string = "application/xml"
 
-*Defined in [io/squishy-io.ts:5](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L5)*
+*Defined in [io/squishy-io.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L8)*
 
 ## Methods
 
@@ -60,7 +61,7 @@ ___
 
 ▸ **csvParse**(`content`: string \| undefined, `delimiter?`: string): string[][]
 
-*Defined in [io/squishy-io.ts:37](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L37)*
+*Defined in [io/squishy-io.ts:40](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L40)*
 
 #### Parameters:
 
@@ -77,7 +78,7 @@ ___
 
 ▸ **csvStringify**(`data`: unknown[][] \| undefined, `toString?`: (x: unknown) => string, `delimiter?`: string, `newline?`: string): string
 
-*Defined in [io/squishy-io.ts:10](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L10)*
+*Defined in [io/squishy-io.ts:13](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L13)*
 
 #### Parameters:
 
@@ -96,7 +97,7 @@ ___
 
 ▸ **numberToLocal**(`x`: number): string
 
-*Defined in [io/squishy-io.ts:62](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L62)*
+*Defined in [io/squishy-io.ts:77](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L77)*
 
 converts the given number to a string based on the local browser language formatting
 
@@ -107,6 +108,209 @@ Name | Type | Description |
 `x` | number | the number to format  |
 
 **Returns:** string
+
+___
+
+### stlParse
+
+▸ **stlParse**(`data`: ArrayBuffer, `onProgress?`: (p: number) => void): [STLResult](#interfacesstlresultmd)
+
+*Defined in [io/squishy-io.ts:67](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/squishy-io.ts#L67)*
+
+parse the given data as stl ascii or binary file
+
+**`see`** https://en.wikipedia.org/wiki/STL_(file_format)
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`data` | ArrayBuffer | the data to parse |
+`onProgress?` | (p: number) => void | (optional) the callback for the progress completed |
+
+**Returns:** [STLResult](#interfacesstlresultmd)
+
+
+<a name="classesstlloadermd"></a>
+
+# Class: STLLoader
+
+STL file loader for STL ASCII files, as created by Solidworks and other CAD programs.
+Supports both binary and ASCII encoded files, with automatic detection of type.
+
+<b>Limitations:</b>
+> Binary decoding supports "Magics" color format [Color_in_binary_STL](http://en.wikipedia.org/wiki/STL_(file_format)#Color_in_binary_STL).
+> There is perhaps some question as to how valid it is to always assume little-endian-ness.
+> ASCII decoding assumes file is UTF-8.
+
+## Hierarchy
+
+* **STLLoader**
+
+## Index
+
+### Constructors
+
+* [constructor](#constructor)
+
+### Properties
+
+* [onProgress](#onprogress)
+* [STL\_COLOR\_BYTES](#stl_color_bytes)
+* [STL\_HEADER\_BYTES](#stl_header_bytes)
+
+### Methods
+
+* [emitProgress](#emitprogress)
+* [isBinary](#isbinary)
+* [matchBytesAt](#matchbytesat)
+* [parse](#parse)
+* [parseASCII](#parseascii)
+* [parseBinary](#parsebinary)
+
+## Constructors
+
+### constructor
+
+\+ **new STLLoader**(`onProgress?`: (p: number) => void): [STLLoader](#classesstlloadermd)
+
+*Defined in [io/stl/stl-loader.ts:16](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L16)*
+
+creates a new STLLoader
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`onProgress?` | (p: number) => void | (optional) the callback for the progress completed  |
+
+**Returns:** [STLLoader](#classesstlloadermd)
+
+## Properties
+
+### onProgress
+
+• `Private` `Optional` `Readonly` **onProgress**: (p: number) => void
+
+*Defined in [io/stl/stl-loader.ts:22](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L22)*
+
+(optional) the callback for the progress completed
+
+___
+
+### STL\_COLOR\_BYTES
+
+▪ `Static` `Private` **STL\_COLOR\_BYTES**: number = 10
+
+*Defined in [io/stl/stl-loader.ts:15](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L15)*
+
+___
+
+### STL\_HEADER\_BYTES
+
+▪ `Static` `Private` **STL\_HEADER\_BYTES**: number = 80
+
+*Defined in [io/stl/stl-loader.ts:16](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L16)*
+
+## Methods
+
+### emitProgress
+
+▸ `Private`**emitProgress**(`n`: number): void
+
+*Defined in [io/stl/stl-loader.ts:257](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L257)*
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`n` | number |
+
+**Returns:** void
+
+___
+
+### isBinary
+
+▸ `Private`**isBinary**(`data`: ArrayBuffer): boolean
+
+*Defined in [io/stl/stl-loader.ts:43](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L43)*
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`data` | ArrayBuffer |
+
+**Returns:** boolean
+
+___
+
+### matchBytesAt
+
+▸ `Private`**matchBytesAt**(`query`: number[], `buf`: Buffer, `offset`: number): boolean
+
+*Defined in [io/stl/stl-loader.ts:79](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L79)*
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`query` | number[] |
+`buf` | Buffer |
+`offset` | number |
+
+**Returns:** boolean
+
+___
+
+### parse
+
+▸ **parse**(`data`: ArrayBuffer): [STLResult](#interfacesstlresultmd)
+
+*Defined in [io/stl/stl-loader.ts:30](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L30)*
+
+parse the given data as stl file
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`data` | ArrayBuffer | the stl file content as array buffer  |
+
+**Returns:** [STLResult](#interfacesstlresultmd)
+
+___
+
+### parseASCII
+
+▸ `Private`**parseASCII**(`data`: ArrayBuffer): [STLResult](#interfacesstlresultmd)
+
+*Defined in [io/stl/stl-loader.ts:186](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L186)*
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`data` | ArrayBuffer |
+
+**Returns:** [STLResult](#interfacesstlresultmd)
+
+___
+
+### parseBinary
+
+▸ `Private`**parseBinary**(`data`: ArrayBuffer): [STLResult](#interfacesstlresultmd)
+
+*Defined in [io/stl/stl-loader.ts:93](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-loader.ts#L93)*
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`data` | ArrayBuffer |
+
+**Returns:** [STLResult](#interfacesstlresultmd)
 
 
 <a name="classesview3dmd"></a>
@@ -133,7 +337,7 @@ Name | Type | Description |
 
 •  **View3DAxes**: *typeof* View3DAxes = View3DAxes
 
-*Defined in [view3d/view3d.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L8)*
+*Defined in [view3d/view3d.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L8)*
 
 ___
 
@@ -141,7 +345,7 @@ ___
 
 •  **View3DGeometry**: *typeof* View3DGeometry = View3DGeometry
 
-*Defined in [view3d/view3d.ts:12](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L12)*
+*Defined in [view3d/view3d.ts:12](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L12)*
 
 ___
 
@@ -149,7 +353,7 @@ ___
 
 •  **View3DGrid**: *typeof* View3DGrid = View3DGrid
 
-*Defined in [view3d/view3d.ts:9](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L9)*
+*Defined in [view3d/view3d.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L9)*
 
 ___
 
@@ -157,7 +361,7 @@ ___
 
 •  **View3DLines**: *typeof* View3DLines = View3DLines
 
-*Defined in [view3d/view3d.ts:10](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L10)*
+*Defined in [view3d/view3d.ts:10](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L10)*
 
 ___
 
@@ -165,7 +369,7 @@ ___
 
 •  **View3DPoints**: *typeof* View3DPoints = View3DPoints
 
-*Defined in [view3d/view3d.ts:11](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L11)*
+*Defined in [view3d/view3d.ts:11](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d.ts#L11)*
 
 
 <a name="classesview3daxesmd"></a>
@@ -188,6 +392,7 @@ ___
 
 * [position](#position)
 * [rotation](#rotation)
+* [scale](#scale)
 * [size](#size)
 * [type](#type)
 
@@ -203,7 +408,7 @@ ___
 
 *Overrides [View3DObject](#classesview3dobjectmd).[constructor](#constructor)*
 
-*Defined in [view3d/objects/view3d-axes.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-axes.ts#L7)*
+*Defined in [view3d/objects/view3d-axes.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-axes.ts#L7)*
 
 #### Parameters:
 
@@ -223,7 +428,7 @@ Name | Type |
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[position](#position)*
 
-*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
+*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
 
 ___
 
@@ -233,7 +438,17 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[rotation](#rotation)*
 
-*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
+*Defined in [view3d/view3d-object.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L9)*
+
+___
+
+### scale
+
+•  **scale**: [View3DVec3](#interfacesview3dvec3md) \| undefined
+
+*Inherited from [View3DObject](#classesview3dobjectmd).[scale](#scale)*
+
+*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
 
 ___
 
@@ -241,7 +456,7 @@ ___
 
 •  **size**: number \| undefined
 
-*Defined in [view3d/objects/view3d-axes.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-axes.ts#L7)*
+*Defined in [view3d/objects/view3d-axes.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-axes.ts#L7)*
 
 ___
 
@@ -251,7 +466,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[type](#type)*
 
-*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
+*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
 
 ## Methods
 
@@ -259,7 +474,7 @@ ___
 
 ▸ `Static`**origin**(`size?`: number): [View3DAxes](#classesview3daxesmd)
 
-*Defined in [view3d/objects/view3d-axes.ts:20](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-axes.ts#L20)*
+*Defined in [view3d/objects/view3d-axes.ts:20](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-axes.ts#L20)*
 
 #### Parameters:
 
@@ -288,22 +503,25 @@ Name | Type |
 
 ### Properties
 
+* [color](#color)
 * [colors](#colors)
 * [normals](#normals)
 * [position](#position)
 * [rotation](#rotation)
+* [scale](#scale)
 * [type](#type)
 * [vertices](#vertices)
+* [wireframe](#wireframe)
 
 ## Constructors
 
 ### constructor
 
-\+ **new View3DGeometry**(`vertices`: number[], `normals?`: number[], `colors?`: number[], `position?`: [View3DVec3](#interfacesview3dvec3md), `rotation?`: [View3DVec3](#interfacesview3dvec3md)): [View3DGeometry](#classesview3dgeometrymd)
+\+ **new View3DGeometry**(`vertices`: number[], `normals?`: number[], `position?`: [View3DVec3](#interfacesview3dvec3md), `rotation?`: [View3DVec3](#interfacesview3dvec3md)): [View3DGeometry](#classesview3dgeometrymd)
 
 *Overrides [View3DObject](#classesview3dobjectmd).[constructor](#constructor)*
 
-*Defined in [view3d/objects/view3d-geometry.ts:9](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L9)*
+*Defined in [view3d/objects/view3d-geometry.ts:16](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L16)*
 
 #### Parameters:
 
@@ -311,7 +529,6 @@ Name | Type |
 ------ | ------ |
 `vertices` | number[] |
 `normals?` | number[] |
-`colors?` | number[] |
 `position?` | [View3DVec3](#interfacesview3dvec3md) |
 `rotation?` | [View3DVec3](#interfacesview3dvec3md) |
 
@@ -319,11 +536,23 @@ Name | Type |
 
 ## Properties
 
+### color
+
+•  **color**: string \| undefined
+
+*Defined in [view3d/objects/view3d-geometry.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L8)*
+
+the the color for the material
+
+___
+
 ### colors
 
 •  **colors**: number[] \| undefined
 
-*Defined in [view3d/objects/view3d-geometry.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L7)*
+*Defined in [view3d/objects/view3d-geometry.ts:10](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L10)*
+
+the the color for each face
 
 ___
 
@@ -331,7 +560,9 @@ ___
 
 •  **normals**: number[] \| undefined
 
-*Defined in [view3d/objects/view3d-geometry.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L8)*
+*Defined in [view3d/objects/view3d-geometry.ts:14](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L14)*
+
+the normals
 
 ___
 
@@ -341,7 +572,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[position](#position)*
 
-*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
+*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
 
 ___
 
@@ -351,7 +582,17 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[rotation](#rotation)*
 
-*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
+*Defined in [view3d/view3d-object.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L9)*
+
+___
+
+### scale
+
+•  **scale**: [View3DVec3](#interfacesview3dvec3md) \| undefined
+
+*Inherited from [View3DObject](#classesview3dobjectmd).[scale](#scale)*
+
+*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
 
 ___
 
@@ -361,7 +602,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[type](#type)*
 
-*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
+*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
 
 ___
 
@@ -369,7 +610,19 @@ ___
 
 •  **vertices**: number[] \| undefined
 
-*Defined in [view3d/objects/view3d-geometry.ts:9](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L9)*
+*Defined in [view3d/objects/view3d-geometry.ts:16](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L16)*
+
+the vertices
+
+___
+
+### wireframe
+
+•  **wireframe**: boolean \| undefined
+
+*Defined in [view3d/objects/view3d-geometry.ts:12](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-geometry.ts#L12)*
+
+if true, the object is shown as wireframe
 
 
 <a name="classesview3dgridmd"></a>
@@ -394,6 +647,7 @@ ___
 * [divisions](#divisions)
 * [position](#position)
 * [rotation](#rotation)
+* [scale](#scale)
 * [size](#size)
 * [type](#type)
 
@@ -405,7 +659,7 @@ ___
 
 *Overrides [View3DObject](#classesview3dobjectmd).[constructor](#constructor)*
 
-*Defined in [view3d/objects/view3d-grid.ts:9](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L9)*
+*Defined in [view3d/objects/view3d-grid.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L9)*
 
 #### Parameters:
 
@@ -425,7 +679,7 @@ Name | Type |
 
 •  **color**: string \| undefined
 
-*Defined in [view3d/objects/view3d-grid.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L8)*
+*Defined in [view3d/objects/view3d-grid.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L8)*
 
 ___
 
@@ -433,7 +687,7 @@ ___
 
 •  **divisions**: number \| undefined
 
-*Defined in [view3d/objects/view3d-grid.ts:9](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L9)*
+*Defined in [view3d/objects/view3d-grid.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L9)*
 
 ___
 
@@ -443,7 +697,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[position](#position)*
 
-*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
+*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
 
 ___
 
@@ -453,7 +707,17 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[rotation](#rotation)*
 
-*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
+*Defined in [view3d/view3d-object.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L9)*
+
+___
+
+### scale
+
+•  **scale**: [View3DVec3](#interfacesview3dvec3md) \| undefined
+
+*Inherited from [View3DObject](#classesview3dobjectmd).[scale](#scale)*
+
+*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
 
 ___
 
@@ -461,7 +725,7 @@ ___
 
 •  **size**: number \| undefined
 
-*Defined in [view3d/objects/view3d-grid.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L7)*
+*Defined in [view3d/objects/view3d-grid.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-grid.ts#L7)*
 
 ___
 
@@ -471,7 +735,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[type](#type)*
 
-*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
+*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
 
 
 <a name="classesview3dlinesmd"></a>
@@ -496,6 +760,7 @@ ___
 * [points](#points)
 * [position](#position)
 * [rotation](#rotation)
+* [scale](#scale)
 * [type](#type)
 
 ## Constructors
@@ -506,7 +771,7 @@ ___
 
 *Overrides [View3DObject](#classesview3dobjectmd).[constructor](#constructor)*
 
-*Defined in [view3d/objects/view3d-lines.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-lines.ts#L8)*
+*Defined in [view3d/objects/view3d-lines.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-lines.ts#L8)*
 
 #### Parameters:
 
@@ -525,7 +790,7 @@ Name | Type |
 
 •  **color**: string \| undefined
 
-*Defined in [view3d/objects/view3d-lines.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-lines.ts#L7)*
+*Defined in [view3d/objects/view3d-lines.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-lines.ts#L7)*
 
 ___
 
@@ -533,7 +798,7 @@ ___
 
 •  **points**: [View3DVec3](#interfacesview3dvec3md)[] \| undefined
 
-*Defined in [view3d/objects/view3d-lines.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-lines.ts#L8)*
+*Defined in [view3d/objects/view3d-lines.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-lines.ts#L8)*
 
 ___
 
@@ -543,7 +808,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[position](#position)*
 
-*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
+*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
 
 ___
 
@@ -553,7 +818,17 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[rotation](#rotation)*
 
-*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
+*Defined in [view3d/view3d-object.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L9)*
+
+___
+
+### scale
+
+•  **scale**: [View3DVec3](#interfacesview3dvec3md) \| undefined
+
+*Inherited from [View3DObject](#classesview3dobjectmd).[scale](#scale)*
+
+*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
 
 ___
 
@@ -563,7 +838,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[type](#type)*
 
-*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
+*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
 
 
 <a name="classesview3dobjectmd"></a>
@@ -594,15 +869,16 @@ ___
 
 * [position](#position)
 * [rotation](#rotation)
+* [scale](#scale)
 * [type](#type)
 
 ## Constructors
 
 ### constructor
 
-\+ **new View3DObject**(`position?`: [View3DVec3](#interfacesview3dvec3md), `rotation?`: [View3DVec3](#interfacesview3dvec3md)): [View3DObject](#classesview3dobjectmd)
+\+ **new View3DObject**(`position?`: [View3DVec3](#interfacesview3dvec3md), `rotation?`: [View3DVec3](#interfacesview3dvec3md), `scale?`: [View3DVec3](#interfacesview3dvec3md)): [View3DObject](#classesview3dobjectmd)
 
-*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
+*Defined in [view3d/view3d-object.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L9)*
 
 #### Parameters:
 
@@ -610,6 +886,7 @@ Name | Type |
 ------ | ------ |
 `position?` | [View3DVec3](#interfacesview3dvec3md) |
 `rotation?` | [View3DVec3](#interfacesview3dvec3md) |
+`scale?` | [View3DVec3](#interfacesview3dvec3md) |
 
 **Returns:** [View3DObject](#classesview3dobjectmd)
 
@@ -619,7 +896,7 @@ Name | Type |
 
 •  **position**: [View3DVec3](#interfacesview3dvec3md) \| undefined
 
-*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
+*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
 
 ___
 
@@ -627,7 +904,15 @@ ___
 
 •  **rotation**: [View3DVec3](#interfacesview3dvec3md) \| undefined
 
-*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
+*Defined in [view3d/view3d-object.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L9)*
+
+___
+
+### scale
+
+•  **scale**: [View3DVec3](#interfacesview3dvec3md) \| undefined
+
+*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
 
 ___
 
@@ -635,7 +920,7 @@ ___
 
 •  **type**: [View3DType](#enumsview3dtypemd) \| undefined
 
-*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
+*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
 
 
 <a name="classesview3dpointsmd"></a>
@@ -660,6 +945,7 @@ ___
 * [points](#points)
 * [position](#position)
 * [rotation](#rotation)
+* [scale](#scale)
 * [type](#type)
 
 ## Constructors
@@ -670,7 +956,7 @@ ___
 
 *Overrides [View3DObject](#classesview3dobjectmd).[constructor](#constructor)*
 
-*Defined in [view3d/objects/view3d-points.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-points.ts#L8)*
+*Defined in [view3d/objects/view3d-points.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-points.ts#L8)*
 
 #### Parameters:
 
@@ -689,7 +975,7 @@ Name | Type |
 
 •  **color**: string \| undefined
 
-*Defined in [view3d/objects/view3d-points.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-points.ts#L7)*
+*Defined in [view3d/objects/view3d-points.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-points.ts#L7)*
 
 ___
 
@@ -697,7 +983,7 @@ ___
 
 •  **points**: [View3DVec3](#interfacesview3dvec3md)[] \| undefined
 
-*Defined in [view3d/objects/view3d-points.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-points.ts#L8)*
+*Defined in [view3d/objects/view3d-points.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/objects/view3d-points.ts#L8)*
 
 ___
 
@@ -707,7 +993,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[position](#position)*
 
-*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
+*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
 
 ___
 
@@ -717,7 +1003,17 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[rotation](#rotation)*
 
-*Defined in [view3d/view3d-object.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L8)*
+*Defined in [view3d/view3d-object.ts:9](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L9)*
+
+___
+
+### scale
+
+•  **scale**: [View3DVec3](#interfacesview3dvec3md) \| undefined
+
+*Inherited from [View3DObject](#classesview3dobjectmd).[scale](#scale)*
+
+*Defined in [view3d/view3d-object.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L7)*
 
 ___
 
@@ -727,7 +1023,7 @@ ___
 
 *Inherited from [View3DObject](#classesview3dobjectmd).[type](#type)*
 
-*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
+*Defined in [view3d/view3d-object.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-object.ts#L6)*
 
 
 <a name="enumsview3dtypemd"></a>
@@ -750,7 +1046,7 @@ ___
 
 •  **Axes**:  = "axes"
 
-*Defined in [view3d/view3d-type.ts:2](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L2)*
+*Defined in [view3d/view3d-type.ts:2](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L2)*
 
 ___
 
@@ -758,7 +1054,7 @@ ___
 
 •  **Geometry**:  = "geometry"
 
-*Defined in [view3d/view3d-type.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L6)*
+*Defined in [view3d/view3d-type.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L6)*
 
 ___
 
@@ -766,7 +1062,7 @@ ___
 
 •  **Grid**:  = "grid"
 
-*Defined in [view3d/view3d-type.ts:3](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L3)*
+*Defined in [view3d/view3d-type.ts:3](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L3)*
 
 ___
 
@@ -774,7 +1070,7 @@ ___
 
 •  **Lines**:  = "lines"
 
-*Defined in [view3d/view3d-type.ts:4](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L4)*
+*Defined in [view3d/view3d-type.ts:4](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L4)*
 
 ___
 
@@ -782,7 +1078,7 @@ ___
 
 •  **Points**:  = "points"
 
-*Defined in [view3d/view3d-type.ts:5](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L5)*
+*Defined in [view3d/view3d-type.ts:5](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-type.ts#L5)*
 
 
 <a name="interfacessquishymd"></a>
@@ -811,7 +1107,7 @@ ___
 
 •  **context**: any
 
-*Defined in [squishy.ts:5](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/squishy.ts#L5)*
+*Defined in [squishy.ts:5](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/squishy.ts#L5)*
 
 ___
 
@@ -819,7 +1115,7 @@ ___
 
 •  **io**: [SquishyIO](#classessquishyiomd)
 
-*Defined in [squishy.ts:6](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/squishy.ts#L6)*
+*Defined in [squishy.ts:6](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/squishy.ts#L6)*
 
 ___
 
@@ -827,7 +1123,7 @@ ___
 
 •  **view3d**: [View3D](#classesview3dmd)
 
-*Defined in [squishy.ts:7](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/squishy.ts#L7)*
+*Defined in [squishy.ts:7](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/squishy.ts#L7)*
 
 ## Methods
 
@@ -835,7 +1131,7 @@ ___
 
 ▸ **progress**(`value`: number): void
 
-*Defined in [squishy.ts:8](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/squishy.ts#L8)*
+*Defined in [squishy.ts:8](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/squishy.ts#L8)*
 
 #### Parameters:
 
@@ -844,6 +1140,47 @@ Name | Type |
 `value` | number |
 
 **Returns:** void
+
+
+<a name="interfacesstlresultmd"></a>
+
+# Interface: STLResult
+
+## Hierarchy
+
+* **STLResult**
+
+## Index
+
+### Properties
+
+* [colors](#colors)
+* [normals](#normals)
+* [vertices](#vertices)
+
+## Properties
+
+### colors
+
+•  **colors**: number[] \| undefined
+
+*Defined in [io/stl/stl-result.ts:4](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-result.ts#L4)*
+
+___
+
+### normals
+
+•  **normals**: number[]
+
+*Defined in [io/stl/stl-result.ts:2](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-result.ts#L2)*
+
+___
+
+### vertices
+
+•  **vertices**: number[]
+
+*Defined in [io/stl/stl-result.ts:3](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/io/stl/stl-result.ts#L3)*
 
 
 <a name="interfacesview3dvec3md"></a>
@@ -868,7 +1205,7 @@ Name | Type |
 
 •  **x**: number
 
-*Defined in [view3d/view3d-vec3.ts:2](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-vec3.ts#L2)*
+*Defined in [view3d/view3d-vec3.ts:2](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-vec3.ts#L2)*
 
 ___
 
@@ -876,7 +1213,7 @@ ___
 
 •  **y**: number
 
-*Defined in [view3d/view3d-vec3.ts:3](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-vec3.ts#L3)*
+*Defined in [view3d/view3d-vec3.ts:3](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-vec3.ts#L3)*
 
 ___
 
@@ -884,4 +1221,4 @@ ___
 
 •  **z**: number
 
-*Defined in [view3d/view3d-vec3.ts:4](https://github.com/dayaftereh/squishy/blob/3b17c27/src/worker/execution/node-executor/script/squishy/view3d/view3d-vec3.ts#L4)*
+*Defined in [view3d/view3d-vec3.ts:4](https://github.com/dayaftereh/squishy/blob/6498297/src/worker/execution/node-executor/script/squishy/view3d/view3d-vec3.ts#L4)*
