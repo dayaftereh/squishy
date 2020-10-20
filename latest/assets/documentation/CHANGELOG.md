@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - added `upload-artifact` to github actions
  - `STLLoader` to load ascii or binary stl files
  - `Fullscreen` for `View3d`
+ - `Raytracer` example
  
 ### Changed
 

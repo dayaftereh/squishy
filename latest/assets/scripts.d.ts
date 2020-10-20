@@ -86,12 +86,21 @@ declare namespace Mathf {
     */
     getAlpha(): number;
     /**
+     * returns a new color with the components multiplied with the given scale
+     * @param s the scale factor
+     */
+    scale(s: number): Color;
+    /**
      * Linearly interpolates this color's RGB values toward the RGB values of the passed argument.
      * The t argument can be thought of as the ratio between the two colors, where 0.0 is this color and 1.0 is the first argument.
      * @param other color to converge on.
      * @param t interpolation factor in the closed interval [0, 1].
      */
     lerp(other: Color, t: number): Color;
+    /**
+     * creates a new color with the same components from this color
+     */
+    clone(): Color;
 }
 
 

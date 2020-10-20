@@ -943,8 +943,8 @@
             }
           },
           "position": [
-            38.54522800897084,
-            256.79781335659106
+            95.3605781211064,
+            176.06021056566158
           ],
           "name": "Text-Input"
         },
@@ -985,13 +985,18 @@
                   "node": 25,
                   "input": "ee9e864d-e36c-45cd-8353-3f92b46e5d95",
                   "data": {}
+                },
+                {
+                  "node": 51,
+                  "input": "33d7069d-2476-4107-ade6-27b3f74776ae",
+                  "data": {}
                 }
               ]
             }
           },
           "position": [
-            320.52419061476905,
-            102.99949981811568
+            319.5230987161221,
+            273.1850278718377
           ],
           "name": "Script"
         },
@@ -1032,8 +1037,8 @@
             }
           },
           "position": [
-            705.5646149290242,
-            27.026805700871527
+            701.0530508987899,
+            213.61723064633088
           ],
           "name": "Script"
         },
@@ -1084,8 +1089,8 @@
             }
           },
           "position": [
-            1113.7599126955256,
-            235.14464350672972
+            1098.7435431065842,
+            379.3017915605675
           ],
           "name": "Script"
         },
@@ -1104,7 +1109,8 @@
             "originSize": 10,
             "grid": false,
             "gridSize": 10,
-            "gridDivisions": 10
+            "gridDivisions": 10,
+            "up": "Y"
           },
           "inputs": {
             "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5": {
@@ -1161,10 +1167,616 @@
             }
           },
           "position": [
-            707.9072389959986,
-            320.0245998544925
+            700.8995998544925,
+            464.1817479083303
           ],
           "name": "Script"
+        },
+        "50": {
+          "id": 50,
+          "data": {
+            "type": "Chart",
+            "id": "cac86693-400c-404a-a388-5ff638fb0380",
+            "datasets": {
+              "77ad1a1d-bbb7-400e-8e17-6c3628b05121": {
+                "color": "#a3ff00",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "Spline"
+              },
+              "343ef257-ac8c-493d-a1c0-067707c787d7": {
+                "color": "#a300ff",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "Dataset_2"
+              }
+            },
+            "lineTension": 0,
+            "name": "Chart",
+            "animation": true,
+            "pan": "XY",
+            "zoom": "XY",
+            "tooltipFractionDigits": 3
+          },
+          "inputs": {
+            "77ad1a1d-bbb7-400e-8e17-6c3628b05121": {
+              "connections": [
+                {
+                  "node": 51,
+                  "output": "af708f71-7797-4034-831a-eb2347ef09c0",
+                  "data": {}
+                }
+              ]
+            },
+            "343ef257-ac8c-493d-a1c0-067707c787d7": {
+              "connections": []
+            }
+          },
+          "outputs": {},
+          "position": [
+            1101.651110524371,
+            158.55226237461164
+          ],
+          "name": "Chart"
+        },
+        "51": {
+          "id": 51,
+          "data": {
+            "type": "Script",
+            "id": "af708f71-7797-4034-831a-eb2347ef09c0",
+            "variables": {
+              "33d7069d-2476-4107-ade6-27b3f74776ae": "curve"
+            },
+            "name": "Points",
+            "script": "const points = curve.getSpacedPoints(200)\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "33d7069d-2476-4107-ade6-27b3f74776ae": {
+              "connections": [
+                {
+                  "node": 16,
+                  "output": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+                  "data": {}
+                }
+              ]
+            },
+            "2f2381b6-cb27-4fa4-bd77-04ae90484c5a": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "af708f71-7797-4034-831a-eb2347ef09c0": {
+              "connections": [
+                {
+                  "node": 50,
+                  "input": "77ad1a1d-bbb7-400e-8e17-6c3628b05121",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            703.3301966099986,
+            -40.72213855997023
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "d5b2058f-03bc-4657-86db-a363f125f871",
+    "name": "Raytracer",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "TextInput",
+            "id": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+            "name": "Config",
+            "inputType": "json",
+            "content": "{\r\n    \"background\": {\r\n        \"r\": 0.0,\r\n        \"g\": 0.0,\r\n        \"b\": 0.0\r\n    },\r\n    \"image\": {\r\n        \"width\": 500,\r\n        \"height\": 500\r\n    },\r\n    \"camera\": {\r\n        \"fov\": 45,\r\n        \"up\": {\r\n            \"x\": 0.0,\r\n            \"y\": 1.0,\r\n            \"z\": 0.0\r\n        },\r\n        \"eye\": {\r\n            \"x\": 0.0,\r\n            \"y\": 2.0,\r\n            \"z\": 5.0\r\n        },\r\n        \"target\": {\r\n            \"x\": 0.0,\r\n            \"y\": 1.0,\r\n            \"z\": 8.0\r\n        }\r\n    },\r\n    \"light\": {\r\n        \"color\": {\r\n            \"r\": 1.0,\r\n            \"g\": 1.0,\r\n            \"b\": 1.0\r\n        },\r\n        \"position\": {\r\n            \"x\": -20.0,\r\n            \"y\": -20.0,\r\n            \"z\": 3.0\r\n        }\r\n    },\r\n    \"objects\": [\r\n        {\r\n            \"material\": {\r\n                \"type\": \"phong\",\r\n                \"color\": {\r\n                    \"r\": 0.0,\r\n                    \"g\": 1.0,\r\n                    \"b\": 0.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"sphere\",\r\n                \"position\": {\r\n                    \"x\": 2.5,\r\n                    \"y\": 1.0,\r\n                    \"z\": 17.0\r\n                },\r\n                \"radius\": 2.0\r\n            }\r\n        },\r\n        {\r\n            \"material\": {\r\n                \"type\": \"phong\",\r\n                \"color\": {\r\n                    \"r\": 1.0,\r\n                    \"g\": 0.0,\r\n                    \"b\": 0.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"sphere\",\r\n                \"position\": {\r\n                    \"x\": -2.5,\r\n                    \"y\": 1.0,\r\n                    \"z\": 17.0\r\n                },\r\n                \"radius\": 2.0\r\n            }\r\n        },\r\n        {\r\n            \"material\": {\r\n                \"type\": \"phong\",\r\n                \"color\": {\r\n                    \"r\": 0.0,\r\n                    \"g\": 0.0,\r\n                    \"b\": 1.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"sphere\",\r\n                \"position\": {\r\n                    \"x\": 0.0,\r\n                    \"y\": -3.0,\r\n                    \"z\": 17.0\r\n                },\r\n                \"radius\": 2.0\r\n            }\r\n        },\r\n        {\r\n            \"material\": {\r\n                \"type\": \"checkerboard\",\r\n                \"color\": {\r\n                    \"r\": 1.0,\r\n                    \"g\": 1.0,\r\n                    \"b\": 1.0\r\n                },\r\n                \"color2\": {\r\n                    \"r\": 0.0,\r\n                    \"g\": 0.0,\r\n                    \"b\": 0.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"plane\",\r\n                \"normal\": {\r\n                    \"x\": 0.0,\r\n                    \"y\": -1.0,\r\n                    \"z\": 0.0\r\n                },\r\n                \"position\": {\r\n                    \"x\": 0.0,\r\n                    \"y\": 3.5,\r\n                    \"z\": 0.0\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}"
+          },
+          "inputs": {},
+          "outputs": {
+            "a5912cfe-6456-4dd0-87b5-85c87f24b298": {
+              "connections": [
+                {
+                  "node": 5,
+                  "input": "c32b3271-fb2e-486b-9f3a-e4e7421843e7",
+                  "data": {}
+                },
+                {
+                  "node": 22,
+                  "input": "a7717eb8-e117-4f57-9658-ab107cf79ef7",
+                  "data": {}
+                },
+                {
+                  "node": 24,
+                  "input": "8a8d29d2-08ad-4848-9ffa-439e06fa4fa2",
+                  "data": {}
+                },
+                {
+                  "node": 23,
+                  "input": "6bf9c753-0745-4d13-864e-385dc8544df4",
+                  "data": {}
+                },
+                {
+                  "node": 61,
+                  "input": "ecd457b5-7c71-447a-9f14-a919f717479a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            456.7419249752479,
+            -306.38167712425275
+          ],
+          "name": "Text-Input"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "Script",
+            "id": "369afcad-3c55-4184-9ae8-9d4eaf718073",
+            "variables": {},
+            "name": "PhongMaterial",
+            "script": "function PhongMaterial(color) {\r\n    this.color = color\r\n    this.ambient = 0.7\r\n    this.diffuse = 0.5\r\n    this.specular = 0.3\r\n    this.shininess = 20.0\r\n}\r\n\r\nPhongMaterial.prototype.colorAt = function(point){\r\n    return this.color\r\n}\r\n\r\nPhongMaterial.prototype.calculateAmbient = function (point) {\r\n    const color = this.colorAt(point)\r\n    return color.scale(this.ambient)\r\n}\r\n\r\nPhongMaterial.prototype.calculateDiffuse = function (light, lightray, normal) {\r\n    const dot = lightray.dotWith(normal)\r\n    const color = light.scale(this.diffuse)\r\n    return color.scale(dot)\r\n}\r\n\r\nPhongMaterial.prototype.calculateSpecular = function (light, lightray, normal, direction) {\r\n    const reflect = lightray.reflect(normal)\r\n    const dot = reflect.dotWith(direction)\r\n\r\n    const color = light.scale(this.specular)\r\n    return color.scale(Math.pow(dot, this.shininess))\r\n}\r\n\r\nPhongMaterial.prototype.calculateColor = function (context) {\r\n    const ambient = this.calculateAmbient(context.point)\r\n    const diffuse = this.calculateDiffuse(context.light, context.lightray, context.normal)\r\n    const specular = this.calculateSpecular(context.light, context.lightray, context.normal, context.direction)\r\n\r\n    const color = ambient.addWith(diffuse).addWith(specular)\r\n    return color\r\n}\r\n\r\nPhongMaterial.prototype.getColor = function(context){\r\n    if(context.hasShadow){\r\n        return this.calculateAmbient(context.point)\r\n    }\r\n    return this.calculateColor(context)\r\n}\r\n\r\nreturn PhongMaterial"
+          },
+          "inputs": {
+            "977c7943-8e3f-40e9-8bc2-8faa52653de7": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "369afcad-3c55-4184-9ae8-9d4eaf718073": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "0a99661e-9ef3-414d-bb89-bc101a4281e5",
+                  "data": {}
+                },
+                {
+                  "node": 4,
+                  "input": "2222fd1d-cc4f-42b9-8592-8b431203834a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            -350.95857354456206,
+            154.42169065679894
+          ],
+          "name": "Script"
+        },
+        "3": {
+          "id": 3,
+          "data": {
+            "type": "Script",
+            "id": "1c606a17-09f3-458e-af09-a06f4fbf44b6",
+            "variables": {
+              "0a99661e-9ef3-414d-bb89-bc101a4281e5": "PhongMaterial",
+              "9614542c-4e45-4f7f-b626-261bfd872141": "CheckerboardMaterial"
+            },
+            "name": "MaterialFactory",
+            "script": "function createColor(color) {\r\n    if (!color) {\r\n        return Mathf.Color.random()\r\n    }\r\n    return new Mathf.Color(color.r, color.g, color.b)\r\n}\r\n\r\nfunction setupPhong(phong, material) {\r\n    phong.ambient = material.ambient || 0.7\r\n    phong.diffuse = material.diffuse || 0.5\r\n    phong.specular = material.specular || 0.3\r\n    phong.shininess = material.shininess || 20.0\r\n}\r\n\r\nconst materials = {\r\n    'phong': function (material) {\r\n        const color = createColor(material.color)\r\n        const phong = new PhongMaterial(color)\r\n\r\n        setupPhong(phong, material)\r\n\r\n        return phong\r\n    },\r\n    'checkerboard': function(material){\r\n        const color = createColor(material.color)\r\n        const color2 = createColor(material.color2)\r\n        const checkerboard = new CheckerboardMaterial(color, color2)\r\n\r\n        setupPhong(checkerboard, material)\r\n        \r\n        return checkerboard\r\n    }\r\n}\r\n\r\nreturn materials"
+          },
+          "inputs": {
+            "0a99661e-9ef3-414d-bb89-bc101a4281e5": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "369afcad-3c55-4184-9ae8-9d4eaf718073",
+                  "data": {}
+                }
+              ]
+            },
+            "9614542c-4e45-4f7f-b626-261bfd872141": {
+              "connections": [
+                {
+                  "node": 4,
+                  "output": "1a16d6b3-08c3-4f82-aade-36880ff97cea",
+                  "data": {}
+                }
+              ]
+            },
+            "ee0e20b4-e08f-42bb-9742-cf965967d3a6": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "1c606a17-09f3-458e-af09-a06f4fbf44b6": {
+              "connections": [
+                {
+                  "node": 5,
+                  "input": "98dc7d19-a816-40bb-bcfc-78bfdef1ab54",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            417.6822541993735,
+            130.07618108054953
+          ],
+          "name": "Script"
+        },
+        "4": {
+          "id": 4,
+          "data": {
+            "type": "Script",
+            "id": "1a16d6b3-08c3-4f82-aade-36880ff97cea",
+            "variables": {
+              "2222fd1d-cc4f-42b9-8592-8b431203834a": "PhongMaterial"
+            },
+            "name": "CheckerboardMaterial",
+            "script": "function CheckerboardMaterial(color1, color2) {\r\n    PhongMaterial.call(this, color1)\r\n    this.color2 = color2\r\n    this.checkSize = 1.0\r\n}\r\n\r\nCheckerboardMaterial.prototype = Object.create(PhongMaterial.prototype)\r\n\r\nCheckerboardMaterial.prototype.colorAt = function (point) {\r\n    const v = point.scale(1.0 / this.checkSize)\r\n\r\n    const intX = Math.ceil(Math.abs(v.x) + 0.5)\r\n    const intY = Math.ceil(Math.abs(v.y) + 0.5)\r\n    const intZ = Math.ceil(Math.abs(v.z) + 0.5)\r\n\r\n    if ((intX + intY + intZ) % 2 === 0) {\r\n        return this.color2\r\n    }\r\n\r\n    return this.color\r\n}\r\n\r\nreturn CheckerboardMaterial"
+          },
+          "inputs": {
+            "2222fd1d-cc4f-42b9-8592-8b431203834a": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "369afcad-3c55-4184-9ae8-9d4eaf718073",
+                  "data": {}
+                }
+              ]
+            },
+            "98210624-5fe7-4250-9b27-b2f5ae1aaeac": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "1a16d6b3-08c3-4f82-aade-36880ff97cea": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "9614542c-4e45-4f7f-b626-261bfd872141",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            20.874981390194705,
+            400.76968031890925
+          ],
+          "name": "Script"
+        },
+        "5": {
+          "id": 5,
+          "data": {
+            "type": "Script",
+            "id": "9727fa5d-877b-446f-b9b7-6e8d6205ca4e",
+            "variables": {
+              "c32b3271-fb2e-486b-9f3a-e4e7421843e7": "config",
+              "98dc7d19-a816-40bb-bcfc-78bfdef1ab54": "materialFactory",
+              "86fc9ebe-66b3-477a-97a6-9d3b5dde954b": "shapeFactory"
+            },
+            "name": "ObjectsFactory",
+            "script": "function createObject(objectConfig) {\r\n    const shapeType = objectConfig.shape.type\r\n    const createShapeFn = shapeFactory[shapeType]\r\n    if (!createShapeFn) {\r\n        throw new Error(`unable to find shape factory for type [ ${shapeType} ]`)\r\n    }\r\n\r\n    const shape = createShapeFn(objectConfig.shape)\r\n\r\n    const materialType = objectConfig.material.type\r\n    const createMaterialFn = materialFactory[materialType]\r\n    if (!createMaterialFn) {\r\n        throw new Error(`unable to find material factory for type [ ${materialType} ]`)\r\n    }\r\n\r\n    const material = createMaterialFn(objectConfig.material)\r\n\r\n    return {\r\n        shape,\r\n        material\r\n    }\r\n}\r\n\r\nconst objects = config.objects.map(function(objectConfig){\r\n    return createObject(objectConfig)\r\n})\r\n\r\nreturn objects"
+          },
+          "inputs": {
+            "c32b3271-fb2e-486b-9f3a-e4e7421843e7": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "98dc7d19-a816-40bb-bcfc-78bfdef1ab54": {
+              "connections": [
+                {
+                  "node": 3,
+                  "output": "1c606a17-09f3-458e-af09-a06f4fbf44b6",
+                  "data": {}
+                }
+              ]
+            },
+            "86fc9ebe-66b3-477a-97a6-9d3b5dde954b": {
+              "connections": [
+                {
+                  "node": 21,
+                  "output": "8f936004-3d6c-4d0b-9649-38e57c40ef98",
+                  "data": {}
+                }
+              ]
+            },
+            "f73c94ec-0895-4cd0-89ce-1cfc40dc6859": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "9727fa5d-877b-446f-b9b7-6e8d6205ca4e": {
+              "connections": [
+                {
+                  "node": 23,
+                  "input": "7915da1c-853e-4071-a8c6-3a3a3762ffcf",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            830.8130399913539,
+            148.04746704675352
+          ],
+          "name": "Script"
+        },
+        "21": {
+          "id": 21,
+          "data": {
+            "type": "Script",
+            "id": "8f936004-3d6c-4d0b-9649-38e57c40ef98",
+            "variables": {},
+            "name": "ShapeFactory",
+            "script": "function createVec(v) {\r\n    return new Mathf.Vec3(v.x, v.y, v.z)\r\n}\r\n\r\nconst factory = {\r\n    'plane': function (shape) {\r\n        const normal = createVec(shape.normal)\r\n        const position = createVec(shape.position)\r\n        const plane = Mathf.Plane.fromNormalAndCoplanarPoint(normal, position)\r\n        return plane\r\n    },\r\n    'sphere': function (shape) {\r\n        const center = createVec(shape.position)\r\n        const sphere = new Mathf.Sphere(center, shape.radius)\r\n        return sphere\r\n    },\r\n    'triangle': function (shape) {\r\n        const v1 = createVec(shape.p1)\r\n        const v2 = createVec(shape.p2)\r\n        const v3 = createVec(shape.p3)\r\n        const triangle = new Mathf.Triangle(v1, v2, v3)\r\n        return triangle\r\n    }\r\n}\r\n\r\nreturn factory"
+          },
+          "inputs": {
+            "a72f05cd-c7fb-48fd-9185-502a319df218": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "8f936004-3d6c-4d0b-9649-38e57c40ef98": {
+              "connections": [
+                {
+                  "node": 5,
+                  "input": "86fc9ebe-66b3-477a-97a6-9d3b5dde954b",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            417.562386322299,
+            449.6684703528556
+          ],
+          "name": "Script"
+        },
+        "22": {
+          "id": 22,
+          "data": {
+            "type": "Script",
+            "id": "c6ec00eb-a1b5-4f9c-8f48-5a9bf32cbd6a",
+            "variables": {
+              "a7717eb8-e117-4f57-9658-ab107cf79ef7": "config"
+            },
+            "name": "Camera",
+            "script": "function createVec(v) {\r\n    return new Mathf.Vec3(v.x, v.y, v.z)\r\n}\r\n\r\nfunction Camera() {\r\n    this.up = createVec(config.camera.up)\r\n    this.eye = createVec(config.camera.eye)\r\n    this.target = createVec(config.camera.target)\r\n\r\n    this.fov = config.camera.fov\r\n    this.aspectRatio = config.image.width / config.image.height\r\n\r\n    this.f = this.target.subtractWith(this.eye).normalize()\r\n    this.s = this.f.crossWith(this.up).normalize()\r\n    this.u = this.s.crossWith(this.f)\r\n\r\n    const alpha = this.fov / 2.0\r\n    this.height = 2.0 * Math.tan(alpha)\r\n    this.width = this.aspectRatio * this.height\r\n    this.pixelWidth = this.width / (config.image.width - 1.0)\r\n    this.pixelHeight = this.height / (config.image.height - 1.0)\r\n}\r\n\r\nCamera.prototype.createRay = function (x, y) {\r\n    const xcomp = this.s.scale(x * this.pixelWidth - this.width / 2.0)\r\n    const ycomp = this.u.scale(y * this.pixelHeight - this.height / 2.0)\r\n\r\n    const direction = this.f.addWith(ycomp).addWith(xcomp)\r\n    const ray = new Mathf.Ray(this.eye, direction)\r\n    return ray\r\n}\r\n\r\nconst camera = new Camera()\r\n\r\nreturn camera"
+          },
+          "inputs": {
+            "a7717eb8-e117-4f57-9658-ab107cf79ef7": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "5e21a991-29e5-4e1c-b376-8693f2953759": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "c6ec00eb-a1b5-4f9c-8f48-5a9bf32cbd6a": {
+              "connections": [
+                {
+                  "node": 23,
+                  "input": "05a0a490-8b0c-4280-a109-b7db446f3a0d",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            829.2765851232382,
+            -151.30302561385037
+          ],
+          "name": "Script"
+        },
+        "23": {
+          "id": 23,
+          "data": {
+            "type": "Script",
+            "id": "f0f480be-7ba3-48f0-a98f-09d8d0694e18",
+            "variables": {
+              "fe26b0d0-f02b-4ed8-b035-3ae9d68bcdca": "light",
+              "6bf9c753-0745-4d13-864e-385dc8544df4": "config",
+              "05a0a490-8b0c-4280-a109-b7db446f3a0d": "camera",
+              "7915da1c-853e-4071-a8c6-3a3a3762ffcf": "objects"
+            },
+            "name": "Raytracer",
+            "script": "// create background color\r\nconst background = new Mathf.Color(config.background.r, config.background.g, config.background.b)\r\n\r\n// try to find a hit of any object with the ray\r\nfunction findHitObject(ray) {\r\n    let hitPoint = undefined\r\n    // try to find a hit point\r\n    const hitObject = objects.find(function (object) {\r\n        // check if the ray intersect with the object\r\n        hitPoint = object.shape.intersectRay(ray)\r\n        if (!hitPoint) {\r\n            return false\r\n        }\r\n        return true\r\n    })\r\n\r\n    // if no hit found\r\n    if (!hitObject) {\r\n        return undefined\r\n    }\r\n\r\n    return {\r\n        point: hitPoint,\r\n        object: hitObject,\r\n    }\r\n}\r\n\r\nfunction isShadowAt(point, ray) {\r\n    const hit = findHitObject(ray)\r\n    if (!hit) {\r\n        return false\r\n    }\r\n\r\n    const distance = hit.point.distanceTo(point)\r\n    return distance > 0.00000001    \r\n}\r\n\r\nfunction calculateColor(point, object, ray) {\r\n    const normal = object.shape.normalAt(point)\r\n    const lightRay = light.createRayTo(point)\r\n    const hasShadow = isShadowAt(point, lightRay)\r\n\r\n    const context = {\r\n        point,\r\n        normal,\r\n        hasShadow,\r\n        light: light.color,\r\n        direction: ray.direction,\r\n        lightray: lightRay.direction,\r\n    }\r\n\r\n    const color = object.material.getColor(context)\r\n    return color\r\n}\r\n\r\nfunction colorAt(x, y) {\r\n    // create the ray\r\n    const ray = camera.createRay(x, y)\r\n\r\n    // try to find a hit\r\n    const hit = findHitObject(ray)\r\n    // if no hit found return background\r\n    if (!hit) {\r\n        return background.clone()\r\n    }\r\n\r\n    const color = calculateColor(hit.point, hit.object, ray)\r\n    return color\r\n}\r\n\r\nconst colors = []\r\n\r\nconst length = config.image.width * config.image.height\r\n\r\nfor (let y = 0; y < config.image.height; y++) {\r\n    for (let x = 0; x < config.image.width; x++) {\r\n        const color = colorAt(x, y)\r\n        colors.push(color)\r\n\r\n        const done = x * config.image.height + y\r\n        Squishy.progress(done / length)\r\n    }\r\n}\r\n\r\nconsole.log(colors)\r\n\r\nreturn colors"
+          },
+          "inputs": {
+            "fe26b0d0-f02b-4ed8-b035-3ae9d68bcdca": {
+              "connections": [
+                {
+                  "node": 24,
+                  "output": "a5853a25-09cb-4277-a577-24876ec6bb04",
+                  "data": {}
+                }
+              ]
+            },
+            "6bf9c753-0745-4d13-864e-385dc8544df4": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "05a0a490-8b0c-4280-a109-b7db446f3a0d": {
+              "connections": [
+                {
+                  "node": 22,
+                  "output": "c6ec00eb-a1b5-4f9c-8f48-5a9bf32cbd6a",
+                  "data": {}
+                }
+              ]
+            },
+            "7915da1c-853e-4071-a8c6-3a3a3762ffcf": {
+              "connections": [
+                {
+                  "node": 5,
+                  "output": "9727fa5d-877b-446f-b9b7-6e8d6205ca4e",
+                  "data": {}
+                }
+              ]
+            },
+            "08a0abb9-e83e-4fa4-ba63-83adb60c5e0d": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "f0f480be-7ba3-48f0-a98f-09d8d0694e18": {
+              "connections": [
+                {
+                  "node": 61,
+                  "input": "aa4146f4-ec26-441d-b4e0-8247239e1e08",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            1174.6455256578888,
+            -194.04723792072318
+          ],
+          "name": "Script"
+        },
+        "24": {
+          "id": 24,
+          "data": {
+            "type": "Script",
+            "id": "a5853a25-09cb-4277-a577-24876ec6bb04",
+            "variables": {
+              "8a8d29d2-08ad-4848-9ffa-439e06fa4fa2": "config"
+            },
+            "name": "Light",
+            "script": "function createVec(v) {\r\n    return new Mathf.Vec3(v.x, v.y, v.z)\r\n}\r\n\r\nfunction createColor(color) {\r\n    return new Mathf.Color(color.r, color.g, color.b)\r\n}\r\n\r\n\r\nfunction Light() {\r\n    this.color = createColor(config.light.color)\r\n    this.position = createVec(config.light.position)\r\n}\r\n\r\nLight.prototype.createRayTo = function(origin){\r\n   const direction = this.position.subtractWith(origin)\r\n   const ray = new Mathf.Ray(origin, direction)\r\n   return ray\r\n}\r\n\r\nconst light = new Light()\r\nreturn light"
+          },
+          "inputs": {
+            "8a8d29d2-08ad-4848-9ffa-439e06fa4fa2": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "1c021e1c-4a0f-4e67-96ac-6b50373a6551": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "a5853a25-09cb-4277-a577-24876ec6bb04": {
+              "connections": [
+                {
+                  "node": 23,
+                  "input": "fe26b0d0-f02b-4ed8-b035-3ae9d68bcdca",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            823.6713810989921,
+            -610.7904381049742
+          ],
+          "name": "Script"
+        },
+        "61": {
+          "id": 61,
+          "data": {
+            "type": "Script",
+            "id": "8745d109-bcf4-4694-901c-5974517e9978",
+            "variables": {
+              "ecd457b5-7c71-447a-9f14-a919f717479a": "config",
+              "aa4146f4-ec26-441d-b4e0-8247239e1e08": "colors"
+            },
+            "name": "Image",
+            "script": "const png = new Plugins.pngjs.PNG({ width: config.image.width, height: config.image.height })\r\n\r\ncolors.forEach(function (color, index) {\r\n    const i = index * 4\r\n    png.data[i] = color.getR()\r\n    png.data[i + 1] = color.getG()\r\n    png.data[i + 2] = color.getB()\r\n    png.data[i + 3] = 255.0\r\n})\r\n\r\nconst options = { colorType: 6 }\r\n\r\nconst buffer = Plugins.pngjs.PNG.sync.write(png, options)\r\nreturn buffer"
+          },
+          "inputs": {
+            "ecd457b5-7c71-447a-9f14-a919f717479a": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "aa4146f4-ec26-441d-b4e0-8247239e1e08": {
+              "connections": [
+                {
+                  "node": 23,
+                  "output": "f0f480be-7ba3-48f0-a98f-09d8d0694e18",
+                  "data": {}
+                }
+              ]
+            },
+            "11b0a4bb-a40f-466f-96c6-b93dfd1dbb88": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "8745d109-bcf4-4694-901c-5974517e9978": {
+              "connections": [
+                {
+                  "node": 62,
+                  "input": "fd3b7643-b287-4176-baa8-85c85085ee19",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            1687.990178246635,
+            -611.389005092761
+          ],
+          "name": "Script"
+        },
+        "62": {
+          "id": 62,
+          "data": {
+            "type": "FileOutput",
+            "id": "fd3b7643-b287-4176-baa8-85c85085ee19",
+            "name": "Image Output",
+            "filename": "image.png"
+          },
+          "inputs": {
+            "fd3b7643-b287-4176-baa8-85c85085ee19": {
+              "connections": [
+                {
+                  "node": 61,
+                  "output": "8745d109-bcf4-4694-901c-5974517e9978",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            2041.990115321252,
+            -319.1369439868204
+          ],
+          "name": "File-Output"
         }
       }
     }
