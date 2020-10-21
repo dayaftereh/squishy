@@ -150,7 +150,7 @@ export class Triangle {
      */
     normalAt(point: Vec3): Vec3 {
         const n: Vec3 = Triangle.calculateNormal(this.a, this.b, this.c)
-        return n
+        return n.normalize()
     }
 
     /**

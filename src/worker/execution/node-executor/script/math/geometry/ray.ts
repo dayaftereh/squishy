@@ -183,10 +183,10 @@ export class Ray {
         const thc: number = Math.sqrt(radius2 - d2)
 
         // t0 = first intersect point - entrance on front of sphere
-        const t0: number = tca - thc
+        let t0: number = tca - thc
 
         // t1 = second intersect point - exit point on back of sphere
-        const t1: number = tca + thc
+        let t1: number = tca + thc
 
         // test to see if both t0 and t1 are behind the ray - if so, return undefined
         if (t0 < 0.0 && t1 < 0.0) {
@@ -291,6 +291,17 @@ export class Ray {
     reflect(point: Vec3, normal: Vec3): Ray {
         const n: Vec3 = this.direction.reflect(normal)
         const ray: Ray = new Ray(point, n)
+        return ray
+    }
+
+    /**
+     * creates a new ray from the given point to the given point
+     * @param from the start point
+     * @param to the end point
+     */
+    static createFromTo(from: Vec3, to: Vec3): Ray {
+        const direction: Vec3 = to.subtractWith(from)
+        const ray: Ray = new Ray(from, direction)
         return ray
     }
 
