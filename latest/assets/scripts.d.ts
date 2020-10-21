@@ -1428,6 +1428,12 @@ declare namespace Mathf {
      * @param normal the normal to the reflecting plane
      */
     reflect(point: Vec3, normal: Vec3): Ray;
+    /**
+     * creates a new ray from the given point to the given point
+     * @param from the start point
+     * @param to the end point
+     */
+    static createFromTo(from: Vec3, to: Vec3): Ray;
 }
 
 
