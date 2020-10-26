@@ -22,7 +22,7 @@
 
 •  **buffer**: "buffer" = buffer
 
-*Defined in [plugins.ts:30](https://github.com/dayaftereh/squishy/blob/fde2f5f/src/worker/execution/node-executor/script/plugins/plugins.ts#L30)*
+*Defined in [plugins.ts:30](https://github.com/dayaftereh/squishy/blob/37e4406/src/worker/execution/node-executor/script/plugins/plugins.ts#L30)*
 
 import from buffer, which is the buffer module from node.js, for the browser.
 
@@ -36,7 +36,7 @@ ___
 
 •  **dayjs**: dayjs = dayjs
 
-*Defined in [plugins.ts:11](https://github.com/dayaftereh/squishy/blob/fde2f5f/src/worker/execution/node-executor/script/plugins/plugins.ts#L11)*
+*Defined in [plugins.ts:11](https://github.com/dayaftereh/squishy/blob/37e4406/src/worker/execution/node-executor/script/plugins/plugins.ts#L11)*
 
 import from dayjs to parses, validates, manipulates, and displays dates
 
@@ -48,7 +48,7 @@ ___
 
 •  **pngjs**: any = pngjs
 
-*Defined in [plugins.ts:23](https://github.com/dayaftereh/squishy/blob/fde2f5f/src/worker/execution/node-executor/script/plugins/plugins.ts#L23)*
+*Defined in [plugins.ts:23](https://github.com/dayaftereh/squishy/blob/37e4406/src/worker/execution/node-executor/script/plugins/plugins.ts#L23)*
 
 import from pngjs, which is a simple PNG encoder/decoder in javascript
 
@@ -60,7 +60,7 @@ ___
 
 •  **xmldom**: any = xmldom
 
-*Defined in [plugins.ts:17](https://github.com/dayaftereh/squishy/blob/fde2f5f/src/worker/execution/node-executor/script/plugins/plugins.ts#L17)*
+*Defined in [plugins.ts:17](https://github.com/dayaftereh/squishy/blob/37e4406/src/worker/execution/node-executor/script/plugins/plugins.ts#L17)*
 
 import from xmldom, which allows to parse xml or dom files
 
