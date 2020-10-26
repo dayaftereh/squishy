@@ -119,8 +119,11 @@
                             "zoom": {
                                 "lbl": "Zoom"
                             },
-                            "tooltipFractionDigits":{
+                            "tooltipFractionDigits": {
                                 "lbl": "Tooltip Fraction"
+                            },
+                            "lineTension": {
+                                "lbl": "Line Tension"
                             }
                         },
                         "dataset": {
@@ -136,6 +139,58 @@
                             },
                             "fill": {
                                 "lbl": "Fill"
+                            },
+                            "line-width": {
+                                "lbl": "Line-Width"
+                            },
+                            "point-radius": {
+                                "lbl": "Point-Radius"
+                            }
+                        }
+                    },
+                    "view3d": {
+                        "node": {
+                            "input": {
+                                "lbl": "3D-Objects"
+                            }
+                        },
+                        "properties": {
+                            "header": "3D-View Properties",
+                            "name": {
+                                "lbl": "Name"
+                            },
+                            "fov": {
+                                "lbl": "Field of view"
+                            },
+                            "near": {
+                                "lbl": "Near plane"
+                            },
+                            "far": {
+                                "lbl": "Far plane"
+                            },
+                            "antiAlias": {
+                                "lbl": "Anti Alias"
+                            },
+                            "viewOrigin": {
+                                "lbl": "View Origin"
+                            },
+                            "originSize": {
+                                "lbl": "Size of Origin Axes"
+                            },
+                            "control": {
+                                "lbl": "Control"
+                            },
+                            "camera-up": {
+                                "lbl": "Camera-UP"
+                            },
+                            "grid": {
+                                "lbl": "Grid"
+                            },
+                            "gridSize": {
+                                "lbl": "Grid-Size"
+                            },
+                            "gridDivisions": {
+                                "lbl": "Grid-Divisions"
                             }
                         }
                     }
@@ -146,7 +201,8 @@
                         "file-input": "File-Input",
                         "file-output": "File-Output",
                         "text-input": "Text-Input",
-                        "chart": "Chart"
+                        "chart": "Chart",
+                        "view3d": "3D-View"
                     },
                     "btn": {
                         "delete": "Delete",
@@ -175,6 +231,12 @@
                 "message": "Are you sure that you want to delete all selected projects ?"
             },
             "header": "Projects"
+        },
+        "upload": {
+            "overwrite-dialog": {
+                "header": "Incompatible version",
+                "message": "The project {{name}} has a incompatible version {{projectVersion}},<br>because squishy requires version {{graphVersion}}.<br>Do you want to overwrite the project version<br>and use the project anyway ?"
+            }
         }
     },
     "properties-dialog": {
@@ -204,7 +266,8 @@
         "btn": {
             "cancel": "Cancel",
             "choose": "Choose",
-            "upload": "Upload"
+            "upload": "Upload",
+            "examples": "Examples"
         }
     },
     "p-confirmDialog": {

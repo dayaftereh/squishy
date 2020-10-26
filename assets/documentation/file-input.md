@@ -1,9 +1,11 @@
 # File-Input
 
-The file input allows to load local files from the computer. `squishy` used for this the file upload locally and allows to load files as `string` or `ArrayBuffer`. 
+The file input node allows to load local files from the computer. `squishy` used for this the file upload locally and allows to load files as `string` or `ArrayBuffer`. 
 Additionally some upload and filer can be configured.
 
- ![File-Input](./png/file-input.png)
+<p align="center">
+    <img alt="File-Input" src="./assets/documentation/png/file-input.png">
+</p>
 
  ## Properties
 
@@ -11,7 +13,7 @@ Following `file-input` properties can be set:
 
 <dl>
   <dt><b>Name</b></dt>
-  <dd>The name of the `File-Input` block.</dd>
+  <dd>The name of the <code>File-Input</code> node.</dd>
 
   <dt><b>Mode</b></dt>
   <dd><code>binary</code> or <code>text</code> for load the content of the file as <code>ArrayBuffer</code> or <code>string</code>.</dd>

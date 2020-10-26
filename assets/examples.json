@@ -1,0 +1,1914 @@
+[
+  {
+    "id": "372f1b46-88c2-481b-b889-a01bc95b4398",
+    "name": "Chart",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Chart",
+            "id": "8b4fb13d-2328-4ca8-9376-819f1bd96614",
+            "datasets": {
+              "30a274a4-b824-41d1-a5af-3a0917fdbf15": {
+                "color": "#ff0053",
+                "fill": false,
+                "lines": true,
+                "name": "Dataset1"
+              },
+              "ef851ec1-bd94-467f-8277-1b796795efab": {
+                "color": "#0fdb7c",
+                "fill": false,
+                "lines": true,
+                "name": "Dataset2"
+              },
+              "abd9c3ff-23e4-4ba7-80b4-40653d7eb0d5": {
+                "color": "#d1b519",
+                "fill": false,
+                "lines": true,
+                "name": "Dataset3"
+              }
+            },
+            "lineTension": 0,
+            "name": "ChartExample",
+            "animation": true,
+            "pan": "XY",
+            "zoom": "Y",
+            "tooltipFractionDigits": 3
+          },
+          "inputs": {
+            "30a274a4-b824-41d1-a5af-3a0917fdbf15": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "0c29ea5a-7ac3-4799-bc6b-0cf9db61fa93",
+                  "data": {}
+                }
+              ]
+            },
+            "ef851ec1-bd94-467f-8277-1b796795efab": {
+              "connections": [
+                {
+                  "node": 3,
+                  "output": "7f10cc13-f476-4043-b7fd-c342376dfe32",
+                  "data": {}
+                }
+              ]
+            },
+            "abd9c3ff-23e4-4ba7-80b4-40653d7eb0d5": {
+              "connections": []
+            }
+          },
+          "outputs": {},
+          "position": [
+            901.1424917917294,
+            167.25152451121326
+          ],
+          "name": "Chart"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "Script",
+            "id": "0c29ea5a-7ac3-4799-bc6b-0cf9db61fa93",
+            "variables": {},
+            "name": "Dataset1",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec2.random()\r\n    points.push(point.scale(100.0))\r\n}\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "c9a3dac9-bb84-4828-908b-a5c86275641d": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "0c29ea5a-7ac3-4799-bc6b-0cf9db61fa93": {
+              "connections": [
+                {
+                  "node": 1,
+                  "input": "30a274a4-b824-41d1-a5af-3a0917fdbf15",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            496.29757423610647,
+            39.78147511532409
+          ],
+          "name": "Script"
+        },
+        "3": {
+          "id": 3,
+          "data": {
+            "type": "Script",
+            "id": "7f10cc13-f476-4043-b7fd-c342376dfe32",
+            "variables": {},
+            "name": "Dataset2",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec2.random()\r\n    points.push(point.scale(100.0))\r\n}\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "98727792-5471-4ae3-881b-362fe5bd7d34": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "7f10cc13-f476-4043-b7fd-c342376dfe32": {
+              "connections": [
+                {
+                  "node": 1,
+                  "input": "ef851ec1-bd94-467f-8277-1b796795efab",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            495.56318287082576,
+            279.91751086846847
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "12ff76a7-e5ae-4fcb-bf86-b45fe6b308a5",
+    "name": "3D",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "7": {
+          "id": 7,
+          "data": {
+            "type": "View3D",
+            "id": "ef1bde6f-eebe-4b58-a935-26afe2b0bc71",
+            "name": "View3D",
+            "fov": 50,
+            "near": 0.1,
+            "far": 2000,
+            "antiAlias": false,
+            "control": "orbit",
+            "viewOrigin": true,
+            "originSize": 10,
+            "grid": false,
+            "gridSize": 10,
+            "gridDivisions": 10
+          },
+          "inputs": {
+            "ef1bde6f-eebe-4b58-a935-26afe2b0bc71": {
+              "connections": [
+                {
+                  "node": 8,
+                  "output": "4c1ee4ba-5f8e-4709-84bd-ff3f9d43a0d3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            1097.9428208386278,
+            190.2495235069886
+          ],
+          "name": "View3D"
+        },
+        "8": {
+          "id": 8,
+          "data": {
+            "type": "Script",
+            "id": "4c1ee4ba-5f8e-4709-84bd-ff3f9d43a0d3",
+            "variables": {
+              "0ed3668f-9c1f-463d-b755-2bf43f372e80": "view3DPoints",
+              "3d70bfa5-7a98-49c7-835f-a2036b2a61a7": "view3DLines",
+              "6255bd7a-ee74-4c72-9e4f-2edd9c45358a": "axesHelper",
+              "9b907afc-1afb-4850-ba84-95cc3c1185e2": "grid"
+            },
+            "name": "Join",
+            "script": "const objects3D = [\r\n    grid,\r\n    axesHelper,\r\n    view3DLines,\r\n    view3DPoints,\r\n]\r\n\r\nreturn objects3D"
+          },
+          "inputs": {
+            "0ed3668f-9c1f-463d-b755-2bf43f372e80": {
+              "connections": [
+                {
+                  "node": 9,
+                  "output": "72011c23-fa50-4c6f-8f3a-53349ba2384f",
+                  "data": {}
+                }
+              ]
+            },
+            "3d70bfa5-7a98-49c7-835f-a2036b2a61a7": {
+              "connections": [
+                {
+                  "node": 10,
+                  "output": "ab7bbd3d-9e24-495a-9f7c-1e22d478dd1a",
+                  "data": {}
+                }
+              ]
+            },
+            "6255bd7a-ee74-4c72-9e4f-2edd9c45358a": {
+              "connections": [
+                {
+                  "node": 11,
+                  "output": "7d146017-466c-42fe-928b-2aca639ee671",
+                  "data": {}
+                }
+              ]
+            },
+            "9b907afc-1afb-4850-ba84-95cc3c1185e2": {
+              "connections": [
+                {
+                  "node": 27,
+                  "output": "97542258-a8a2-4ba9-b3e5-7a1cb1eb38e1",
+                  "data": {}
+                }
+              ]
+            },
+            "c1edda2b-6be0-4319-8953-3de40ad7cdda": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "4c1ee4ba-5f8e-4709-84bd-ff3f9d43a0d3": {
+              "connections": [
+                {
+                  "node": 7,
+                  "input": "ef1bde6f-eebe-4b58-a935-26afe2b0bc71",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            714.3350309203347,
+            138.19593488541287
+          ],
+          "name": "Script"
+        },
+        "9": {
+          "id": 9,
+          "data": {
+            "type": "Script",
+            "id": "72011c23-fa50-4c6f-8f3a-53349ba2384f",
+            "variables": {},
+            "name": "Points",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec3.random()\r\n    points.push(point.scale(10.0))\r\n}\r\n\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dPoints = new Squishy.view3d.View3DPoints(points, color)\r\n\r\nreturn view3dPoints"
+          },
+          "inputs": {
+            "7cac22c7-fb12-449c-8a6c-aa445a24d618": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "72011c23-fa50-4c6f-8f3a-53349ba2384f": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "0ed3668f-9c1f-463d-b755-2bf43f372e80",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            319.9563482369968,
+            12.020243877166585
+          ],
+          "name": "Script"
+        },
+        "10": {
+          "id": 10,
+          "data": {
+            "type": "Script",
+            "id": "ab7bbd3d-9e24-495a-9f7c-1e22d478dd1a",
+            "variables": {},
+            "name": "Lines",
+            "script": "const points = []\r\n\r\nfor (let i = 0; i < 10; i++) {\r\n    const point = Mathf.Vec3.random()\r\n    points.push(point.scale(10.0))\r\n}\r\n\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dLines = new Squishy.view3d.View3DLines(points, color)\r\n\r\nreturn view3dLines"
+          },
+          "inputs": {
+            "88cdbfc7-cf08-4940-9fe3-02c2bdfbc3de": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "ab7bbd3d-9e24-495a-9f7c-1e22d478dd1a": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "3d70bfa5-7a98-49c7-835f-a2036b2a61a7",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            320.90504607085416,
+            242.05842310715062
+          ],
+          "name": "Script"
+        },
+        "11": {
+          "id": 11,
+          "data": {
+            "type": "Script",
+            "id": "7d146017-466c-42fe-928b-2aca639ee671",
+            "variables": {},
+            "name": "AxesHelper",
+            "script": "const axesHelper = new Squishy.view3d.View3DAxes()\r\n\r\naxesHelper.position.x = 15.0\r\naxesHelper.position.z = -5.0\r\n\r\naxesHelper.rotation.y = Mathf.toRadians(35.0)\r\naxesHelper.rotation.z = Mathf.toRadians(-12.0)\r\n\r\nreturn axesHelper"
+          },
+          "inputs": {
+            "3681c726-df71-450e-b745-2d58fbcba504": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "7d146017-466c-42fe-928b-2aca639ee671": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "6255bd7a-ee74-4c72-9e4f-2edd9c45358a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            322.90942160785744,
+            464.0704347035285
+          ],
+          "name": "Script"
+        },
+        "27": {
+          "id": 27,
+          "data": {
+            "type": "Script",
+            "id": "97542258-a8a2-4ba9-b3e5-7a1cb1eb38e1",
+            "variables": {},
+            "name": "Grid",
+            "script": "const grid = new Squishy.view3d.View3DGrid(50.0, 10.0)\r\n\r\ngrid.color = Mathf.Color.random().toHex()\r\ngrid.position.y = -1.0\r\n\r\nreturn grid"
+          },
+          "inputs": {
+            "f0959c7a-258b-45ee-b852-644b1e89cbd8": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "97542258-a8a2-4ba9-b3e5-7a1cb1eb38e1": {
+              "connections": [
+                {
+                  "node": 8,
+                  "input": "9b907afc-1afb-4850-ba84-95cc3c1185e2",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            317.62681391400685,
+            683.0944467531936
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "04939c76-8647-4425-9089-57b34cc33554",
+    "name": "Input & Output",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "28": {
+          "id": 28,
+          "data": {
+            "type": "FileInput",
+            "id": "fabea6c0-329a-4eea-9138-e427bb76a069",
+            "name": "Load",
+            "mode": "binary",
+            "encoding": "UTF-8",
+            "accept": "*"
+          },
+          "inputs": {},
+          "outputs": {
+            "fabea6c0-329a-4eea-9138-e427bb76a069": {
+              "connections": [
+                {
+                  "node": 29,
+                  "input": "5e56c8f8-4bc7-4026-89a6-87bdbbc4108f",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            263.73739130434785,
+            100.06760869565218
+          ],
+          "name": "File-Input"
+        },
+        "29": {
+          "id": 29,
+          "data": {
+            "type": "FileOutput",
+            "id": "5e56c8f8-4bc7-4026-89a6-87bdbbc4108f",
+            "name": "Output"
+          },
+          "inputs": {
+            "5e56c8f8-4bc7-4026-89a6-87bdbbc4108f": {
+              "connections": [
+                {
+                  "node": 28,
+                  "output": "fabea6c0-329a-4eea-9138-e427bb76a069",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            570.0103385895472,
+            186.13238389611794
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
+  },
+  {
+    "id": "e896c4e6-2916-4032-8baa-ab10883a5382",
+    "name": "Prime Number",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "30": {
+          "id": 30,
+          "data": {
+            "type": "TextInput",
+            "id": "465ed7d9-7d12-438e-898e-0dd154c2717c",
+            "name": "Config",
+            "content": "{\r\n    \"min\": 0,\r\n    \"max\": 100\r\n}",
+            "inputType": "json"
+          },
+          "inputs": {},
+          "outputs": {
+            "465ed7d9-7d12-438e-898e-0dd154c2717c": {
+              "connections": [
+                {
+                  "node": 31,
+                  "input": "8c465011-faf4-4fcf-92d4-31c3a7062aad",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            131.6997451744852,
+            6.659528114659423
+          ],
+          "name": "Text-Input"
+        },
+        "31": {
+          "id": 31,
+          "data": {
+            "type": "Script",
+            "id": "b723af1f-39e6-45fd-9a95-da7667c56366",
+            "variables": {
+              "8c465011-faf4-4fcf-92d4-31c3a7062aad": "config"
+            },
+            "name": "Find Primes",
+            "script": "function isPrime(p) {\r\n    if (p < 2) {\r\n        return false\r\n    }\r\n\r\n    for (let i = 2; i < p; i++) {\r\n        const m = p % i\r\n        if (m === 0) {\r\n            return false\r\n        }\r\n    }\r\n\r\n    return true\r\n}\r\n\r\nconst min = Math.round(Math.max(config.min, 1.0))\r\nif(isNaN(min)){\r\n    min = 1.0\r\n}\r\n\r\nconst max = Math.round(Math.max(config.max, min + 1.0))\r\nif(isNaN(max)){\r\n    max = min + 1.0\r\n}\r\nconst primes = []\r\n\r\nfor (let p = min; p <= max; p++) {\r\n    const progress = Mathf.clamp(0.0, (p - min) / (max - min), 1.0)\r\n    Squishy.progress(progress)\r\n\r\n    if (isPrime(p)) {\r\n        primes.push(p)\r\n    }\r\n}\r\n\r\nreturn primes"
+          },
+          "inputs": {
+            "8c465011-faf4-4fcf-92d4-31c3a7062aad": {
+              "connections": [
+                {
+                  "node": 30,
+                  "output": "465ed7d9-7d12-438e-898e-0dd154c2717c",
+                  "data": {}
+                }
+              ]
+            },
+            "de969163-d419-4c23-b254-8c53bacb5587": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "b723af1f-39e6-45fd-9a95-da7667c56366": {
+              "connections": [
+                {
+                  "node": 32,
+                  "input": "55560b2f-58bd-439f-92a6-c2cce57a2082",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            326.5678147571339,
+            51.819412172123165
+          ],
+          "name": "Script"
+        },
+        "32": {
+          "id": 32,
+          "data": {
+            "type": "Script",
+            "id": "0792c21a-510e-46bb-8981-2b827d865fe3",
+            "variables": {
+              "55560b2f-58bd-439f-92a6-c2cce57a2082": "primes"
+            },
+            "name": "Gen Output",
+            "script": "const lines = primes.map(function(p) {\r\n    return [p]\r\n})\r\n\r\nconst csv = Squishy.io.csvStringify(lines, Squishy.io.numberToLocal)\r\n\r\nreturn csv"
+          },
+          "inputs": {
+            "55560b2f-58bd-439f-92a6-c2cce57a2082": {
+              "connections": [
+                {
+                  "node": 31,
+                  "output": "b723af1f-39e6-45fd-9a95-da7667c56366",
+                  "data": {}
+                }
+              ]
+            },
+            "1adbf0fc-8ac7-4a0a-8671-edb8af91e34e": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "0792c21a-510e-46bb-8981-2b827d865fe3": {
+              "connections": [
+                {
+                  "node": 33,
+                  "input": "9b370d77-fad6-458a-8355-bc0c563e6c10",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            659.7719215654013,
+            192.95694125773738
+          ],
+          "name": "Script"
+        },
+        "33": {
+          "id": 33,
+          "data": {
+            "type": "FileOutput",
+            "id": "9b370d77-fad6-458a-8355-bc0c563e6c10",
+            "name": "Fileoutput",
+            "filename": "primes.csv"
+          },
+          "inputs": {
+            "9b370d77-fad6-458a-8355-bc0c563e6c10": {
+              "connections": [
+                {
+                  "node": 32,
+                  "output": "0792c21a-510e-46bb-8981-2b827d865fe3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            986.1148922794911,
+            336.7895734440766
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
+  },
+  {
+    "id": "b4e9f26f-0735-4b88-85f3-87427ecfe252",
+    "name": "BSpline3",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Script",
+            "id": "18baef39-07bc-4a7f-a471-0e7fcd95350f",
+            "variables": {
+              "e3b48665-d7ac-4f30-8a41-ab7a16be6aa5": "config"
+            },
+            "name": "BSpline",
+            "script": "const points = []\r\n\r\nif (config.random) {\r\n    for (var i = 0; i < 6; i++) {\r\n        const n = Mathf.Vec3.random().normalize()\r\n        const v = n.subtract(0.5, 0.5, 0.5).scale(50.0)\r\n        points.push(v)\r\n    }\r\n} else {\r\n    config.points.forEach(p => {\r\n        const v = new Mathf.Vec3(p.x, p.y, p.z)\r\n        points.push(v)\r\n    })\r\n}\r\n\r\nconst bspline = new Mathf.CatmullRomCurve3(points, config.closed)\r\nreturn bspline"
+          },
+          "inputs": {
+            "e3b48665-d7ac-4f30-8a41-ab7a16be6aa5": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "9e604647-3702-4693-84d0-5c8e34195d9f",
+                  "data": {}
+                }
+              ]
+            },
+            "aaf0df45-234c-49bd-9d63-e33bf23e70c1": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "18baef39-07bc-4a7f-a471-0e7fcd95350f": {
+              "connections": [
+                {
+                  "node": 6,
+                  "input": "68809b02-da6d-43b9-9361-6f10ae75ac8a",
+                  "data": {}
+                },
+                {
+                  "node": 14,
+                  "input": "0f4885ae-3b30-42bc-a720-fb319c3737a4",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            248.94328215536484,
+            181.7621105586806
+          ],
+          "name": "Script"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "TextInput",
+            "id": "9e604647-3702-4693-84d0-5c8e34195d9f",
+            "name": "Control Points",
+            "content": "{\r\n    \"closed\": false,\r\n    \"random\": false,\r\n    \"points\": [\r\n        {\r\n            \"x\": -12.3,\r\n            \"y\": 4.0,\r\n            \"z\": 0.0\r\n        },\r\n        {\r\n            \"x\": 23.7,\r\n            \"y\": 4.0,\r\n            \"z\": 4.0\r\n        },\r\n        {\r\n            \"x\": -2.3,\r\n            \"y\": 24.0,\r\n            \"z\": -2.0\r\n        },\r\n        {\r\n            \"x\": 0.0,\r\n            \"y\": 12.0,\r\n            \"z\": 3.0\r\n        },\r\n        {\r\n            \"x\": 1.3,\r\n            \"y\": -4.0,\r\n            \"z\": 23.0\r\n        },\r\n        {\r\n            \"x\": 12.3,\r\n            \"y\": 0.0,\r\n            \"z\": -10.0\r\n        }\r\n    ]\r\n}",
+            "inputType": "json"
+          },
+          "inputs": {},
+          "outputs": {
+            "9e604647-3702-4693-84d0-5c8e34195d9f": {
+              "connections": [
+                {
+                  "node": 1,
+                  "input": "e3b48665-d7ac-4f30-8a41-ab7a16be6aa5",
+                  "data": {}
+                },
+                {
+                  "node": 14,
+                  "input": "10bba49d-ccb8-4c30-8aef-442203e36db3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            3.0630709415767257,
+            337.03338819165504
+          ],
+          "name": "Text-Input"
+        },
+        "3": {
+          "id": 3,
+          "data": {
+            "type": "Script",
+            "id": "a103ed68-276e-4cb8-b0c1-af7497f7fb3f",
+            "variables": {
+              "7e58be83-6a53-4301-aa49-73c40fe6ea2b": "lines",
+              "7b519e4c-9516-4a3d-b36f-c7959520d1b9": "frames"
+            },
+            "name": "3DObjects",
+            "script": "const objects = [\r\n    lines,\r\n    ...frames\r\n]\r\n\r\nreturn objects"
+          },
+          "inputs": {
+            "7e58be83-6a53-4301-aa49-73c40fe6ea2b": {
+              "connections": [
+                {
+                  "node": 6,
+                  "output": "507b14f9-f85b-4957-94f0-9a11d6fe9529",
+                  "data": {}
+                }
+              ]
+            },
+            "7b519e4c-9516-4a3d-b36f-c7959520d1b9": {
+              "connections": [
+                {
+                  "node": 14,
+                  "output": "cc52ff3c-8a4b-487b-85c6-46b828b23ac8",
+                  "data": {}
+                }
+              ]
+            },
+            "4e48c9cd-4eea-48be-a1a8-bd3f0363292e": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "a103ed68-276e-4cb8-b0c1-af7497f7fb3f": {
+              "connections": [
+                {
+                  "node": 4,
+                  "input": "c230773a-28da-427b-9086-480076b74c2a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            981.9868721451211,
+            228.55021187915315
+          ],
+          "name": "Script"
+        },
+        "4": {
+          "id": 4,
+          "data": {
+            "type": "View3D",
+            "id": "c230773a-28da-427b-9086-480076b74c2a",
+            "name": "View3D",
+            "fov": 50,
+            "near": 0.1,
+            "far": 2000,
+            "antiAlias": false,
+            "control": "orbit",
+            "viewOrigin": true,
+            "originSize": 10,
+            "grid": true,
+            "gridSize": 25,
+            "gridDivisions": 5
+          },
+          "inputs": {
+            "c230773a-28da-427b-9086-480076b74c2a": {
+              "connections": [
+                {
+                  "node": 3,
+                  "output": "a103ed68-276e-4cb8-b0c1-af7497f7fb3f",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            1361.0784248163282,
+            219.44996369781154
+          ],
+          "name": "View3D"
+        },
+        "6": {
+          "id": 6,
+          "data": {
+            "type": "Script",
+            "id": "507b14f9-f85b-4957-94f0-9a11d6fe9529",
+            "variables": {
+              "68809b02-da6d-43b9-9361-6f10ae75ac8a": "curve"
+            },
+            "name": "Lines",
+            "script": "const points = curve.getSpacedPoints(200)\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dLines = new Squishy.view3d.View3DLines(points, color)\r\n\r\nreturn view3dLines"
+          },
+          "inputs": {
+            "68809b02-da6d-43b9-9361-6f10ae75ac8a": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "18baef39-07bc-4a7f-a471-0e7fcd95350f",
+                  "data": {}
+                }
+              ]
+            },
+            "6993d5e2-a40c-450e-a932-41db4371cb9e": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "507b14f9-f85b-4957-94f0-9a11d6fe9529": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "7e58be83-6a53-4301-aa49-73c40fe6ea2b",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            609.804026814274,
+            42.78439497468861
+          ],
+          "name": "Script"
+        },
+        "14": {
+          "id": 14,
+          "data": {
+            "type": "Script",
+            "id": "cc52ff3c-8a4b-487b-85c6-46b828b23ac8",
+            "variables": {
+              "0f4885ae-3b30-42bc-a720-fb319c3737a4": "curve",
+              "10bba49d-ccb8-4c30-8aef-442203e36db3": "config"
+            },
+            "name": "Frames",
+            "script": "const frames = curve.computeFrenetFrames(10, config.closed)\r\n\r\nconst helpers = []\r\n\r\nframes.forEach(frame => {\r\n    const rotation = frame.rotation()\r\n    const axes = new Squishy.view3d.View3DAxes(frame.position, 4, rotation)\r\n    helpers.push(axes)\r\n})\r\n\r\nreturn helpers"
+          },
+          "inputs": {
+            "0f4885ae-3b30-42bc-a720-fb319c3737a4": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "18baef39-07bc-4a7f-a471-0e7fcd95350f",
+                  "data": {}
+                }
+              ]
+            },
+            "10bba49d-ccb8-4c30-8aef-442203e36db3": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "9e604647-3702-4693-84d0-5c8e34195d9f",
+                  "data": {}
+                }
+              ]
+            },
+            "079a898c-7d94-496a-939e-644dba4e873c": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "cc52ff3c-8a4b-487b-85c6-46b828b23ac8": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "7b519e4c-9516-4a3d-b36f-c7959520d1b9",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            610.7103369415803,
+            354.68205645582384
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "65dcba91-b5ee-4a50-b894-40e2b02f3f8d",
+    "name": "PNG",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Script",
+            "id": "5567a883-45b2-4c89-b324-2d64deaa672b",
+            "variables": {},
+            "name": "PNG",
+            "script": "const png = new Plugins.pngjs.PNG({ width: 256, height: 256 })\r\n\r\nfor (var x = 0; x < png.width; x++) {\r\n    for (var y = 0; y < png.height; y++) {\r\n        const h = x / png.width\r\n        const s = y / png.height\r\n        const l = 1.0 - s\r\n        const color = Mathf.Color.fromHSL(h, s, l)\r\n\r\n        const i = (png.width * y + x) << 2;\r\n\r\n        png.data[i] = color.r * 255.0\r\n        png.data[i + 1] = color.g * 255.0\r\n        png.data[i + 2] = color.b * 255.0\r\n        \r\n        if (color.isAlpha()) {\r\n            png.data[i + 3] = color.a * 255.0\r\n        }else {\r\n             png.data[i + 3] = 255\r\n        }\r\n    }\r\n}\r\n\r\nconst options = { colorType: 6 }\r\n\r\nconst buffer = Plugins.pngjs.PNG.sync.write(png, options)\r\nreturn buffer"
+          },
+          "inputs": {
+            "c031098f-e6cf-411c-8475-cfadc7808a69": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "5567a883-45b2-4c89-b324-2d64deaa672b": {
+              "connections": [
+                {
+                  "node": 2,
+                  "input": "384dd32f-113e-4844-9ce3-0f285282d3d3",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            591.0021826118589,
+            126.125
+          ],
+          "name": "Script"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "FileOutput",
+            "id": "384dd32f-113e-4844-9ce3-0f285282d3d3",
+            "name": "Output",
+            "filename": "image.png"
+          },
+          "inputs": {
+            "384dd32f-113e-4844-9ce3-0f285282d3d3": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "5567a883-45b2-4c89-b324-2d64deaa672b",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            954.8505754891792,
+            268.11184248910126
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
+  },
+  {
+    "id": "2728b5a2-613d-4c64-9751-d347e5aa6c5d",
+    "name": "BSpline2",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "TextInput",
+            "id": "9c3a49f5-6936-4beb-a62e-b8453226415c",
+            "name": "Config",
+            "content": "{    \r\n    \"random\": false,\r\n    \"points\": [\r\n        {\r\n            \"x\": -12.3,\r\n            \"y\": 4.0            \r\n        },\r\n        {\r\n            \"x\": 23.7,\r\n            \"y\": 4.0\r\n        },\r\n        {\r\n            \"x\": -2.3,\r\n            \"y\": 24.0\r\n        },\r\n        {\r\n            \"x\": 0.0,\r\n            \"y\": 12.0\r\n        },\r\n        {\r\n            \"x\": 1.3,\r\n            \"y\": -4.0\r\n        },\r\n        {\r\n            \"x\": 12.3,\r\n            \"y\": 0.0\r\n        }\r\n    ]\r\n}",
+            "inputType": "json"
+          },
+          "inputs": {},
+          "outputs": {
+            "9c3a49f5-6936-4beb-a62e-b8453226415c": {
+              "connections": [
+                {
+                  "node": 16,
+                  "input": "f30dfe8d-3f8f-4a0a-a91b-e49cee171602",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            95.3605781211064,
+            176.06021056566158
+          ],
+          "name": "Text-Input"
+        },
+        "16": {
+          "id": 16,
+          "data": {
+            "type": "Script",
+            "id": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+            "variables": {
+              "f30dfe8d-3f8f-4a0a-a91b-e49cee171602": "config"
+            },
+            "name": "BSpline",
+            "script": "const points = []\r\n\r\nif (config.random) {\r\n    for (var i = 0; i < 6; i++) {\r\n        const v = Mathf.Vec2.random().scale(50)\r\n        points.push(v)\r\n    }\r\n} else {\r\n    config.points.forEach(p => {\r\n        const v = new Mathf.Vec2(p.x, p.y)\r\n        points.push(v)\r\n    })\r\n}\r\n\r\nconst curve = new Mathf.SplineCurve2(points)\r\nreturn curve"
+          },
+          "inputs": {
+            "f30dfe8d-3f8f-4a0a-a91b-e49cee171602": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "9c3a49f5-6936-4beb-a62e-b8453226415c",
+                  "data": {}
+                }
+              ]
+            },
+            "74dd4b7d-3d85-4e55-8419-92babdbf0a27": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b": {
+              "connections": [
+                {
+                  "node": 17,
+                  "input": "41b6b36e-4881-4bff-b195-bbe4db36a680",
+                  "data": {}
+                },
+                {
+                  "node": 25,
+                  "input": "ee9e864d-e36c-45cd-8353-3f92b46e5d95",
+                  "data": {}
+                },
+                {
+                  "node": 51,
+                  "input": "33d7069d-2476-4107-ade6-27b3f74776ae",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            319.5230987161221,
+            273.1850278718377
+          ],
+          "name": "Script"
+        },
+        "17": {
+          "id": 17,
+          "data": {
+            "type": "Script",
+            "id": "ef3db055-0134-48f5-831c-85c90d5b2eb9",
+            "variables": {
+              "41b6b36e-4881-4bff-b195-bbe4db36a680": "curve"
+            },
+            "name": "Lines",
+            "script": "const points = curve.getSpacedPoints(200)\r\n\r\nconst points3d = points.map(p => {\r\n    const v = new Mathf.Vec3(p.x, 0.0, p.y)\r\n    return v\r\n})\r\n\r\nconst color = Mathf.Color.random().toHex()\r\nconst view3dLines = new Squishy.view3d.View3DLines(points3d, color)\r\n\r\nreturn view3dLines"
+          },
+          "inputs": {
+            "41b6b36e-4881-4bff-b195-bbe4db36a680": {
+              "connections": [
+                {
+                  "node": 16,
+                  "output": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+                  "data": {}
+                }
+              ]
+            },
+            "aec2a190-ef12-47f5-a692-0992934a35dd": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "ef3db055-0134-48f5-831c-85c90d5b2eb9": {
+              "connections": [
+                {
+                  "node": 18,
+                  "input": "34619105-8a3e-44ab-b6c2-8b59e44570a7",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            701.0530508987899,
+            213.61723064633088
+          ],
+          "name": "Script"
+        },
+        "18": {
+          "id": 18,
+          "data": {
+            "type": "Script",
+            "id": "12423cb3-3f1c-493a-8bdb-6d95e5d5fd6d",
+            "variables": {
+              "34619105-8a3e-44ab-b6c2-8b59e44570a7": "lines",
+              "ea1793db-2252-486e-8ec2-4f9bb1012b38": "frames"
+            },
+            "name": "3DObjects",
+            "script": "const objects = [\r\n    lines,\r\n    ...frames\r\n]\r\n\r\nreturn objects"
+          },
+          "inputs": {
+            "34619105-8a3e-44ab-b6c2-8b59e44570a7": {
+              "connections": [
+                {
+                  "node": 17,
+                  "output": "ef3db055-0134-48f5-831c-85c90d5b2eb9",
+                  "data": {}
+                }
+              ]
+            },
+            "ea1793db-2252-486e-8ec2-4f9bb1012b38": {
+              "connections": [
+                {
+                  "node": 25,
+                  "output": "7430acde-04a6-441c-a08a-86cd839facce",
+                  "data": {}
+                }
+              ]
+            },
+            "2faa64b9-6900-4e17-8606-82bb3ad36426": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "12423cb3-3f1c-493a-8bdb-6d95e5d5fd6d": {
+              "connections": [
+                {
+                  "node": 19,
+                  "input": "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            1098.7435431065842,
+            379.3017915605675
+          ],
+          "name": "Script"
+        },
+        "19": {
+          "id": 19,
+          "data": {
+            "type": "View3D",
+            "id": "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5",
+            "name": "View3D",
+            "fov": 50,
+            "near": 0.1,
+            "far": 2000,
+            "antiAlias": false,
+            "control": "orbit",
+            "viewOrigin": true,
+            "originSize": 10,
+            "grid": false,
+            "gridSize": 10,
+            "gridDivisions": 10,
+            "up": "Y"
+          },
+          "inputs": {
+            "7b108d72-ef45-47b5-9ebf-4c9f9e0f80c5": {
+              "connections": [
+                {
+                  "node": 18,
+                  "output": "12423cb3-3f1c-493a-8bdb-6d95e5d5fd6d",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            1480.7835662854723,
+            380.9352498941127
+          ],
+          "name": "View3D"
+        },
+        "25": {
+          "id": 25,
+          "data": {
+            "type": "Script",
+            "id": "7430acde-04a6-441c-a08a-86cd839facce",
+            "variables": {
+              "ee9e864d-e36c-45cd-8353-3f92b46e5d95": "curve"
+            },
+            "name": "Frames",
+            "script": "const frames = curve.computeFrames(20)\r\n\r\nconst helpers = []\r\n\r\nframes.forEach(frame => {\r\n    const theta = frame.rotation()\r\n\r\n    const position = new Mathf.Vec3(frame.position.x, 0.0, frame.position.y)\r\n\r\n    const rotation = new Mathf.Vec3(0.0, theta, 0.0)\r\n    const axes = new Squishy.view3d.View3DAxes(position, 4, rotation)\r\n    helpers.push(axes)\r\n})\r\n\r\nreturn helpers"
+          },
+          "inputs": {
+            "ee9e864d-e36c-45cd-8353-3f92b46e5d95": {
+              "connections": [
+                {
+                  "node": 16,
+                  "output": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+                  "data": {}
+                }
+              ]
+            },
+            "d42439c2-71bd-416a-8940-c70b6a5eca2b": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "7430acde-04a6-441c-a08a-86cd839facce": {
+              "connections": [
+                {
+                  "node": 18,
+                  "input": "ea1793db-2252-486e-8ec2-4f9bb1012b38",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            700.8995998544925,
+            464.1817479083303
+          ],
+          "name": "Script"
+        },
+        "50": {
+          "id": 50,
+          "data": {
+            "type": "Chart",
+            "id": "cac86693-400c-404a-a388-5ff638fb0380",
+            "datasets": {
+              "77ad1a1d-bbb7-400e-8e17-6c3628b05121": {
+                "color": "#a3ff00",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "Spline"
+              },
+              "343ef257-ac8c-493d-a1c0-067707c787d7": {
+                "color": "#a300ff",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "Dataset_2"
+              }
+            },
+            "lineTension": 0,
+            "name": "Chart",
+            "animation": true,
+            "pan": "XY",
+            "zoom": "XY",
+            "tooltipFractionDigits": 3
+          },
+          "inputs": {
+            "77ad1a1d-bbb7-400e-8e17-6c3628b05121": {
+              "connections": [
+                {
+                  "node": 51,
+                  "output": "af708f71-7797-4034-831a-eb2347ef09c0",
+                  "data": {}
+                }
+              ]
+            },
+            "343ef257-ac8c-493d-a1c0-067707c787d7": {
+              "connections": []
+            }
+          },
+          "outputs": {},
+          "position": [
+            1101.651110524371,
+            158.55226237461164
+          ],
+          "name": "Chart"
+        },
+        "51": {
+          "id": 51,
+          "data": {
+            "type": "Script",
+            "id": "af708f71-7797-4034-831a-eb2347ef09c0",
+            "variables": {
+              "33d7069d-2476-4107-ade6-27b3f74776ae": "curve"
+            },
+            "name": "Points",
+            "script": "const points = curve.getSpacedPoints(200)\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "33d7069d-2476-4107-ade6-27b3f74776ae": {
+              "connections": [
+                {
+                  "node": 16,
+                  "output": "e0fbbcfc-dc6a-4d0a-8efe-b25a5f32c06b",
+                  "data": {}
+                }
+              ]
+            },
+            "2f2381b6-cb27-4fa4-bd77-04ae90484c5a": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "af708f71-7797-4034-831a-eb2347ef09c0": {
+              "connections": [
+                {
+                  "node": 50,
+                  "input": "77ad1a1d-bbb7-400e-8e17-6c3628b05121",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            703.3301966099986,
+            -40.72213855997023
+          ],
+          "name": "Script"
+        }
+      }
+    }
+  },
+  {
+    "id": "d5b2058f-03bc-4657-86db-a363f125f871",
+    "name": "Raytracer",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "TextInput",
+            "id": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+            "name": "Config",
+            "inputType": "json",
+            "content": "{\r\n    \"epsilon\": 0.0001,\r\n    \"shadow\": true,\r\n    \"background\": {\r\n        \"r\": 0.0,\r\n        \"g\": 0.0,\r\n        \"b\": 0.0\r\n    },\r\n    \"image\": {\r\n        \"width\": 500,\r\n        \"height\": 500\r\n    },\r\n    \"camera\": {\r\n        \"fov\": 45,\r\n        \"up\": {\r\n            \"x\": 0.0,\r\n            \"y\": 1.0,\r\n            \"z\": 0.0\r\n        },\r\n        \"eye\": {\r\n            \"x\": 0.0,\r\n            \"y\": -3.0,\r\n            \"z\": 2.0\r\n        },\r\n        \"target\": {\r\n            \"x\": 0.0,\r\n            \"y\": -1.0,\r\n            \"z\": 15.0\r\n        }\r\n    },\r\n    \"light\": {\r\n        \"color\": {\r\n            \"r\": 1.0,\r\n            \"g\": 1.0,\r\n            \"b\": 1.0\r\n        },\r\n        \"position\": {\r\n            \"x\": -20.0,\r\n            \"y\": -20.0,\r\n            \"z\": 3.0\r\n        }\r\n    },\r\n    \"objects\": [\r\n        {\r\n            \"material\": {\r\n                \"type\": \"phong\",\r\n                \"color\": {\r\n                    \"r\": 0.0,\r\n                    \"g\": 1.0,\r\n                    \"b\": 0.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"sphere\",\r\n                \"position\": {\r\n                    \"x\": 2.5,\r\n                    \"y\": 1.0,\r\n                    \"z\": 17.0\r\n                },\r\n                \"radius\": 2.0\r\n            }\r\n        },\r\n        {\r\n            \"material\": {\r\n                \"type\": \"phong\",\r\n                \"color\": {\r\n                    \"r\": 1.0,\r\n                    \"g\": 0.0,\r\n                    \"b\": 0.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"sphere\",\r\n                \"position\": {\r\n                    \"x\": -2.5,\r\n                    \"y\": 1.0,\r\n                    \"z\": 17.0\r\n                },\r\n                \"radius\": 2.0\r\n            }\r\n        },\r\n        {\r\n            \"material\": {\r\n                \"type\": \"phong\",\r\n                \"color\": {\r\n                    \"r\": 0.0,\r\n                    \"g\": 0.0,\r\n                    \"b\": 1.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"sphere\",\r\n                \"position\": {\r\n                    \"x\": 0.0,\r\n                    \"y\": -4.0,\r\n                    \"z\": 15.0\r\n                },\r\n                \"radius\": 2.0\r\n            }\r\n        },\r\n        {\r\n            \"material\": {\r\n                \"type\": \"checkerboard\",\r\n                \"color\": {\r\n                    \"r\": 1.0,\r\n                    \"g\": 1.0,\r\n                    \"b\": 1.0\r\n                },\r\n                \"color2\": {\r\n                    \"r\": 0.0,\r\n                    \"g\": 0.0,\r\n                    \"b\": 0.0\r\n                }\r\n            },\r\n            \"shape\": {\r\n                \"type\": \"plane\",\r\n                \"normal\": {\r\n                    \"x\": 0.0,\r\n                    \"y\": -1.0,\r\n                    \"z\": 0.0\r\n                },\r\n                \"position\": {\r\n                    \"x\": 0.0,\r\n                    \"y\": 3.5,\r\n                    \"z\": 0.0\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}"
+          },
+          "inputs": {},
+          "outputs": {
+            "a5912cfe-6456-4dd0-87b5-85c87f24b298": {
+              "connections": [
+                {
+                  "node": 5,
+                  "input": "c32b3271-fb2e-486b-9f3a-e4e7421843e7",
+                  "data": {}
+                },
+                {
+                  "node": 22,
+                  "input": "a7717eb8-e117-4f57-9658-ab107cf79ef7",
+                  "data": {}
+                },
+                {
+                  "node": 24,
+                  "input": "8a8d29d2-08ad-4848-9ffa-439e06fa4fa2",
+                  "data": {}
+                },
+                {
+                  "node": 23,
+                  "input": "6bf9c753-0745-4d13-864e-385dc8544df4",
+                  "data": {}
+                },
+                {
+                  "node": 61,
+                  "input": "ecd457b5-7c71-447a-9f14-a919f717479a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            456.7419249752479,
+            -306.38167712425275
+          ],
+          "name": "Text-Input"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "Script",
+            "id": "369afcad-3c55-4184-9ae8-9d4eaf718073",
+            "variables": {},
+            "name": "PhongMaterial",
+            "script": "function PhongMaterial(color) {\r\n    this.color = color\r\n    this.ambient = 0.7\r\n    this.diffuse = 0.5\r\n    this.specular = 0.3\r\n    this.shininess = 20.0\r\n}\r\n\r\nPhongMaterial.prototype.colorAt = function (point) {\r\n    return this.color\r\n}\r\n\r\nPhongMaterial.prototype.calculateAmbient = function (point) {\r\n    const color = this.colorAt(point)\r\n    return color.scale(this.ambient)\r\n}\r\n\r\nPhongMaterial.prototype.calculateDiffuse = function (light, lightray, normal) {\r\n    const dot = lightray.dotWith(normal)\r\n    const color = light.scale(this.diffuse)\r\n    return color.scale(dot)\r\n}\r\n\r\nPhongMaterial.prototype.calculateSpecular = function (light, lightray, normal, direction) {\r\n    const reflect = lightray.reflect(normal)\r\n    const dot = reflect.dotWith(direction)\r\n\r\n    const color = light.scale(this.specular)\r\n    return color.scale(Math.pow(dot, this.shininess))\r\n}\r\n\r\nPhongMaterial.prototype.calculateColor = function (context) {\r\n    const ambient = this.calculateAmbient(context.point)\r\n    const diffuse = this.calculateDiffuse(context.light, context.lightray, context.normal)\r\n    const specular = this.calculateSpecular(context.light, context.lightray, context.normal, context.direction)\r\n\r\n    const color = ambient.addWith(diffuse).addWith(specular)\r\n    return color\r\n}\r\n\r\nPhongMaterial.prototype.getColor = function (context) {\r\n    if (context.hasShadow) {\r\n        return this.calculateAmbient(context.point)\r\n    }\r\n    return this.calculateColor(context)\r\n}\r\n\r\nreturn PhongMaterial"
+          },
+          "inputs": {
+            "977c7943-8e3f-40e9-8bc2-8faa52653de7": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "369afcad-3c55-4184-9ae8-9d4eaf718073": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "0a99661e-9ef3-414d-bb89-bc101a4281e5",
+                  "data": {}
+                },
+                {
+                  "node": 4,
+                  "input": "2222fd1d-cc4f-42b9-8592-8b431203834a",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            -350.95857354456206,
+            154.42169065679894
+          ],
+          "name": "Script"
+        },
+        "3": {
+          "id": 3,
+          "data": {
+            "type": "Script",
+            "id": "1c606a17-09f3-458e-af09-a06f4fbf44b6",
+            "variables": {
+              "0a99661e-9ef3-414d-bb89-bc101a4281e5": "PhongMaterial",
+              "9614542c-4e45-4f7f-b626-261bfd872141": "CheckerboardMaterial"
+            },
+            "name": "MaterialFactory",
+            "script": "function createColor(color) {\r\n    if (!color) {\r\n        return Mathf.Color.random()\r\n    }\r\n    return new Mathf.Color(color.r, color.g, color.b)\r\n}\r\n\r\nfunction setupPhong(phong, material) {\r\n    phong.ambient = material.ambient || 0.7\r\n    phong.diffuse = material.diffuse || 0.5\r\n    phong.specular = material.specular || 0.3\r\n    phong.shininess = material.shininess || 20.0\r\n}\r\n\r\nconst materials = {\r\n    'phong': function (material) {\r\n        const color = createColor(material.color)\r\n        const phong = new PhongMaterial(color)\r\n\r\n        setupPhong(phong, material)\r\n\r\n        return phong\r\n    },\r\n    'checkerboard': function(material){\r\n        const color = createColor(material.color)\r\n        const color2 = createColor(material.color2)\r\n        const checkerboard = new CheckerboardMaterial(color, color2)\r\n\r\n        setupPhong(checkerboard, material)\r\n        \r\n        return checkerboard\r\n    }\r\n}\r\n\r\nreturn materials"
+          },
+          "inputs": {
+            "0a99661e-9ef3-414d-bb89-bc101a4281e5": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "369afcad-3c55-4184-9ae8-9d4eaf718073",
+                  "data": {}
+                }
+              ]
+            },
+            "9614542c-4e45-4f7f-b626-261bfd872141": {
+              "connections": [
+                {
+                  "node": 4,
+                  "output": "1a16d6b3-08c3-4f82-aade-36880ff97cea",
+                  "data": {}
+                }
+              ]
+            },
+            "ee0e20b4-e08f-42bb-9742-cf965967d3a6": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "1c606a17-09f3-458e-af09-a06f4fbf44b6": {
+              "connections": [
+                {
+                  "node": 5,
+                  "input": "98dc7d19-a816-40bb-bcfc-78bfdef1ab54",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            417.6822541993735,
+            130.07618108054953
+          ],
+          "name": "Script"
+        },
+        "4": {
+          "id": 4,
+          "data": {
+            "type": "Script",
+            "id": "1a16d6b3-08c3-4f82-aade-36880ff97cea",
+            "variables": {
+              "2222fd1d-cc4f-42b9-8592-8b431203834a": "PhongMaterial"
+            },
+            "name": "CheckerboardMaterial",
+            "script": "function CheckerboardMaterial(color1, color2) {\r\n    PhongMaterial.call(this, color1)\r\n    this.color2 = color2\r\n    this.checkSize = 1.0\r\n}\r\n\r\nCheckerboardMaterial.prototype = Object.create(PhongMaterial.prototype)\r\n\r\nCheckerboardMaterial.prototype.colorAt = function (point) {\r\n    const coord = this.getTextCoord(point)\r\n    const v = coord.scale(1.0 / this.checkSize)\r\n\r\n    const intX = Math.floor(Math.abs(v.x) + 0.5)\r\n    const intY = Math.floor(Math.abs(v.y) + 0.5)\r\n    \r\n    const mod = (intX + intY) % 2\r\n\r\n    if (Mathf.closeZero(mod)) {\r\n        return this.color2\r\n    }\r\n\r\n    return this.color\r\n}\r\n\r\nCheckerboardMaterial.prototype.getTextCoord = function(point){\r\n   const orthogonal = this.shape.normal.orthogonal()\r\n   const e1 = this.shape.normal.crossWith(orthogonal).normalize()\r\n   const e2 = this.shape.normal.crossWith(e1).normalize()\r\n\r\n   const u = e1.dotWith(point)\r\n   const v = e2.dotWith(point)\r\n\r\n   return new Mathf.Vec2(u, v)\r\n}\r\n\r\nreturn CheckerboardMaterial"
+          },
+          "inputs": {
+            "2222fd1d-cc4f-42b9-8592-8b431203834a": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "369afcad-3c55-4184-9ae8-9d4eaf718073",
+                  "data": {}
+                }
+              ]
+            },
+            "98210624-5fe7-4250-9b27-b2f5ae1aaeac": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "1a16d6b3-08c3-4f82-aade-36880ff97cea": {
+              "connections": [
+                {
+                  "node": 3,
+                  "input": "9614542c-4e45-4f7f-b626-261bfd872141",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            21.876072696124133,
+            400.76968031890925
+          ],
+          "name": "Script"
+        },
+        "5": {
+          "id": 5,
+          "data": {
+            "type": "Script",
+            "id": "9727fa5d-877b-446f-b9b7-6e8d6205ca4e",
+            "variables": {
+              "c32b3271-fb2e-486b-9f3a-e4e7421843e7": "config",
+              "98dc7d19-a816-40bb-bcfc-78bfdef1ab54": "materialFactory",
+              "86fc9ebe-66b3-477a-97a6-9d3b5dde954b": "shapeFactory"
+            },
+            "name": "ObjectsFactory",
+            "script": "function createObject(objectConfig) {\r\n    const shapeType = objectConfig.shape.type\r\n    const createShapeFn = shapeFactory[shapeType]\r\n    if (!createShapeFn) {\r\n        throw new Error(`unable to find shape factory for type [ ${shapeType} ]`)\r\n    }\r\n\r\n    const shape = createShapeFn(objectConfig.shape)\r\n\r\n    const materialType = objectConfig.material.type\r\n    const createMaterialFn = materialFactory[materialType]\r\n    if (!createMaterialFn) {\r\n        throw new Error(`unable to find material factory for type [ ${materialType} ]`)\r\n    }\r\n\r\n    const material = createMaterialFn(objectConfig.material)\r\n\r\n    material.shape = shape\r\n    shape.material = material\r\n\r\n    return {\r\n        shape,\r\n        material\r\n    }\r\n}\r\n\r\nconst objects = config.objects.map(function(objectConfig){\r\n    return createObject(objectConfig)\r\n})\r\n\r\nreturn objects"
+          },
+          "inputs": {
+            "c32b3271-fb2e-486b-9f3a-e4e7421843e7": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "98dc7d19-a816-40bb-bcfc-78bfdef1ab54": {
+              "connections": [
+                {
+                  "node": 3,
+                  "output": "1c606a17-09f3-458e-af09-a06f4fbf44b6",
+                  "data": {}
+                }
+              ]
+            },
+            "86fc9ebe-66b3-477a-97a6-9d3b5dde954b": {
+              "connections": [
+                {
+                  "node": 21,
+                  "output": "8f936004-3d6c-4d0b-9649-38e57c40ef98",
+                  "data": {}
+                }
+              ]
+            },
+            "f73c94ec-0895-4cd0-89ce-1cfc40dc6859": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "9727fa5d-877b-446f-b9b7-6e8d6205ca4e": {
+              "connections": [
+                {
+                  "node": 23,
+                  "input": "7915da1c-853e-4071-a8c6-3a3a3762ffcf",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            830.8130399913539,
+            148.04746704675352
+          ],
+          "name": "Script"
+        },
+        "21": {
+          "id": 21,
+          "data": {
+            "type": "Script",
+            "id": "8f936004-3d6c-4d0b-9649-38e57c40ef98",
+            "variables": {},
+            "name": "ShapeFactory",
+            "script": "function createVec(v) {\r\n    return new Mathf.Vec3(v.x, v.y, v.z)\r\n}\r\n\r\nconst factory = {\r\n    'plane': function (shape) {\r\n        const normal = createVec(shape.normal)\r\n        const position = createVec(shape.position)\r\n        const plane = Mathf.Plane.fromNormalAndCoplanarPoint(normal, position)\r\n        return plane\r\n    },\r\n    'sphere': function (shape) {\r\n        const center = createVec(shape.position)\r\n        const sphere = new Mathf.Sphere(center, shape.radius)\r\n        return sphere\r\n    },\r\n    'triangle': function (shape) {\r\n        const v1 = createVec(shape.p1)\r\n        const v2 = createVec(shape.p2)\r\n        const v3 = createVec(shape.p3)\r\n        const triangle = new Mathf.Triangle(v1, v2, v3)\r\n        return triangle\r\n    }\r\n}\r\n\r\nreturn factory"
+          },
+          "inputs": {
+            "a72f05cd-c7fb-48fd-9185-502a319df218": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "8f936004-3d6c-4d0b-9649-38e57c40ef98": {
+              "connections": [
+                {
+                  "node": 5,
+                  "input": "86fc9ebe-66b3-477a-97a6-9d3b5dde954b",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            417.562386322299,
+            449.6684703528556
+          ],
+          "name": "Script"
+        },
+        "22": {
+          "id": 22,
+          "data": {
+            "type": "Script",
+            "id": "c6ec00eb-a1b5-4f9c-8f48-5a9bf32cbd6a",
+            "variables": {
+              "a7717eb8-e117-4f57-9658-ab107cf79ef7": "config"
+            },
+            "name": "Camera",
+            "script": "function createVec(v) {\r\n    return new Mathf.Vec3(v.x, v.y, v.z)\r\n}\r\n\r\nfunction Camera() {\r\n    this.up = createVec(config.camera.up)\r\n    this.eye = createVec(config.camera.eye)\r\n    this.target = createVec(config.camera.target)\r\n\r\n    this.fov = config.camera.fov\r\n    this.aspectRatio = config.image.width / config.image.height\r\n\r\n    this.f = this.target.subtractWith(this.eye).normalize()\r\n    this.s = this.f.crossWith(this.up).normalize()\r\n    this.u = this.s.crossWith(this.f)\r\n\r\n    const alpha = this.fov / 2.0\r\n    this.height = 2.0 * Math.tan(alpha)\r\n    this.width = this.aspectRatio * this.height\r\n    this.pixelWidth = this.width / (config.image.width - 1.0)\r\n    this.pixelHeight = this.height / (config.image.height - 1.0)\r\n}\r\n\r\nCamera.prototype.createRay = function (x, y) {\r\n    const xcomp = this.s.scale(x * this.pixelWidth - this.width / 2.0)\r\n    const ycomp = this.u.scale(y * this.pixelHeight - this.height / 2.0)\r\n\r\n    const direction = this.f.addWith(ycomp).addWith(xcomp)\r\n    const ray = new Mathf.Ray(this.eye, direction)\r\n    return ray\r\n}\r\n\r\nconst camera = new Camera()\r\n\r\nreturn camera"
+          },
+          "inputs": {
+            "a7717eb8-e117-4f57-9658-ab107cf79ef7": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "5e21a991-29e5-4e1c-b376-8693f2953759": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "c6ec00eb-a1b5-4f9c-8f48-5a9bf32cbd6a": {
+              "connections": [
+                {
+                  "node": 23,
+                  "input": "05a0a490-8b0c-4280-a109-b7db446f3a0d",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            817.2634866070404,
+            -138.2888355546361
+          ],
+          "name": "Script"
+        },
+        "23": {
+          "id": 23,
+          "data": {
+            "type": "Script",
+            "id": "f0f480be-7ba3-48f0-a98f-09d8d0694e18",
+            "variables": {
+              "fe26b0d0-f02b-4ed8-b035-3ae9d68bcdca": "light",
+              "6bf9c753-0745-4d13-864e-385dc8544df4": "config",
+              "05a0a490-8b0c-4280-a109-b7db446f3a0d": "camera",
+              "7915da1c-853e-4071-a8c6-3a3a3762ffcf": "objects"
+            },
+            "name": "Raytracer",
+            "script": "// create background color\r\nconst background = new Mathf.Color(config.background.r, config.background.g, config.background.b)\r\n\r\n// try to find a hit of any object with the ray\r\nfunction findHitObject(ray) {\r\n    let hitPoint = undefined\r\n    let hitObject = undefined\r\n    let hitDistance = Infinity\r\n\r\n    // try to find a closest hit object\r\n    objects.forEach(function (object) {\r\n\r\n        // check if the ray intersect with the object\r\n        const point = object.shape.intersectRay(ray)\r\n        if (!point) {\r\n            return\r\n        }\r\n\r\n        // calculate the distance\r\n        const distance = ray.origin.distanceTo(point)\r\n        if (hitDistance < distance) {\r\n            return\r\n        }\r\n        hitPoint = point\r\n        hitObject = object\r\n        hitDistance = distance\r\n    })\r\n\r\n    // if no hit found\r\n    if (!hitObject) {\r\n        return undefined\r\n    }\r\n\r\n    return {\r\n        point: hitPoint,\r\n        object: hitObject,\r\n        distance: hitDistance\r\n    }\r\n}\r\n\r\nfunction isShadowAt(ray) {\r\n    const hit = findHitObject(ray)\r\n    if (!hit) {\r\n        return false\r\n    }\r\n    return true\r\n}\r\n\r\nfunction calculateColor(point, object, ray) {\r\n    const normal = object.shape.normalAt(point)\r\n    const lightRay = light.createRayTo(point, normal)\r\n\r\n    let hasShadow = false\r\n    if (config.shadow) {\r\n        hasShadow = isShadowAt(lightRay)\r\n    }\r\n\r\n    const context = {\r\n        point,\r\n        normal,\r\n        hasShadow,\r\n        light: light.color,\r\n        direction: ray.direction,\r\n        lightray: lightRay.direction,\r\n    }\r\n\r\n    const color = object.material.getColor(context)\r\n    return color\r\n}\r\n\r\nfunction colorAt(x, y) {\r\n    // create the ray\r\n    const ray = camera.createRay(x, y)\r\n\r\n    // try to find a hit\r\n    const hit = findHitObject(ray)\r\n    // if no hit found return background\r\n    if (!hit) {\r\n        return background.clone()\r\n    }\r\n\r\n    const color = calculateColor(hit.point, hit.object, ray)\r\n    return color\r\n}\r\n\r\nconst colors = []\r\n\r\nconst length = config.image.width * config.image.height\r\n\r\nfor (let y = 0; y < config.image.height; y++) {\r\n    for (let x = 0; x < config.image.width; x++) {\r\n        const color = colorAt(x, y)\r\n        colors.push(color)\r\n\r\n        const done = y * config.image.width + x\r\n        Squishy.progress(done / length)\r\n    }\r\n}\r\n\r\nreturn colors"
+          },
+          "inputs": {
+            "fe26b0d0-f02b-4ed8-b035-3ae9d68bcdca": {
+              "connections": [
+                {
+                  "node": 24,
+                  "output": "a5853a25-09cb-4277-a577-24876ec6bb04",
+                  "data": {}
+                }
+              ]
+            },
+            "6bf9c753-0745-4d13-864e-385dc8544df4": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "05a0a490-8b0c-4280-a109-b7db446f3a0d": {
+              "connections": [
+                {
+                  "node": 22,
+                  "output": "c6ec00eb-a1b5-4f9c-8f48-5a9bf32cbd6a",
+                  "data": {}
+                }
+              ]
+            },
+            "7915da1c-853e-4071-a8c6-3a3a3762ffcf": {
+              "connections": [
+                {
+                  "node": 5,
+                  "output": "9727fa5d-877b-446f-b9b7-6e8d6205ca4e",
+                  "data": {}
+                }
+              ]
+            },
+            "08a0abb9-e83e-4fa4-ba63-83adb60c5e0d": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "f0f480be-7ba3-48f0-a98f-09d8d0694e18": {
+              "connections": [
+                {
+                  "node": 61,
+                  "input": "aa4146f4-ec26-441d-b4e0-8247239e1e08",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            1273.7535649449023,
+            -348.2152990338552
+          ],
+          "name": "Script"
+        },
+        "24": {
+          "id": 24,
+          "data": {
+            "type": "Script",
+            "id": "a5853a25-09cb-4277-a577-24876ec6bb04",
+            "variables": {
+              "8a8d29d2-08ad-4848-9ffa-439e06fa4fa2": "config"
+            },
+            "name": "Light",
+            "script": "function createVec(v) {\r\n    return new Mathf.Vec3(v.x, v.y, v.z)\r\n}\r\n\r\nfunction createColor(color) {\r\n    return new Mathf.Color(color.r, color.g, color.b)\r\n}\r\n\r\n\r\nfunction Light() {\r\n    this.color = createColor(config.light.color)\r\n    this.position = createVec(config.light.position)\r\n}\r\n\r\nLight.prototype.createRayTo = function (point, normal) {\r\n    const origin = point.addScaledVector(normal, config.epsilon)\r\n    const ray = Mathf.Ray.createFromTo(origin, this.position)\r\n    return ray\r\n}\r\n\r\nconst light = new Light()\r\nreturn light"
+          },
+          "inputs": {
+            "8a8d29d2-08ad-4848-9ffa-439e06fa4fa2": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "1c021e1c-4a0f-4e67-96ac-6b50373a6551": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "a5853a25-09cb-4277-a577-24876ec6bb04": {
+              "connections": [
+                {
+                  "node": 23,
+                  "input": "fe26b0d0-f02b-4ed8-b035-3ae9d68bcdca",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            823.6713810989921,
+            -610.7904381049742
+          ],
+          "name": "Script"
+        },
+        "61": {
+          "id": 61,
+          "data": {
+            "type": "Script",
+            "id": "8745d109-bcf4-4694-901c-5974517e9978",
+            "variables": {
+              "ecd457b5-7c71-447a-9f14-a919f717479a": "config",
+              "aa4146f4-ec26-441d-b4e0-8247239e1e08": "colors"
+            },
+            "name": "Image",
+            "script": "const png = new Plugins.pngjs.PNG({ width: config.image.width, height: config.image.height })\r\n\r\nconst length = colors.length\r\ncolors.forEach(function (color, index) {\r\n    const i = index * 4\r\n    png.data[i] = color.getR()\r\n    png.data[i + 1] = color.getG()\r\n    png.data[i + 2] = color.getB()\r\n    png.data[i + 3] = 255.0\r\n\r\n    Squishy.progress(index / length)\r\n})\r\n\r\nconst options = { colorType: 6 }\r\n\r\nconst buffer = Plugins.pngjs.PNG.sync.write(png, options)\r\nreturn buffer"
+          },
+          "inputs": {
+            "ecd457b5-7c71-447a-9f14-a919f717479a": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "a5912cfe-6456-4dd0-87b5-85c87f24b298",
+                  "data": {}
+                }
+              ]
+            },
+            "aa4146f4-ec26-441d-b4e0-8247239e1e08": {
+              "connections": [
+                {
+                  "node": 23,
+                  "output": "f0f480be-7ba3-48f0-a98f-09d8d0694e18",
+                  "data": {}
+                }
+              ]
+            },
+            "11b0a4bb-a40f-466f-96c6-b93dfd1dbb88": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "8745d109-bcf4-4694-901c-5974517e9978": {
+              "connections": [
+                {
+                  "node": 62,
+                  "input": "fd3b7643-b287-4176-baa8-85c85085ee19",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            1687.990178246635,
+            -611.389005092761
+          ],
+          "name": "Script"
+        },
+        "62": {
+          "id": 62,
+          "data": {
+            "type": "FileOutput",
+            "id": "fd3b7643-b287-4176-baa8-85c85085ee19",
+            "name": "Image Output",
+            "filename": "image.png"
+          },
+          "inputs": {
+            "fd3b7643-b287-4176-baa8-85c85085ee19": {
+              "connections": [
+                {
+                  "node": 61,
+                  "output": "8745d109-bcf4-4694-901c-5974517e9978",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            2041.990115321252,
+            -319.1369439868204
+          ],
+          "name": "File-Output"
+        }
+      }
+    }
+  },
+  {
+    "id": "ed122c3e-3afa-4d67-9e23-a4886dec5b65",
+    "name": "Promise & Fetch",
+    "data": {
+      "id": "squishy@0.1.5",
+      "nodes": {
+        "1": {
+          "id": 1,
+          "data": {
+            "type": "Script",
+            "id": "cd9ee9e7-0a87-4a96-99bb-17691df478b1",
+            "variables": {},
+            "name": "Fetch",
+            "script": "return fetch('https://api.ipify.org?format=json')"
+          },
+          "inputs": {
+            "5b753aaf-fd24-44b7-8efb-ba0333e97702": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "cd9ee9e7-0a87-4a96-99bb-17691df478b1": {
+              "connections": [
+                {
+                  "node": 2,
+                  "input": "10fc57dc-3aba-42f1-aeb6-78b2a9e8b658",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            158.79374317933795,
+            45.97767369952712
+          ],
+          "name": "Script"
+        },
+        "2": {
+          "id": 2,
+          "data": {
+            "type": "Script",
+            "id": "95b71843-7ce0-4769-a575-eefff9691876",
+            "variables": {
+              "10fc57dc-3aba-42f1-aeb6-78b2a9e8b658": "response"
+            },
+            "name": "Response",
+            "script": "const points = []\r\n// get the response as json\r\nconst data = response.json()\r\n\r\n// check if data available\r\nif(!data && !data.ip){\r\n    return points\r\n}\r\n// check for ip\r\nconst ip = data.ip\r\n// get the ip values\r\nconst values = ip.split('.')\r\n\r\n// make points\r\nvalues.forEach(function(value, index){\r\n    const n = parseFloat(value)\r\n    points.push(new Mathf.Point2(index, n))\r\n})\r\n\r\nreturn points"
+          },
+          "inputs": {
+            "10fc57dc-3aba-42f1-aeb6-78b2a9e8b658": {
+              "connections": [
+                {
+                  "node": 1,
+                  "output": "cd9ee9e7-0a87-4a96-99bb-17691df478b1",
+                  "data": {}
+                }
+              ]
+            },
+            "574743b2-4c0a-4c54-a914-345649a11960": {
+              "connections": []
+            }
+          },
+          "outputs": {
+            "95b71843-7ce0-4769-a575-eefff9691876": {
+              "connections": [
+                {
+                  "node": 5,
+                  "input": "59dccbf3-5324-4c59-8dbd-4d43a7085acf",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "position": [
+            520.6584212440888,
+            214.0911695161877
+          ],
+          "name": "Script"
+        },
+        "5": {
+          "id": 5,
+          "data": {
+            "type": "Chart",
+            "id": "9efbd9f9-beb6-42fe-89f6-bb62f084c1eb",
+            "datasets": {
+              "59dccbf3-5324-4c59-8dbd-4d43a7085acf": {
+                "color": "#0020ff",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "IP"
+              },
+              "9cd55c94-4eff-43fc-858f-be6eb9a3460c": {
+                "color": "#fffe00",
+                "fill": false,
+                "lines": true,
+                "lineWidth": 3,
+                "pointRadius": 3,
+                "name": "Dataset_2"
+              }
+            },
+            "lineTension": 0,
+            "name": "IP Chart",
+            "animation": true,
+            "pan": "None",
+            "zoom": "None",
+            "tooltipFractionDigits": 3
+          },
+          "inputs": {
+            "59dccbf3-5324-4c59-8dbd-4d43a7085acf": {
+              "connections": [
+                {
+                  "node": 2,
+                  "output": "95b71843-7ce0-4769-a575-eefff9691876",
+                  "data": {}
+                }
+              ]
+            }
+          },
+          "outputs": {},
+          "position": [
+            873.8045573679696,
+            373.1087427980941
+          ],
+          "name": "Chart"
+        }
+      }
+    }
+  }
+]
