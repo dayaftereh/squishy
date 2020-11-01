@@ -1,18 +1,26 @@
 import { NodeData } from 'rete/types/core/data';
+import { ChartAxisScaling } from 'src/app/projects/project/graph/components/chart/chart-axis-scaling';
 import { ChartDatasetConfig } from 'src/app/projects/project/graph/components/chart/chart-dataset.config';
+import { ChartScalingType } from 'src/app/projects/project/graph/components/chart/chart-scaling-type';
 import { ChartZoomPanAxis } from 'src/app/projects/project/graph/components/chart/chart-zoom-pan-axis';
 import { ChartData } from 'src/app/projects/project/graph/components/chart/chart.data';
 import { Utils } from 'src/app/utils/utils';
 import { Execution } from '../../execution';
 import { AbstractNodeExecutor } from '../abstract-node-executor';
 import { NodeExecutor } from '../node-executor';
+import { Vec2 } from '../script/math/geometry/vec2';
 import { ChartExecutionResult } from './chart-execution.result';
 import { ChartExecutionData } from './chart.execution-data';
 
 export class ChartNodeExecutor extends AbstractNodeExecutor {
 
+    private minValues: Vec2
+    private maxValues: Vec2
+
     constructor(execution: Execution, nodeData: NodeData, executionData: ChartExecutionData) {
         super(execution, nodeData, executionData)
+        this.minValues = new Vec2(Infinity, Infinity)
+        this.maxValues = new Vec2(-Infinity, -Infinity)
     }
 
     protected async internalExecute(): Promise<void> {
@@ -66,6 +74,15 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
         }
         // get the result
         const data: any = nodeExecutor.getResult()
+
+        // check if data is an array
+        if (Array.isArray(data)) {
+            // get each entry
+            data.forEach((entry: any) => {
+                this.updateMinMaxValues(entry)
+            })
+        }
+
         // create the data set
         const dataset: any = this.createDataset(data, chartData, datasetConfig)
 
@@ -90,6 +107,23 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
         }
     }
 
+    private updateMinMaxValues(entry: any): void {
+        const x: number | undefined = entry.x
+        const y: number | undefined = entry.y
+
+        // check if x given
+        if (!Utils.isNullOrUndefined(x) && !isNaN(x)) {
+            this.minValues.x = Math.min(this.minValues.x, x)
+            this.maxValues.x = Math.max(this.maxValues.x, x)
+        }
+
+        // check if y given
+        if (!Utils.isNullOrUndefined(y) && !isNaN(y)) {
+            this.minValues.y = Math.min(this.minValues.y, y)
+            this.maxValues.y = Math.max(this.maxValues.y, y)
+        }
+    }
+
     private async options(chartData: ChartData): Promise<any> {
         const zoom: any = await this.zoomPanPlugin(chartData)
         const animationDuration: number = Math.max(chartData.animation ? 750.0 : 0.0, 0.0)
@@ -103,8 +137,117 @@ export class ChartNodeExecutor extends AbstractNodeExecutor {
             responsiveAnimationDuration: animationDuration,
             plugins: {
                 zoom
+            },
+            scales: this.createScales(chartData)
+        }
+    }
+
+    private createScales(chartData: ChartData): any {
+        let axisScaling: ChartAxisScaling | undefined = chartData.axisScaling
+        if (Utils.isNullOrUndefined(axisScaling)) {
+            axisScaling = ChartAxisScaling.Auto
+        }
+
+        if (axisScaling === ChartAxisScaling.Auto) {
+            return this.createAutoAxesScaling(chartData)
+        }
+
+        if (axisScaling === ChartAxisScaling.Fixed) {
+            return this.createFixedAxesScaling(chartData)
+        }
+
+        return this.createAspectRatioAxesScaling(chartData)
+    }
+
+    private createAutoAxesScaling(chartData: ChartData): any {
+        return {
+            x: {
+                type: this.getXScalingType(chartData),
+            },
+            y: {
+                type: this.getYScalingType(chartData),
             }
         }
+    }
+
+    private createFixedAxesScaling(chartData: ChartData): any {
+        return {
+            xAxes: [
+                {
+                    display: true,
+                    type: this.getXScalingType(chartData),
+                    ticks: {
+                        min: chartData.axisScalingXAxisMin,
+                        max: chartData.axisScalingXAxisMax,
+                    }
+                }
+            ],
+            yAxes: [
+                {
+                    display: true,
+                    type: this.getYScalingType(chartData),
+                    ticks: {
+                        min: chartData.axisScalingYAxisMin,
+                        max: chartData.axisScalingYAxisMax,
+                    }
+                }
+            ]
+        }
+    }
+
+    private createAspectRatioAxesScaling(chartData: ChartData): any {
+        const width: number = Math.abs(this.minValues.x - this.maxValues.x)
+        const height: number = Math.abs(this.minValues.y - this.maxValues.y)
+
+        let xMin: number = this.minValues.x
+        let xMax: number = this.maxValues.x
+        let yMin: number = this.minValues.y
+        let yMax: number = this.maxValues.y
+
+        if (width > height) {
+            const diff: number = width - height
+            yMin = this.minValues.y - (diff / 2.0)
+            yMax = this.maxValues.y + (diff / 2.0)
+        } else {
+            const diff: number = height - width
+            xMin = this.minValues.x - (diff / 2.0)
+            xMax = this.maxValues.x + (diff / 2.0)
+        }
+
+        return {
+            xAxes: [{
+                type: this.getXScalingType(chartData),
+                ticks: {
+                    suggestedMin: xMin,
+                    suggestedMax: xMax,
+                }
+            }],
+            yAxes: [{
+                type: this.getYScalingType(chartData),
+                ticks: {
+                    suggestedMin: yMin,
+                    suggestedMax: yMax,
+                }
+            }]
+        }
+    }
+
+    private getXScalingType(chartData: ChartData): string {
+        let type: ChartScalingType | undefined = chartData.xScalingType
+        if (Utils.isNullOrUndefined(type)) {
+            type = ChartScalingType.Linear
+        }
+
+        return `${type}`.toLowerCase()
+    }
+
+    private getYScalingType(chartData: ChartData): string {
+        let type: ChartScalingType | undefined = chartData.yScalingType
+        if (Utils.isNullOrUndefined(type)) {
+            type = ChartScalingType.Linear
+        }
+
+        return `${type}`.toLowerCase()
     }
 
     private async zoomPanPlugin(chartData: ChartData): Promise<any> {

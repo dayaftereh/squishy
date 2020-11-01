@@ -30,6 +30,33 @@ Following `chart` properties can be set:
 
   <dt><b>Line Tension</b></dt>
   <dd>The <i>bezier curve</i> tension of the line. Set to <code>0</code> to draw straightlines. Default is <code>0</code>.</dd>
+
+  <dt><b>X Scale Type</b></dt>
+  <dd>The scale type of the x axis. Default is <code>Linear</code>.</dd>
+
+  <dt><b>Y Scale Type</b></dt>
+  <dd>The scale type of the y axis. Default is <code>Linear</code>.</dd>
+
+  <dt><b>Axes scaling Mode</b></dt>
+  <dd>Defines the scaling of both axes in relationship to each other. Default is <code>Auto</code>.
+    <ul>
+        <li><b>Auto</b> scales each axes independent of each other.</li>
+        <li><b>Fixed</b> scales the axes minimum and maximum with the given values.</li>
+        <li><b>AspectRation</b> scales the minimum and maximum of each axes based on the largest axis. </li>
+    </ul>  
+  </dd>
+
+  <dt><b>Minimum X value</b></dt>
+  <dd>The minimum x axis value. Default is <code>0</code>.</dd>
+
+  <dt><b>Maximum X value</b></dt>
+  <dd>The maximum x axis value. Default is <code>0</code>.</dd>
+
+  <dt><b>Minimum Y value</b></dt>
+  <dd>The minimum y axis value. Default is <code>0</code>.</dd>
+
+  <dt><b>Maximum Y value</b></dt>
+  <dd>The maximum y axis value. Default is <code>0</code>.</dd>
 </dl>
 
 ## Dataset-Properties

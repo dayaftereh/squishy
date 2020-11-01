@@ -2,6 +2,7 @@ import * as buffer from 'buffer';
 import * as dayjs from "dayjs";
 import * as pngjs from 'pngjs/browser';
 import * as xmldom from 'xmldom';
+import * as mustache from 'mustache';
 
 export class Plugins {
     /**
@@ -28,4 +29,11 @@ export class Plugins {
      * @see https://nodejs.org/api/buffer.html
      */
     buffer = buffer
+
+    /**
+     * import from mustache, which is the implementation of the mustache template system
+     * @see https://github.com/janl/mustache.js
+     * @see http://mustache.github.io/mustache.5.html
+     */
+    mustache = mustache
 }

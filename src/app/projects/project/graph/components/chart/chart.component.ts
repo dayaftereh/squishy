@@ -2,14 +2,17 @@ import { Input, Node } from 'rete';
 import { NodeData } from 'rete/types/core/data';
 import { Utils } from 'src/app/utils/utils';
 import { Color } from 'src/worker/execution/node-executor/script/math/color';
+import { Vec2 } from 'src/worker/execution/node-executor/script/math/geometry/vec2';
 import { GraphNodesManager } from '../../graph-nodes.manager';
 import { anyTypeSocket } from '../../sockets/any-type.socket';
 import { NodeComponentsType } from '../node-components.type';
 import { NodeDynamicInputEvent } from '../node-dynamic-input.event';
 import { NodeDynamicInputManager } from '../node-dynamic-input.manager';
 import { SquishyNodeComponent } from '../squishy-node.component';
+import { ChartAxisScaling } from './chart-axis-scaling';
 import { ChartDatasetConfig } from './chart-dataset.config';
 import { ChartNodeComponent } from './chart-node.component';
+import { ChartScalingType } from './chart-scaling-type';
 import { ChartZoomPanAxis } from './chart-zoom-pan-axis';
 import { ChartData } from './chart.data';
 
@@ -36,6 +39,15 @@ export class ChartComponent extends SquishyNodeComponent<ChartData> {
         data.pan = ChartZoomPanAxis.None
         data.zoom = ChartZoomPanAxis.None
         data.tooltipFractionDigits = 3
+
+        data.axisScaling = ChartAxisScaling.Auto
+        data.axisScalingXAxisMin = 0.0
+        data.axisScalingXAxisMax = 0.0
+        data.axisScalingYAxisMin = 0.0
+        data.axisScalingYAxisMax = 0.0
+
+        data.xScalingType = ChartScalingType.Linear
+        data.yScalingType = ChartScalingType.Linear
 
         return data
     }

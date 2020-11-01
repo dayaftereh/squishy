@@ -62,6 +62,8 @@ export class ChartExecutorComponent implements OnInit, OnDestroy {
         const defaultOptions: any = this.defaultOptions()
         // set options
         this.options = Object.assign({}, result.options, defaultOptions)
+
+        console.log(this.options)
     }
 
     private defaultOptions(): any {
@@ -78,6 +80,7 @@ export class ChartExecutorComponent implements OnInit, OnDestroy {
 
         return {
             responsive: true,
+            maintainAspectRatio: true,
             tooltips: {
                 callbacks: {
                     label: (item: any, data: any) => {
@@ -93,7 +96,7 @@ export class ChartExecutorComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (!this.subscription) {
+        if (this.subscription) {
             this.subscription.unsubscribe()
         }
     }

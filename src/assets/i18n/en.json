@@ -124,6 +124,27 @@
                             },
                             "lineTension": {
                                 "lbl": "Line Tension"
+                            },
+                            "x-scaling-type": {
+                                "lbl": "X Scale Type"
+                            },
+                            "y-scaling-type": {
+                                "lbl": "Y Scale Type"
+                            },
+                            "axis-scaling": {
+                                "lbl": "Axes scaling Mode"
+                            },
+                            "axis-scaling-x-axis-min": {
+                                "lbl": "Minimum X value"
+                            },
+                            "axis-scaling-x-axis-max": {
+                                "lbl": "Maximum X value"
+                            },
+                            "axis-scaling-y-axis-min": {
+                                "lbl": "Minimum Y value"
+                            },
+                            "axis-scaling-y-axis-max": {
+                                "lbl": "Maximum Y value"
                             }
                         },
                         "dataset": {

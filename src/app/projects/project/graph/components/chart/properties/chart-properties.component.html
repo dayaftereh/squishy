@@ -59,4 +59,74 @@
             </div>
         </div>
     </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.x-scaling-type.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-selectButton [options]="scalingTypeOptions" formControlName="xScalingType"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.y-scaling-type.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-selectButton [options]="scalingTypeOptions" formControlName="yScalingType"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.axis-scaling.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <p-selectButton [options]="axisScalingOptions" formControlName="axisScaling"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.axis-scaling-x-axis-min.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" formControlName="axisScalingXAxisMin" pInputText />
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.axis-scaling-x-axis-max.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" formControlName="axisScalingXAxisMax" pInputText />
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.axis-scaling-y-axis-min.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" formControlName="axisScalingYAxisMin" pInputText />
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            {{'projects.project.graph.components.chart.properties.axis-scaling-y-axis-max.lbl' | translate}}
+        </div>
+        <div class="p-col">
+            <div class="ui-inputgroup">
+                <input type="number" formControlName="axisScalingYAxisMax" pInputText />
+            </div>
+        </div>
+    </div>
 </form>
