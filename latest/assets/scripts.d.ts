@@ -1841,6 +1841,12 @@ declare namespace PluginsTypes {
      * @see https://nodejs.org/api/buffer.html
      */
     buffer: typeof buffer;
+    /**
+     * import from mustache, which is the implementation of the mustache template system
+     * @see https://github.com/janl/mustache.js
+     * @see http://mustache.github.io/mustache.5.html
+     */
+    mustache: any;
 }
 
 

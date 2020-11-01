@@ -41,7 +41,7 @@ The class is based on `EllipseCurve2`.
 
 *Overrides [EllipseCurve2](#classesellipsecurve2md).[constructor](#constructor)*
 
-*Defined in [curves/arc-curve2.ts:8](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/arc-curve2.ts#L8)*
+*Defined in [curves/arc-curve2.ts:8](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/arc-curve2.ts#L8)*
 
 creates a elliptical arc with the given values
 
@@ -66,7 +66,7 @@ Name | Type | Description |
 
 *Inherited from [Curve2](#classescurve2md).[computeFrames](#computeframes)*
 
-*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
+*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
 
 #### Parameters:
 
@@ -84,7 +84,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLength](#getlength)*
 
-*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
+*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
 
 Get total curve arc length.
 
@@ -98,7 +98,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLengths](#getlengths)*
 
-*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
+*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
 
 Get list of cumulative segment lengths.
 
@@ -120,7 +120,7 @@ ___
 
 *Overrides [Curve](#classescurvemd).[getPoint](#getpoint)*
 
-*Defined in [curves/ellipse-curve2.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L65)*
+*Defined in [curves/ellipse-curve2.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L65)*
 
 Returns a vector for a given position on the curve.
 
@@ -140,7 +140,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPointAt](#getpointat)*
 
-*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
+*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
 
 Returns a vector for a given position on the curve according to the arc length.
 
@@ -160,7 +160,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoints](#getpoints)*
 
-*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
+*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
 
 Get sequence of points using getPoint( t )
 
@@ -182,7 +182,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getSpacedPoints](#getspacedpoints)*
 
-*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
+*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
 
 Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
 
@@ -202,7 +202,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangent](#gettangent)*
 
-*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
+*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
 
 Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
 two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
@@ -223,7 +223,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangentAt](#gettangentat)*
 
-*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
+*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
 
 Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
 
@@ -243,7 +243,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getUtoTmapping](#getutotmapping)*
 
-*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
+*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
 
 Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
 u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
@@ -265,7 +265,7 @@ ___
 
 *Inherited from [EllipseCurve2](#classesellipsecurve2md).[ellipseWith](#ellipsewith)*
 
-*Defined in [curves/ellipse-curve2.ts:57](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L57)*
+*Defined in [curves/ellipse-curve2.ts:57](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L57)*
 
 Creates the 2d curve in the shape of an ellipse
 
@@ -290,7 +290,7 @@ ___
 
 ▸ `Static`**from**(`center`: [Vec3](#classesvec3md), `radius`: number, `startAngle`: number, `endAngle`: number, `clockwise?`: boolean): [ArcCurve2](#classesarccurve2md)
 
-*Defined in [curves/arc-curve2.ts:32](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/arc-curve2.ts#L32)*
+*Defined in [curves/arc-curve2.ts:32](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/arc-curve2.ts#L32)*
 
 creates a elliptical arc with the given values
 
@@ -350,7 +350,7 @@ but for squishy curve use, it could be possible inlined and flatten into a singl
 
 \+ **new CatmullCubicPolynomial**(): [CatmullCubicPolynomial](#classescatmullcubicpolynomialmd)
 
-*Defined in [curves/catmull-cubic-polynomial.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L14)*
+*Defined in [curves/catmull-cubic-polynomial.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L14)*
 
 **Returns:** [CatmullCubicPolynomial](#classescatmullcubicpolynomialmd)
 
@@ -360,7 +360,7 @@ but for squishy curve use, it could be possible inlined and flatten into a singl
 
 •  **c0**: number
 
-*Defined in [curves/catmull-cubic-polynomial.ts:11](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L11)*
+*Defined in [curves/catmull-cubic-polynomial.ts:11](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L11)*
 
 ___
 
@@ -368,7 +368,7 @@ ___
 
 •  **c1**: number
 
-*Defined in [curves/catmull-cubic-polynomial.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L12)*
+*Defined in [curves/catmull-cubic-polynomial.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L12)*
 
 ___
 
@@ -376,7 +376,7 @@ ___
 
 •  **c2**: number
 
-*Defined in [curves/catmull-cubic-polynomial.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L13)*
+*Defined in [curves/catmull-cubic-polynomial.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L13)*
 
 ___
 
@@ -384,7 +384,7 @@ ___
 
 •  **c3**: number
 
-*Defined in [curves/catmull-cubic-polynomial.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L14)*
+*Defined in [curves/catmull-cubic-polynomial.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L14)*
 
 ## Methods
 
@@ -392,7 +392,7 @@ ___
 
 ▸ **calculate**(`t`: number): number
 
-*Defined in [curves/catmull-cubic-polynomial.ts:56](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L56)*
+*Defined in [curves/catmull-cubic-polynomial.ts:56](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L56)*
 
 #### Parameters:
 
@@ -408,7 +408,7 @@ ___
 
 ▸ **init**(`x0`: number, `x1`: number, `t0`: number, `t1`: number): void
 
-*Defined in [curves/catmull-cubic-polynomial.ts:31](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L31)*
+*Defined in [curves/catmull-cubic-polynomial.ts:31](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L31)*
 
 #### Parameters:
 
@@ -427,7 +427,7 @@ ___
 
 ▸ **initCatmullRom**(`x0`: number, `x1`: number, `x2`: number, `x3`: number, `tension`: number): void
 
-*Defined in [curves/catmull-cubic-polynomial.ts:38](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L38)*
+*Defined in [curves/catmull-cubic-polynomial.ts:38](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L38)*
 
 #### Parameters:
 
@@ -447,7 +447,7 @@ ___
 
 ▸ **initNonuniformCatmullRom**(`x0`: number, `x1`: number, `x2`: number, `x3`: number, `dt0`: number, `dt1`: number, `dt2`: number): void
 
-*Defined in [curves/catmull-cubic-polynomial.ts:44](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L44)*
+*Defined in [curves/catmull-cubic-polynomial.ts:44](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-cubic-polynomial.ts#L44)*
 
 #### Parameters:
 
@@ -513,7 +513,7 @@ cusps and self-intersections in non-uniform catmull rom curves.
 
 *Overrides [Curve3](#classescurve3md).[constructor](#constructor)*
 
-*Defined in [curves/catmull-rom-curve3.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L12)*
+*Defined in [curves/catmull-rom-curve3.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L12)*
 
 #### Parameters:
 
@@ -532,7 +532,7 @@ Name | Type |
 
 • `Private` `Optional` `Readonly` **closed**: boolean
 
-*Defined in [curves/catmull-rom-curve3.ts:16](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L16)*
+*Defined in [curves/catmull-rom-curve3.ts:16](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L16)*
 
 ___
 
@@ -540,7 +540,7 @@ ___
 
 • `Private` `Readonly` **points**: [Vec3](#classesvec3md)[]
 
-*Defined in [curves/catmull-rom-curve3.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L15)*
+*Defined in [curves/catmull-rom-curve3.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L15)*
 
 ___
 
@@ -548,7 +548,7 @@ ___
 
 • `Private` `Optional` `Readonly` **tension**: number
 
-*Defined in [curves/catmull-rom-curve3.ts:18](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L18)*
+*Defined in [curves/catmull-rom-curve3.ts:18](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L18)*
 
 ___
 
@@ -556,7 +556,7 @@ ___
 
 • `Private` `Optional` `Readonly` **type**: [CatmullRomType](#enumscatmullromtypemd)
 
-*Defined in [curves/catmull-rom-curve3.ts:17](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L17)*
+*Defined in [curves/catmull-rom-curve3.ts:17](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L17)*
 
 ## Methods
 
@@ -566,7 +566,7 @@ ___
 
 *Inherited from [Curve3](#classescurve3md).[computeFrenetFrames](#computefrenetframes)*
 
-*Defined in [curves/curve3.ts:23](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve3.ts#L23)*
+*Defined in [curves/curve3.ts:23](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve3.ts#L23)*
 
 Generates the Frenet Frames. Requires a curve definition in 3D space.
 
@@ -589,7 +589,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLength](#getlength)*
 
-*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
+*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
 
 Get total curve arc length.
 
@@ -603,7 +603,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLengths](#getlengths)*
 
-*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
+*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
 
 Get list of cumulative segment lengths.
 
@@ -623,7 +623,7 @@ ___
 
 *Overrides [Curve](#classescurvemd).[getPoint](#getpoint)*
 
-*Defined in [curves/catmull-rom-curve3.ts:32](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L32)*
+*Defined in [curves/catmull-rom-curve3.ts:32](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-curve3.ts#L32)*
 
 #### Parameters:
 
@@ -641,7 +641,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPointAt](#getpointat)*
 
-*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
+*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
 
 Returns a vector for a given position on the curve according to the arc length.
 
@@ -661,7 +661,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoints](#getpoints)*
 
-*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
+*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
 
 Get sequence of points using getPoint( t )
 
@@ -683,7 +683,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getSpacedPoints](#getspacedpoints)*
 
-*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
+*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
 
 Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
 
@@ -703,7 +703,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangent](#gettangent)*
 
-*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
+*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
 
 Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
 two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
@@ -724,7 +724,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangentAt](#gettangentat)*
 
-*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
+*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
 
 Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
 
@@ -744,7 +744,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getUtoTmapping](#getutotmapping)*
 
-*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
+*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
 
 Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
 u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
@@ -807,7 +807,7 @@ The alpha value defines the transparency of a color and can be represented by a 
 
 \+ **new Color**(`r`: number, `g`: number, `b`: number, `a?`: number): [Color](#classescolormd)
 
-*Defined in [color.ts:25](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L25)*
+*Defined in [color.ts:25](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L25)*
 
 Creates an sRGBA color with the specified red, green, blue, and alpha values in the range [0, 1].
 
@@ -828,7 +828,7 @@ Name | Type | Description |
 
 •  **a**: number \| undefined
 
-*Defined in [color.ts:25](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L25)*
+*Defined in [color.ts:25](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L25)*
 
 the alpha component [0, 1]
 
@@ -838,7 +838,7 @@ ___
 
 •  **b**: number
 
-*Defined in [color.ts:21](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L21)*
+*Defined in [color.ts:21](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L21)*
 
  the blue component [0, 1]
 
@@ -848,7 +848,7 @@ ___
 
 •  **g**: number
 
-*Defined in [color.ts:17](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L17)*
+*Defined in [color.ts:17](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L17)*
 
 the green component [0, 1]
 
@@ -858,7 +858,7 @@ ___
 
 •  **r**: number
 
-*Defined in [color.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L13)*
+*Defined in [color.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L13)*
 
 the red component [0, 1]
 
@@ -868,7 +868,7 @@ the red component [0, 1]
 
 ▸ **add**(`r`: number, `g`: number, `b`: number, `a?`: number): [Color](#classescolormd)
 
-*Defined in [color.ts:144](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L144)*
+*Defined in [color.ts:144](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L144)*
 
 Adds the RGB/A values of color to the RGB/A values of this color and returns a new color as result.
 
@@ -889,7 +889,7 @@ ___
 
 ▸ **addWith**(`color`: [Color](#classescolormd)): [Color](#classescolormd)
 
-*Defined in [color.ts:162](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L162)*
+*Defined in [color.ts:162](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L162)*
 
 Adds the given color to this color and and returns a new color as result.
 
@@ -907,7 +907,7 @@ ___
 
 ▸ **clone**(): [Color](#classescolormd)
 
-*Defined in [color.ts:241](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L241)*
+*Defined in [color.ts:241](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L241)*
 
 creates a new color with the same components from this color
 
@@ -919,7 +919,7 @@ ___
 
 ▸ **getAlpha**(): number
 
-*Defined in [color.ts:192](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L192)*
+*Defined in [color.ts:192](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L192)*
 
 Returns the alpha channel value between [0, 1].
 If the color has no alpha the return is always 1.0
@@ -934,7 +934,7 @@ ___
 
 ▸ **getB**(): number
 
-*Defined in [color.ts:183](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L183)*
+*Defined in [color.ts:183](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L183)*
 
 Returns the blue channel value between [0, 255]
 
@@ -946,7 +946,7 @@ ___
 
 ▸ **getG**(): number
 
-*Defined in [color.ts:176](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L176)*
+*Defined in [color.ts:176](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L176)*
 
 Returns the green channel value between [0, 255]
 
@@ -958,7 +958,7 @@ ___
 
 ▸ **getR**(): number
 
-*Defined in [color.ts:169](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L169)*
+*Defined in [color.ts:169](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L169)*
 
 Returns the red channel value between [0, 255]
 
@@ -970,7 +970,7 @@ ___
 
 ▸ **isAlpha**(): boolean
 
-*Defined in [color.ts:133](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L133)*
+*Defined in [color.ts:133](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L133)*
 
 checks if the color has a alpha value
 
@@ -982,7 +982,7 @@ ___
 
 ▸ **lerp**(`other`: [Color](#classescolormd), `t`: number): [Color](#classescolormd)
 
-*Defined in [color.ts:224](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L224)*
+*Defined in [color.ts:224](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L224)*
 
 Linearly interpolates this color's RGB values toward the RGB values of the passed argument.
 The t argument can be thought of as the ratio between the two colors, where 0.0 is this color and 1.0 is the first argument.
@@ -1002,7 +1002,7 @@ ___
 
 ▸ **scale**(`s`: number): [Color](#classescolormd)
 
-*Defined in [color.ts:203](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L203)*
+*Defined in [color.ts:203](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L203)*
 
 returns a new color with the components multiplied with the given scale
 
@@ -1020,7 +1020,7 @@ ___
 
 ▸ **toHex**(): string
 
-*Defined in [color.ts:94](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L94)*
+*Defined in [color.ts:94](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L94)*
 
 converts the color to an html hexadecimal triplet string like #ffff00 or with alpha #ffff00ff
 
@@ -1032,7 +1032,7 @@ ___
 
 ▸ **toString**(): string
 
-*Defined in [color.ts:118](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L118)*
+*Defined in [color.ts:118](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L118)*
 
 converts the color to a css color string like rgb(0, 0, 0) or rgba(0, 0, 0)
 
@@ -1044,7 +1044,7 @@ ___
 
 ▸ `Static`**fromHSL**(`h`: number, `s`: number, `l`: number): [Color](#classescolormd)
 
-*Defined in [color.ts:48](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L48)*
+*Defined in [color.ts:48](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L48)*
 
 Converts an HSL color value to RGB. Conversion formula adapted from http://en.wikipedia.org/wiki/HSL_color_space.
 Assumes h, s, and l are contained in the set [0, 1] and returns a new color.
@@ -1065,7 +1065,7 @@ ___
 
 ▸ `Static`**random**(): [Color](#classescolormd)
 
-*Defined in [color.ts:86](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/color.ts#L86)*
+*Defined in [color.ts:86](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/color.ts#L86)*
 
 Creates a random RGB color using Color.fromHSL() with a random hue
 
@@ -1116,7 +1116,7 @@ A base class for creating a Curve object that contains methods for interpolation
 
 \+ **new Curve**(): [Curve](#classescurvemd)
 
-*Defined in [curves/curve.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L13)*
+*Defined in [curves/curve.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L13)*
 
 This constructor creates a new Curve.
 
@@ -1128,7 +1128,7 @@ This constructor creates a new Curve.
 
 • `Private` **lengths**: number[] \| undefined
 
-*Defined in [curves/curve.ts:10](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L10)*
+*Defined in [curves/curve.ts:10](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L10)*
 
 ___
 
@@ -1136,7 +1136,7 @@ ___
 
 ▪ `Static` `Private` **APPROX\_DELTA**: number = 0.0001
 
-*Defined in [curves/curve.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L12)*
+*Defined in [curves/curve.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L12)*
 
 ___
 
@@ -1144,7 +1144,7 @@ ___
 
 ▪ `Static` `Private` **ARC\_LENGTH\_DIVISIONS**: number = 200
 
-*Defined in [curves/curve.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L13)*
+*Defined in [curves/curve.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L13)*
 
 ## Methods
 
@@ -1152,7 +1152,7 @@ ___
 
 ▸ **getLength**(): number
 
-*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
+*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
 
 Get total curve arc length.
 
@@ -1164,7 +1164,7 @@ ___
 
 ▸ **getLengths**(`divisions?`: number): number[]
 
-*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
+*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
 
 Get list of cumulative segment lengths.
 
@@ -1182,7 +1182,7 @@ ___
 
 ▸ **getPoint**(`t`: number): [Vec2](#classesvec2md) \| [Vec3](#classesvec3md)
 
-*Defined in [curves/curve.ts:26](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L26)*
+*Defined in [curves/curve.ts:26](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L26)*
 
 Returns a vector for a given position on the curve.
 
@@ -1200,7 +1200,7 @@ ___
 
 ▸ **getPointAt**(`u`: number): [Vec2](#classesvec2md) \| [Vec3](#classesvec3md)
 
-*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
+*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
 
 Returns a vector for a given position on the curve according to the arc length.
 
@@ -1218,7 +1218,7 @@ ___
 
 ▸ **getPoints**(`divisions?`: number): ([Vec2](#classesvec2md) \| [Vec3](#classesvec3md))[]
 
-*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
+*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
 
 Get sequence of points using getPoint( t )
 
@@ -1238,7 +1238,7 @@ ___
 
 ▸ **getSpacedPoints**(`divisions`: number): ([Vec2](#classesvec2md) \| [Vec3](#classesvec3md))[]
 
-*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
+*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
 
 Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
 
@@ -1256,7 +1256,7 @@ ___
 
 ▸ **getTangent**(`t`: number): [Vec2](#classesvec2md) \| [Vec3](#classesvec3md)
 
-*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
+*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
 
 Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
 two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
@@ -1275,7 +1275,7 @@ ___
 
 ▸ **getTangentAt**(`u`: number): [Vec2](#classesvec2md) \| [Vec3](#classesvec3md)
 
-*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
+*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
 
 Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
 
@@ -1293,7 +1293,7 @@ ___
 
 ▸ **getUtoTmapping**(`u`: number, `distance?`: number): number
 
-*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
+*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
 
 Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
 u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
@@ -1351,7 +1351,7 @@ Extension class for a curve with additional interpolation function for the 2d sp
 
 *Overrides [Curve](#classescurvemd).[constructor](#constructor)*
 
-*Defined in [curves/curve2.ts:8](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve2.ts#L8)*
+*Defined in [curves/curve2.ts:8](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve2.ts#L8)*
 
 **Returns:** [Curve2](#classescurve2md)
 
@@ -1361,7 +1361,7 @@ Extension class for a curve with additional interpolation function for the 2d sp
 
 ▸ **computeFrames**(`segments`: number): [CurveFrame2](#classescurveframe2md)[]
 
-*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
+*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
 
 #### Parameters:
 
@@ -1379,7 +1379,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLength](#getlength)*
 
-*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
+*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
 
 Get total curve arc length.
 
@@ -1393,7 +1393,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLengths](#getlengths)*
 
-*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
+*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
 
 Get list of cumulative segment lengths.
 
@@ -1413,7 +1413,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoint](#getpoint)*
 
-*Defined in [curves/curve.ts:26](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L26)*
+*Defined in [curves/curve.ts:26](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L26)*
 
 Returns a vector for a given position on the curve.
 
@@ -1433,7 +1433,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPointAt](#getpointat)*
 
-*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
+*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
 
 Returns a vector for a given position on the curve according to the arc length.
 
@@ -1453,7 +1453,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoints](#getpoints)*
 
-*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
+*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
 
 Get sequence of points using getPoint( t )
 
@@ -1475,7 +1475,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getSpacedPoints](#getspacedpoints)*
 
-*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
+*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
 
 Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
 
@@ -1495,7 +1495,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangent](#gettangent)*
 
-*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
+*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
 
 Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
 two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
@@ -1516,7 +1516,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangentAt](#gettangentat)*
 
-*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
+*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
 
 Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
 
@@ -1536,7 +1536,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getUtoTmapping](#getutotmapping)*
 
-*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
+*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
 
 Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
 u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
@@ -1592,7 +1592,7 @@ Extension class for a curve with additional interpolation function for the 3d sp
 
 *Overrides [Curve](#classescurvemd).[constructor](#constructor)*
 
-*Defined in [curves/curve3.ts:11](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve3.ts#L11)*
+*Defined in [curves/curve3.ts:11](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve3.ts#L11)*
 
 **Returns:** [Curve3](#classescurve3md)
 
@@ -1602,7 +1602,7 @@ Extension class for a curve with additional interpolation function for the 3d sp
 
 ▸ **computeFrenetFrames**(`segments`: number, `closed?`: boolean): [CurveFrame3](#classescurveframe3md)[]
 
-*Defined in [curves/curve3.ts:23](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve3.ts#L23)*
+*Defined in [curves/curve3.ts:23](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve3.ts#L23)*
 
 Generates the Frenet Frames. Requires a curve definition in 3D space.
 
@@ -1625,7 +1625,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLength](#getlength)*
 
-*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
+*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
 
 Get total curve arc length.
 
@@ -1639,7 +1639,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLengths](#getlengths)*
 
-*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
+*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
 
 Get list of cumulative segment lengths.
 
@@ -1659,7 +1659,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoint](#getpoint)*
 
-*Defined in [curves/curve.ts:26](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L26)*
+*Defined in [curves/curve.ts:26](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L26)*
 
 Returns a vector for a given position on the curve.
 
@@ -1679,7 +1679,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPointAt](#getpointat)*
 
-*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
+*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
 
 Returns a vector for a given position on the curve according to the arc length.
 
@@ -1699,7 +1699,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoints](#getpoints)*
 
-*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
+*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
 
 Get sequence of points using getPoint( t )
 
@@ -1721,7 +1721,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getSpacedPoints](#getspacedpoints)*
 
-*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
+*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
 
 Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
 
@@ -1741,7 +1741,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangent](#gettangent)*
 
-*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
+*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
 
 Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
 two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
@@ -1762,7 +1762,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangentAt](#gettangentat)*
 
-*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
+*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
 
 Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
 
@@ -1782,7 +1782,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getUtoTmapping](#getutotmapping)*
 
-*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
+*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
 
 Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
 u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
@@ -1826,7 +1826,7 @@ Name | Type | Description |
 
 \+ **new CurveFrame2**(`position`: [Vec2](#classesvec2md), `tangent`: [Vec2](#classesvec2md)): [CurveFrame2](#classescurveframe2md)
 
-*Defined in [curves/curve-frame2.ts:8](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L8)*
+*Defined in [curves/curve-frame2.ts:8](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L8)*
 
 #### Parameters:
 
@@ -1843,7 +1843,7 @@ Name | Type |
 
 •  **position**: [Vec2](#classesvec2md)
 
-*Defined in [curves/curve-frame2.ts:8](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L8)*
+*Defined in [curves/curve-frame2.ts:8](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L8)*
 
 position on the curve for the frame
 
@@ -1853,7 +1853,7 @@ ___
 
 •  **tangent**: [Vec2](#classesvec2md)
 
-*Defined in [curves/curve-frame2.ts:6](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L6)*
+*Defined in [curves/curve-frame2.ts:6](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L6)*
 
 direction vector of the curve
 
@@ -1863,7 +1863,7 @@ direction vector of the curve
 
 ▸ **rotation**(): number
 
-*Defined in [curves/curve-frame2.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L15)*
+*Defined in [curves/curve-frame2.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame2.ts#L15)*
 
 **Returns:** number
 
@@ -1899,7 +1899,7 @@ direction vector of the curve
 
 \+ **new CurveFrame3**(`position`: [Vec3](#classesvec3md), `tangent`: [Vec3](#classesvec3md)): [CurveFrame3](#classescurveframe3md)
 
-*Defined in [curves/curve-frame3.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L13)*
+*Defined in [curves/curve-frame3.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L13)*
 
 #### Parameters:
 
@@ -1916,7 +1916,7 @@ Name | Type |
 
 •  **binormal**: [Vec3](#classesvec3md)
 
-*Defined in [curves/curve-frame3.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L13)*
+*Defined in [curves/curve-frame3.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L13)*
 
 the cross vector from tangent and normal
 
@@ -1926,7 +1926,7 @@ ___
 
 •  **normal**: [Vec3](#classesvec3md)
 
-*Defined in [curves/curve-frame3.ts:7](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L7)*
+*Defined in [curves/curve-frame3.ts:7](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L7)*
 
 the normal vector
 
@@ -1936,7 +1936,7 @@ ___
 
 •  **position**: [Vec3](#classesvec3md)
 
-*Defined in [curves/curve-frame3.ts:11](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L11)*
+*Defined in [curves/curve-frame3.ts:11](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L11)*
 
 position on the curve for the frame
 
@@ -1946,7 +1946,7 @@ ___
 
 •  **tangent**: [Vec3](#classesvec3md)
 
-*Defined in [curves/curve-frame3.ts:9](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L9)*
+*Defined in [curves/curve-frame3.ts:9](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L9)*
 
 direction vector of the curve
 
@@ -1956,7 +1956,7 @@ direction vector of the curve
 
 ▸ **rotation**(): [Vec3](#classesvec3md)
 
-*Defined in [curves/curve-frame3.ts:26](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L26)*
+*Defined in [curves/curve-frame3.ts:26](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve-frame3.ts#L26)*
 
 Computes the three euler angles from binormal, tangent and normal
 
@@ -2017,7 +2017,7 @@ Setting the xRadius equal to the yRadius will result in a circle.
 
 *Overrides [Curve2](#classescurve2md).[constructor](#constructor)*
 
-*Defined in [curves/ellipse-curve2.ts:10](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L10)*
+*Defined in [curves/ellipse-curve2.ts:10](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L10)*
 
 Creates the 2d curve in the shape of an ellipse
 
@@ -2042,7 +2042,7 @@ Name | Type | Description |
 
 • `Private` `Optional` `Readonly` **clockwise**: boolean
 
-*Defined in [curves/ellipse-curve2.ts:30](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L30)*
+*Defined in [curves/ellipse-curve2.ts:30](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L30)*
 
 Whether the ellipse is drawn clockwise. Default is false.
 
@@ -2052,7 +2052,7 @@ ___
 
 • `Private` `Readonly` **endAngle**: number
 
-*Defined in [curves/ellipse-curve2.ts:29](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L29)*
+*Defined in [curves/ellipse-curve2.ts:29](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L29)*
 
 The end angle of the curve in radians starting from the positive X axis. Default is 2 x Math.PI.
 
@@ -2062,7 +2062,7 @@ ___
 
 • `Private` `Optional` `Readonly` **rotation**: number
 
-*Defined in [curves/ellipse-curve2.ts:31](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L31)*
+*Defined in [curves/ellipse-curve2.ts:31](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L31)*
 
 The rotation angle of the ellipse in radians, counterclockwise from the positive X axis (optional). Default is 0.
 
@@ -2072,7 +2072,7 @@ ___
 
 • `Private` `Readonly` **startAngle**: number
 
-*Defined in [curves/ellipse-curve2.ts:28](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L28)*
+*Defined in [curves/ellipse-curve2.ts:28](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L28)*
 
 The start angle of the curve in radians starting from the positive X axis. Default is 0.
 
@@ -2082,7 +2082,7 @@ ___
 
 • `Private` `Readonly` **xCenter**: number
 
-*Defined in [curves/ellipse-curve2.ts:24](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L24)*
+*Defined in [curves/ellipse-curve2.ts:24](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L24)*
 
 The X center of the ellipse. Default is 0.
 
@@ -2092,7 +2092,7 @@ ___
 
 • `Private` `Readonly` **xRadius**: number
 
-*Defined in [curves/ellipse-curve2.ts:26](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L26)*
+*Defined in [curves/ellipse-curve2.ts:26](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L26)*
 
 The radius of the ellipse in the x direction. Default is 1.
 
@@ -2102,7 +2102,7 @@ ___
 
 • `Private` `Readonly` **yCenter**: number
 
-*Defined in [curves/ellipse-curve2.ts:25](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L25)*
+*Defined in [curves/ellipse-curve2.ts:25](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L25)*
 
 The Y center of the ellipse. Default is 0.
 
@@ -2112,7 +2112,7 @@ ___
 
 • `Private` `Readonly` **yRadius**: number
 
-*Defined in [curves/ellipse-curve2.ts:27](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L27)*
+*Defined in [curves/ellipse-curve2.ts:27](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L27)*
 
 The radius of the ellipse in the y direction. Default is 1.
 
@@ -2124,7 +2124,7 @@ The radius of the ellipse in the y direction. Default is 1.
 
 *Inherited from [Curve2](#classescurve2md).[computeFrames](#computeframes)*
 
-*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
+*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
 
 #### Parameters:
 
@@ -2142,7 +2142,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLength](#getlength)*
 
-*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
+*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
 
 Get total curve arc length.
 
@@ -2156,7 +2156,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLengths](#getlengths)*
 
-*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
+*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
 
 Get list of cumulative segment lengths.
 
@@ -2176,7 +2176,7 @@ ___
 
 *Overrides [Curve](#classescurvemd).[getPoint](#getpoint)*
 
-*Defined in [curves/ellipse-curve2.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L65)*
+*Defined in [curves/ellipse-curve2.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L65)*
 
 Returns a vector for a given position on the curve.
 
@@ -2196,7 +2196,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPointAt](#getpointat)*
 
-*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
+*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
 
 Returns a vector for a given position on the curve according to the arc length.
 
@@ -2216,7 +2216,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoints](#getpoints)*
 
-*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
+*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
 
 Get sequence of points using getPoint( t )
 
@@ -2238,7 +2238,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getSpacedPoints](#getspacedpoints)*
 
-*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
+*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
 
 Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
 
@@ -2258,7 +2258,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangent](#gettangent)*
 
-*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
+*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
 
 Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
 two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
@@ -2279,7 +2279,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangentAt](#gettangentat)*
 
-*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
+*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
 
 Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
 
@@ -2299,7 +2299,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getUtoTmapping](#getutotmapping)*
 
-*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
+*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
 
 Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
 u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
@@ -2319,7 +2319,7 @@ ___
 
 ▸ `Static`**ellipseWith**(`center`: [Vec2](#classesvec2md), `radius`: [Vec2](#classesvec2md), `startAngle`: number, `endAngle`: number, `clockwise?`: boolean, `rotation?`: number): [EllipseCurve2](#classesellipsecurve2md)
 
-*Defined in [curves/ellipse-curve2.ts:57](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L57)*
+*Defined in [curves/ellipse-curve2.ts:57](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/ellipse-curve2.ts#L57)*
 
 Creates the 2d curve in the shape of an ellipse
 
@@ -2386,7 +2386,7 @@ Name | Type | Description |
 
 \+ **new Matrix3**(`n11`: number, `n12`: number, `n13`: number, `n21`: number, `n22`: number, `n23`: number, `n31`: number, `n32`: number, `n33`: number): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L12)*
+*Defined in [geometry/matrix3.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L12)*
 
 Creates and initializes the 3D Matrix to the 3x3.
 The constructor takes the arguments in row-major order, while internally they are stored in the elements array in column-major order.
@@ -2413,7 +2413,7 @@ Name | Type | Description |
 
 • `Private` **elements**: number[]
 
-*Defined in [geometry/matrix3.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L12)*
+*Defined in [geometry/matrix3.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L12)*
 
 ## Methods
 
@@ -2421,7 +2421,7 @@ Name | Type | Description |
 
 ▸ **applyPoint2**(`p`: [Point2](#classespoint2md)): [Point2](#classespoint2md)
 
-*Defined in [geometry/matrix3.ts:300](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L300)*
+*Defined in [geometry/matrix3.ts:300](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L300)*
 
 #### Parameters:
 
@@ -2437,7 +2437,7 @@ ___
 
 ▸ **applyPoint3**(`p`: [Point3](#classespoint3md)): [Point3](#classespoint3md)
 
-*Defined in [geometry/matrix3.ts:319](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L319)*
+*Defined in [geometry/matrix3.ts:319](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L319)*
 
 #### Parameters:
 
@@ -2453,7 +2453,7 @@ ___
 
 ▸ **applyVec2**(`v`: [Vec2](#classesvec2md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/matrix3.ts:289](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L289)*
+*Defined in [geometry/matrix3.ts:289](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L289)*
 
 #### Parameters:
 
@@ -2469,7 +2469,7 @@ ___
 
 ▸ **applyVec3**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/matrix3.ts:306](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L306)*
+*Defined in [geometry/matrix3.ts:306](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L306)*
 
 #### Parameters:
 
@@ -2485,7 +2485,7 @@ ___
 
 ▸ **at**(`index`: number): number
 
-*Defined in [geometry/matrix3.ts:325](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L325)*
+*Defined in [geometry/matrix3.ts:325](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L325)*
 
 #### Parameters:
 
@@ -2501,7 +2501,7 @@ ___
 
 ▸ **clone**(): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:62](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L62)*
+*Defined in [geometry/matrix3.ts:62](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L62)*
 
 Creates a new Matrix3 and with identical elements to this one.
 
@@ -2513,7 +2513,7 @@ ___
 
 ▸ **determinant**(): number
 
-*Defined in [geometry/matrix3.ts:141](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L141)*
+*Defined in [geometry/matrix3.ts:141](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L141)*
 
 Computes the determinant of this matrix.
 
@@ -2525,7 +2525,7 @@ ___
 
 ▸ **inverse**(): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:162](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L162)*
+*Defined in [geometry/matrix3.ts:162](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L162)*
 
 Returns the inverse of the this matrix using the analytic method.
 You can not invert a matrix with a determinant of zero.
@@ -2539,7 +2539,7 @@ ___
 
 ▸ **multiplyScalar**(`s`: number): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:127](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L127)*
+*Defined in [geometry/matrix3.ts:127](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L127)*
 
 Multiplies every component of the matrix by the scalar value s and returns the result in a new matrix.
 
@@ -2557,7 +2557,7 @@ ___
 
 ▸ **multiplyWith**(`m`: [Matrix3](#classesmatrix3md)): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:76](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L76)*
+*Defined in [geometry/matrix3.ts:76](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L76)*
 
 Post-multiplies this matrix by m and returns the result in a new matrix.
 
@@ -2575,7 +2575,7 @@ ___
 
 ▸ **normalMatrix**(): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:218](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L218)*
+*Defined in [geometry/matrix3.ts:218](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L218)*
 
 Returns the normal matrix, which is the inverse transpose matrix of this.
 
@@ -2587,7 +2587,7 @@ ___
 
 ▸ **premultiplyWith**(`m`: [Matrix3](#classesmatrix3md)): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:84](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L84)*
+*Defined in [geometry/matrix3.ts:84](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L84)*
 
 Pre-multiplies this matrix by m and returns the result in a new matrix.
 
@@ -2605,7 +2605,7 @@ ___
 
 ▸ **rotate**(`theta`: number): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:258](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L258)*
+*Defined in [geometry/matrix3.ts:258](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L258)*
 
 #### Parameters:
 
@@ -2621,7 +2621,7 @@ ___
 
 ▸ **scale**(`sx`: number, `sy`: number): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:248](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L248)*
+*Defined in [geometry/matrix3.ts:248](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L248)*
 
 #### Parameters:
 
@@ -2638,7 +2638,7 @@ ___
 
 ▸ **translate**(`tx`: number, `ty`: number): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:279](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L279)*
+*Defined in [geometry/matrix3.ts:279](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L279)*
 
 #### Parameters:
 
@@ -2655,7 +2655,7 @@ ___
 
 ▸ **transpose**(): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:202](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L202)*
+*Defined in [geometry/matrix3.ts:202](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L202)*
 
 Transposes this matrix and returns the result in a new matrix.
 
@@ -2667,7 +2667,7 @@ ___
 
 ▸ `Static`**identity**(): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:50](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L50)*
+*Defined in [geometry/matrix3.ts:50](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L50)*
 
 Creates and initializes the 3D Matrix to the 3x3 identity matrix.
 
@@ -2679,7 +2679,7 @@ ___
 
 ▸ `Static`**multiplyMatrices**(`a`: [Matrix3](#classesmatrix3md), `b`: [Matrix3](#classesmatrix3md)): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:93](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L93)*
+*Defined in [geometry/matrix3.ts:93](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L93)*
 
 multiplies both matrices with each other
 
@@ -2698,7 +2698,7 @@ ___
 
 ▸ `Static`**transform**(`tx`: number, `ty`: number, `sx`: number, `sy`: number, `rotation`: number, `cx`: number, `cy`: number): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:235](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L235)*
+*Defined in [geometry/matrix3.ts:235](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L235)*
 
 Creates a new UV transform matrix from offset, repeat, rotation, and center.
 
@@ -2722,7 +2722,7 @@ ___
 
 ▸ `Static`**zero**(): [Matrix3](#classesmatrix3md)
 
-*Defined in [geometry/matrix3.ts:38](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L38)*
+*Defined in [geometry/matrix3.ts:38](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix3.ts#L38)*
 
 Creates and initializes the 3D Matrix to the 3x3 with zero values.
 
@@ -2797,7 +2797,7 @@ For an introduction to transformation matrices as used in WebGL.
 
 \+ **new Matrix4**(`n11`: number, `n12`: number, `n13`: number, `n14`: number, `n21`: number, `n22`: number, `n23`: number, `n24`: number, `n31`: number, `n32`: number, `n33`: number, `n34`: number, `n41`: number, `n42`: number, `n43`: number, `n44`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L15)*
+*Defined in [geometry/matrix4.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L15)*
 
 Creates a new 4x4 matrix
 
@@ -2830,7 +2830,7 @@ Name | Type | Description |
 
 • `Private` **elements**: number[]
 
-*Defined in [geometry/matrix4.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L15)*
+*Defined in [geometry/matrix4.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L15)*
 
 ## Methods
 
@@ -2838,7 +2838,7 @@ Name | Type | Description |
 
 ▸ **applyPoint3**(`p`: [Point3](#classespoint3md)): [Point3](#classespoint3md)
 
-*Defined in [geometry/matrix4.ts:628](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L628)*
+*Defined in [geometry/matrix4.ts:628](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L628)*
 
 Applies this Matrix transform to the given point p.
 
@@ -2856,7 +2856,7 @@ ___
 
 ▸ **applyVec3**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/matrix4.ts:608](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L608)*
+*Defined in [geometry/matrix4.ts:608](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L608)*
 
 Applies this Matrix transform to the given vector v.
 
@@ -2874,7 +2874,7 @@ ___
 
 ▸ **at**(`index`: number): number
 
-*Defined in [geometry/matrix4.ts:638](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L638)*
+*Defined in [geometry/matrix4.ts:638](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L638)*
 
 returns the element value at given index
 
@@ -2892,7 +2892,7 @@ ___
 
 ▸ **clone**(): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:78](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L78)*
+*Defined in [geometry/matrix4.ts:78](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L78)*
 
 Creates a new Matrix4 with identical elements to this one.
 
@@ -2904,7 +2904,7 @@ ___
 
 ▸ **determinant**(): number
 
-*Defined in [geometry/matrix4.ts:263](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L263)*
+*Defined in [geometry/matrix4.ts:263](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L263)*
 
 Computes the determinant of this matrix.
 
@@ -2918,7 +2918,7 @@ ___
 
 ▸ **inverse**(): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:333](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L333)*
+*Defined in [geometry/matrix4.ts:333](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L333)*
 
 Returns the inverse matrix for this matrix.
 You can not invert a matrix with a determinant of zero.
@@ -2934,7 +2934,7 @@ ___
 
 ▸ **maxScaleOnAxis**(): number
 
-*Defined in [geometry/matrix4.ts:704](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L704)*
+*Defined in [geometry/matrix4.ts:704](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L704)*
 
 Gets the maximum scale value of the 3 axes.
 
@@ -2946,7 +2946,7 @@ ___
 
 ▸ **multiply**(`m`: [Matrix4](#classesmatrix4md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:186](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L186)*
+*Defined in [geometry/matrix4.ts:186](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L186)*
 
 Post-multiplies this matrix by m and returns a new matrix.
 
@@ -2964,7 +2964,7 @@ ___
 
 ▸ **multiplyScalar**(`s`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:247](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L247)*
+*Defined in [geometry/matrix4.ts:247](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L247)*
 
 Multiplies every element of the matrix by the scalar value s and returns the result in a new matrix.
 
@@ -2982,7 +2982,7 @@ ___
 
 ▸ **multiplyScale**(`x`: number, `y`: number, `z`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:379](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L379)*
+*Defined in [geometry/matrix4.ts:379](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L379)*
 
 #### Parameters:
 
@@ -3000,7 +3000,7 @@ ___
 
 ▸ **multiplyScaleWith**(`v`: [Vec3](#classesvec3md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:391](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L391)*
+*Defined in [geometry/matrix4.ts:391](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L391)*
 
 #### Parameters:
 
@@ -3016,7 +3016,7 @@ ___
 
 ▸ **premultiply**(`m`: [Matrix4](#classesmatrix4md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:194](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L194)*
+*Defined in [geometry/matrix4.ts:194](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L194)*
 
 Pre-multiplies this matrix by m and returns a new matrix.
 
@@ -3034,7 +3034,7 @@ ___
 
 ▸ **toEuler**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/matrix4.ts:717](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L717)*
+*Defined in [geometry/matrix4.ts:717](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L717)*
 
 Returns the euler angles represented by this matrix rotation for the three axes in radians. (Order: XYZ)
 
@@ -3046,7 +3046,7 @@ ___
 
 ▸ **transpose**(): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:310](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L310)*
+*Defined in [geometry/matrix4.ts:310](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L310)*
 
 Transposes this matrix and returns the result in a new matrix.
 
@@ -3058,7 +3058,7 @@ ___
 
 ▸ `Static`**compose**(`position`: [Vec3](#classesvec3md), `quaternion`: [Quaternion](#classesquaternionmd), `scale`: [Vec3](#classesvec3md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:648](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L648)*
+*Defined in [geometry/matrix4.ts:648](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L648)*
 
 creates a new matrix to the transformation composed of position, quaternion and scale.
 
@@ -3078,7 +3078,7 @@ ___
 
 ▸ `Static`**identity**(): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:52](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L52)*
+*Defined in [geometry/matrix4.ts:52](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L52)*
 
 creates a new matrix as the 4x4 identity matrix.
 
@@ -3090,7 +3090,7 @@ ___
 
 ▸ `Static`**lookAt**(`eye`: [Vec3](#classesvec3md), `target`: [Vec3](#classesvec3md), `up`: [Vec3](#classesvec3md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:145](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L145)*
+*Defined in [geometry/matrix4.ts:145](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L145)*
 
 Constructs a new rotation matrix, looking from eye towards target oriented by the up vector.
 
@@ -3110,7 +3110,7 @@ ___
 
 ▸ `Static`**multiplyMatrices**(`a`: [Matrix4](#classesmatrix4md), `b`: [Matrix4](#classesmatrix4md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:203](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L203)*
+*Defined in [geometry/matrix4.ts:203](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L203)*
 
 multiplies both matrices with each other
 
@@ -3129,7 +3129,7 @@ ___
 
 ▸ `Static`**orthographic**(`left`: number, `right`: number, `top`: number, `bottom`: number, `near`: number, `far`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:584](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L584)*
+*Defined in [geometry/matrix4.ts:584](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L584)*
 
 Creates a new orthographic projection matrix.
 
@@ -3152,7 +3152,7 @@ ___
 
 ▸ `Static`**perspective**(`left`: number, `right`: number, `top`: number, `bottom`: number, `near`: number, `far`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:555](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L555)*
+*Defined in [geometry/matrix4.ts:555](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L555)*
 
 Creates a new perspective projection matrix.
 
@@ -3175,7 +3175,7 @@ ___
 
 ▸ `Static`**rotationAxis**(`x`: number, `y`: number, `z`: number, `angle`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:469](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L469)*
+*Defined in [geometry/matrix4.ts:469](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L469)*
 
 creates a new matrix as rotation transform around axis by theta radians.
 
@@ -3196,7 +3196,7 @@ ___
 
 ▸ `Static`**rotationAxisWith**(`axis`: [Vec3](#classesvec3md), `angle`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:492](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L492)*
+*Defined in [geometry/matrix4.ts:492](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L492)*
 
 creates a new matrix as rotation transform around axis by theta radians.
 
@@ -3217,7 +3217,7 @@ ___
 
 ▸ `Static`**rotationFromEuler**(`x`: number, `y`: number, `z`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L95)*
+*Defined in [geometry/matrix4.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L95)*
 
 creates a new matrix with the rotation specified by the given Euler Angle.
 
@@ -3237,7 +3237,7 @@ ___
 
 ▸ `Static`**rotationFromQuaternion**(`q`: [Quaternion](#classesquaternionmd)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:695](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L695)*
+*Defined in [geometry/matrix4.ts:695](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L695)*
 
 creates a new rotation matrix from the the rotation specified by the given quaternion q.
 The rest of the matrix is set to the identity.
@@ -3258,7 +3258,7 @@ ___
 
 ▸ `Static`**rotationX**(`theta`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:415](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L415)*
+*Defined in [geometry/matrix4.ts:415](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L415)*
 
 creates a new matrix as a rotational transformation around the X axis by theta (θ) radians.
 
@@ -3276,7 +3276,7 @@ ___
 
 ▸ `Static`**rotationY**(`theta`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:432](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L432)*
+*Defined in [geometry/matrix4.ts:432](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L432)*
 
 creates a new matrix as a rotational transformation around the Y axis by theta (θ) radians.
 
@@ -3294,7 +3294,7 @@ ___
 
 ▸ `Static`**rotationZ**(`theta`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:449](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L449)*
+*Defined in [geometry/matrix4.ts:449](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L449)*
 
 creates a new matrix as a rotational transformation around the Z axis by theta (θ) radians.
 
@@ -3312,7 +3312,7 @@ ___
 
 ▸ `Static`**scale**(`x`: number, `y`: number, `z`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:502](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L502)*
+*Defined in [geometry/matrix4.ts:502](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L502)*
 
 create a new matrix as scale transform
 
@@ -3332,7 +3332,7 @@ ___
 
 ▸ `Static`**scaleWith**(`v`: [Vec3](#classesvec3md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:517](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L517)*
+*Defined in [geometry/matrix4.ts:517](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L517)*
 
 create a new matrix as scale transform
 
@@ -3352,7 +3352,7 @@ ___
 
 ▸ `Static`**shear**(`x`: number, `y`: number, `z`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:527](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L527)*
+*Defined in [geometry/matrix4.ts:527](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L527)*
 
 create a new matrix as a shear transform
 
@@ -3372,7 +3372,7 @@ ___
 
 ▸ `Static`**shearWith**(`v`: [Vec3](#classesvec3md)): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:542](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L542)*
+*Defined in [geometry/matrix4.ts:542](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L542)*
 
 create a new matrix as a shear transform
 
@@ -3392,7 +3392,7 @@ ___
 
 ▸ `Static`**translation**(`x`: number, `y`: number, `z`: number): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:401](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L401)*
+*Defined in [geometry/matrix4.ts:401](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L401)*
 
 creates a new matrix as a translation transform:
 
@@ -3412,7 +3412,7 @@ ___
 
 ▸ `Static`**zero**(): [Matrix4](#classesmatrix4md)
 
-*Defined in [geometry/matrix4.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L65)*
+*Defined in [geometry/matrix4.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/matrix4.ts#L65)*
 
 creates a new matrix where all elements are zero.
 
@@ -3463,7 +3463,7 @@ represented in Hessian normal form by a unit length normal vector and a constant
 
 \+ **new Plane**(`normal`: [Vec3](#classesvec3md), `constant`: number): [Plane](#classesplanemd)
 
-*Defined in [geometry/plane.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L15)*
+*Defined in [geometry/plane.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L15)*
 
 Creates a new Plane
 
@@ -3482,7 +3482,7 @@ Name | Type | Description |
 
 •  **constant**: number \| undefined
 
-*Defined in [geometry/plane.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L15)*
+*Defined in [geometry/plane.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L15)*
 
 the signed distance from the origin to the plane
 
@@ -3492,7 +3492,7 @@ ___
 
 •  **normal**: [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/plane.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L13)*
+*Defined in [geometry/plane.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L13)*
 
 a unit length Vec3 defining the normal of the plane
 
@@ -3502,7 +3502,7 @@ a unit length Vec3 defining the normal of the plane
 
 ▸ **applyMatrix4**(`m`: [Matrix4](#classesmatrix4md), `optionalNormalMatrix?`: [Matrix3](#classesmatrix3md)): [Plane](#classesplanemd)
 
-*Defined in [geometry/plane.ts:148](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L148)*
+*Defined in [geometry/plane.ts:148](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L148)*
 
 Apply a Matrix4 to the plane.
 The matrix must be an affine, homogeneous transform.
@@ -3522,7 +3522,7 @@ ___
 
 ▸ **clone**(): [Plane](#classesplanemd)
 
-*Defined in [geometry/plane.ts:30](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L30)*
+*Defined in [geometry/plane.ts:30](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L30)*
 
 Returns a new plane with the same normal and constant as this one.
 
@@ -3534,7 +3534,7 @@ ___
 
 ▸ **coplanarPoint**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/plane.ts:77](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L77)*
+*Defined in [geometry/plane.ts:77](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L77)*
 
 Returns a Vector3 coplanar to the plane, by calculating the projection of the normal vector at the origin onto the plane.
 
@@ -3546,7 +3546,7 @@ ___
 
 ▸ **distanceToPoint**(`point`: [Vec3](#classesvec3md)): number
 
-*Defined in [geometry/plane.ts:48](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L48)*
+*Defined in [geometry/plane.ts:48](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L48)*
 
 Returns the signed distance from the point to the plane.
 
@@ -3564,7 +3564,7 @@ ___
 
 ▸ **distanceToSphere**(`sphere`: [Sphere](#classesspheremd)): number
 
-*Defined in [geometry/plane.ts:94](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L94)*
+*Defined in [geometry/plane.ts:94](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L94)*
 
 Returns the signed distance from the sphere to the plane.
 
@@ -3582,7 +3582,7 @@ ___
 
 ▸ **intersectRay**(`ray`: [Ray](#classesraymd)): [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/plane.ts:111](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L111)*
+*Defined in [geometry/plane.ts:111](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L111)*
 
 Intersect this Ray with this Plane, returning the intersection point or undefined if there is no intersection.
 
@@ -3600,7 +3600,7 @@ ___
 
 ▸ **intersectsSphere**(`sphere`: [Sphere](#classesspheremd)): boolean
 
-*Defined in [geometry/plane.ts:102](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L102)*
+*Defined in [geometry/plane.ts:102](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L102)*
 
 checks if the sphere intersects with the plane
 
@@ -3618,7 +3618,7 @@ ___
 
 ▸ **negate**(): [Plane](#classesplanemd)
 
-*Defined in [geometry/plane.ts:38](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L38)*
+*Defined in [geometry/plane.ts:38](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L38)*
 
 Negates both the normal vector and the constant.
 
@@ -3630,7 +3630,7 @@ ___
 
 ▸ **normalAt**(`point`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/plane.ts:86](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L86)*
+*Defined in [geometry/plane.ts:86](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L86)*
 
 returns the normal for the given point
 
@@ -3648,7 +3648,7 @@ ___
 
 ▸ **projectPoint**(`point`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/plane.ts:56](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L56)*
+*Defined in [geometry/plane.ts:56](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L56)*
 
 Projects a point onto the plane.
 
@@ -3666,7 +3666,7 @@ ___
 
 ▸ **translate**(`offset`: [Vec3](#classesvec3md)): [Plane](#classesplanemd)
 
-*Defined in [geometry/plane.ts:68](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L68)*
+*Defined in [geometry/plane.ts:68](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L68)*
 
 Translates the plane by the distance defined by the offset vector.
 Note that this only affects the plane constant and will not affect the normal vector.
@@ -3685,7 +3685,7 @@ ___
 
 ▸ `Static`**fromCoplanarPoints**(`a`: [Vec3](#classesvec3md), `b`: [Vec3](#classesvec3md), `c`: [Vec3](#classesvec3md)): [Plane](#classesplanemd)
 
-*Defined in [geometry/plane.ts:134](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L134)*
+*Defined in [geometry/plane.ts:134](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L134)*
 
 Defines the plane based on the 3 provided points.
 The winding order is assumed to be counter-clockwise, and determines the direction of the normal.
@@ -3706,7 +3706,7 @@ ___
 
 ▸ `Static`**fromNormalAndCoplanarPoint**(`n`: [Vec3](#classesvec3md), `point`: [Vec3](#classesvec3md)): [Plane](#classesplanemd)
 
-*Defined in [geometry/plane.ts:120](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/plane.ts#L120)*
+*Defined in [geometry/plane.ts:120](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/plane.ts#L120)*
 
 Creates a new plane as defined by a normal and an arbitrary coplanar point.
 
@@ -3761,7 +3761,7 @@ Name | Type | Description |
 
 \+ **new Point2**(`x`: number, `y`: number): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:7](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L7)*
+*Defined in [geometry/point2.ts:7](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L7)*
 
 #### Parameters:
 
@@ -3778,7 +3778,7 @@ Name | Type |
 
 •  **x**: number \| undefined
 
-*Defined in [geometry/point2.ts:6](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L6)*
+*Defined in [geometry/point2.ts:6](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L6)*
 
 ___
 
@@ -3786,7 +3786,7 @@ ___
 
 •  **y**: number \| undefined
 
-*Defined in [geometry/point2.ts:7](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L7)*
+*Defined in [geometry/point2.ts:7](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L7)*
 
 ## Methods
 
@@ -3794,7 +3794,7 @@ ___
 
 ▸ **applyMatrix3**(`m`: [Matrix3](#classesmatrix3md)): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:75](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L75)*
+*Defined in [geometry/point2.ts:75](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L75)*
 
 #### Parameters:
 
@@ -3810,7 +3810,7 @@ ___
 
 ▸ **center**(`x`: number, `y`: number): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:59](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L59)*
+*Defined in [geometry/point2.ts:59](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L59)*
 
 #### Parameters:
 
@@ -3827,7 +3827,7 @@ ___
 
 ▸ **centerWith**(`p`: [Point2](#classespoint2md)): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L65)*
+*Defined in [geometry/point2.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L65)*
 
 #### Parameters:
 
@@ -3843,7 +3843,7 @@ ___
 
 ▸ **clone**(): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:69](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L69)*
+*Defined in [geometry/point2.ts:69](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L69)*
 
 **Returns:** [Point2](#classespoint2md)
 
@@ -3853,7 +3853,7 @@ ___
 
 ▸ **distance**(`x`: number, `y`: number): number
 
-*Defined in [geometry/point2.ts:40](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L40)*
+*Defined in [geometry/point2.ts:40](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L40)*
 
 #### Parameters:
 
@@ -3870,7 +3870,7 @@ ___
 
 ▸ **distanceSquared**(`x`: number, `y`: number): number
 
-*Defined in [geometry/point2.ts:30](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L30)*
+*Defined in [geometry/point2.ts:30](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L30)*
 
 #### Parameters:
 
@@ -3887,7 +3887,7 @@ ___
 
 ▸ **distanceSquaredTo**(`p`: [Point2](#classespoint2md)): number
 
-*Defined in [geometry/point2.ts:36](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L36)*
+*Defined in [geometry/point2.ts:36](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L36)*
 
 #### Parameters:
 
@@ -3903,7 +3903,7 @@ ___
 
 ▸ **distanceTo**(`p`: [Point2](#classespoint2md)): number
 
-*Defined in [geometry/point2.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L45)*
+*Defined in [geometry/point2.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L45)*
 
 #### Parameters:
 
@@ -3919,7 +3919,7 @@ ___
 
 ▸ **subtract**(`x`: number, `y`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/point2.ts:49](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L49)*
+*Defined in [geometry/point2.ts:49](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L49)*
 
 #### Parameters:
 
@@ -3936,7 +3936,7 @@ ___
 
 ▸ **subtractWith**(`p`: [Point2](#classespoint2md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/point2.ts:55](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L55)*
+*Defined in [geometry/point2.ts:55](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L55)*
 
 #### Parameters:
 
@@ -3952,7 +3952,7 @@ ___
 
 ▸ **translate**(`dx`: number, `dy`: number): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L14)*
+*Defined in [geometry/point2.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L14)*
 
 #### Parameters:
 
@@ -3969,7 +3969,7 @@ ___
 
 ▸ **translateDirection**(`direction`: [Vec2](#classesvec2md), `length`: number): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:25](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L25)*
+*Defined in [geometry/point2.ts:25](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L25)*
 
 #### Parameters:
 
@@ -3986,7 +3986,7 @@ ___
 
 ▸ **translateWith**(`v`: [Vec2](#classesvec2md)): [Point2](#classespoint2md)
 
-*Defined in [geometry/point2.ts:21](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point2.ts#L21)*
+*Defined in [geometry/point2.ts:21](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point2.ts#L21)*
 
 #### Parameters:
 
@@ -4041,7 +4041,7 @@ Name | Type |
 
 \+ **new Point3**(`x`: number, `y`: number, `z`: number): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:10](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L10)*
+*Defined in [geometry/point3.ts:10](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L10)*
 
 #### Parameters:
 
@@ -4059,7 +4059,7 @@ Name | Type |
 
 •  **x**: number \| undefined
 
-*Defined in [geometry/point3.ts:8](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L8)*
+*Defined in [geometry/point3.ts:8](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L8)*
 
 ___
 
@@ -4067,7 +4067,7 @@ ___
 
 •  **y**: number \| undefined
 
-*Defined in [geometry/point3.ts:9](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L9)*
+*Defined in [geometry/point3.ts:9](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L9)*
 
 ___
 
@@ -4075,7 +4075,7 @@ ___
 
 •  **z**: number \| undefined
 
-*Defined in [geometry/point3.ts:10](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L10)*
+*Defined in [geometry/point3.ts:10](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L10)*
 
 ## Methods
 
@@ -4083,7 +4083,7 @@ ___
 
 ▸ **applyMatrix3**(`m`: [Matrix3](#classesmatrix3md)): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:84](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L84)*
+*Defined in [geometry/point3.ts:84](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L84)*
 
 #### Parameters:
 
@@ -4099,7 +4099,7 @@ ___
 
 ▸ **applyMatrix4**(`m`: [Matrix4](#classesmatrix4md)): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:88](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L88)*
+*Defined in [geometry/point3.ts:88](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L88)*
 
 #### Parameters:
 
@@ -4115,7 +4115,7 @@ ___
 
 ▸ **applyQuaternion**(`q`: [Quaternion](#classesquaternionmd)): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:92](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L92)*
+*Defined in [geometry/point3.ts:92](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L92)*
 
 #### Parameters:
 
@@ -4131,7 +4131,7 @@ ___
 
 ▸ **center**(`x`: number, `y`: number, `z`: number): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:66](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L66)*
+*Defined in [geometry/point3.ts:66](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L66)*
 
 #### Parameters:
 
@@ -4149,7 +4149,7 @@ ___
 
 ▸ **centerWith**(`p`: [Point3](#classespoint3md)): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:73](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L73)*
+*Defined in [geometry/point3.ts:73](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L73)*
 
 #### Parameters:
 
@@ -4165,7 +4165,7 @@ ___
 
 ▸ **clone**(): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:77](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L77)*
+*Defined in [geometry/point3.ts:77](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L77)*
 
 **Returns:** [Point3](#classespoint3md)
 
@@ -4175,7 +4175,7 @@ ___
 
 ▸ **distance**(`x`: number, `y`: number, `z`: number): number
 
-*Defined in [geometry/point3.ts:46](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L46)*
+*Defined in [geometry/point3.ts:46](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L46)*
 
 #### Parameters:
 
@@ -4193,7 +4193,7 @@ ___
 
 ▸ **distanceSquared**(`x`: number, `y`: number, `z`: number): number
 
-*Defined in [geometry/point3.ts:35](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L35)*
+*Defined in [geometry/point3.ts:35](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L35)*
 
 #### Parameters:
 
@@ -4211,7 +4211,7 @@ ___
 
 ▸ **distanceSquaredTo**(`p`: [Point3](#classespoint3md)): number
 
-*Defined in [geometry/point3.ts:42](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L42)*
+*Defined in [geometry/point3.ts:42](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L42)*
 
 #### Parameters:
 
@@ -4227,7 +4227,7 @@ ___
 
 ▸ **distanceTo**(`p`: [Point3](#classespoint3md)): number
 
-*Defined in [geometry/point3.ts:51](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L51)*
+*Defined in [geometry/point3.ts:51](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L51)*
 
 #### Parameters:
 
@@ -4243,7 +4243,7 @@ ___
 
 ▸ **subtract**(`x`: number, `y`: number, `z`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/point3.ts:55](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L55)*
+*Defined in [geometry/point3.ts:55](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L55)*
 
 #### Parameters:
 
@@ -4261,7 +4261,7 @@ ___
 
 ▸ **subtractWith**(`p`: [Point3](#classespoint3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/point3.ts:62](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L62)*
+*Defined in [geometry/point3.ts:62](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L62)*
 
 #### Parameters:
 
@@ -4277,7 +4277,7 @@ ___
 
 ▸ **translate**(`dx`: number, `dy`: number, `dz`: number): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:18](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L18)*
+*Defined in [geometry/point3.ts:18](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L18)*
 
 #### Parameters:
 
@@ -4295,7 +4295,7 @@ ___
 
 ▸ **translateDirection**(`direction`: [Vec3](#classesvec3md), `length`: number): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:30](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L30)*
+*Defined in [geometry/point3.ts:30](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L30)*
 
 #### Parameters:
 
@@ -4312,7 +4312,7 @@ ___
 
 ▸ **translateWith**(`v`: [Vec3](#classesvec3md)): [Point3](#classespoint3md)
 
-*Defined in [geometry/point3.ts:26](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/point3.ts#L26)*
+*Defined in [geometry/point3.ts:26](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/point3.ts#L26)*
 
 #### Parameters:
 
@@ -4384,7 +4384,7 @@ Quaternions are generally represented in the form:
 
 \+ **new Quaternion**(`x`: number, `y`: number, `z`: number, `w`: number): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:23](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L23)*
+*Defined in [geometry/quaternion.ts:23](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L23)*
 
 creates a new quaternion
 
@@ -4405,7 +4405,7 @@ Name | Type | Description |
 
 •  **w**: number \| undefined
 
-*Defined in [geometry/quaternion.ts:23](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L23)*
+*Defined in [geometry/quaternion.ts:23](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L23)*
 
 w coordinate
 
@@ -4415,7 +4415,7 @@ ___
 
 •  **x**: number \| undefined
 
-*Defined in [geometry/quaternion.ts:17](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L17)*
+*Defined in [geometry/quaternion.ts:17](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L17)*
 
 x coordinate
 
@@ -4425,7 +4425,7 @@ ___
 
 •  **y**: number \| undefined
 
-*Defined in [geometry/quaternion.ts:19](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L19)*
+*Defined in [geometry/quaternion.ts:19](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L19)*
 
 y coordinate
 
@@ -4435,7 +4435,7 @@ ___
 
 •  **z**: number \| undefined
 
-*Defined in [geometry/quaternion.ts:21](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L21)*
+*Defined in [geometry/quaternion.ts:21](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L21)*
 
 z coordinate
 
@@ -4445,7 +4445,7 @@ z coordinate
 
 ▸ **angleTo**(`q`: [Quaternion](#classesquaternionmd)): number
 
-*Defined in [geometry/quaternion.ts:232](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L232)*
+*Defined in [geometry/quaternion.ts:232](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L232)*
 
 Returns the angle between this quaternion and quaternion q in radians.
 
@@ -4463,7 +4463,7 @@ ___
 
 ▸ **applyPoint3**(`p`: [Point3](#classespoint3md)): [Point3](#classespoint3md)
 
-*Defined in [geometry/quaternion.ts:452](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L452)*
+*Defined in [geometry/quaternion.ts:452](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L452)*
 
 Applies this Quaternion transform to the given point p.
 
@@ -4481,7 +4481,7 @@ ___
 
 ▸ **applyVec3**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/quaternion.ts:423](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L423)*
+*Defined in [geometry/quaternion.ts:423](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L423)*
 
 Applies this Quaternion transform to the given vector v.
 
@@ -4499,7 +4499,7 @@ ___
 
 ▸ **clone**(): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:49](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L49)*
+*Defined in [geometry/quaternion.ts:49](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L49)*
 
 Creates a new Quaternion with identical x, y, z and w properties to this one.
 
@@ -4511,7 +4511,7 @@ ___
 
 ▸ **conjugate**(): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:255](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L255)*
+*Defined in [geometry/quaternion.ts:255](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L255)*
 
 Returns the rotational conjugate of this quaternion.
 The conjugate of a quaternion represents the same rotation in the opposite direction about the rotational axis.
@@ -4524,7 +4524,7 @@ ___
 
 ▸ **dot**(`q`: [Quaternion](#classesquaternionmd)): number
 
-*Defined in [geometry/quaternion.ts:269](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L269)*
+*Defined in [geometry/quaternion.ts:269](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L269)*
 
 Calculates the dot product of quaternions q and this one.
 
@@ -4542,7 +4542,7 @@ ___
 
 ▸ **inverse**(): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:247](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L247)*
+*Defined in [geometry/quaternion.ts:247](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L247)*
 
 Inverts this quaternion - calculates the conjugate. The quaternion is assumed to have unit length.
 
@@ -4554,7 +4554,7 @@ ___
 
 ▸ **length**(): number
 
-*Defined in [geometry/quaternion.ts:283](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L283)*
+*Defined in [geometry/quaternion.ts:283](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L283)*
 
 Computes the Euclidean length (straight-line length) of this quaternion, considered as a 4 dimensional vector.
 
@@ -4566,7 +4566,7 @@ ___
 
 ▸ **lengthSquared**(): number
 
-*Defined in [geometry/quaternion.ts:276](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L276)*
+*Defined in [geometry/quaternion.ts:276](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L276)*
 
 Computes the squared Euclidean length (straight-line length) of this quaternion, considered as a 4 dimensional vector.
 
@@ -4578,7 +4578,7 @@ ___
 
 ▸ **multiply**(`q`: [Quaternion](#classesquaternionmd)): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:314](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L314)*
+*Defined in [geometry/quaternion.ts:314](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L314)*
 
 Multiplies this quaternion by q and returns a new quaternion.
 
@@ -4596,7 +4596,7 @@ ___
 
 ▸ **normalize**(): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:293](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L293)*
+*Defined in [geometry/quaternion.ts:293](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L293)*
 
 Normalizes this quaternion - that is,
 calculated the quaternion that performs the same rotation as this one,
@@ -4610,7 +4610,7 @@ ___
 
 ▸ **premultiply**(`q`: [Quaternion](#classesquaternionmd)): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:322](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L322)*
+*Defined in [geometry/quaternion.ts:322](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L322)*
 
 Pre-multiplies this quaternion by q and returns a new quaternion.
 
@@ -4628,7 +4628,7 @@ ___
 
 ▸ **slerp**(`q`: [Quaternion](#classesquaternionmd), `t`: number): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:352](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L352)*
+*Defined in [geometry/quaternion.ts:352](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L352)*
 
 Handles the spherical linear interpolation between quaternions.
 t represents the amount of rotation between this quaternion (where t is 0) and q (where t is 1).
@@ -4649,7 +4649,7 @@ ___
 
 ▸ `Static`**fromAxisAngle**(`x`: number, `y`: number, `z`: number, `angle`: number): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L95)*
+*Defined in [geometry/quaternion.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L95)*
 
 create a new quaternion from rotation specified by axis and angle.
 
@@ -4670,7 +4670,7 @@ ___
 
 ▸ `Static`**fromAxisAngleWith**(`v`: [Vec3](#classesvec3md), `angle`: number): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:115](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L115)*
+*Defined in [geometry/quaternion.ts:115](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L115)*
 
 create a new quaternion from rotation specified by axis and angle.
 
@@ -4691,7 +4691,7 @@ ___
 
 ▸ `Static`**fromEuler**(`x`: number, `y`: number, `z`: number): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:59](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L59)*
+*Defined in [geometry/quaternion.ts:59](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L59)*
 
 creates a new quaternion from the rotation specified by the given euler angle in order (XYZ).
 
@@ -4711,7 +4711,7 @@ ___
 
 ▸ `Static`**fromEulerWith**(`v`: [Vec3](#classesvec3md)): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:84](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L84)*
+*Defined in [geometry/quaternion.ts:84](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L84)*
 
 create a new quaternion from the rotation specified by the given euler angle from v.
 
@@ -4731,7 +4731,7 @@ ___
 
 ▸ `Static` `Private`**fromMatrix**(`m11`: number, `m12`: number, `m13`: number, `m21`: number, `m22`: number, `m23`: number, `m31`: number, `m32`: number, `m33`: number): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:119](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L119)*
+*Defined in [geometry/quaternion.ts:119](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L119)*
 
 #### Parameters:
 
@@ -4755,7 +4755,7 @@ ___
 
 ▸ `Static`**fromMatrix3**(`m`: [Matrix3](#classesmatrix3md)): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:172](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L172)*
+*Defined in [geometry/quaternion.ts:172](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L172)*
 
 creates a new quaternion from the given matrix
 
@@ -4773,7 +4773,7 @@ ___
 
 ▸ `Static`**fromMatrix4**(`m`: [Matrix4](#classesmatrix4md)): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:184](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L184)*
+*Defined in [geometry/quaternion.ts:184](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L184)*
 
 creates a new quaternion from the given matrix
 
@@ -4791,7 +4791,7 @@ ___
 
 ▸ `Static`**fromUnitVectors**(`vFrom`: [Vec3](#classesvec3md), `vTo`: [Vec3](#classesvec3md)): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:197](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L197)*
+*Defined in [geometry/quaternion.ts:197](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L197)*
 
 creates a new quaternion with a rotation to rotate a vector from the direction vector vFrom to direction vector vTo
 
@@ -4810,7 +4810,7 @@ ___
 
 ▸ `Static`**identity**(): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:240](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L240)*
+*Defined in [geometry/quaternion.ts:240](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L240)*
 
 creates a new quaternion to the identity quaternion.
 the quaternion represents <b>no rotation</b>.
@@ -4823,7 +4823,7 @@ ___
 
 ▸ `Static`**multiplyQuaternions**(`a`: [Quaternion](#classesquaternionmd), `b`: [Quaternion](#classesquaternionmd)): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:331](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L331)*
+*Defined in [geometry/quaternion.ts:331](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L331)*
 
 Multiplies both quaternions and returns a new quaternion.
 
@@ -4842,7 +4842,7 @@ ___
 
 ▸ `Static`**zero**(): [Quaternion](#classesquaternionmd)
 
-*Defined in [geometry/quaternion.ts:42](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L42)*
+*Defined in [geometry/quaternion.ts:42](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/quaternion.ts#L42)*
 
 creates a new quaternion (0.0, 0.0, 0.0, 1.0)
 
@@ -4875,7 +4875,7 @@ An instance of this class is used to generate pseudorandom numbers with `Math.ra
 
 ▸ **choice**\<T>(`array`: T[]): T \| undefined
 
-*Defined in [random.ts:26](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/random.ts#L26)*
+*Defined in [random.ts:26](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/random.ts#L26)*
 
 Return a random element from the given array or `undefined` if the array is empty
 
@@ -4899,7 +4899,7 @@ ___
 
 ▸ **float**(): number
 
-*Defined in [random.ts:9](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/random.ts#L9)*
+*Defined in [random.ts:9](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/random.ts#L9)*
 
 Returns a pseudorandom number between 0 and 1.
 
@@ -4911,7 +4911,7 @@ ___
 
 ▸ **intN**(`n`: number): number
 
-*Defined in [random.ts:17](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/random.ts#L17)*
+*Defined in [random.ts:17](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/random.ts#L17)*
 
 Returns a pseudorandom number between 0 and and given `n`.
 
@@ -4929,7 +4929,7 @@ ___
 
 ▸ **randomString**(`n`: number): string
 
-*Defined in [random.ts:48](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/random.ts#L48)*
+*Defined in [random.ts:48](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/random.ts#L48)*
 
 Returns a random string with the given length
 
@@ -4947,7 +4947,7 @@ ___
 
 ▸ **rndStr**(): string
 
-*Defined in [random.ts:39](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/random.ts#L39)*
+*Defined in [random.ts:39](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/random.ts#L39)*
 
 Returns a random string
 
@@ -5001,7 +5001,7 @@ This is used by the Raycaster to assist with raycasting.
 
 \+ **new Ray**(`origin`: [Vec3](#classesvec3md), `direction`: [Vec3](#classesvec3md)): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:18](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L18)*
+*Defined in [geometry/ray.ts:18](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L18)*
 
 Creates a new Ray.
 
@@ -5020,7 +5020,7 @@ Name | Type | Description |
 
 •  **direction**: [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/ray.ts:18](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L18)*
+*Defined in [geometry/ray.ts:18](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L18)*
 
 The direction of the Ray
 
@@ -5030,7 +5030,7 @@ ___
 
 •  **origin**: [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/ray.ts:16](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L16)*
+*Defined in [geometry/ray.ts:16](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L16)*
 
 the origin of the Ray
 
@@ -5040,7 +5040,7 @@ the origin of the Ray
 
 ▸ **applyMatrix4**(`m`: [Matrix4](#classesmatrix4md)): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:98](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L98)*
+*Defined in [geometry/ray.ts:98](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L98)*
 
 Transform this Ray by the Matrix4.
 
@@ -5058,7 +5058,7 @@ ___
 
 ▸ **applyQuaternion**(`q`: [Quaternion](#classesquaternionmd)): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:108](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L108)*
+*Defined in [geometry/ray.ts:108](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L108)*
 
 Transform this Ray by the Quaternion.
 
@@ -5076,7 +5076,7 @@ ___
 
 ▸ **at**(`t`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/ray.ts:44](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L44)*
+*Defined in [geometry/ray.ts:44](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L44)*
 
 Get a Vec3 that is a given distance along this Ray.
 
@@ -5094,7 +5094,7 @@ ___
 
 ▸ **clone**(): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:33](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L33)*
+*Defined in [geometry/ray.ts:33](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L33)*
 
 Creates a new Ray with identical origin and direction to this one.
 
@@ -5106,7 +5106,7 @@ ___
 
 ▸ **closestPointToPoint**(`point`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/ray.ts:75](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L75)*
+*Defined in [geometry/ray.ts:75](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L75)*
 
 Get the point along this Ray that is closest to the Vec3 provided.
 
@@ -5124,7 +5124,7 @@ ___
 
 ▸ **distanceSquaredToPoint**(`point`: [Vec3](#classesvec3md)): number
 
-*Defined in [geometry/ray.ts:89](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L89)*
+*Defined in [geometry/ray.ts:89](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L89)*
 
 Get the squared distance of the closest approach between the Ray and the Vec3.
 
@@ -5142,7 +5142,7 @@ ___
 
 ▸ **distanceToPlane**(`plane`: [Plane](#classesplanemd)): number \| undefined
 
-*Defined in [geometry/ray.ts:118](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L118)*
+*Defined in [geometry/ray.ts:118](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L118)*
 
 Get the distance from origin to the Plane, or undefined if the Ray doesn't intersect the Plane.
 
@@ -5160,7 +5160,7 @@ ___
 
 ▸ **intersectPlane**(`plane`: [Plane](#classesplanemd)): [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/ray.ts:142](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L142)*
+*Defined in [geometry/ray.ts:142](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L142)*
 
 Intersect this Ray with a Plane, returning the intersection point or undefined if there is no intersection.
 
@@ -5178,7 +5178,7 @@ ___
 
 ▸ **intersectSphere**(`sphere`: [Sphere](#classesspheremd)): [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/ray.ts:173](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L173)*
+*Defined in [geometry/ray.ts:173](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L173)*
 
 Intersect this Ray with a Sphere, returning the intersection point or undefined if there is no intersection.
 
@@ -5196,7 +5196,7 @@ ___
 
 ▸ **intersectTriangle**(`triangle`: [Triangle](#classestrianglemd), `backfaceCulling?`: boolean): [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/ray.ts:224](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L224)*
+*Defined in [geometry/ray.ts:224](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L224)*
 
 Intersect this Ray with a triangle, returning the intersection point or undefined if there is no intersection.
 
@@ -5217,7 +5217,7 @@ ___
 
 ▸ **intersectsPlane**(`plane`: [Plane](#classesplanemd)): boolean
 
-*Defined in [geometry/ray.ts:155](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L155)*
+*Defined in [geometry/ray.ts:155](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L155)*
 
 Return true if this Ray intersects with the Plane.
 
@@ -5235,7 +5235,7 @@ ___
 
 ▸ **intersectsSphere**(`sphere`: [Sphere](#classesspheremd)): boolean
 
-*Defined in [geometry/ray.ts:211](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L211)*
+*Defined in [geometry/ray.ts:211](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L211)*
 
 Return true if this Ray intersects with the Sphere.
 
@@ -5253,7 +5253,7 @@ ___
 
 ▸ **lookAt**(`v`: [Vec3](#classesvec3md)): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:55](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L55)*
+*Defined in [geometry/ray.ts:55](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L55)*
 
 The Vec3 to look at.
 
@@ -5271,7 +5271,7 @@ ___
 
 ▸ **recast**(`t`: number): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L65)*
+*Defined in [geometry/ray.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L65)*
 
 Shift the origin of this Ray along its direction by the distance given.
 
@@ -5289,7 +5289,7 @@ ___
 
 ▸ **reflect**(`point`: [Vec3](#classesvec3md), `normal`: [Vec3](#classesvec3md)): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:291](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L291)*
+*Defined in [geometry/ray.ts:291](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L291)*
 
 Creates a new ray from the point as reflect of this direction vector off of plane orthogonal to normal.
 Normal is assumed to have unit length.
@@ -5309,7 +5309,7 @@ ___
 
 ▸ `Static`**createFromTo**(`from`: [Vec3](#classesvec3md), `to`: [Vec3](#classesvec3md)): [Ray](#classesraymd)
 
-*Defined in [geometry/ray.ts:302](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/ray.ts#L302)*
+*Defined in [geometry/ray.ts:302](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/ray.ts#L302)*
 
 creates a new ray from the given point to the given point
 
@@ -5360,7 +5360,7 @@ A sphere defined by a center and radius.
 
 \+ **new Sphere**(`center`: [Vec3](#classesvec3md), `radius`: number): [Sphere](#classesspheremd)
 
-*Defined in [geometry/sphere.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L14)*
+*Defined in [geometry/sphere.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L14)*
 
 Creates a new Sphere.
 
@@ -5379,7 +5379,7 @@ Name | Type | Description |
 
 •  **center**: [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/sphere.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L12)*
+*Defined in [geometry/sphere.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L12)*
 
 A Vec3 defining the center of the sphere
 
@@ -5389,7 +5389,7 @@ ___
 
 •  **radius**: number \| undefined
 
-*Defined in [geometry/sphere.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L14)*
+*Defined in [geometry/sphere.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L14)*
 
 The radius of the sphere.
 
@@ -5399,7 +5399,7 @@ The radius of the sphere.
 
 ▸ **applyMatrix4**(`m`: [Matrix4](#classesmatrix4md)): [Sphere](#classesspheremd)
 
-*Defined in [geometry/sphere.ts:72](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L72)*
+*Defined in [geometry/sphere.ts:72](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L72)*
 
 Transforms this sphere with the provided Matrix4.
 
@@ -5417,7 +5417,7 @@ ___
 
 ▸ **containsPoint**(`point`: [Vec3](#classesvec3md)): boolean
 
-*Defined in [geometry/sphere.ts:30](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L30)*
+*Defined in [geometry/sphere.ts:30](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L30)*
 
 Checks to see if the sphere contains the provided point inclusive of the surface of the sphere.
 
@@ -5435,7 +5435,7 @@ ___
 
 ▸ **distanceToPoint**(`point`: [Vec3](#classesvec3md)): number
 
-*Defined in [geometry/sphere.ts:39](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L39)*
+*Defined in [geometry/sphere.ts:39](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L39)*
 
 Returns the closest distance from the boundary of the sphere to the point.
 If the sphere contains the point, the distance will be negative.
@@ -5454,7 +5454,7 @@ ___
 
 ▸ **intersectRay**(`ray`: [Ray](#classesraymd)): [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/sphere.ts:55](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L55)*
+*Defined in [geometry/sphere.ts:55](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L55)*
 
 Intersect this Ray with this Sphere, returning the intersection point or undefined if there is no intersection.
 
@@ -5472,7 +5472,7 @@ ___
 
 ▸ **intersectsPlane**(`plane`: [Plane](#classesplanemd)): boolean
 
-*Defined in [geometry/sphere.ts:47](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L47)*
+*Defined in [geometry/sphere.ts:47](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L47)*
 
 Determines whether or not this sphere intersects a given plane.
 
@@ -5490,7 +5490,7 @@ ___
 
 ▸ **normalAt**(`point`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/sphere.ts:82](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L82)*
+*Defined in [geometry/sphere.ts:82](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L82)*
 
 Returns the normal for the given point
 
@@ -5508,7 +5508,7 @@ ___
 
 ▸ **translate**(`offset`: [Vec3](#classesvec3md)): [Sphere](#classesspheremd)
 
-*Defined in [geometry/sphere.ts:63](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L63)*
+*Defined in [geometry/sphere.ts:63](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/sphere.ts#L63)*
 
 Translate the sphere's center by the provided offset Vec3.
 
@@ -5565,7 +5565,7 @@ Internally this uses Mathf.catmullRom() to create the curve.
 
 *Overrides [Curve2](#classescurve2md).[constructor](#constructor)*
 
-*Defined in [curves/spline-curve2.ts:9](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/spline-curve2.ts#L9)*
+*Defined in [curves/spline-curve2.ts:9](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/spline-curve2.ts#L9)*
 
 Creates the spline curve for 2d
 
@@ -5583,7 +5583,7 @@ Name | Type | Description |
 
 • `Private` `Readonly` **points**: [Vec2](#classesvec2md)[]
 
-*Defined in [curves/spline-curve2.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/spline-curve2.ts#L15)*
+*Defined in [curves/spline-curve2.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/spline-curve2.ts#L15)*
 
 An array of Vec2 points that define the curve.
 
@@ -5595,7 +5595,7 @@ An array of Vec2 points that define the curve.
 
 *Inherited from [Curve2](#classescurve2md).[computeFrames](#computeframes)*
 
-*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
+*Defined in [curves/curve2.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve2.ts#L14)*
 
 #### Parameters:
 
@@ -5613,7 +5613,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLength](#getlength)*
 
-*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
+*Defined in [curves/curve.ts:85](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L85)*
 
 Get total curve arc length.
 
@@ -5627,7 +5627,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getLengths](#getlengths)*
 
-*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
+*Defined in [curves/curve.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L95)*
 
 Get list of cumulative segment lengths.
 
@@ -5647,7 +5647,7 @@ ___
 
 *Overrides [Curve](#classescurvemd).[getPoint](#getpoint)*
 
-*Defined in [curves/spline-curve2.ts:19](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/spline-curve2.ts#L19)*
+*Defined in [curves/spline-curve2.ts:19](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/spline-curve2.ts#L19)*
 
 #### Parameters:
 
@@ -5665,7 +5665,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPointAt](#getpointat)*
 
-*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
+*Defined in [curves/curve.ts:34](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L34)*
 
 Returns a vector for a given position on the curve according to the arc length.
 
@@ -5685,7 +5685,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getPoints](#getpoints)*
 
-*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
+*Defined in [curves/curve.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L45)*
 
 Get sequence of points using getPoint( t )
 
@@ -5707,7 +5707,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getSpacedPoints](#getspacedpoints)*
 
-*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
+*Defined in [curves/curve.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L65)*
 
 Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
 
@@ -5727,7 +5727,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangent](#gettangent)*
 
-*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
+*Defined in [curves/curve.ts:185](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L185)*
 
 Returns a unit vector tangent at t. If the derived curve does not implement its tangent derivation,
 two points a small delta apart will be used to find its gradient which seems to give a reasonable approximation.
@@ -5748,7 +5748,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getTangentAt](#gettangentat)*
 
-*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
+*Defined in [curves/curve.ts:205](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L205)*
 
 Returns tangent at a point which is equidistant to the ends of the curve from the point given in .getTangent.
 
@@ -5768,7 +5768,7 @@ ___
 
 *Inherited from [Curve](#classescurvemd).[getUtoTmapping](#getutotmapping)*
 
-*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
+*Defined in [curves/curve.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/curve.ts#L128)*
 
 Given u in the range ( 0 .. 1 ), returns t also in the range ( 0 .. 1 ).
 u and t can then be used to give you points which are equidistant from the ends of the curve, using .getPoint.
@@ -5836,7 +5836,7 @@ Name | Type | Description |
 
 \+ **new Transform2**(`a`: number, `b`: number, `c`: number, `d`: number, `e`: number, `f`: number): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:17](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L17)*
+*Defined in [geometry/transform2.ts:17](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L17)*
 
 #### Parameters:
 
@@ -5857,7 +5857,7 @@ Name | Type |
 
 •  **a**: number \| undefined
 
-*Defined in [geometry/transform2.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L12)*
+*Defined in [geometry/transform2.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L12)*
 
 ___
 
@@ -5865,7 +5865,7 @@ ___
 
 •  **b**: number \| undefined
 
-*Defined in [geometry/transform2.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L13)*
+*Defined in [geometry/transform2.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L13)*
 
 ___
 
@@ -5873,7 +5873,7 @@ ___
 
 •  **c**: number \| undefined
 
-*Defined in [geometry/transform2.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L14)*
+*Defined in [geometry/transform2.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L14)*
 
 ___
 
@@ -5881,7 +5881,7 @@ ___
 
 •  **d**: number \| undefined
 
-*Defined in [geometry/transform2.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L15)*
+*Defined in [geometry/transform2.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L15)*
 
 ___
 
@@ -5889,7 +5889,7 @@ ___
 
 •  **e**: number \| undefined
 
-*Defined in [geometry/transform2.ts:16](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L16)*
+*Defined in [geometry/transform2.ts:16](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L16)*
 
 ___
 
@@ -5897,7 +5897,7 @@ ___
 
 •  **f**: number \| undefined
 
-*Defined in [geometry/transform2.ts:17](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L17)*
+*Defined in [geometry/transform2.ts:17](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L17)*
 
 ## Methods
 
@@ -5905,7 +5905,7 @@ ___
 
 ▸ **clone**(): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:142](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L142)*
+*Defined in [geometry/transform2.ts:142](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L142)*
 
 **Returns:** [Transform2](#classestransform2md)
 
@@ -5915,7 +5915,7 @@ ___
 
 ▸ **det**(): number
 
-*Defined in [geometry/transform2.ts:53](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L53)*
+*Defined in [geometry/transform2.ts:53](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L53)*
 
 **Returns:** number
 
@@ -5925,7 +5925,7 @@ ___
 
 ▸ **inverse**(): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:57](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L57)*
+*Defined in [geometry/transform2.ts:57](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L57)*
 
 **Returns:** [Transform2](#classestransform2md)
 
@@ -5935,7 +5935,7 @@ ___
 
 ▸ **multiply**(`t`: [Transform2](#classestransform2md)): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:73](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L73)*
+*Defined in [geometry/transform2.ts:73](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L73)*
 
 #### Parameters:
 
@@ -5951,7 +5951,7 @@ ___
 
 ▸ **rotate**(`theta`: number): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:128](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L128)*
+*Defined in [geometry/transform2.ts:128](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L128)*
 
 #### Parameters:
 
@@ -5967,7 +5967,7 @@ ___
 
 ▸ **rotateDegrees**(`theta`: number): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:137](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L137)*
+*Defined in [geometry/transform2.ts:137](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L137)*
 
 #### Parameters:
 
@@ -5983,7 +5983,7 @@ ___
 
 ▸ **scale**(`sx`: number, `sy`: number): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:28](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L28)*
+*Defined in [geometry/transform2.ts:28](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L28)*
 
 #### Parameters:
 
@@ -6000,7 +6000,7 @@ ___
 
 ▸ **scaleWith**(`v`: [Vec2](#classesvec2md)): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:49](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L49)*
+*Defined in [geometry/transform2.ts:49](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L49)*
 
 #### Parameters:
 
@@ -6016,7 +6016,7 @@ ___
 
 ▸ **scaleX**(): number
 
-*Defined in [geometry/transform2.ts:99](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L99)*
+*Defined in [geometry/transform2.ts:99](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L99)*
 
 **Returns:** number
 
@@ -6026,7 +6026,7 @@ ___
 
 ▸ **scaleY**(): number
 
-*Defined in [geometry/transform2.ts:103](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L103)*
+*Defined in [geometry/transform2.ts:103](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L103)*
 
 **Returns:** number
 
@@ -6036,7 +6036,7 @@ ___
 
 ▸ **transform**(`x`: number, `y`: number): [Point2](#classespoint2md)
 
-*Defined in [geometry/transform2.ts:84](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L84)*
+*Defined in [geometry/transform2.ts:84](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L84)*
 
 #### Parameters:
 
@@ -6053,7 +6053,7 @@ ___
 
 ▸ **transformPoint**(`p`: [Point2](#classespoint2md)): [Point2](#classespoint2md)
 
-*Defined in [geometry/transform2.ts:95](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L95)*
+*Defined in [geometry/transform2.ts:95](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L95)*
 
 #### Parameters:
 
@@ -6069,7 +6069,7 @@ ___
 
 ▸ **transformVec**(`v`: [Vec2](#classesvec2md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/transform2.ts:90](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L90)*
+*Defined in [geometry/transform2.ts:90](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L90)*
 
 #### Parameters:
 
@@ -6085,7 +6085,7 @@ ___
 
 ▸ **translate**(`dx`: number, `dy`: number): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:121](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L121)*
+*Defined in [geometry/transform2.ts:121](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L121)*
 
 #### Parameters:
 
@@ -6102,7 +6102,7 @@ ___
 
 ▸ **translateX**(): number
 
-*Defined in [geometry/transform2.ts:107](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L107)*
+*Defined in [geometry/transform2.ts:107](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L107)*
 
 **Returns:** number
 
@@ -6112,7 +6112,7 @@ ___
 
 ▸ **translateY**(): number
 
-*Defined in [geometry/transform2.ts:111](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L111)*
+*Defined in [geometry/transform2.ts:111](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L111)*
 
 **Returns:** number
 
@@ -6122,7 +6122,7 @@ ___
 
 ▸ `Static`**identity**(): [Transform2](#classestransform2md)
 
-*Defined in [geometry/transform2.ts:115](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L115)*
+*Defined in [geometry/transform2.ts:115](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/transform2.ts#L115)*
 
 **Returns:** [Transform2](#classestransform2md)
 
@@ -6174,7 +6174,7 @@ A geometric triangle as defined by three Vec3s representing its three corners.
 
 \+ **new Triangle**(`a`: [Vec3](#classesvec3md), `b`: [Vec3](#classesvec3md), `c`: [Vec3](#classesvec3md)): [Triangle](#classestrianglemd)
 
-*Defined in [geometry/triangle.ts:16](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L16)*
+*Defined in [geometry/triangle.ts:16](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L16)*
 
 Creates a new Triangle.
 
@@ -6194,7 +6194,7 @@ Name | Type | Description |
 
 •  **a**: [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/triangle.ts:12](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L12)*
+*Defined in [geometry/triangle.ts:12](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L12)*
 
 the first corner of the triangle
 
@@ -6204,7 +6204,7 @@ ___
 
 •  **b**: [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/triangle.ts:14](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L14)*
+*Defined in [geometry/triangle.ts:14](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L14)*
 
 the second corner of the triangle
 
@@ -6214,7 +6214,7 @@ ___
 
 •  **c**: [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/triangle.ts:16](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L16)*
+*Defined in [geometry/triangle.ts:16](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L16)*
 
 the final corner of the triangle
 
@@ -6224,7 +6224,7 @@ the final corner of the triangle
 
 ▸ **clone**(): [Triangle](#classestrianglemd)
 
-*Defined in [geometry/triangle.ts:33](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L33)*
+*Defined in [geometry/triangle.ts:33](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L33)*
 
 Returns a new triangle with the same a, b and c properties as this one.
 
@@ -6236,7 +6236,7 @@ ___
 
 ▸ **closestPointToPoint**(`point`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:200](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L200)*
+*Defined in [geometry/triangle.ts:200](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L200)*
 
 Returns the closest point on the triangle to point.
 
@@ -6254,7 +6254,7 @@ ___
 
 ▸ **containsPoint**(`point`: [Vec3](#classesvec3md)): boolean
 
-*Defined in [geometry/triangle.ts:182](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L182)*
+*Defined in [geometry/triangle.ts:182](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L182)*
 
 Returns true if the passed point, when projected onto the plane of the triangle, lies within the triangle.
 
@@ -6272,7 +6272,7 @@ ___
 
 ▸ **getArea**(): number
 
-*Defined in [geometry/triangle.ts:125](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L125)*
+*Defined in [geometry/triangle.ts:125](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L125)*
 
 Return the area of the triangle.
 
@@ -6284,7 +6284,7 @@ ___
 
 ▸ **getBarycoord**(`point`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:168](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L168)*
+*Defined in [geometry/triangle.ts:168](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L168)*
 
 Return a barycentric coordinate from the given vector.
 
@@ -6302,7 +6302,7 @@ ___
 
 ▸ **getMidpoint**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:139](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L139)*
+*Defined in [geometry/triangle.ts:139](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L139)*
 
 Calculate the midpoint of the triangle.
 
@@ -6314,7 +6314,7 @@ ___
 
 ▸ **getPlane**(): [Plane](#classesplanemd)
 
-*Defined in [geometry/triangle.ts:159](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L159)*
+*Defined in [geometry/triangle.ts:159](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L159)*
 
 Calculate a plane based on the triangle.
 
@@ -6326,7 +6326,7 @@ ___
 
 ▸ **getUV**(`point`: [Vec3](#classesvec3md), `uv1`: [Vec3](#classesvec3md), `uv2`: [Vec3](#classesvec3md), `uv3`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:173](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L173)*
+*Defined in [geometry/triangle.ts:173](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L173)*
 
 #### Parameters:
 
@@ -6345,7 +6345,7 @@ ___
 
 ▸ **intersectRay**(`ray`: [Ray](#classesraymd)): [Vec3](#classesvec3md) \| undefined
 
-*Defined in [geometry/triangle.ts:280](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L280)*
+*Defined in [geometry/triangle.ts:280](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L280)*
 
 Intersect this Ray with this Triangle, returning the intersection point or undefined if there is no intersection.
 
@@ -6363,7 +6363,7 @@ ___
 
 ▸ **isFrontFacing**(`direction`: [Vec3](#classesvec3md)): boolean
 
-*Defined in [geometry/triangle.ts:191](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L191)*
+*Defined in [geometry/triangle.ts:191](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L191)*
 
 checks if the triangle is front facing
 
@@ -6381,7 +6381,7 @@ ___
 
 ▸ **normalAt**(`point`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:151](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L151)*
+*Defined in [geometry/triangle.ts:151](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L151)*
 
 Calculate the normal vector of the triangle at the given point
 
@@ -6399,7 +6399,7 @@ ___
 
 ▸ `Static`**calculateBarycoord**(`point`: [Vec3](#classesvec3md), `a`: [Vec3](#classesvec3md), `b`: [Vec3](#classesvec3md), `c`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:64](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L64)*
+*Defined in [geometry/triangle.ts:64](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L64)*
 
 the method to calculate barycentric coordinates
 
@@ -6422,7 +6422,7 @@ ___
 
 ▸ `Static`**calculateNormal**(`a`: [Vec3](#classesvec3md), `b`: [Vec3](#classesvec3md), `c`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:42](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L42)*
+*Defined in [geometry/triangle.ts:42](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L42)*
 
 #### Parameters:
 
@@ -6440,7 +6440,7 @@ ___
 
 ▸ `Static`**calculateUV**(`point`: [Vec3](#classesvec3md), `a`: [Vec3](#classesvec3md), `b`: [Vec3](#classesvec3md), `c`: [Vec3](#classesvec3md), `uv1`: [Vec3](#classesvec3md), `uv2`: [Vec3](#classesvec3md), `uv3`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/triangle.ts:100](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L100)*
+*Defined in [geometry/triangle.ts:100](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L100)*
 
 #### Parameters:
 
@@ -6462,7 +6462,7 @@ ___
 
 ▸ `Static`**frontFacing**(`a`: [Vec3](#classesvec3md), `b`: [Vec3](#classesvec3md), `c`: [Vec3](#classesvec3md), `direction`: [Vec3](#classesvec3md)): boolean
 
-*Defined in [geometry/triangle.ts:111](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L111)*
+*Defined in [geometry/triangle.ts:111](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L111)*
 
 #### Parameters:
 
@@ -6481,7 +6481,7 @@ ___
 
 ▸ `Static`**isContainsPoint**(`point`: [Vec3](#classesvec3md), `a`: [Vec3](#classesvec3md), `b`: [Vec3](#classesvec3md), `c`: [Vec3](#classesvec3md)): boolean
 
-*Defined in [geometry/triangle.ts:94](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L94)*
+*Defined in [geometry/triangle.ts:94](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/triangle.ts#L94)*
 
 #### Parameters:
 
@@ -6557,7 +6557,7 @@ Class representing a 2D vector. A 2D vector is an ordered pair of numbers (label
 
 \+ **new Vec2**(`x`: number, `y`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L15)*
+*Defined in [geometry/vec2.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L15)*
 
 creates a new 2D vector
 
@@ -6576,7 +6576,7 @@ Name | Type | Description |
 
 •  **x**: number \| undefined
 
-*Defined in [geometry/vec2.ts:11](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L11)*
+*Defined in [geometry/vec2.ts:11](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L11)*
 
 the x value of this vector. Default is 0.
 
@@ -6586,7 +6586,7 @@ ___
 
 •  **y**: number \| undefined
 
-*Defined in [geometry/vec2.ts:15](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L15)*
+*Defined in [geometry/vec2.ts:15](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L15)*
 
 the y value of this vector. Default is 0.
 
@@ -6596,7 +6596,7 @@ the y value of this vector. Default is 0.
 
 ▸ **add**(`x`: number, `y`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:132](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L132)*
+*Defined in [geometry/vec2.ts:132](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L132)*
 
 Adds x and y to this vector
 
@@ -6615,7 +6615,7 @@ ___
 
 ▸ **addWith**(`v`: [Vec2](#classesvec2md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:143](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L143)*
+*Defined in [geometry/vec2.ts:143](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L143)*
 
 Adds v to this vector.
 
@@ -6635,7 +6635,7 @@ ___
 
 ▸ **angle**(`x`: number, `y`: number): number
 
-*Defined in [geometry/vec2.ts:99](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L99)*
+*Defined in [geometry/vec2.ts:99](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L99)*
 
 Calculates the angle between this vector and given x and y by using the dot product.
 
@@ -6654,7 +6654,7 @@ ___
 
 ▸ **angleWith**(`v`: [Vec2](#classesvec2md)): number
 
-*Defined in [geometry/vec2.ts:113](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L113)*
+*Defined in [geometry/vec2.ts:113](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L113)*
 
 Calculates the angle between this vector and given x and y by using the dot product.
 
@@ -6674,7 +6674,7 @@ ___
 
 ▸ **applyMatrix3**(`m`: [Matrix3](#classesmatrix3md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:253](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L253)*
+*Defined in [geometry/vec2.ts:253](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L253)*
 
 #### Parameters:
 
@@ -6690,7 +6690,7 @@ ___
 
 ▸ **clone**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:219](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L219)*
+*Defined in [geometry/vec2.ts:219](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L219)*
 
 Returns a new 2D vector with the same x and y values as this one.
 
@@ -6702,7 +6702,7 @@ ___
 
 ▸ **cross**(`x`: number, `y`: number): number
 
-*Defined in [geometry/vec2.ts:52](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L52)*
+*Defined in [geometry/vec2.ts:52](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L52)*
 
 Calculates the cross product of this vector and given x and y.
 Note that a 'cross-product' in 2D is not well-defined.
@@ -6723,7 +6723,7 @@ ___
 
 ▸ **crossWith**(`v`: [Vec2](#classesvec2md)): number
 
-*Defined in [geometry/vec2.ts:61](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L61)*
+*Defined in [geometry/vec2.ts:61](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L61)*
 
 Calculates the cross product of this vector and v.
 
@@ -6743,7 +6743,7 @@ ___
 
 ▸ **distance**(`x`: number, `y`: number): number
 
-*Defined in [geometry/vec2.ts:326](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L326)*
+*Defined in [geometry/vec2.ts:326](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L326)*
 
 Computes the distance from this vector to the given parameters.
 
@@ -6762,7 +6762,7 @@ ___
 
 ▸ **distanceSquared**(`x`: number, `y`: number): number
 
-*Defined in [geometry/vec2.ts:306](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L306)*
+*Defined in [geometry/vec2.ts:306](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L306)*
 
 Computes the squared distance from this vector to the given parameters.
 
@@ -6781,7 +6781,7 @@ ___
 
 ▸ **distanceSquaredTo**(`p`: [Vec2](#classesvec2md)): number
 
-*Defined in [geometry/vec2.ts:317](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L317)*
+*Defined in [geometry/vec2.ts:317](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L317)*
 
 Computes the squared distance from this vector to the given vector p.
 
@@ -6801,7 +6801,7 @@ ___
 
 ▸ **distanceTo**(`p`: [Vec2](#classesvec2md)): number
 
-*Defined in [geometry/vec2.ts:336](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L336)*
+*Defined in [geometry/vec2.ts:336](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L336)*
 
 Computes the distance from this vector to the given vector p.
 
@@ -6821,7 +6821,7 @@ ___
 
 ▸ **divide**(`x`: number, `y`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:172](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L172)*
+*Defined in [geometry/vec2.ts:172](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L172)*
 
 Divides this vector by x and y.
 
@@ -6840,7 +6840,7 @@ ___
 
 ▸ **divideWith**(`v`: [Vec2](#classesvec2md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:183](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L183)*
+*Defined in [geometry/vec2.ts:183](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L183)*
 
 Divides this vector by v.
 
@@ -6860,7 +6860,7 @@ ___
 
 ▸ **dot**(`x`: number, `y`: number): number
 
-*Defined in [geometry/vec2.ts:32](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L32)*
+*Defined in [geometry/vec2.ts:32](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L32)*
 
 Calculates the dot product of this vector and given x and y
 
@@ -6879,7 +6879,7 @@ ___
 
 ▸ **dotWith**(`v`: [Vec2](#classesvec2md)): number
 
-*Defined in [geometry/vec2.ts:41](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L41)*
+*Defined in [geometry/vec2.ts:41](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L41)*
 
 Calculates the dot product of this vector and v.
 
@@ -6899,7 +6899,7 @@ ___
 
 ▸ **inverse**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:210](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L210)*
+*Defined in [geometry/vec2.ts:210](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L210)*
 
 Inverts this vector - i.e. sets x = -x and y = -y.
 
@@ -6911,7 +6911,7 @@ ___
 
 ▸ **length**(): number
 
-*Defined in [geometry/vec2.ts:76](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L76)*
+*Defined in [geometry/vec2.ts:76](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L76)*
 
 Computes the Euclidean length (straight-line length) from (0, 0) to (x, y).
 
@@ -6923,7 +6923,7 @@ ___
 
 ▸ **lengthSquared**(): number
 
-*Defined in [geometry/vec2.ts:69](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L69)*
+*Defined in [geometry/vec2.ts:69](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L69)*
 
 Computes the square of the Euclidean length (straight-line length) from (0, 0) to (x, y).
 If you are comparing the lengths of vectors, you should compare the length squared instead as it is slightly more efficient to calculate.
@@ -6936,7 +6936,7 @@ ___
 
 ▸ **multiply**(`x`: number, `y`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:152](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L152)*
+*Defined in [geometry/vec2.ts:152](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L152)*
 
 Multiplies this vector by x and y.
 
@@ -6955,7 +6955,7 @@ ___
 
 ▸ **multiplyWith**(`v`: [Vec2](#classesvec2md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:163](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L163)*
+*Defined in [geometry/vec2.ts:163](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L163)*
 
 Multiplies this vector by v.
 
@@ -6975,7 +6975,7 @@ ___
 
 ▸ **normalize**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:84](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L84)*
+*Defined in [geometry/vec2.ts:84](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L84)*
 
 Converts this vector to a unit vector - that is, sets it equal to a vector with the same direction as this one, but length 1.
 
@@ -6987,7 +6987,7 @@ ___
 
 ▸ **perpendicularCCW**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:237](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L237)*
+*Defined in [geometry/vec2.ts:237](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L237)*
 
 Returns an perpendicular 2D vector in counterclockwise direction
 
@@ -6999,7 +6999,7 @@ ___
 
 ▸ **perpendicularCW**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:228](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L228)*
+*Defined in [geometry/vec2.ts:228](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L228)*
 
 Returns an perpendicular 2D vector in clockwise direction
 
@@ -7011,7 +7011,7 @@ ___
 
 ▸ **rotateAround**(`cx`: number, `cy`: number, `angle`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:263](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L263)*
+*Defined in [geometry/vec2.ts:263](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L263)*
 
 Rotates this vector around center cx and cy by given angle in radians.
 
@@ -7031,7 +7031,7 @@ ___
 
 ▸ **rotateAroundWith**(`center`: [Vec2](#classesvec2md), `angle`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:281](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L281)*
+*Defined in [geometry/vec2.ts:281](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L281)*
 
 Rotates this vector around center by given angle in radians.
 
@@ -7050,7 +7050,7 @@ ___
 
 ▸ **scale**(`s`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:121](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L121)*
+*Defined in [geometry/vec2.ts:121](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L121)*
 
 Multiplies this vector by scalar s.
 
@@ -7068,7 +7068,7 @@ ___
 
 ▸ **subtract**(`x`: number, `y`: number): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:192](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L192)*
+*Defined in [geometry/vec2.ts:192](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L192)*
 
 Subtracts x and y from this vector.
 
@@ -7087,7 +7087,7 @@ ___
 
 ▸ **subtractWith**(`v`: [Vec2](#classesvec2md)): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:203](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L203)*
+*Defined in [geometry/vec2.ts:203](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L203)*
 
 Subtracts v from this vector.
 
@@ -7107,7 +7107,7 @@ ___
 
 ▸ `Static`**random**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:246](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L246)*
+*Defined in [geometry/vec2.ts:246](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L246)*
 
 Returns a new 2D vector, where each component of the vector are set to a pseudo-random value between 0 and 1, excluding 1.
 
@@ -7119,7 +7119,7 @@ ___
 
 ▸ `Static`**xAxis**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:288](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L288)*
+*Defined in [geometry/vec2.ts:288](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L288)*
 
 Returns a unit vector for the x axis (1.0, 0.0)
 
@@ -7131,7 +7131,7 @@ ___
 
 ▸ `Static`**yAxis**(): [Vec2](#classesvec2md)
 
-*Defined in [geometry/vec2.ts:296](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L296)*
+*Defined in [geometry/vec2.ts:296](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec2.ts#L296)*
 
 Returns a unit vector for the y axis (0.0, 1.0)
 
@@ -7202,7 +7202,7 @@ Class representing a 3D vector. A 3D vector is an ordered triplet of numbers (la
 
 \+ **new Vec3**(`x`: number, `y`: number, `z`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:21](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L21)*
+*Defined in [geometry/vec3.ts:21](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L21)*
 
 Creates a new 3D vector.
 
@@ -7222,7 +7222,7 @@ Name | Type | Description |
 
 •  **x**: number \| undefined
 
-*Defined in [geometry/vec3.ts:13](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L13)*
+*Defined in [geometry/vec3.ts:13](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L13)*
 
 the x value of this vector. Default is 0.
 
@@ -7232,7 +7232,7 @@ ___
 
 •  **y**: number \| undefined
 
-*Defined in [geometry/vec3.ts:17](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L17)*
+*Defined in [geometry/vec3.ts:17](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L17)*
 
 the y value of this vector. Default is 0.
 
@@ -7242,7 +7242,7 @@ ___
 
 •  **z**: number \| undefined
 
-*Defined in [geometry/vec3.ts:21](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L21)*
+*Defined in [geometry/vec3.ts:21](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L21)*
 
 the z value of this vector. Default is 0.
 
@@ -7252,7 +7252,7 @@ the z value of this vector. Default is 0.
 
 ▸ **add**(`x`: number, `y`: number, `z`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:124](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L124)*
+*Defined in [geometry/vec3.ts:124](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L124)*
 
 adds this vector and the given parameters to a new vector vector.
 
@@ -7272,7 +7272,7 @@ ___
 
 ▸ **addScaledVector**(`v`: [Vec3](#classesvec3md), `s`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:147](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L147)*
+*Defined in [geometry/vec3.ts:147](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L147)*
 
 Adds this vector and the multiple of v and s to a new vector vector.
 
@@ -7295,7 +7295,7 @@ ___
 
 ▸ **addWith**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:136](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L136)*
+*Defined in [geometry/vec3.ts:136](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L136)*
 
 adds this vector and v to a new vector vector.
 
@@ -7315,7 +7315,7 @@ ___
 
 ▸ **applyMatrix3**(`m`: [Matrix3](#classesmatrix3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:255](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L255)*
+*Defined in [geometry/vec3.ts:255](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L255)*
 
 Multiplies this vector and m to a new vector vector.
 
@@ -7333,7 +7333,7 @@ ___
 
 ▸ **applyMatrix4**(`m`: [Matrix4](#classesmatrix4md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:263](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L263)*
+*Defined in [geometry/vec3.ts:263](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L263)*
 
 Multiplies this vector and m to a new vector vector.
 
@@ -7351,7 +7351,7 @@ ___
 
 ▸ **applyQuaternion**(`q`: [Quaternion](#classesquaternionmd)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:271](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L271)*
+*Defined in [geometry/vec3.ts:271](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L271)*
 
 Multiplies this vector and q to a new vector vector.
 
@@ -7369,7 +7369,7 @@ ___
 
 ▸ **clone**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:232](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L232)*
+*Defined in [geometry/vec3.ts:232](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L232)*
 
 Returns a new vector3 with the same x, y and z values as this one.
 
@@ -7381,7 +7381,7 @@ ___
 
 ▸ **cross**(`x`: number, `y`: number, `z`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:89](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L89)*
+*Defined in [geometry/vec3.ts:89](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L89)*
 
 returns the cross product of this vec3 and the given parameters.
 
@@ -7401,7 +7401,7 @@ ___
 
 ▸ **crossWith**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:102](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L102)*
+*Defined in [geometry/vec3.ts:102](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L102)*
 
 returns the cross product of this vec3 and v.
 
@@ -7421,7 +7421,7 @@ ___
 
 ▸ **distance**(`x`: number, `y`: number, `z`: number): number
 
-*Defined in [geometry/vec3.ts:303](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L303)*
+*Defined in [geometry/vec3.ts:303](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L303)*
 
 Computes the distance from this vector to the given parameters.
 
@@ -7441,7 +7441,7 @@ ___
 
 ▸ **distanceSquared**(`x`: number, `y`: number, `z`: number): number
 
-*Defined in [geometry/vec3.ts:281](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L281)*
+*Defined in [geometry/vec3.ts:281](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L281)*
 
 Computes the squared distance from this vector to the given parameters.
 
@@ -7461,7 +7461,7 @@ ___
 
 ▸ **distanceSquaredTo**(`p`: [Vec3](#classesvec3md)): number
 
-*Defined in [geometry/vec3.ts:293](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L293)*
+*Defined in [geometry/vec3.ts:293](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L293)*
 
 Computes the squared distance from this vector to the given vector p.
 
@@ -7481,7 +7481,7 @@ ___
 
 ▸ **distanceTo**(`p`: [Vec3](#classesvec3md)): number
 
-*Defined in [geometry/vec3.ts:313](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L313)*
+*Defined in [geometry/vec3.ts:313](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L313)*
 
 Computes the distance from this vector to the given vector p.
 
@@ -7501,7 +7501,7 @@ ___
 
 ▸ **divide**(`x`: number, `y`: number, `z`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:181](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L181)*
+*Defined in [geometry/vec3.ts:181](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L181)*
 
 divide this vector and the given parameters to a new vector vector.
 
@@ -7521,7 +7521,7 @@ ___
 
 ▸ **divideWith**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:193](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L193)*
+*Defined in [geometry/vec3.ts:193](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L193)*
 
 divide this vector and v to a new vector vector.
 
@@ -7541,7 +7541,7 @@ ___
 
 ▸ **dot**(`x`: number, `y`: number, `z`: number): number
 
-*Defined in [geometry/vec3.ts:56](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L56)*
+*Defined in [geometry/vec3.ts:56](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L56)*
 
 Calculate the dot product of this vector and the given parameters.
 
@@ -7561,7 +7561,7 @@ ___
 
 ▸ **dotWith**(`v`: [Vec3](#classesvec3md)): number
 
-*Defined in [geometry/vec3.ts:65](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L65)*
+*Defined in [geometry/vec3.ts:65](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L65)*
 
 Calculate the dot product of this vector and v.
 
@@ -7581,7 +7581,7 @@ ___
 
 ▸ **inverse**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:222](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L222)*
+*Defined in [geometry/vec3.ts:222](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L222)*
 
 Inverts this vector - i.e. sets x = -x, y = -y and z = -z.
 
@@ -7593,7 +7593,7 @@ ___
 
 ▸ **length**(): number
 
-*Defined in [geometry/vec3.ts:45](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L45)*
+*Defined in [geometry/vec3.ts:45](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L45)*
 
 Computes the Euclidean length (straight-line length) from (0, 0, 0) to (x, y, z).
 
@@ -7605,7 +7605,7 @@ ___
 
 ▸ **lengthSquared**(): number
 
-*Defined in [geometry/vec3.ts:38](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L38)*
+*Defined in [geometry/vec3.ts:38](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L38)*
 
 Computes the square of the Euclidean length (straight-line length) from (0, 0, 0) to (x, y, z).
 
@@ -7617,7 +7617,7 @@ ___
 
 ▸ **multiply**(`x`: number, `y`: number, `z`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:159](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L159)*
+*Defined in [geometry/vec3.ts:159](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L159)*
 
 multiply this vector and the given parameters to a new vector vector.
 
@@ -7637,7 +7637,7 @@ ___
 
 ▸ **multiplyWith**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:171](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L171)*
+*Defined in [geometry/vec3.ts:171](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L171)*
 
 multiply this vector and v to a new vector vector.
 
@@ -7657,7 +7657,7 @@ ___
 
 ▸ **normalize**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:72](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L72)*
+*Defined in [geometry/vec3.ts:72](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L72)*
 
 Convert this vector to a unit vector - that is, sets it equal to a vector with the same direction as this one, but length 1.
 
@@ -7669,7 +7669,7 @@ ___
 
 ▸ **orthogonal**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:351](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L351)*
+*Defined in [geometry/vec3.ts:351](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L351)*
 
 creates new orthogonal vector to this vector
 
@@ -7681,7 +7681,7 @@ ___
 
 ▸ **reflect**(`normal`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:366](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L366)*
+*Defined in [geometry/vec3.ts:366](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L366)*
 
 Reflect this vector off of plane orthogonal to normal. Normal is assumed to have unit length.
 
@@ -7699,7 +7699,7 @@ ___
 
 ▸ **scale**(`s`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:110](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L110)*
+*Defined in [geometry/vec3.ts:110](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L110)*
 
 Multiplies this vector and the scalar s to a new vector vector.
 
@@ -7717,7 +7717,7 @@ ___
 
 ▸ **subtract**(`x`: number, `y`: number, `z`: number): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:203](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L203)*
+*Defined in [geometry/vec3.ts:203](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L203)*
 
 subtract this vector and the given parameters to a new vector vector.
 
@@ -7737,7 +7737,7 @@ ___
 
 ▸ **subtractWith**(`v`: [Vec3](#classesvec3md)): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:215](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L215)*
+*Defined in [geometry/vec3.ts:215](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L215)*
 
 subtract this vector and v to a new vector vector.
 
@@ -7757,7 +7757,7 @@ ___
 
 ▸ `Static`**random**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:243](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L243)*
+*Defined in [geometry/vec3.ts:243](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L243)*
 
 Creates a new vector with each component of this vector to a pseudo-random value between 0 and 1, excluding 1.
 
@@ -7769,7 +7769,7 @@ ___
 
 ▸ `Static`**xAxis**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:320](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L320)*
+*Defined in [geometry/vec3.ts:320](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L320)*
 
 Returns a unit vector for the x axis (1.0, 0.0, 0.0)
 
@@ -7781,7 +7781,7 @@ ___
 
 ▸ `Static`**yAxis**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:328](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L328)*
+*Defined in [geometry/vec3.ts:328](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L328)*
 
 Returns a unit vector for the y axis (0.0, 1.0, 0.0)
 
@@ -7793,7 +7793,7 @@ ___
 
 ▸ `Static`**zAxis**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:336](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L336)*
+*Defined in [geometry/vec3.ts:336](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L336)*
 
 Returns a unit vector for the z axis (0.0, 0.0, 1.0)
 
@@ -7805,7 +7805,7 @@ ___
 
 ▸ `Static`**zero**(): [Vec3](#classesvec3md)
 
-*Defined in [geometry/vec3.ts:344](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L344)*
+*Defined in [geometry/vec3.ts:344](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/geometry/vec3.ts#L344)*
 
 Returns a new vector with 0.0 for x, y and z
 
@@ -7830,7 +7830,7 @@ Returns a new vector with 0.0 for x, y and z
 
 •  **CatmullRom**:  = "catmullrom"
 
-*Defined in [curves/catmull-rom-type.ts:4](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-type.ts#L4)*
+*Defined in [curves/catmull-rom-type.ts:4](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-type.ts#L4)*
 
 ___
 
@@ -7838,7 +7838,7 @@ ___
 
 •  **Centripetal**:  = "centripetal"
 
-*Defined in [curves/catmull-rom-type.ts:2](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-type.ts#L2)*
+*Defined in [curves/catmull-rom-type.ts:2](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-type.ts#L2)*
 
 ___
 
@@ -7846,4 +7846,4 @@ ___
 
 •  **Chordal**:  = "chordal"
 
-*Defined in [curves/catmull-rom-type.ts:3](https://github.com/dayaftereh/squishy/blob/98f2603/src/worker/execution/node-executor/script/math/curves/catmull-rom-type.ts#L3)*
+*Defined in [curves/catmull-rom-type.ts:3](https://github.com/dayaftereh/squishy/blob/7af029c/src/worker/execution/node-executor/script/math/curves/catmull-rom-type.ts#L3)*
